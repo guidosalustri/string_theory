@@ -1,0 +1,127 @@
+[gd_scene load_steps=11 format=3 uid="uid://p60tmr6ajcyy"]
+
+[ext_resource type="Script" path="res://ui/main_menu/main_menu.gd" id="1_q02l5"]
+[ext_resource type="PackedScene" uid="uid://bxfevggvxo634" path="res://assets/background/space_background.tscn" id="2_deq87"]
+[ext_resource type="Texture2D" uid="uid://cgwmuppgqua43" path="res://cutscene/planets.svg" id="4_asrjl"]
+[ext_resource type="PackedScene" uid="uid://cgdat18qea2f5" path="res://tests/options.tscn" id="4_wwnm0"]
+[ext_resource type="Texture2D" uid="uid://0gw4o20b3fa0" path="res://cutscene/asteroid.svg" id="5_cqcon"]
+[ext_resource type="Texture2D" uid="uid://b4atip1kb2j28" path="res://assets/planet_large.png" id="6_eibt2"]
+[ext_resource type="PackedScene" uid="uid://c5mhd08u6r1kd" path="res://ui/main_menu/ui_main_menu.tscn" id="7_uv4c6"]
+
+[sub_resource type="Animation" id="Animation_rllgk"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Planets/Sprite2D3:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-0.00940101]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Planets/Sprite2D4:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-0.523599]
+}
+
+[sub_resource type="Animation" id="Animation_a1lx5"]
+resource_name = "planets"
+length = 10.0
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Planets/Sprite2D3:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.0333333, 6, 10),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 6.28319, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Planets/Sprite2D4:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 10),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, -6.28319]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1aohc"]
+_data = {
+"RESET": SubResource("Animation_rllgk"),
+"planets": SubResource("Animation_a1lx5")
+}
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_q02l5")
+
+[node name="SpaceBackground" parent="." instance=ExtResource("2_deq87")]
+
+[node name="options" parent="." instance=ExtResource("4_wwnm0")]
+visible = false
+offset_left = 940.0
+offset_top = 520.0
+offset_right = 940.0
+offset_bottom = 520.0
+
+[node name="Planets" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Planets"]
+position = Vector2(1877, 147)
+rotation = -0.390317
+texture = ExtResource("4_asrjl")
+region_enabled = true
+region_rect = Rect2(116.24, 449.17, 786.222, 420.426)
+
+[node name="Sprite2D2" type="Sprite2D" parent="Planets"]
+position = Vector2(1745, 928)
+texture = ExtResource("4_asrjl")
+region_enabled = true
+region_rect = Rect2(583.38, 0, 440.62, 391.488)
+
+[node name="Sprite2D3" type="Sprite2D" parent="Planets"]
+position = Vector2(1400, 835)
+rotation = -0.00940101
+scale = Vector2(0.734391, 0.74491)
+texture = ExtResource("5_cqcon")
+region_enabled = true
+region_rect = Rect2(5.25543, 0.827011, 251.562, 253.805)
+
+[node name="Sprite2D4" type="Sprite2D" parent="Planets"]
+position = Vector2(279, 199)
+rotation = -0.523599
+texture = ExtResource("5_cqcon")
+
+[node name="Sprite2D5" type="Sprite2D" parent="Planets"]
+position = Vector2(248, 878)
+texture = ExtResource("6_eibt2")
+
+[node name="MainMenuUI" parent="." instance=ExtResource("7_uv4c6")]
+offset_left = 4.0
+offset_top = 3.0
+offset_right = 1924.0
+offset_bottom = 1083.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_1aohc")
+}
+autoplay = "planets"

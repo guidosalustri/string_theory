@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://cs72uiiumr18y"]
+
+[ext_resource type="Texture2D" uid="uid://bniyrxn3r2v8h" path="res://assets/ship.png" id="1_mxvjf"]
+
+[sub_resource type="Gradient" id="Gradient_q5fe8"]
+colors = PackedColorArray(1, 1, 1, 0.27451, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_yl8f2"]
+gradient = SubResource("Gradient_q5fe8")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_he2l1"]
+particle_flag_disable_z = true
+direction = Vector3(-1, 0, 0)
+spread = 0.0
+initial_velocity_min = 156.91
+initial_velocity_max = 156.91
+gravity = Vector3(0, 0, 0)
+color_ramp = SubResource("GradientTexture1D_yl8f2")
+
+[node name="GPUParticles2D" type="GPUParticles2D"]
+show_behind_parent = true
+amount = 6
+process_material = SubResource("ParticleProcessMaterial_he2l1")
+texture = ExtResource("1_mxvjf")
+lifetime = 1.1

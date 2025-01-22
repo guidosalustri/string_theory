@@ -1,0 +1,261 @@
+[gd_scene load_steps=20 format=3 uid="uid://c3t5667cokabt"]
+
+[ext_resource type="Script" path="res://lvls/lvl.gd" id="1_wekok"]
+[ext_resource type="PackedScene" uid="uid://dqjnkl56rsiki" path="res://objects/exit_area.tscn" id="2_v0lhx"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="3_nhb5c"]
+[ext_resource type="PackedScene" uid="uid://bxfevggvxo634" path="res://assets/background/space_background.tscn" id="4_2slye"]
+[ext_resource type="PackedScene" uid="uid://em4qfalchhhd" path="res://objects/ship.tscn" id="5_8n6nf"]
+[ext_resource type="PackedScene" uid="uid://ul1ys48qmbs4" path="res://objects/star.tscn" id="6_vwor5"]
+[ext_resource type="PackedScene" uid="uid://bp4febdu6vh5y" path="res://objects/obstacles/asteroid.tscn" id="7_6u4pn"]
+[ext_resource type="PackedScene" uid="uid://b1xjjudghnfhm" path="res://objects/obstacles/black_hole.tscn" id="8_ca7kd"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="9_odr5d"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="10_wexii"]
+[ext_resource type="FontFile" uid="uid://clffif4u7fy61" path="res://ui/Stacked pixel.ttf" id="11_rpogk"]
+[ext_resource type="Shader" path="res://ui/blur_for_ui.gdshader" id="12_podd2"]
+[ext_resource type="PackedScene" uid="uid://bc8nepke0pagf" path="res://ui/hud/hud.tscn" id="13_xjpt8"]
+[ext_resource type="AudioStream" uid="uid://bupnj85mfcp5w" path="res://assets/into-the-night-uk-drill-music-20928.mp3" id="14_1yubk"]
+[ext_resource type="PackedScene" uid="uid://ciegbyfrx5lf3" path="res://ui/pause_menu/pause_screen.tscn" id="15_2ae10"]
+
+[sub_resource type="Resource" id="Resource_bmus8"]
+script = ExtResource("10_wexii")
+duration = 1.0
+transition = 0
+ease = 2
+
+[sub_resource type="Resource" id="Resource_vjox8"]
+script = ExtResource("10_wexii")
+duration = 1.0
+transition = 0
+ease = 2
+
+[sub_resource type="Resource" id="Resource_7liiy"]
+script = ExtResource("10_wexii")
+duration = 1.0
+transition = 0
+ease = 2
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tf4i8"]
+shader = ExtResource("12_podd2")
+shader_parameter/blur_amount = 0.0
+shader_parameter/tint = Color(0.622155, 0.145824, 0.885064, 1)
+shader_parameter/tint_amount = 0.0
+shader_parameter/saturation = 1.0
+
+[node name="lvl" type="Node2D" node_paths=PackedStringArray("stars_trail")]
+script = ExtResource("1_wekok")
+stars_trail = [NodePath("Constellation/Star"), NodePath("Constellation/Star2"), NodePath("Constellation/Star3"), NodePath("Constellation/Star4"), NodePath("Constellation/Star5"), NodePath("Constellation/Star6"), NodePath("Constellation/Star7"), NodePath("Constellation/Star8"), NodePath("Constellation/Star9"), NodePath("Constellation/Star8"), NodePath("Constellation/Star10"), NodePath("Constellation/Star11")]
+
+[node name="ExitArea" parent="." instance=ExtResource("2_v0lhx")]
+position = Vector2(960, -1344)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+physics_interpolation_mode = 2
+position = Vector2(756.5, 766)
+position_smoothing_speed = 2.0
+
+[node name="PhantomCameraHost" type="Node" parent="Camera2D"]
+script = ExtResource("3_nhb5c")
+
+[node name="SpaceBackground" parent="." instance=ExtResource("4_2slye")]
+
+[node name="LinkLineShip" type="Line2D" parent="."]
+modulate = Color(1.5, 1.5, 1.5, 1)
+points = PackedVector2Array(0, 0, 0, 0)
+width = 6.0
+default_color = Color(0.301961, 0.65098, 1, 1)
+texture_mode = 2
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+sharp_limit = 8.0
+antialiased = true
+
+[node name="LinkLineStars" type="Line2D" parent="."]
+modulate = Color(1.5, 1.5, 1.5, 1)
+width = 6.0
+default_color = Color(0.301961, 0.65098, 1, 1)
+texture_mode = 2
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+sharp_limit = 8.0
+antialiased = true
+
+[node name="Ship" parent="." instance=ExtResource("5_8n6nf")]
+position = Vector2(425, 572)
+turn_right = false
+
+[node name="Constellation" type="Node2D" parent="."]
+
+[node name="Star" parent="Constellation" instance=ExtResource("6_vwor5")]
+position = Vector2(1088, 960)
+
+[node name="PivotAsteroid" parent="Constellation/Star" instance=ExtResource("7_6u4pn")]
+asteroid_position = Vector2(150, 150)
+anticlockwise = true
+
+[node name="Star2" parent="Constellation" instance=ExtResource("6_vwor5")]
+position = Vector2(1536, 1152)
+
+[node name="blackHole" parent="Constellation/Star2" instance=ExtResource("8_ca7kd")]
+position = Vector2(-32, -293)
+
+[node name="Star3" parent="Constellation" instance=ExtResource("6_vwor5")]
+position = Vector2(1856, 896)
+
+[node name="PivotAsteroid" parent="Constellation/Star3" instance=ExtResource("7_6u4pn")]
+rotation_speed = 3.2
+asteroid_position = Vector2(270, 0)
+
+[node name="PivotAsteroid2" parent="Constellation/Star3" instance=ExtResource("7_6u4pn")]
+rotation_speed = 3.3
+asteroid_position = Vector2(270, 0)
+anticlockwise = true
+
+[node name="Star4" parent="Constellation" instance=ExtResource("6_vwor5")]
+position = Vector2(1984, 640)
+
+[node name="Star5" parent="Constellation" instance=ExtResource("6_vwor5")]
+position = Vector2(2048, 320)
+black_hole_on_star = true
+
+[node name="Star6" parent="Constellation" instance=ExtResource("6_vwor5")]
+position = Vector2(1408, 128)
+black_hole_on_star = true
+
+[node name="blackHole" parent="Constellation/Star6" instance=ExtResource("8_ca7kd")]
+position = Vector2(-320, -256)
+
+[node name="PivotAsteroid" parent="Constellation/Star6" instance=ExtResource("7_6u4pn")]
+position = Vector2(-320, -256)
+asteroid_position = Vector2(140, 0)
+
+[node name="PivotAsteroid2" parent="Constellation/Star6" instance=ExtResource("7_6u4pn")]
+position = Vector2(-320, -256)
+rotation_speed = 4.1
+asteroid_position = Vector2(180, 0)
+anticlockwise = true
+
+[node name="Star7" parent="Constellation" instance=ExtResource("6_vwor5")]
+position = Vector2(768, -320)
+
+[node name="blackHole" parent="Constellation/Star7" instance=ExtResource("8_ca7kd")]
+position = Vector2(-448, 128)
+
+[node name="PivotAsteroid" parent="Constellation/Star7" instance=ExtResource("7_6u4pn")]
+position = Vector2(-448, 128)
+rotation_speed = 5.0
+asteroid_position = Vector2(180, 0)
+anticlockwise = true
+
+[node name="PivotAsteroid2" parent="Constellation/Star7" instance=ExtResource("7_6u4pn")]
+position = Vector2(-448, 128)
+asteroid_position = Vector2(160, 0)
+
+[node name="blackHole2" parent="Constellation/Star7" instance=ExtResource("8_ca7kd")]
+position = Vector2(0, -640)
+
+[node name="PivotAsteroid3" parent="Constellation/Star7" instance=ExtResource("7_6u4pn")]
+position = Vector2(0, -640)
+rotation_speed = 3.9
+asteroid_position = Vector2(160, 0)
+anticlockwise = true
+
+[node name="PivotAsteroid4" parent="Constellation/Star7" instance=ExtResource("7_6u4pn")]
+position = Vector2(0, -640)
+asteroid_position = Vector2(140, 0)
+
+[node name="Star8" parent="Constellation" instance=ExtResource("6_vwor5")]
+position = Vector2(320, -704)
+
+[node name="PivotAsteroid" parent="Constellation/Star8" instance=ExtResource("7_6u4pn")]
+rotation_speed = 2.5
+asteroid_position = Vector2(245, 0)
+anticlockwise = true
+
+[node name="Star9" parent="Constellation" instance=ExtResource("6_vwor5")]
+position = Vector2(0, -384)
+
+[node name="PivotAsteroid" parent="Constellation/Star9" instance=ExtResource("7_6u4pn")]
+position = Vector2(320, -320)
+rotation_speed = 3.3
+asteroid_position = Vector2(245, 0)
+
+[node name="Star10" parent="Constellation" instance=ExtResource("6_vwor5")]
+position = Vector2(448, -1088)
+
+[node name="Star11" parent="Constellation" instance=ExtResource("6_vwor5")]
+position = Vector2(704, -1280)
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[node name="PhantomCamera2D" type="Node2D" parent="." node_paths=PackedStringArray("follow_targets")]
+position = Vector2(756.5, 766)
+script = ExtResource("9_odr5d")
+follow_mode = 3
+follow_targets = [NodePath("../Ship"), NodePath("../Constellation/Star")]
+tween_resource = SubResource("Resource_bmus8")
+draw_limits = true
+
+[node name="PhantomCameraStars" type="Node2D" parent="."]
+position = Vector2(739.5, 266.5)
+script = ExtResource("9_odr5d")
+follow_mode = 3
+tween_resource = SubResource("Resource_vjox8")
+draw_limits = true
+
+[node name="PhantomCamera2D2" type="Node2D" parent="."]
+script = ExtResource("9_odr5d")
+follow_mode = 3
+zoom = Vector2(0.4, 0.4)
+frame_preview = false
+tween_resource = SubResource("Resource_7liiy")
+draw_limits = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer"]
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 108.0
+offset_bottom = 204.0
+grow_horizontal = 2
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0.869293, 0.111394, 0.593547, 1)
+theme_override_fonts/normal_font = ExtResource("11_rpogk")
+theme_override_font_sizes/normal_font_size = 63
+bbcode_enabled = true
+text = "[center]Scorpio[/center]"
+visible_characters = 0
+visible_ratio = 0.0
+
+[node name="Blur" type="ColorRect" parent="CanvasLayer"]
+material = SubResource("ShaderMaterial_tf4i8")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HUD" parent="CanvasLayer" instance=ExtResource("13_xjpt8")]
+
+[node name="CanvasLayer2" type="CanvasLayer" parent="."]
+
+[node name="PauseScreen" parent="CanvasLayer2" instance=ExtResource("15_2ae10")]
+visible = false
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("14_1yubk")
+autoplay = true

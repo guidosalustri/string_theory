@@ -1,0 +1,310 @@
+[gd_scene load_steps=19 format=3 uid="uid://em4qfalchhhd"]
+
+[ext_resource type="Texture2D" uid="uid://bniyrxn3r2v8h" path="res://assets/ship.png" id="1_130qv"]
+[ext_resource type="Script" path="res://objects/ship.gd" id="1_u1532"]
+[ext_resource type="Texture2D" uid="uid://byhx0m56pbo6g" path="res://assets/pear_36_fire_gradient.tres" id="3_ncfri"]
+[ext_resource type="Texture2D" uid="uid://f60df1b3rfjk" path="res://assets/puff.svg" id="3_xsnrh"]
+[ext_resource type="Texture2D" uid="uid://d158xruba2vkk" path="res://assets/explosion_alt.png" id="5_wjuxj"]
+
+[sub_resource type="Curve" id="Curve_85r6f"]
+max_value = 200.0
+_data = [Vector2(0, 200), 0.0, -759.091, 0, 1, Vector2(0.263473, 0), -759.091, 0.0, 1, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_8c16y"]
+curve = SubResource("Curve_85r6f")
+
+[sub_resource type="Curve" id="Curve_gdqed"]
+_data = [Vector2(0, 0.272727), 0.0, 1.4, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_67yua"]
+curve = SubResource("Curve_gdqed")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_n5f0s"]
+particle_flag_disable_z = true
+angle_min = -180.0
+angle_max = 180.0
+direction = Vector3(0, 1, 0)
+spread = 15.0
+initial_velocity_min = 1.0
+initial_velocity_max = 1.0
+angular_velocity_min = 30.0
+angular_velocity_max = 50.0
+gravity = Vector3(0, 0, 0)
+linear_accel_min = 4.0
+linear_accel_max = 10.0
+linear_accel_curve = SubResource("CurveTexture_8c16y")
+scale_min = 0.5
+scale_max = 2.0
+scale_curve = SubResource("CurveTexture_67yua")
+color_ramp = ExtResource("3_ncfri")
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_45hjj"]
+radius = 33.3766
+
+[sub_resource type="Animation" id="Animation_ukub7"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D/GPUParticles2D:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("BlastGPUParticles2D:emitting")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".:monitoring")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath(".:monitorable")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_c0uyr"]
+resource_name = "asteroid_die"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BlastGPUParticles2D:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"restart_lvl"
+}]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"hide"
+}]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:monitoring")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".:monitorable")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_jqhsw"]
+resource_name = "die"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, -6.28319]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D/GPUParticles2D:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.933333),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"restart_lvl"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_itayj"]
+_data = {
+"RESET": SubResource("Animation_ukub7"),
+"asteroid_die": SubResource("Animation_c0uyr"),
+"die": SubResource("Animation_jqhsw")
+}
+
+[sub_resource type="Curve" id="Curve_mfuy6"]
+_data = [Vector2(0, 0.506757), 0.0, 1.2476, 0, 0, Vector2(1, 1), -8.77814e-07, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="2"]
+curve = SubResource("Curve_mfuy6")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_xy3fy"]
+emission_shape = 1
+emission_sphere_radius = 66.0
+gravity = Vector3(0, 0, 0)
+scale_min = 0.4
+scale_max = 0.4
+scale_curve = SubResource("2")
+
+[node name="Ship" type="Area2D"]
+z_index = 2
+collision_mask = 31
+script = ExtResource("1_u1532")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_130qv")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="Sprite2D"]
+modulate = Color(1.2, 1.2, 1.2, 1)
+show_behind_parent = true
+position = Vector2(-29, 0)
+rotation = 1.5708
+emitting = false
+amount = 64
+process_material = SubResource("ParticleProcessMaterial_n5f0s")
+texture = ExtResource("3_xsnrh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_45hjj")
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+enabled = false
+target_position = Vector2(1000, 0)
+collision_mask = 16
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_itayj")
+}
+
+[node name="BlastGPUParticles2D" type="GPUParticles2D" parent="."]
+unique_name_in_owner = true
+emitting = false
+amount = 2
+process_material = SubResource("ParticleProcessMaterial_xy3fy")
+texture = ExtResource("5_wjuxj")
+lifetime = 1.5
+one_shot = true
+explosiveness = 1.0
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+autostart = true

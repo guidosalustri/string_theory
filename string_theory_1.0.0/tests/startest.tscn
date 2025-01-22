@@ -1,0 +1,378 @@
+[gd_scene load_steps=20 format=3 uid="uid://2v4ttjj58fl8"]
+
+[ext_resource type="Script" path="res://tests/startest.gd" id="1_7u67i"]
+[ext_resource type="PackedScene" uid="uid://b646dec74n3dy" path="res://assets/halo_circle.tscn" id="2_y7vtv"]
+[ext_resource type="Shader" path="res://assets/halo_circle.gdshader" id="3_275xp"]
+[ext_resource type="Texture2D" uid="uid://baux8wnujuj2l" path="res://assets/spark.png" id="4_pttnv"]
+[ext_resource type="Shader" path="res://assets/group_outline.gdshader" id="5_bsjla"]
+[ext_resource type="PackedScene" uid="uid://bdooawbxdlh2s" path="res://assets/sparks_particles.tscn" id="6_yfnco"]
+[ext_resource type="PackedScene" uid="uid://bo2nk72scwry6" path="res://objects/obstacles/particles_black_hole_2d.tscn" id="7_f5hdq"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ii3ul"]
+resource_local_to_scene = true
+shader = ExtResource("3_275xp")
+shader_parameter/halo_color = Color(1, 1, 1, 1)
+shader_parameter/bounds_half_length = 1.0
+shader_parameter/halo_radius = 12.0
+
+[sub_resource type="Curve" id="Curve_ki86c"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.503614, 0.957505), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="7"]
+curve = SubResource("Curve_ki86c")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_dvrd3"]
+particle_flag_align_y = true
+particle_flag_disable_z = true
+emission_shape = 2
+emission_sphere_radius = 32.64
+direction = Vector3(-1, 0, 0)
+spread = 0.0
+gravity = Vector3(0, 0, 0)
+radial_accel_min = 8.6
+radial_accel_max = 73.12
+scale_min = 0.3
+scale_max = 0.3
+scale_curve = SubResource("7")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nmnhs"]
+shader = ExtResource("5_bsjla")
+shader_parameter/line_color = Color(0, 0, 0, 1)
+shader_parameter/line_thickness = 3.0
+shader_parameter/viewport_scale = Vector2(1, 1)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ybpwu"]
+radius = 72.0
+
+[sub_resource type="Animation" id="Animation_y7jgj"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasGroup/Sprite2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 0.0980392, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasGroup/Sprite2D:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1.5, 1.5)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CanvasGroup:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sparks:emitting")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("ParticlesBlackHole2D:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("CanvasGroup:scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("HaloCircle:size")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [145.0]
+}
+
+[sub_resource type="Animation" id="Animation_r6bm7"]
+resource_name = "black_hole_transition"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasGroup:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sparks:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.233333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ParticlesBlackHole2D:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.2),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [1],
+"method": &"set_current_state"
+}]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CanvasGroup:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("HaloCircle:size")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [145.0, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_ldaav"]
+resource_name = "star_transition"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasGroup:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sparks:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.233333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ParticlesBlackHole2D:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.3),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0],
+"method": &"set_current_state"
+}]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CanvasGroup:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(1, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("HaloCircle:size")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 145.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_x8m1r"]
+_data = {
+"RESET": SubResource("Animation_y7jgj"),
+"black_hole_transition": SubResource("Animation_r6bm7"),
+"star_transition": SubResource("Animation_ldaav")
+}
+
+[sub_resource type="Animation" id="Animation_81ie1"]
+resource_name = "spawn"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasGroup/Sprite2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 0.0980392, 1), Color(1, 1, 1, 1), Color(1, 1, 0.0980392, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasGroup/Sprite2D:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1.5, 1.5), Vector2(1.8, 1.8), Vector2(1.5, 1.5)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_k7l5y"]
+_data = {
+"spawn": SubResource("Animation_81ie1")
+}
+
+[node name="Star" type="Area2D"]
+collision_layer = 2
+script = ExtResource("1_7u67i")
+
+[node name="HaloCircle" parent="." instance=ExtResource("2_y7vtv")]
+material = SubResource("ShaderMaterial_ii3ul")
+size = 145.0
+halo_color = Color(0.937255, 0.992157, 0.372549, 1)
+
+[node name="BeamGPUParticles2D" type="GPUParticles2D" parent="."]
+modulate = Color(0.730993, 0.730979, 7.70092e-07, 1)
+emitting = false
+amount = 3
+process_material = SubResource("ParticleProcessMaterial_dvrd3")
+texture = ExtResource("4_pttnv")
+randomness = 1.0
+visibility_rect = Rect2(-2500, -2500, 5000, 5000)
+
+[node name="CanvasGroup" type="CanvasGroup" parent="."]
+material = SubResource("ShaderMaterial_nmnhs")
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasGroup"]
+modulate = Color(1, 1, 0.0980392, 1)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("4_pttnv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+shape = SubResource("CircleShape2D_ybpwu")
+
+[node name="Sparks" parent="." instance=ExtResource("6_yfnco")]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_x8m1r")
+}
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[node name="ParticlesBlackHole2D" parent="." instance=ExtResource("7_f5hdq")]
+visible = false
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_k7l5y")
+}

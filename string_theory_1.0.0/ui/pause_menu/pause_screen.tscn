@@ -1,0 +1,125 @@
+[gd_scene load_steps=8 format=3 uid="uid://ciegbyfrx5lf3"]
+
+[ext_resource type="Theme" uid="uid://dp1nmwxx5vbr5" path="res://ui/ui_samples_theme.tres" id="1_cytcy"]
+[ext_resource type="Shader" path="res://ui/blur_for_ui.gdshader" id="2_82f56"]
+[ext_resource type="Script" path="res://ui/pause_menu/pause_screen.gd" id="2_r7c7l"]
+[ext_resource type="PackedScene" uid="uid://cgdat18qea2f5" path="res://tests/options.tscn" id="4_r27s8"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_v6h3r"]
+shader = ExtResource("2_82f56")
+shader_parameter/blur_amount = 1.5
+shader_parameter/tint = Color(0.231373, 0.635294, 0.976471, 1)
+shader_parameter/tint_amount = 0.079
+shader_parameter/saturation = 0.3
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_m4vpl"]
+vertical = true
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_jji6f"]
+color = Color(0.937255, 0.992157, 0.372549, 1)
+grow_begin = -45.0
+grow_end = -45.0
+thickness = 4
+
+[node name="PauseScreen" type="Control"]
+process_mode = 3
+self_modulate = Color(0.231373, 0.635294, 0.976471, 1)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_cytcy")
+script = ExtResource("2_r7c7l")
+menu_opened_amount = 1.0
+opening_speed = 0.5
+
+[node name="BlurColorRect" type="ColorRect" parent="."]
+unique_name_in_owner = true
+material = SubResource("ShaderMaterial_v6h3r")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="UIPanelContainer" type="PanelContainer" parent="."]
+unique_name_in_owner = true
+self_modulate = Color(0.231373, 0.635294, 0.976471, 1)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -260.0
+offset_top = -217.0
+offset_right = 260.0
+offset_bottom = 217.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UIPanelContainer"]
+layout_mode = 2
+
+[node name="HSeparator3" type="HSeparator" parent="UIPanelContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+theme_override_styles/separator = SubResource("StyleBoxLine_m4vpl")
+
+[node name="Label" type="Label" parent="UIPanelContainer/VBoxContainer"]
+custom_minimum_size = Vector2(2.08165e-12, 128)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.937255, 0.992157, 0.372549, 1)
+theme_override_font_sizes/font_size = 60
+text = "PAUSE"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HSeparator2" type="HSeparator" parent="UIPanelContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 15
+theme_override_styles/separator = SubResource("StyleBoxLine_jji6f")
+
+[node name="CenterContainer" type="CenterContainer" parent="UIPanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UIPanelContainer/VBoxContainer/CenterContainer"]
+layout_mode = 2
+
+[node name="ResumeButton" type="Button" parent="UIPanelContainer/VBoxContainer/CenterContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+focus_neighbor_top = NodePath("../QuitButton")
+theme_override_colors/font_color = Color(0.937255, 0.992157, 0.372549, 1)
+text = "Resume"
+
+[node name="HSeparator2" type="HSeparator" parent="UIPanelContainer/VBoxContainer/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 5
+theme_override_styles/separator = SubResource("StyleBoxLine_m4vpl")
+
+[node name="OptionsButton" type="Button" parent="UIPanelContainer/VBoxContainer/CenterContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.937255, 0.992157, 0.372549, 1)
+text = "Options"
+
+[node name="HSeparator" type="HSeparator" parent="UIPanelContainer/VBoxContainer/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 5
+theme_override_styles/separator = SubResource("StyleBoxLine_m4vpl")
+
+[node name="QuitButton" type="Button" parent="UIPanelContainer/VBoxContainer/CenterContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+focus_neighbor_bottom = NodePath("../ResumeButton")
+theme_override_colors/font_color = Color(0.937255, 0.992157, 0.372549, 1)
+text = "Quit"
+
+[node name="options" parent="." instance=ExtResource("4_r27s8")]
+visible = false
+layout_mode = 1

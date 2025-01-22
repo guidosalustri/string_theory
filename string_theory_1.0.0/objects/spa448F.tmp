@@ -1,0 +1,53 @@
+[gd_scene load_steps=6 format=3 uid="uid://btkjymc78ap8d"]
+
+[ext_resource type="PackedScene" uid="uid://ul1ys48qmbs4" path="res://scenes/health_pack.tscn" id="1_my2on"]
+[ext_resource type="PackedScene" uid="uid://dmv50krf4bo5r" path="res://scenes/ship.tscn" id="2_wydxr"]
+[ext_resource type="PackedScene" uid="uid://bxfevggvxo634" path="res://assets/background/space_background.tscn" id="3_1he15"]
+[ext_resource type="Script" path="res://scenes/camera_2d.gd" id="4_eg3s3"]
+[ext_resource type="PackedScene" uid="uid://covkvurdsl7a7" path="res://scenes/ship_player_2d/ship_rigid_player_2d.tscn" id="5_5ibdg"]
+
+[node name="Level" type="Node2D"]
+
+[node name="SpaceBackground" parent="." instance=ExtResource("3_1he15")]
+
+[node name="Ship" parent="." instance=ExtResource("2_wydxr")]
+visible = false
+position = Vector2(447, 435)
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="HealthPack2" parent="Node2D" instance=ExtResource("1_my2on")]
+position = Vector2(1121, 538)
+
+[node name="HealthPack3" parent="Node2D" instance=ExtResource("1_my2on")]
+position = Vector2(1033, 909)
+
+[node name="HealthPack4" parent="Node2D" instance=ExtResource("1_my2on")]
+position = Vector2(134, 320)
+
+[node name="HealthPack5" parent="Node2D" instance=ExtResource("1_my2on")]
+position = Vector2(402, 1016)
+
+[node name="HealthPack6" parent="Node2D" instance=ExtResource("1_my2on")]
+position = Vector2(-245, 279)
+
+[node name="HealthPack7" parent="Node2D" instance=ExtResource("1_my2on")]
+position = Vector2(-85, 921)
+
+[node name="HealthPack8" parent="Node2D" instance=ExtResource("1_my2on")]
+position = Vector2(869, 3)
+
+[node name="HealthPack9" parent="Node2D" instance=ExtResource("1_my2on")]
+position = Vector2(1040, 301)
+
+[node name="HealthPack" parent="Node2D" instance=ExtResource("1_my2on")]
+position = Vector2(678, 309)
+
+[node name="ShipRigidPlayer2D" parent="." instance=ExtResource("5_5ibdg")]
+position = Vector2(304, 359)
+mass = 0.001
+gravity_scale = 0.0
+
+[node name="Camera2D" type="Camera2D" parent="ShipRigidPlayer2D"]
+position = Vector2(143, 76)
+script = ExtResource("4_eg3s3")

@@ -1,0 +1,248 @@
+[gd_scene load_steps=21 format=3 uid="uid://dd8x5lnqej66y"]
+
+[ext_resource type="Script" path="res://cutscene/cut_scene.gd" id="1_j06uc"]
+[ext_resource type="Shader" path="res://cutscene/blur.gdshader" id="2_2e1hg"]
+[ext_resource type="Script" path="res://cutscene/camera_cut_scene.gd" id="2_op7gm"]
+[ext_resource type="PackedScene" uid="uid://gu842no2aiky" path="res://cutscene/background_asteroids.tscn" id="3_ckfui"]
+[ext_resource type="Texture2D" uid="uid://bniyrxn3r2v8h" path="res://assets/ship.png" id="3_mwyjp"]
+[ext_resource type="PackedScene" uid="uid://cs72uiiumr18y" path="res://cutscene/particles_ship_dash.tscn" id="5_r316d"]
+[ext_resource type="Texture2D" uid="uid://byhx0m56pbo6g" path="res://assets/pear_36_fire_gradient.tres" id="7_xnycu"]
+[ext_resource type="Texture2D" uid="uid://f60df1b3rfjk" path="res://assets/puff.svg" id="8_vccei"]
+[ext_resource type="PackedScene" uid="uid://cqhxlf7w4dm1y" path="res://ui/dialogue/dialogue_cutscene.tscn" id="9_06lu3"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_najsa"]
+shader = ExtResource("2_2e1hg")
+shader_parameter/blur_scale = Vector2(0, 0)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_rsh4c"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="Curve" id="Curve_ukiwf"]
+max_value = 200.0
+_data = [Vector2(0, 200), 0.0, -759.091, 0, 1, Vector2(0.263473, 0), -759.091, 0.0, 1, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="2"]
+curve = SubResource("Curve_ukiwf")
+
+[sub_resource type="Curve" id="Curve_1qwp1"]
+_data = [Vector2(0, 0.272727), 0.0, 1.4, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="4"]
+curve = SubResource("Curve_1qwp1")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_2dj3a"]
+particle_flag_disable_z = true
+angle_min = -180.0
+angle_max = 180.0
+direction = Vector3(0, 1, 0)
+spread = 15.0
+initial_velocity_min = 1.0
+initial_velocity_max = 1.0
+angular_velocity_min = 30.0
+angular_velocity_max = 50.0
+gravity = Vector3(0, 0, 0)
+linear_accel_min = 4.0
+linear_accel_max = 10.0
+linear_accel_curve = SubResource("2")
+scale_min = 0.5
+scale_max = 2.0
+scale_curve = SubResource("4")
+color_ramp = ExtResource("7_xnycu")
+
+[sub_resource type="Animation" id="Animation_b0qdg"]
+resource_name = "Light_speed"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect:material:shader_parameter/blur_scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 1.96667, 3.5),
+"transitions": PackedFloat32Array(1, 2, 1, 2),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 0), Vector2(4, 0), Vector2(6, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D/GPUParticles2D:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.6, 5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SubViewport/Camera2D:speed")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1, 1.8, 3.33333),
+"transitions": PackedFloat32Array(1, 2, 1, 1),
+"update": 1,
+"values": [450, 450, 2000, 4500]
+}
+
+[sub_resource type="Animation" id="Animation_slcna"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect:material:shader_parameter/blur_scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D/GPUParticles2D:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SubViewport/Camera2D:speed")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [450]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-117, 488)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Sprite2D/Smoke:emitting")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_b2vot"]
+resource_name = "set_the_ship"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-117, 675), Vector2(850, 675)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D/Smoke:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.96667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_kr4ww"]
+_data = {
+"Light_speed": SubResource("Animation_b0qdg"),
+"RESET": SubResource("Animation_slcna"),
+"set_the_ship": SubResource("Animation_b2vot")
+}
+
+[node name="Node" type="Node"]
+script = ExtResource("1_j06uc")
+
+[node name="SubViewport" type="SubViewport" parent="."]
+size = Vector2i(1918, 1078)
+
+[node name="Camera2D" type="Camera2D" parent="SubViewport"]
+script = ExtResource("2_op7gm")
+
+[node name="Node" parent="SubViewport" instance=ExtResource("3_ckfui")]
+
+[node name="TextureRect" type="TextureRect" parent="."]
+material = SubResource("ShaderMaterial_najsa")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("ViewportTexture_rsh4c")
+stretch_mode = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-117, 488)
+texture = ExtResource("3_mwyjp")
+
+[node name="GPUParticles2D" parent="Sprite2D" instance=ExtResource("5_r316d")]
+emitting = false
+
+[node name="Smoke" type="GPUParticles2D" parent="Sprite2D"]
+modulate = Color(1.2, 1.2, 1.2, 1)
+show_behind_parent = true
+position = Vector2(-29, 0)
+rotation = 1.5708
+emitting = false
+amount = 64
+process_material = SubResource("ParticleProcessMaterial_2dj3a")
+texture = ExtResource("8_vccei")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_kr4ww")
+}
+autoplay = "RESET"
+
+[node name="Dialogue_cutscene" parent="." instance=ExtResource("9_06lu3")]
+
+[node name="NinePatchRect2" parent="Dialogue_cutscene" index="2"]
+self_modulate = Color(1, 1, 1, 0.764706)
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.6
+one_shot = true
+autostart = true
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+
+[editable path="Dialogue_cutscene"]

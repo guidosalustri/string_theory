@@ -1,0 +1,48 @@
+[gd_scene load_steps=6 format=3 uid="uid://rh7t1gxyk68u"]
+
+[ext_resource type="Texture2D" uid="uid://h154vmxt7rk5" path="res://ui/main_menu/menu_action_bg.png" id="1_3uy56"]
+[ext_resource type="Texture2D" uid="uid://b8qopo2fmxwmm" path="res://ui/main_menu/menu_action_bg_pressed.png" id="2_hoq48"]
+[ext_resource type="Texture2D" uid="uid://bymuybueh17wq" path="res://ui/main_menu/menu_action_bg_disabled.png" id="3_eqvsy"]
+[ext_resource type="Texture2D" uid="uid://c538d8sq6lnrr" path="res://ui/main_menu/menu_action_bg_focused.png" id="4_d060j"]
+[ext_resource type="Script" path="res://ui/main_menu/action_texture_button.gd" id="5_274oy"]
+
+[node name="ActionTextureButton" type="TextureButton"]
+offset_right = 334.0
+offset_bottom = 96.0
+texture_normal = ExtResource("1_3uy56")
+texture_pressed = ExtResource("2_hoq48")
+texture_disabled = ExtResource("3_eqvsy")
+texture_focused = ExtResource("4_d060j")
+stretch_mode = 4
+script = ExtResource("5_274oy")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 13
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="IconTextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(73, 0)
+layout_mode = 2
+size_flags_vertical = 9
+size_flags_stretch_ratio = 0.42
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 0.835294, 0, 1)

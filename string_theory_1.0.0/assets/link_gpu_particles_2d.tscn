@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://cfpp30kafr6wh"]
+
+[ext_resource type="Texture2D" uid="uid://dvdqkhfqxjgcu" path="res://assets/glowing_circle.png" id="1_nee0j"]
+
+[sub_resource type="Curve" id="Curve_in7fi"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.503614, 0.957505), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_q8l6t"]
+curve = SubResource("Curve_in7fi")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_xhr1j"]
+particle_flag_align_y = true
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(60, 20, 1)
+direction = Vector3(-1, 0, 0)
+spread = 0.0
+gravity = Vector3(0, 0, 0)
+tangential_accel_max = 100.0
+scale_min = 0.3
+scale_max = 0.3
+scale_curve = SubResource("CurveTexture_q8l6t")
+
+[node name="LinkGPUParticles2D" type="GPUParticles2D"]
+modulate = Color(1.5, 1.5, 1.5, 1)
+emitting = false
+amount = 50
+process_material = SubResource("ParticleProcessMaterial_xhr1j")
+texture = ExtResource("1_nee0j")
+preprocess = 1.0
+randomness = 1.0
+visibility_rect = Rect2(-2500, -2500, 5000, 5000)

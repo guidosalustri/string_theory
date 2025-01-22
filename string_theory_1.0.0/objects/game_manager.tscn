@@ -1,0 +1,25 @@
+[gd_scene load_steps=17 format=3 uid="uid://cw0bs8bnlg3nh"]
+
+[ext_resource type="Script" path="res://objects/game_manager.gd" id="1_nqyrl"]
+[ext_resource type="PackedScene" uid="uid://te5g11dspm3j" path="res://lvls/leo.tscn" id="3_5pwe7"]
+[ext_resource type="PackedScene" uid="uid://qaaowiyhu5hm" path="res://lvls/cancer.tscn" id="3_xpk57"]
+[ext_resource type="PackedScene" uid="uid://dd8x5lnqej66y" path="res://cutscene/cut_scene.tscn" id="4_6jd32"]
+[ext_resource type="PackedScene" uid="uid://cik5mn1dffihp" path="res://lvls/virgo.tscn" id="4_6mjb0"]
+[ext_resource type="PackedScene" uid="uid://dxfjj4fkx7wb6" path="res://lvls/libra.tscn" id="5_kee22"]
+[ext_resource type="PackedScene" uid="uid://c3t5667cokabt" path="res://lvls/scorpio.tscn" id="6_1kp7f"]
+[ext_resource type="PackedScene" uid="uid://cgt0lqimggmo2" path="res://cutscene/final_scene.tscn" id="7_0f68c"]
+[ext_resource type="PackedScene" uid="uid://boyantdqxsatk" path="res://lvls/sagittarius.tscn" id="7_r76nu"]
+[ext_resource type="PackedScene" uid="uid://p60tmr6ajcyy" path="res://ui/main_menu/main_menu.tscn" id="8_dccl0"]
+[ext_resource type="PackedScene" uid="uid://qku4rdnbygjv" path="res://lvls/capricorn.tscn" id="8_g3pvg"]
+[ext_resource type="PackedScene" uid="uid://cdfaydab61kya" path="res://lvls/aquarius.tscn" id="9_o11eh"]
+[ext_resource type="PackedScene" uid="uid://skn5ofhawvu7" path="res://lvls/pisces.tscn" id="10_reaax"]
+[ext_resource type="PackedScene" uid="uid://ekc31iv7ppdm" path="res://lvls/aries.tscn" id="11_0a0kf"]
+[ext_resource type="PackedScene" uid="uid://bnxgftilmhu2g" path="res://lvls/taurus.tscn" id="12_3vjhm"]
+[ext_resource type="PackedScene" uid="uid://dwim2j40v445p" path="res://lvls/gemini.tscn" id="12_yf3lr"]
+
+[node name="Node" type="Node"]
+script = ExtResource("1_nqyrl")
+lvls = Array[PackedScene]([ExtResource("3_xpk57"), ExtResource("3_5pwe7"), ExtResource("4_6mjb0"), ExtResource("5_kee22"), ExtResource("6_1kp7f"), ExtResource("7_r76nu"), ExtResource("8_g3pvg"), ExtResource("9_o11eh"), ExtResource("10_reaax"), ExtResource("11_0a0kf"), ExtResource("12_3vjhm"), ExtResource("12_yf3lr")])
+cutscene = ExtResource("4_6jd32")
+final_scene = ExtResource("7_0f68c")
+main_menu = ExtResource("8_dccl0")

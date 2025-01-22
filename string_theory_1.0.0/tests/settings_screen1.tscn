@@ -1,0 +1,195 @@
+[gd_scene load_steps=4 format=3 uid="uid://cf1sabkn3nle0"]
+
+[ext_resource type="Theme" uid="uid://dp1nmwxx5vbr5" path="res://ui/ui_samples_theme.tres" id="1_32hpp"]
+[ext_resource type="Script" path="res://ui/settings/settings_screen.gd" id="2_p72wc"]
+[ext_resource type="AudioStream" uid="uid://bupnj85mfcp5w" path="res://assets/into-the-night-uk-drill-music-20928.mp3" id="3_e64gr"]
+
+[node name="SettingsScreen" type="TabContainer"]
+offset_right = 1088.0
+offset_bottom = 722.0
+theme = ExtResource("1_32hpp")
+current_tab = 0
+script = ExtResource("2_p72wc")
+
+[node name="Text" type="VBoxContainer" parent="."]
+layout_mode = 2
+theme = ExtResource("1_32hpp")
+theme_type_variation = &"VBoxMain"
+metadata/_tab_index = 0
+
+[node name="Label" type="Label" parent="Text"]
+layout_mode = 2
+theme_type_variation = &"OptionsScreenTitle"
+text = "Text Options"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Text"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Text/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_type_variation = &"VBoxSecondary"
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="Text/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Text/ScrollContainer/VBoxContainer/HBoxContainer4"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_type_variation = &"OptionLabel"
+theme_override_colors/font_color = Color(0.937255, 0.992157, 0.372549, 1)
+text = "Language"
+
+[node name="LanguageOptionButton" type="OptionButton" parent="Text/ScrollContainer/VBoxContainer/HBoxContainer4"]
+layout_mode = 2
+size_flags_horizontal = 3
+selected = 0
+item_count = 3
+popup/item_0/text = "English"
+popup/item_1/text = "Pirate"
+popup/item_1/id = 1
+popup/item_2/text = "Beep boop"
+popup/item_2/id = 2
+
+[node name="HBoxContainer5" type="HBoxContainer" parent="Text/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Text/ScrollContainer/VBoxContainer/HBoxContainer5"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_type_variation = &"OptionLabel"
+text = "Window Mode"
+
+[node name="WindowModeButton" type="OptionButton" parent="Text/ScrollContainer/VBoxContainer/HBoxContainer5"]
+layout_mode = 2
+size_flags_horizontal = 3
+selected = 0
+item_count = 3
+popup/item_0/text = "Windowed"
+popup/item_1/text = "FullScreen"
+popup/item_1/id = 1
+popup/item_2/text = "Maximized"
+popup/item_2/id = 2
+
+[node name="HBoxContainer6" type="HBoxContainer" parent="Text/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Text/ScrollContainer/VBoxContainer/HBoxContainer6"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_type_variation = &"OptionLabel"
+text = "V-Sync"
+
+[node name="AutoAdvanceDialogueCheckbox" type="CheckButton" parent="Text/ScrollContainer/VBoxContainer/HBoxContainer6"]
+layout_mode = 2
+size_flags_horizontal = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Text"]
+layout_mode = 2
+alignment = 1
+
+[node name="ButtonOk" type="Button" parent="Text/HBoxContainer"]
+layout_mode = 2
+theme_type_variation = &"ButtonMain"
+text = "Ok"
+
+[node name="ButtonCancel" type="Button" parent="Text/HBoxContainer"]
+layout_mode = 2
+theme_type_variation = &"FlatButton"
+text = "Cancel"
+
+[node name="Audio" type="VBoxContainer" parent="."]
+visible = false
+layout_mode = 2
+theme = ExtResource("1_32hpp")
+theme_type_variation = &"VBoxMain"
+metadata/_tab_index = 1
+
+[node name="Label" type="Label" parent="Audio"]
+layout_mode = 2
+theme_type_variation = &"OptionsScreenTitle"
+text = "Audio Options"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Audio"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Audio/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_type_variation = &"VBoxSecondary"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Audio/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Audio/ScrollContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_type_variation = &"OptionLabel"
+text = "BGM Volume"
+
+[node name="BGMVolumeSlider" type="HSlider" parent="Audio/ScrollContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+min_value = -50.0
+max_value = 0.0
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Audio/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Audio/ScrollContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_type_variation = &"OptionLabel"
+text = "SFX Volume"
+
+[node name="SFXVolumeSlider" type="HSlider" parent="Audio/ScrollContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainer7" type="HBoxContainer" parent="Audio/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Audio/ScrollContainer/VBoxContainer/HBoxContainer7"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_type_variation = &"OptionLabel"
+text = "Voice Volume"
+
+[node name="VoiceVolumeSlider" type="HSlider" parent="Audio/ScrollContainer/VBoxContainer/HBoxContainer7"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="Audio/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Audio/ScrollContainer/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_type_variation = &"OptionLabel"
+text = "Auto advance dialogue"
+
+[node name="AutoAdvanceDialogueCheckbox" type="CheckButton" parent="Audio/ScrollContainer/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Audio"]
+layout_mode = 2
+alignment = 1
+
+[node name="ButtonOk" type="Button" parent="Audio/HBoxContainer"]
+layout_mode = 2
+theme_type_variation = &"ButtonMain"
+text = "Ok"
+
+[node name="ButtonCancel" type="Button" parent="Audio/HBoxContainer"]
+layout_mode = 2
+theme_type_variation = &"FlatButton"
+text = "Cancel"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_e64gr")
+bus = &"Music"

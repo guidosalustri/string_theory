@@ -1,0 +1,117 @@
+[gd_scene load_steps=12 format=3 uid="uid://c5mhd08u6r1kd"]
+
+[ext_resource type="Theme" uid="uid://dp1nmwxx5vbr5" path="res://ui/ui_samples_theme.tres" id="1_fa8ny"]
+[ext_resource type="Script" path="res://ui/main_menu/ui_main_menu.gd" id="2"]
+[ext_resource type="PackedScene" uid="uid://rh7t1gxyk68u" path="res://ui/main_menu/action_texture_button.tscn" id="3_0nxyj"]
+[ext_resource type="Texture2D" uid="uid://bniyrxn3r2v8h" path="res://assets/ship.png" id="4_d5opo"]
+[ext_resource type="Texture2D" uid="uid://byhx0m56pbo6g" path="res://assets/pear_36_fire_gradient.tres" id="5_t607u"]
+[ext_resource type="Texture2D" uid="uid://f60df1b3rfjk" path="res://assets/puff.svg" id="6_sl785"]
+
+[sub_resource type="Curve" id="Curve_ki5fu"]
+max_value = 200.0
+_data = [Vector2(0, 200), 0.0, -759.091, 0, 1, Vector2(0.263473, 0), -759.091, 0.0, 1, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_ny13n"]
+curve = SubResource("Curve_ki5fu")
+
+[sub_resource type="Curve" id="Curve_xsjaj"]
+_data = [Vector2(0, 0.272727), 0.0, 1.4, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_78exc"]
+curve = SubResource("Curve_xsjaj")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_7xurc"]
+particle_flag_disable_z = true
+angle_min = -180.0
+angle_max = 180.0
+direction = Vector3(0, 1, 0)
+spread = 15.0
+initial_velocity_min = 1.0
+initial_velocity_max = 1.0
+angular_velocity_min = 30.0
+angular_velocity_max = 50.0
+gravity = Vector3(0, 0, 0)
+linear_accel_min = 4.0
+linear_accel_max = 10.0
+linear_accel_curve = SubResource("CurveTexture_ny13n")
+scale_min = 0.5
+scale_max = 2.0
+scale_curve = SubResource("CurveTexture_78exc")
+color_ramp = ExtResource("5_t607u")
+
+[node name="MainMenuUI" type="Control"]
+custom_minimum_size = Vector2(1920, 1080)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+theme = ExtResource("1_fa8ny")
+script = ExtResource("2")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -452.0
+offset_top = 184.0
+offset_right = 452.0
+offset_bottom = 352.0
+grow_horizontal = 2
+theme_type_variation = &"LabelGameTitle"
+text = "String Theory"
+
+[node name="ButtonsVBoxContainer" type="VBoxContainer" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -181.0
+offset_top = -47.0
+offset_right = 153.0
+offset_bottom = 303.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ActionTextureButton1" parent="ButtonsVBoxContainer" instance=ExtResource("3_0nxyj")]
+layout_mode = 2
+size_flags_horizontal = 4
+focus_neighbor_top = NodePath("../ActionTextureButton3")
+text = "Play"
+
+[node name="ActionTextureButton2" parent="ButtonsVBoxContainer" instance=ExtResource("3_0nxyj")]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Options"
+
+[node name="ActionTextureButton3" parent="ButtonsVBoxContainer" instance=ExtResource("3_0nxyj")]
+layout_mode = 2
+size_flags_horizontal = 4
+focus_neighbor_bottom = NodePath("../ActionTextureButton1")
+text = "Exit"
+
+[node name="CursorMarker2D" type="Marker2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(2, 497)
+
+[node name="TextureRect" type="TextureRect" parent="CursorMarker2D"]
+offset_left = -140.0
+offset_right = -6.0
+offset_bottom = 88.0
+texture = ExtResource("4_d5opo")
+stretch_mode = 4
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="CursorMarker2D/TextureRect"]
+modulate = Color(1.2, 1.2, 1.2, 1)
+show_behind_parent = true
+position = Vector2(-7, 46)
+rotation = 1.5708
+emitting = false
+amount = 64
+process_material = SubResource("ParticleProcessMaterial_7xurc")
+texture = ExtResource("6_sl785")

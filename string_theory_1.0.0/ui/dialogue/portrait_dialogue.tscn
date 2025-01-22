@@ -1,0 +1,67 @@
+[gd_scene load_steps=6 format=3 uid="uid://b8n30pc1qe5ri"]
+
+[ext_resource type="Script" path="res://ui/dialogue/portrait_dialogue.gd" id="1_x7wa6"]
+[ext_resource type="Texture2D" uid="uid://yjjrd3e6s26w" path="res://assets/crew.png" id="2_useky"]
+[ext_resource type="Texture2D" uid="uid://tsf63gb1jnta" path="res://assets/circle_mask.png" id="4_x3jw2"]
+[ext_resource type="Theme" uid="uid://dp1nmwxx5vbr5" path="res://ui/ui_samples_theme.tres" id="4_xyofg"]
+[ext_resource type="Texture2D" uid="uid://crlb8dg2jbtex" path="res://ui/dialogue/text_frame.png" id="5_crm5y"]
+
+[node name="Portrait" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_x7wa6")
+
+[node name="Shadow" type="Sprite2D" parent="."]
+self_modulate = Color(0.156863, 0.0784314, 0.305882, 0.435294)
+position = Vector2(8, 23)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("4_x3jw2")
+
+[node name="Border" type="Sprite2D" parent="."]
+self_modulate = Color(0, 0.478431, 0.764706, 1)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("4_x3jw2")
+
+[node name="Frame" type="Sprite2D" parent="Border"]
+self_modulate = Color(0.0235294, 0.113725, 0.329412, 1)
+clip_children = 2
+position = Vector2(-3.05176e-05, -6.10352e-05)
+scale = Vector2(0.945835, 0.945835)
+texture = ExtResource("4_x3jw2")
+
+[node name="Sprite2D" type="Sprite2D" parent="Border/Frame"]
+position = Vector2(5.96046e-07, 23.2424)
+scale = Vector2(2.3, 2.3)
+texture = ExtResource("2_useky")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+custom_minimum_size = Vector2(100, 60)
+layout_mode = 0
+offset_left = -111.0
+offset_top = 70.0
+offset_right = 116.0
+offset_bottom = 142.0
+theme = ExtResource("4_xyofg")
+texture = ExtResource("5_crm5y")
+patch_margin_left = 32
+patch_margin_top = 32
+patch_margin_right = 32
+patch_margin_bottom = 32
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[node name="Name" type="Label" parent="NinePatchRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -3.0
+offset_top = 6.0
+offset_right = -3.0
+offset_bottom = 6.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.937255, 0.992157, 0.372549, 1)
+text = "Marvin"
+horizontal_alignment = 1
+vertical_alignment = 1

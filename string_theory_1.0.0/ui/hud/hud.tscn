@@ -1,0 +1,397 @@
+[gd_scene load_steps=39 format=3 uid="uid://bc8nepke0pagf"]
+
+[ext_resource type="Script" path="res://ui/hud/hud.gd" id="1_22hk0"]
+[ext_resource type="Theme" uid="uid://dp1nmwxx5vbr5" path="res://ui/ui_samples_theme.tres" id="2_uscdq"]
+[ext_resource type="Shader" path="res://ui/hud/fuelprogressbar.gdshader" id="3_jl2ku"]
+[ext_resource type="Texture2D" uid="uid://baux8wnujuj2l" path="res://assets/spark.png" id="3_lveu8"]
+[ext_resource type="Shader" path="res://ui/hud/progressbar.gdshader" id="4_unkjd"]
+
+[sub_resource type="Gradient" id="Gradient_bgjqv"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0.317647, 0.317647, 0.317647, 0.301961)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_3w4sx"]
+gradient = SubResource("Gradient_bgjqv")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ho3w4"]
+shader = ExtResource("4_unkjd")
+shader_parameter/value = 1.0
+shader_parameter/segments = 1
+shader_parameter/radius = 0.48
+shader_parameter/hollow_radius = 0.0
+shader_parameter/margin = 0.0
+shader_parameter/rotation = null
+shader_parameter/progress_rotation = null
+shader_parameter/use_value_gradient = false
+shader_parameter/gradient = SubResource("GradientTexture1D_3w4sx")
+
+[sub_resource type="Gradient" id="Gradient_houit"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0.231373, 0.231373, 0.231373, 0.380392)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_4ygqv"]
+gradient = SubResource("Gradient_houit")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_t2gie"]
+shader = ExtResource("4_unkjd")
+shader_parameter/value = 0.75
+shader_parameter/segments = 30
+shader_parameter/radius = 0.5
+shader_parameter/hollow_radius = 0.2
+shader_parameter/margin = 0.4
+shader_parameter/rotation = 4.75e-08
+shader_parameter/progress_rotation = -0.75
+shader_parameter/use_value_gradient = false
+shader_parameter/gradient = SubResource("GradientTexture1D_4ygqv")
+
+[sub_resource type="Gradient" id="Gradient_u7baf"]
+interpolation_mode = 2
+interpolation_color_space = 2
+offsets = PackedFloat32Array(0.121324, 0.231618, 0.286765, 0.349265, 0.525735, 0.764706, 0.897059)
+colors = PackedColorArray(0, 2, 0.105, 1, 1.2, 1.2, 0, 1, 1.26832, 0.490872, -0.483496, 1, 1.212, 0.248, 0, 1, 0.790089, 0.000347311, 0.756517, 1, 0.24, 0.15, 1.28, 1, 0, 2, 0.106, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_i3eha"]
+gradient = SubResource("Gradient_u7baf")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dmqt7"]
+shader = ExtResource("4_unkjd")
+shader_parameter/value = 0.75
+shader_parameter/segments = 30
+shader_parameter/radius = 0.5
+shader_parameter/hollow_radius = 0.2
+shader_parameter/margin = 0.4
+shader_parameter/rotation = 4.75e-08
+shader_parameter/progress_rotation = -0.75
+shader_parameter/use_value_gradient = false
+shader_parameter/gradient = SubResource("GradientTexture1D_i3eha")
+
+[sub_resource type="Gradient" id="Gradient_opskb"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0.21052, 0.265887, 0.351652, 0.537255)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_6dxut"]
+gradient = SubResource("Gradient_opskb")
+
+[sub_resource type="Gradient" id="Gradient_08vq2"]
+offsets = PackedFloat32Array(1)
+colors = PackedColorArray(1, 1, 1, 0.0235294)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_yskft"]
+gradient = SubResource("Gradient_08vq2")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_430qh"]
+shader = ExtResource("3_jl2ku")
+shader_parameter/stepify = true
+shader_parameter/value = 1.0
+shader_parameter/count = 1
+shader_parameter/margin = Vector2(0, 0.35)
+shader_parameter/shear_angle = -0.1
+shader_parameter/use_value_gradient = false
+shader_parameter/invert = false
+shader_parameter/gradient_x = SubResource("GradientTexture1D_6dxut")
+shader_parameter/gradient_y = SubResource("GradientTexture1D_yskft")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_an4ul"]
+shader = ExtResource("3_jl2ku")
+shader_parameter/stepify = true
+shader_parameter/value = 1.0
+shader_parameter/count = 15
+shader_parameter/margin = Vector2(0.15, 0.45)
+shader_parameter/shear_angle = -0.1
+shader_parameter/use_value_gradient = true
+shader_parameter/invert = false
+
+[sub_resource type="Gradient" id="Gradient_76xvi"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0.223529, 0.235294, 0.219608, 0.380392)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_pxcm3"]
+gradient = SubResource("Gradient_76xvi")
+
+[sub_resource type="Gradient" id="Gradient_b3gqa"]
+offsets = PackedFloat32Array(0.15, 0.5, 0.852459)
+colors = PackedColorArray(0.105882, 0.105882, 0.105882, 0.815686, 0.596078, 0.588235, 0.513726, 0.960784, 0.105882, 0.105882, 0.105882, 0.815686)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_omder"]
+gradient = SubResource("Gradient_b3gqa")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2cw85"]
+shader = ExtResource("3_jl2ku")
+shader_parameter/stepify = true
+shader_parameter/value = 1.0
+shader_parameter/count = 15
+shader_parameter/margin = Vector2(0.15, 0.45)
+shader_parameter/shear_angle = -0.1
+shader_parameter/use_value_gradient = true
+shader_parameter/invert = false
+shader_parameter/gradient_x = SubResource("GradientTexture1D_pxcm3")
+shader_parameter/gradient_y = SubResource("GradientTexture1D_omder")
+
+[sub_resource type="Gradient" id="Gradient_3j62n"]
+offsets = PackedFloat32Array(0.0992647, 0.334559, 0.459559, 0.602941, 1)
+colors = PackedColorArray(0.999781, 0.0848502, 0.111983, 1, 1, 0.513936, 0.169123, 1, 0.859958, 0.807481, 0.0162172, 1, 0.845105, 0.838614, 0, 1, 0, 0.921365, 0.158034, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_afk1e"]
+gradient = SubResource("Gradient_3j62n")
+
+[sub_resource type="Gradient" id="Gradient_2n6ag"]
+offsets = PackedFloat32Array(0.0245902, 0.245902, 0.360656, 0.844262)
+colors = PackedColorArray(0, 0, 0, 0.0156863, 1, 1, 1, 1, 0.858824, 0.858824, 0.858824, 0.643137, 0, 0, 0, 0.0156863)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_r241f"]
+gradient = SubResource("Gradient_2n6ag")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lg0a5"]
+shader = ExtResource("3_jl2ku")
+shader_parameter/stepify = true
+shader_parameter/value = 1.0
+shader_parameter/count = 15
+shader_parameter/margin = Vector2(0.1, 0.45)
+shader_parameter/shear_angle = -0.1
+shader_parameter/use_value_gradient = true
+shader_parameter/invert = false
+shader_parameter/gradient_x = SubResource("GradientTexture1D_afk1e")
+shader_parameter/gradient_y = SubResource("GradientTexture1D_r241f")
+
+[sub_resource type="Gradient" id="Gradient_4n2cg"]
+offsets = PackedFloat32Array(0.0330882, 0.172794, 0.283088, 0.382353, 0.617647, 0.753676, 0.834559, 0.955882)
+colors = PackedColorArray(0.4, 0, 1.2, 1, 0, 0.303052, 1.05115, 1, 0.082, 0.57, 1.2, 1, 0.00810988, 0.886615, 0.261086, 1, 0, 0.921365, 0.158034, 1, 0.845, 1.2, 0, 1, 0.92744, 0.675834, 0.0423953, 1, 0.999781, 0.0848502, 0.111983, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_cx60c"]
+gradient = SubResource("Gradient_4n2cg")
+
+[sub_resource type="Gradient" id="Gradient_woljf"]
+offsets = PackedFloat32Array(0.0245902, 0.245902, 0.360656, 0.844262)
+colors = PackedColorArray(0, 0, 0, 0.0156863, 1, 1, 1, 1, 0.858824, 0.858824, 0.858824, 0.643137, 0, 0, 0, 0.0156863)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_oh8q2"]
+gradient = SubResource("Gradient_woljf")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_npuad"]
+shader = ExtResource("3_jl2ku")
+shader_parameter/stepify = true
+shader_parameter/value = 1.0
+shader_parameter/count = 15
+shader_parameter/margin = Vector2(0.1, 0.45)
+shader_parameter/shear_angle = -0.1
+shader_parameter/use_value_gradient = true
+shader_parameter/invert = false
+shader_parameter/gradient_x = SubResource("GradientTexture1D_cx60c")
+shader_parameter/gradient_y = SubResource("GradientTexture1D_oh8q2")
+
+[sub_resource type="Animation" id="Animation_56qvd"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FuelBar/PanelFront:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("FuelBar:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("FuelBar/PanelMiddle:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_ussov"]
+resource_name = "full_energy"
+length = 0.3
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FuelBar:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.05, 1.05), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("FuelBar/PanelFront:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("FuelBar/PanelMiddle:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.0333333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_bjm7u"]
+_data = {
+"RESET": SubResource("Animation_56qvd"),
+"full_energy": SubResource("Animation_ussov")
+}
+
+[node name="HUD" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_22hk0")
+time_max_fuel = 6.0
+
+[node name="Speedometer" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 0
+offset_left = 10.0
+offset_top = 295.0
+offset_right = 291.0
+offset_bottom = 584.0
+rotation = -1.5708
+
+[node name="PanelBack" type="Panel" parent="Speedometer"]
+visible = false
+material = SubResource("ShaderMaterial_ho3w4")
+layout_mode = 0
+offset_right = 275.0
+offset_bottom = 275.0
+
+[node name="PanelMiddle" type="Panel" parent="Speedometer"]
+material = SubResource("ShaderMaterial_t2gie")
+layout_mode = 0
+offset_right = 275.0
+offset_bottom = 275.0
+
+[node name="PanelFront" type="Panel" parent="Speedometer"]
+material = SubResource("ShaderMaterial_dmqt7")
+layout_mode = 0
+offset_right = 275.0
+offset_bottom = 275.0
+
+[node name="Label" type="Label" parent="Speedometer"]
+layout_mode = 0
+offset_left = 170.0
+offset_top = 80.0
+offset_right = 290.0
+offset_bottom = 145.0
+rotation = 1.5708
+theme = ExtResource("2_uscdq")
+theme_override_colors/font_color = Color(0.937255, 0.992157, 0.372549, 1)
+theme_override_font_sizes/font_size = 80
+text = "600"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 239.0
+offset_top = 72.0
+offset_right = 775.0
+offset_bottom = 137.0
+theme = ExtResource("2_uscdq")
+theme_override_colors/font_color = Color(0.937255, 0.992157, 0.372549, 1)
+theme_override_font_sizes/font_size = 48
+text = "Mega E-volts"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="FuelBar" type="Control" parent="."]
+anchors_preset = 0
+offset_left = 215.0
+offset_top = 123.0
+offset_right = 650.0
+offset_bottom = 163.0
+metadata/_edit_group_ = true
+
+[node name="PanelBack" type="Panel" parent="FuelBar"]
+material = SubResource("ShaderMaterial_430qh")
+layout_mode = 0
+offset_right = 446.0
+offset_bottom = 40.0
+
+[node name="PanelMiddlewhite" type="Panel" parent="FuelBar"]
+material = SubResource("ShaderMaterial_an4ul")
+layout_mode = 0
+offset_right = 440.0
+offset_bottom = 40.0
+
+[node name="PanelMiddle" type="Panel" parent="FuelBar"]
+material = SubResource("ShaderMaterial_2cw85")
+layout_mode = 0
+offset_right = 440.0
+offset_bottom = 40.0
+
+[node name="PanelFront2" type="Panel" parent="FuelBar"]
+visible = false
+material = SubResource("ShaderMaterial_lg0a5")
+layout_mode = 0
+offset_right = 440.0
+offset_bottom = 40.0
+
+[node name="PanelFront" type="Panel" parent="FuelBar"]
+material = SubResource("ShaderMaterial_npuad")
+layout_mode = 0
+offset_right = 440.0
+offset_bottom = 40.0
+
+[node name="GridContainer" type="GridContainer" parent="."]
+layout_mode = 2
+offset_left = 218.0
+offset_top = 164.0
+offset_right = 1063.0
+offset_bottom = 196.0
+size_flags_vertical = 0
+columns = 13
+
+[node name="TextureRect" type="TextureRect" parent="GridContainer"]
+modulate = Color(1, 1, 1, 0.2)
+layout_mode = 2
+texture = ExtResource("3_lveu8")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+autostart = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_bjm7u")
+}
+
+[node name="TimerOvercharged" type="Timer" parent="."]
+wait_time = 2.5

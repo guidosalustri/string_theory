@@ -1,0 +1,378 @@
+[gd_scene load_steps=14 format=3 uid="uid://cgdat18qea2f5"]
+
+[ext_resource type="Theme" uid="uid://dvowqtgyecjg1" path="res://ui/options_theme.tres" id="1_05i7w"]
+[ext_resource type="Script" path="res://tests/options.gd" id="2_x27yi"]
+[ext_resource type="Shader" path="res://ui/blur_for_ui.gdshader" id="3_yj7r5"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ytsx2"]
+shader = ExtResource("3_yj7r5")
+shader_parameter/blur_amount = 1.5
+shader_parameter/tint = Color(0.231373, 0.635294, 0.976471, 1)
+shader_parameter/tint_amount = 0.079
+shader_parameter/saturation = 0.3
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_m4vpl"]
+vertical = true
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_p6bgi"]
+color = Color(0.937255, 0.992157, 0.372549, 1)
+grow_begin = 50.0
+grow_end = 0.0
+thickness = 0
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_rjdbk"]
+color = Color(0.937255, 0.992157, 0.372549, 1)
+grow_begin = -5.0
+grow_end = -15.0
+thickness = 4
+vertical = true
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_jji6f"]
+color = Color(0.937255, 0.992157, 0.372549, 1)
+grow_begin = -195.0
+grow_end = -195.0
+thickness = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hai6n"]
+draw_center = false
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_bcglv"]
+color = Color(0.937255, 0.992157, 0.372549, 1)
+grow_begin = -105.0
+grow_end = -35.0
+thickness = 3
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_2gcjo"]
+vertical = true
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gprmf"]
+draw_center = false
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_pjnq3"]
+color = Color(0.937255, 0.992157, 0.372549, 1)
+grow_begin = -105.0
+grow_end = -35.0
+thickness = 0
+
+[node name="options" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_05i7w")
+script = ExtResource("2_x27yi")
+
+[node name="BlurColorRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_ytsx2")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="UIPanelContainer" type="TabContainer" parent="."]
+unique_name_in_owner = true
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -314.0
+offset_top = -309.0
+offset_right = 354.0
+offset_bottom = 334.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 0
+theme_override_colors/font_unselected_color = Color(0.937255, 0.992157, 0.372549, 1)
+theme_override_colors/font_selected_color = Color(0.937255, 0.992157, 0.372549, 1)
+current_tab = 0
+
+[node name="Controls" type="PanelContainer" parent="UIPanelContainer"]
+self_modulate = Color(0.231373, 0.635294, 0.976471, 1)
+layout_mode = 2
+metadata/_tab_index = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UIPanelContainer/Controls"]
+self_modulate = Color(1, 1, 1, 0.011)
+layout_mode = 2
+
+[node name="HSeparator3" type="HSeparator" parent="UIPanelContainer/Controls/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 25
+theme_override_styles/separator = SubResource("StyleBoxLine_m4vpl")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UIPanelContainer/Controls/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="UIPanelContainer/Controls/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(2.08165e-12, 128)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.937255, 0.992157, 0.372549, 1)
+theme_override_font_sizes/font_size = 60
+text = "  For"
+vertical_alignment = 1
+
+[node name="W" type="Button" parent="UIPanelContainer/Controls/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_colors/font_disabled_color = Color(0.937255, 0.992157, 0.372549, 1)
+theme_override_colors/font_color = Color(0.937255, 0.992157, 0.372549, 1)
+theme_override_font_sizes/font_size = 90
+disabled = true
+text = "w"
+
+[node name="Label2" type="Label" parent="UIPanelContainer/Controls/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(2.08165e-12, 128)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.937255, 0.992157, 0.372549, 1)
+theme_override_font_sizes/font_size = 60
+text = "ard  "
+vertical_alignment = 1
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="UIPanelContainer/Controls/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="HSeparator2" type="HSeparator" parent="UIPanelContainer/Controls/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxLine_p6bgi")
+
+[node name="Label" type="Label" parent="UIPanelContainer/Controls/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(2.08165e-12, 128)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.937255, 0.992157, 0.372549, 1)
+theme_override_font_sizes/font_size = 60
+text = "left"
+vertical_alignment = 1
+
+[node name="A" type="Button" parent="UIPanelContainer/Controls/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_colors/font_disabled_color = Color(0.937255, 0.992157, 0.372549, 1)
+theme_override_colors/font_color = Color(0.937255, 0.992157, 0.372549, 1)
+theme_override_font_sizes/font_size = 95
+disabled = true
+text = "a"
+
+[node name="VSeparator" type="VSeparator" parent="UIPanelContainer/Controls/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+theme_override_constants/separation = 75
+theme_override_styles/separator = SubResource("StyleBoxLine_rjdbk")
+
+[node name="D" type="Button" parent="UIPanelContainer/Controls/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_colors/font_disabled_color = Color(0.937255, 0.992157, 0.372549, 1)
+theme_override_colors/font_color = Color(0.937255, 0.992157, 0.372549, 1)
+theme_override_font_sizes/font_size = 95
+disabled = true
+text = "d"
+
+[node name="Label2" type="Label" parent="UIPanelContainer/Controls/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(2.08165e-12, 128)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.937255, 0.992157, 0.372549, 1)
+theme_override_font_sizes/font_size = 60
+text = "right"
+vertical_alignment = 1
+
+[node name="HSeparator2" type="HSeparator" parent="UIPanelContainer/Controls/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 25
+theme_override_styles/separator = SubResource("StyleBoxLine_jji6f")
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="UIPanelContainer/Controls/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="ctrl" type="Button" parent="UIPanelContainer/Controls/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_colors/font_disabled_color = Color(0.937255, 0.992157, 0.372549, 1)
+theme_override_colors/font_color = Color(0.937255, 0.992157, 0.372549, 1)
+theme_override_font_sizes/font_size = 60
+disabled = true
+text = "ctrl"
+
+[node name="Label2" type="Label" parent="UIPanelContainer/Controls/VBoxContainer/HBoxContainer3"]
+custom_minimum_size = Vector2(2.08165e-12, 128)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.937255, 0.992157, 0.372549, 1)
+theme_override_font_sizes/font_size = 60
+text = "Let go star"
+vertical_alignment = 1
+
+[node name="VSeparator" type="VSeparator" parent="UIPanelContainer/Controls/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+theme_override_constants/separation = 30
+theme_override_styles/separator = SubResource("StyleBoxFlat_hai6n")
+
+[node name="HSeparator4" type="HSeparator" parent="UIPanelContainer/Controls/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 35
+theme_override_styles/separator = SubResource("StyleBoxLine_bcglv")
+
+[node name="VBoxContainer" type="HBoxContainer" parent="UIPanelContainer/Controls/VBoxContainer"]
+layout_mode = 2
+alignment = 2
+
+[node name="GoBackButton" type="Button" parent="UIPanelContainer/Controls/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_colors/font_color = Color(0.937255, 0.992157, 0.372549, 1)
+text = "Go Back"
+
+[node name="VSeparator" type="VSeparator" parent="UIPanelContainer/Controls/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+theme_override_styles/separator = SubResource("StyleBoxFlat_hai6n")
+
+[node name="Audio" type="PanelContainer" parent="UIPanelContainer"]
+visible = false
+self_modulate = Color(0.231373, 0.635294, 0.976471, 1)
+layout_mode = 2
+metadata/_tab_index = 1
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="UIPanelContainer/Audio"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_type_variation = &"VBoxSecondary"
+
+[node name="HSeparator3" type="HSeparator" parent="UIPanelContainer/Audio/VBoxContainer2"]
+layout_mode = 2
+theme_override_constants/separation = 35
+theme_override_styles/separator = SubResource("StyleBoxLine_2gcjo")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UIPanelContainer/Audio/VBoxContainer2"]
+layout_mode = 2
+
+[node name="VSeparator" type="VSeparator" parent="UIPanelContainer/Audio/VBoxContainer2/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 5
+theme_override_styles/separator = SubResource("StyleBoxFlat_gprmf")
+
+[node name="Label" type="Label" parent="UIPanelContainer/Audio/VBoxContainer2/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_type_variation = &"OptionLabel"
+theme_override_colors/font_color = Color(0.937255, 0.992157, 0.372549, 1)
+text = "BGM Volume"
+
+[node name="BGMVolumeSlider" type="HSlider" parent="UIPanelContainer/Audio/VBoxContainer2/HBoxContainer"]
+modulate = Color(0.231373, 0.635294, 0.976471, 1)
+layout_mode = 2
+size_flags_horizontal = 3
+min_value = -50.0
+max_value = 0.0
+
+[node name="VSeparator2" type="VSeparator" parent="UIPanelContainer/Audio/VBoxContainer2/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 5
+theme_override_styles/separator = SubResource("StyleBoxFlat_gprmf")
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="UIPanelContainer/Audio/VBoxContainer2"]
+layout_mode = 2
+
+[node name="VSeparator2" type="VSeparator" parent="UIPanelContainer/Audio/VBoxContainer2/HBoxContainer2"]
+layout_mode = 2
+theme_override_constants/separation = 5
+theme_override_styles/separator = SubResource("StyleBoxFlat_gprmf")
+
+[node name="Label" type="Label" parent="UIPanelContainer/Audio/VBoxContainer2/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_type_variation = &"OptionLabel"
+theme_override_colors/font_color = Color(0.937255, 0.992157, 0.372549, 1)
+text = "SFX Volume"
+
+[node name="SFXVolumeSlider" type="HSlider" parent="UIPanelContainer/Audio/VBoxContainer2/HBoxContainer2"]
+modulate = Color(0.231373, 0.635294, 0.976471, 1)
+layout_mode = 2
+size_flags_horizontal = 3
+min_value = -50.0
+max_value = 0.0
+
+[node name="VSeparator" type="VSeparator" parent="UIPanelContainer/Audio/VBoxContainer2/HBoxContainer2"]
+layout_mode = 2
+theme_override_constants/separation = 5
+theme_override_styles/separator = SubResource("StyleBoxFlat_gprmf")
+
+[node name="HBoxContainer7" type="HBoxContainer" parent="UIPanelContainer/Audio/VBoxContainer2"]
+layout_mode = 2
+
+[node name="VSeparator2" type="VSeparator" parent="UIPanelContainer/Audio/VBoxContainer2/HBoxContainer7"]
+layout_mode = 2
+theme_override_constants/separation = 5
+theme_override_styles/separator = SubResource("StyleBoxFlat_gprmf")
+
+[node name="Label" type="Label" parent="UIPanelContainer/Audio/VBoxContainer2/HBoxContainer7"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_type_variation = &"OptionLabel"
+theme_override_colors/font_color = Color(0.937255, 0.992157, 0.372549, 1)
+text = "Music Volume"
+
+[node name="VoiceVolumeSlider" type="HSlider" parent="UIPanelContainer/Audio/VBoxContainer2/HBoxContainer7"]
+modulate = Color(0.231373, 0.635294, 0.976471, 1)
+layout_mode = 2
+size_flags_horizontal = 3
+min_value = -50.0
+max_value = 0.0
+
+[node name="VSeparator" type="VSeparator" parent="UIPanelContainer/Audio/VBoxContainer2/HBoxContainer7"]
+layout_mode = 2
+theme_override_constants/separation = 5
+theme_override_styles/separator = SubResource("StyleBoxFlat_gprmf")
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="UIPanelContainer/Audio/VBoxContainer2"]
+layout_mode = 2
+
+[node name="VSeparator" type="VSeparator" parent="UIPanelContainer/Audio/VBoxContainer2/HBoxContainer3"]
+layout_mode = 2
+theme_override_constants/separation = 5
+theme_override_styles/separator = SubResource("StyleBoxFlat_gprmf")
+
+[node name="Label" type="Label" parent="UIPanelContainer/Audio/VBoxContainer2/HBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_type_variation = &"OptionLabel"
+theme_override_colors/font_color = Color(0.937255, 0.992157, 0.372549, 1)
+text = "Auto advance dialogue"
+
+[node name="AutoAdvanceDialogueCheckbox" type="CheckButton" parent="UIPanelContainer/Audio/VBoxContainer2/HBoxContainer3"]
+modulate = Color(0.231373, 0.635294, 0.976471, 1)
+layout_mode = 2
+size_flags_horizontal = 2
+
+[node name="HSeparator5" type="HSeparator" parent="UIPanelContainer/Audio/VBoxContainer2"]
+layout_mode = 2
+theme_override_constants/separation = 105
+theme_override_styles/separator = SubResource("StyleBoxLine_pjnq3")
+
+[node name="HSeparator4" type="HSeparator" parent="UIPanelContainer/Audio/VBoxContainer2"]
+layout_mode = 2
+theme_override_constants/separation = 25
+theme_override_styles/separator = SubResource("StyleBoxLine_bcglv")
+
+[node name="VBoxContainer" type="HBoxContainer" parent="UIPanelContainer/Audio/VBoxContainer2"]
+layout_mode = 2
+alignment = 2
+
+[node name="GoBackButton" type="Button" parent="UIPanelContainer/Audio/VBoxContainer2/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_colors/font_color = Color(0.937255, 0.992157, 0.372549, 1)
+text = "Go Back"
+
+[node name="VSeparator" type="VSeparator" parent="UIPanelContainer/Audio/VBoxContainer2/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+theme_override_styles/separator = SubResource("StyleBoxFlat_gprmf")

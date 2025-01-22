@@ -1,0 +1,211 @@
+[gd_scene load_steps=12 format=3 uid="uid://gu842no2aiky"]
+
+[ext_resource type="PackedScene" uid="uid://bxfevggvxo634" path="res://assets/background/space_background.tscn" id="1_ma2qx"]
+[ext_resource type="Texture2D" uid="uid://0gw4o20b3fa0" path="res://cutscene/asteroid.svg" id="2_0ifj8"]
+[ext_resource type="Texture2D" uid="uid://cgwmuppgqua43" path="res://cutscene/planets.svg" id="3_i6tmn"]
+[ext_resource type="Texture2D" uid="uid://cl16ohu7hooi0" path="res://assets/planet.png" id="3_ys2le"]
+[ext_resource type="Texture2D" uid="uid://b4atip1kb2j28" path="res://assets/planet_large.png" id="4_6aqw1"]
+
+[sub_resource type="Animation" id="Animation_a4747"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_jle7p"]
+resource_name = "spin"
+length = 4.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, -6.28319]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_kxrjc"]
+_data = {
+"RESET": SubResource("Animation_a4747"),
+"spin": SubResource("Animation_jle7p")
+}
+
+[sub_resource type="Animation" id="Animation_f1y2k"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_tr7ud"]
+resource_name = "clockwise_spin"
+length = 4.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 6.28319]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_sr0vt"]
+_data = {
+"RESET": SubResource("Animation_f1y2k"),
+"clockwise_spin": SubResource("Animation_tr7ud")
+}
+
+[node name="Node" type="Node"]
+
+[node name="SpaceBackground" parent="." instance=ExtResource("1_ma2qx")]
+layer = -100
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+layer = -99
+
+[node name="PlatensBig" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.2, 0.2)
+
+[node name="Earth" type="Sprite2D" parent="ParallaxBackground/PlatensBig"]
+position = Vector2(1836, 757)
+texture = ExtResource("3_i6tmn")
+region_enabled = true
+region_rect = Rect2(0, 0, 459.468, 434.036)
+
+[node name="Planet1" type="Sprite2D" parent="ParallaxBackground/PlatensBig"]
+position = Vector2(2795, 25.0001)
+rotation = -0.182931
+texture = ExtResource("3_i6tmn")
+region_enabled = true
+region_rect = Rect2(115.417, 409.287, 798.873, 482.177)
+
+[node name="Planet2" type="Sprite2D" parent="ParallaxBackground/PlatensBig"]
+position = Vector2(3467, 675)
+texture = ExtResource("3_i6tmn")
+region_enabled = true
+region_rect = Rect2(566.209, 9.85106, 453.646, 396.583)
+
+[node name="Planet3" type="Sprite2D" parent="ParallaxBackground/PlatensBig"]
+position = Vector2(734, 149)
+texture = ExtResource("3_i6tmn")
+region_enabled = true
+region_rect = Rect2(566.209, 9.85106, 453.646, 396.583)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/PlatensBig"]
+position = Vector2(4082, 141)
+texture = ExtResource("3_ys2le")
+
+[node name="Sprite2D2" type="Sprite2D" parent="ParallaxBackground/PlatensBig"]
+position = Vector2(322, 670)
+texture = ExtResource("4_6aqw1")
+
+[node name="Asteroids" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.5, 0.5)
+
+[node name="Sprite2D2" type="Sprite2D" parent="ParallaxBackground/Asteroids"]
+position = Vector2(2256, 249)
+texture = ExtResource("2_0ifj8")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ParallaxBackground/Asteroids/Sprite2D2"]
+libraries = {
+"": SubResource("AnimationLibrary_kxrjc")
+}
+autoplay = "spin"
+speed_scale = 0.1
+
+[node name="Sprite2D6" type="Sprite2D" parent="ParallaxBackground/Asteroids"]
+position = Vector2(4478, 163)
+texture = ExtResource("2_0ifj8")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ParallaxBackground/Asteroids/Sprite2D6"]
+libraries = {
+"": SubResource("AnimationLibrary_kxrjc")
+}
+autoplay = "spin"
+speed_scale = 0.1
+
+[node name="Sprite2D5" type="Sprite2D" parent="ParallaxBackground/Asteroids"]
+position = Vector2(3676, 228)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_0ifj8")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ParallaxBackground/Asteroids/Sprite2D5"]
+libraries = {
+"": SubResource("AnimationLibrary_kxrjc")
+}
+autoplay = "spin"
+speed_scale = 0.1
+
+[node name="Sprite2D3" type="Sprite2D" parent="ParallaxBackground/Asteroids"]
+position = Vector2(2721, 610)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("2_0ifj8")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ParallaxBackground/Asteroids/Sprite2D3"]
+libraries = {
+"": SubResource("AnimationLibrary_kxrjc")
+}
+autoplay = "spin"
+speed_scale = 0.1
+
+[node name="Sprite2D4" type="Sprite2D" parent="ParallaxBackground/Asteroids"]
+position = Vector2(1369, 752)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("2_0ifj8")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ParallaxBackground/Asteroids/Sprite2D4"]
+libraries = {
+"": SubResource("AnimationLibrary_kxrjc")
+}
+autoplay = "spin"
+speed_scale = 0.1
+
+[node name="SpriteClockwiseSpin" type="Sprite2D" parent="ParallaxBackground/Asteroids"]
+position = Vector2(5012, 732)
+texture = ExtResource("2_0ifj8")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ParallaxBackground/Asteroids/SpriteClockwiseSpin"]
+libraries = {
+"": SubResource("AnimationLibrary_sr0vt")
+}
+autoplay = "clockwise_spin"
+speed_scale = 0.1
+
+[node name="SpriteClockwiseSpin2" type="Sprite2D" parent="ParallaxBackground/Asteroids"]
+position = Vector2(1869, 49)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("2_0ifj8")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ParallaxBackground/Asteroids/SpriteClockwiseSpin2"]
+libraries = {
+"": SubResource("AnimationLibrary_sr0vt")
+}
+autoplay = "clockwise_spin"
+speed_scale = 0.1

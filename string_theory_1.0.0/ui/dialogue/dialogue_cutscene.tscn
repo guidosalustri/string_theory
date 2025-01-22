@@ -1,0 +1,269 @@
+[gd_scene load_steps=37 format=3 uid="uid://cqhxlf7w4dm1y"]
+
+[ext_resource type="Script" path="res://ui/dialogue/dialogue_cutscene.gd" id="1_wklqp"]
+[ext_resource type="Script" path="res://ui/dialogue/dialogue_entry.gd" id="2_8wc3g"]
+[ext_resource type="AudioStream" uid="uid://ccwaftmkfrqjy" path="res://assets/talking_synth.ogg" id="2_a3skc"]
+[ext_resource type="PackedScene" uid="uid://b8n30pc1qe5ri" path="res://ui/dialogue/portrait_dialogue.tscn" id="3_save7"]
+[ext_resource type="Theme" uid="uid://dp1nmwxx5vbr5" path="res://ui/ui_samples_theme.tres" id="4_0glvc"]
+[ext_resource type="Texture2D" uid="uid://crlb8dg2jbtex" path="res://ui/dialogue/text_frame.png" id="5_qvyfd"]
+[ext_resource type="Texture2D" uid="uid://cf16qsv618tiu" path="res://ui/dialogue/arrow_right.png" id="6_1rlju"]
+[ext_resource type="Texture2D" uid="uid://dnelc27y6kwfn" path="res://ui/dialogue/arrow_right_pressed.png" id="7_ilsp6"]
+
+[sub_resource type="Resource" id="Resource_ot6hf"]
+script = ExtResource("2_8wc3g")
+text = "Howdy Captain, my name is Marvin the Martian, I will be joining your
+crew as head of mechanical starting from today. I am looking
+forward to working together."
+
+[sub_resource type="Resource" id="Resource_knag6"]
+script = ExtResource("2_8wc3g")
+text = "Our job is easy Cap, we need to [color=3ba2f9]link stars together[/color] forming
+constellations."
+
+[sub_resource type="Resource" id="Resource_lv1p5"]
+script = ExtResource("2_8wc3g")
+text = "3 mian things to remember:
+[color=3ba2f9]Never stop[/color] - always aim for the [color=3ba2f9]next target star[/color] - 
+and do not let the [color=3ba2f9]energy bar drop to 0 or overcharge.[/color]"
+
+[sub_resource type="Resource" id="Resource_rkulb"]
+script = ExtResource("2_8wc3g")
+text = "[shake rate=5 level=10]Keep in mind earthlings personalities depend on us... but don't stress
+too much, I am right here by your beside.[/shake]"
+
+[sub_resource type="Resource" id="Resource_peqd3"]
+script = ExtResource("2_8wc3g")
+text = "Cap, you are doing great. We spot a small issue on the right thruster, it seems like we will need to do some maintenance on it."
+
+[sub_resource type="Resource" id="Resource_33g06"]
+script = ExtResource("2_8wc3g")
+text = "It’s a good thing we spot it beforehand, we will tackle it right away."
+
+[sub_resource type="Resource" id="Resource_3yuww"]
+script = ExtResource("2_8wc3g")
+text = "This means, you will not be able to propel to the right in the next
+constellation. It's unfortunate I know but this will save us a lot of
+headaches in the future, trust me."
+
+[sub_resource type="Resource" id="Resource_81xdg"]
+script = ExtResource("2_8wc3g")
+text = "We truly appreciate your flexibility."
+
+[sub_resource type="Resource" id="Resource_tppbr"]
+script = ExtResource("2_8wc3g")
+text = "I have some updates on the thruster situation. First, I wish to inform
+you that we successfully fixed the right thruster. It should be good
+to go at least for another 30000 light years."
+
+[sub_resource type="Resource" id="Resource_btf0w"]
+script = ExtResource("2_8wc3g")
+text = "Unfortunately, now the left thruster seems to be failing. I am aware this makes your life harder, but do not worry Cap, I will fix it
+shortly."
+
+[sub_resource type="Resource" id="Resource_n1h6j"]
+script = ExtResource("2_8wc3g")
+text = "We value your effort and understanding."
+
+[sub_resource type="Resource" id="Resource_5nnx8"]
+script = ExtResource("2_8wc3g")
+text = "We are still facing some technical difficulties with the left 
+thruster and on top of that now the main thruster is down."
+
+[sub_resource type="Resource" id="Resource_uaf6j"]
+script = ExtResource("2_8wc3g")
+text = "This is a nightmare, the core  gravitational engine seems to be
+malfunctioning. The situation is critical, at the given moment the
+ship has no autonomous propulsion. "
+
+[sub_resource type="Resource" id="Resource_kyk81"]
+script = ExtResource("2_8wc3g")
+text = "We can only turn to the right. I wish you luck out there."
+
+[sub_resource type="Resource" id="Resource_nl5s7"]
+script = ExtResource("2_8wc3g")
+text = "So, we could not restore the system yet... And that is not it, more
+bad news are coming..."
+
+[sub_resource type="Resource" id="Resource_kjcbh"]
+script = ExtResource("2_8wc3g")
+text = "We need to try something out, and for that we need to rewire and
+swap the thrusters. Meaning next constellation you can only steer
+to the left."
+
+[sub_resource type="Resource" id="Resource_q4nhy"]
+script = ExtResource("2_8wc3g")
+text = "See what you can do mate, we are all dealing with a lot at the
+moment."
+
+[sub_resource type="Resource" id="Resource_qfk18"]
+script = ExtResource("2_8wc3g")
+text = "Hi Captain, my name is Martin the Martian, I am the second in charge
+on the mechanical team. We can not get a hold of Marvin, he locked
+himself in his cabin room."
+
+[sub_resource type="Resource" id="Resource_p1bjy"]
+script = ExtResource("2_8wc3g")
+text = "I guess I am in charge over here now... Some updates: the navigation
+system is not responding at all, We will need to reboot it."
+
+[sub_resource type="Resource" id="Resource_jh1j5"]
+script = ExtResource("2_8wc3g")
+text = "Until the system reboots no manoeuvre nor propulsion would be
+possible out there. Basically, the command panel would be out."
+
+[sub_resource type="Resource" id="Resource_6sldp"]
+script = ExtResource("2_8wc3g")
+text = "Hi Captain, Martin here. The navigation system is up again and running.
+Yet something is off with the wiring of the controls to the
+thrusters."
+
+[sub_resource type="Resource" id="Resource_wmtie"]
+script = ExtResource("2_8wc3g")
+text = "Unfortunately Marvin is holding the gravitational engine master's
+blueprints so we are unsure of how to rewire the controls back to
+normal."
+
+[sub_resource type="Resource" id="Resource_shwd6"]
+script = ExtResource("2_8wc3g")
+text = "I am back Captain, sorry for my absence, I was feeling unwell. Thank
+god my plan of rebooting the system worked."
+
+[sub_resource type="Resource" id="Resource_twlg3"]
+script = ExtResource("2_8wc3g")
+text = "All systems should be perfectly running by now. This last
+constellation will be a piece of cake."
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4b5kt"]
+content_margin_left = 20.0
+content_margin_top = 20.0
+content_margin_right = 20.0
+content_margin_bottom = 20.0
+
+[sub_resource type="Animation" id="Animation_pryrc"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("NinePatchRect2/TextureButton:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.4, 0.4)]
+}
+
+[sub_resource type="Animation" id="Animation_pcfu6"]
+resource_name = "arrow"
+length = 0.3
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("NinePatchRect2/TextureButton:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0.4, 0.4), Vector2(0.45, 0.45)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_q65in"]
+_data = {
+"RESET": SubResource("Animation_pryrc"),
+"arrow": SubResource("Animation_pcfu6")
+}
+
+[node name="Dialogue_cutscene" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 8
+script = ExtResource("1_wklqp")
+dialogue_per_scene_dic = {
+0: [SubResource("Resource_ot6hf"), SubResource("Resource_knag6"), SubResource("Resource_lv1p5"), SubResource("Resource_rkulb")],
+1: [],
+2: [],
+3: [SubResource("Resource_peqd3"), SubResource("Resource_33g06"), SubResource("Resource_3yuww"), SubResource("Resource_81xdg")],
+4: [],
+5: [SubResource("Resource_tppbr"), SubResource("Resource_btf0w"), SubResource("Resource_n1h6j")],
+6: [],
+7: [SubResource("Resource_5nnx8"), SubResource("Resource_uaf6j"), SubResource("Resource_kyk81")],
+8: [SubResource("Resource_nl5s7"), SubResource("Resource_kjcbh"), SubResource("Resource_q4nhy")],
+9: [SubResource("Resource_qfk18"), SubResource("Resource_p1bjy"), SubResource("Resource_jh1j5")],
+10: [SubResource("Resource_6sldp"), SubResource("Resource_wmtie")],
+11: [SubResource("Resource_shwd6"), SubResource("Resource_twlg3")]
+}
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_a3skc")
+bus = &"SFX"
+
+[node name="Portrait" parent="." instance=ExtResource("3_save7")]
+offset_left = 148.0
+offset_top = 920.0
+offset_right = 148.0
+offset_bottom = 920.0
+
+[node name="NinePatchRect2" type="NinePatchRect" parent="."]
+layout_mode = 0
+offset_left = 301.0
+offset_top = 793.0
+offset_right = 1901.0
+offset_bottom = 1006.0
+theme = ExtResource("4_0glvc")
+texture = ExtResource("5_qvyfd")
+patch_margin_left = 29
+patch_margin_top = 16
+patch_margin_right = 29
+patch_margin_bottom = 16
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="NinePatchRect2"]
+unique_name_in_owner = true
+layout_mode = 2
+offset_top = 27.0
+offset_right = 1580.0
+offset_bottom = 209.0
+mouse_filter = 2
+theme_override_colors/default_color = Color(0.937255, 0.992157, 0.372549, 1)
+theme_override_styles/normal = SubResource("StyleBoxEmpty_4b5kt")
+bbcode_enabled = true
+text = "I can't even start to understand it. It's so weird.
+Anyways, we should get going."
+
+[node name="TextureButton" type="TextureButton" parent="NinePatchRect2"]
+unique_name_in_owner = true
+modulate = Color(0.926649, 0.924829, 0, 1)
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -84.0
+offset_top = -98.0
+offset_right = 80.0
+offset_bottom = 58.0
+grow_horizontal = 0
+grow_vertical = 0
+scale = Vector2(0.4, 0.4)
+size_flags_horizontal = 8
+size_flags_vertical = 4
+texture_normal = ExtResource("6_1rlju")
+texture_pressed = ExtResource("7_ilsp6")
+stretch_mode = 4
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_q65in")
+}
+autoplay = "arrow"
