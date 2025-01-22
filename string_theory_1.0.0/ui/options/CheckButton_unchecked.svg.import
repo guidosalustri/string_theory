@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dw68b8en7moo7"
-path="res://.godot/imported/CheckButton_unchecked.svg-31e7da054e6d8bb17abc8ce97a3cdf46.ctex"
+path="res://.godot/imported/CheckButton_unchecked.svg-5f6a12e7cc9228920130b654603d2b64.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ui/settings/CheckButton_unchecked.svg"
-dest_files=["res://.godot/imported/CheckButton_unchecked.svg-31e7da054e6d8bb17abc8ce97a3cdf46.ctex"]
+source_file="res://ui/options/CheckButton_unchecked.svg"
+dest_files=["res://.godot/imported/CheckButton_unchecked.svg-5f6a12e7cc9228920130b654603d2b64.ctex"]
 
 [params]
 

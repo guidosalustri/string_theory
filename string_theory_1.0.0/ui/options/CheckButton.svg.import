@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bje0gw03v4u2o"
-path="res://.godot/imported/Radio_checked.svg-1a9bd4a23a877fb2a31fc30ba5ddc11d.ctex"
+uid="uid://cdnaryq11d2bw"
+path="res://.godot/imported/CheckButton.svg-c4c0b8a50d8b808691460aa0b1229a4c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ui/settings/Radio_checked.svg"
-dest_files=["res://.godot/imported/Radio_checked.svg-1a9bd4a23a877fb2a31fc30ba5ddc11d.ctex"]
+source_file="res://ui/options/CheckButton.svg"
+dest_files=["res://.godot/imported/CheckButton.svg-c4c0b8a50d8b808691460aa0b1229a4c.ctex"]
 
 [params]
 

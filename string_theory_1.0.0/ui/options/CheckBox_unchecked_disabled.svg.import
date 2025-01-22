@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ddtloeorisqcr"
-path="res://.godot/imported/CheckButton_checked.svg-1e44f257b168059f6823ae0838dd0eb7.ctex"
+uid="uid://dgastsfcunoxg"
+path="res://.godot/imported/CheckBox_unchecked_disabled.svg-66daab0cc3ffaf259e6b825988565796.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ui/settings/CheckButton_checked.svg"
-dest_files=["res://.godot/imported/CheckButton_checked.svg-1e44f257b168059f6823ae0838dd0eb7.ctex"]
+source_file="res://ui/options/CheckBox_unchecked_disabled.svg"
+dest_files=["res://.godot/imported/CheckBox_unchecked_disabled.svg-66daab0cc3ffaf259e6b825988565796.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cg52hmsfyr18h"
-path="res://.godot/imported/CheckButton_checked_disabled.svg-c8203fc868535ca9f0cb01c72eeb288d.ctex"
+uid="uid://c5xipe7dwfqfc"
+path="res://.godot/imported/OptionButtonArrow.svg-1d8be8abe22bcc73b397c37656e42685.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ui/settings/CheckButton_checked_disabled.svg"
-dest_files=["res://.godot/imported/CheckButton_checked_disabled.svg-c8203fc868535ca9f0cb01c72eeb288d.ctex"]
+source_file="res://ui/options/OptionButtonArrow.svg"
+dest_files=["res://.godot/imported/OptionButtonArrow.svg-1d8be8abe22bcc73b397c37656e42685.ctex"]
 
 [params]
 

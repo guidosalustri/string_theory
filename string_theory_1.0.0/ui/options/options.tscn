@@ -1,7 +1,7 @@
 [gd_scene load_steps=14 format=3 uid="uid://cgdat18qea2f5"]
 
 [ext_resource type="Theme" uid="uid://dvowqtgyecjg1" path="res://ui/options_theme.tres" id="1_05i7w"]
-[ext_resource type="Script" path="res://tests/options.gd" id="2_x27yi"]
+[ext_resource type="Script" path="res://ui/options/options.gd" id="2_x27yi"]
 [ext_resource type="Shader" path="res://ui/blur_for_ui.gdshader" id="3_yj7r5"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ytsx2"]

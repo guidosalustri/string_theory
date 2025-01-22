@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dc0c86g7xao72"
-path="res://.godot/imported/CheckBox_unchecked.svg-24a503260fb951e54f470fc77aebb5cb.ctex"
+uid="uid://gubh41mktgyw"
+path="res://.godot/imported/Radio_unchecked_disabled.svg-c84d196d2d711890c422cb34b00f73a2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ui/settings/CheckBox_unchecked.svg"
-dest_files=["res://.godot/imported/CheckBox_unchecked.svg-24a503260fb951e54f470fc77aebb5cb.ctex"]
+source_file="res://ui/options/Radio_unchecked_disabled.svg"
+dest_files=["res://.godot/imported/Radio_unchecked_disabled.svg-c84d196d2d711890c422cb34b00f73a2.ctex"]
 
 [params]
 

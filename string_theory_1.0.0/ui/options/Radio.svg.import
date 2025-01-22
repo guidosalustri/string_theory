@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cbj0ejw4xy6qm"
-path="res://.godot/imported/Radio_unchecked.svg-55e9bf0bfc50a88660cfdb1fac8ec1e8.ctex"
+uid="uid://clgycasbivmae"
+path="res://.godot/imported/Radio.svg-5a6762913463c773e39b0fa952217379.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ui/settings/Radio_unchecked.svg"
-dest_files=["res://.godot/imported/Radio_unchecked.svg-55e9bf0bfc50a88660cfdb1fac8ec1e8.ctex"]
+source_file="res://ui/options/Radio.svg"
+dest_files=["res://.godot/imported/Radio.svg-5a6762913463c773e39b0fa952217379.ctex"]
 
 [params]
 

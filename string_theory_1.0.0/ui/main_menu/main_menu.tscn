@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://ui/main_menu/main_menu.gd" id="1_q02l5"]
 [ext_resource type="PackedScene" uid="uid://bxfevggvxo634" path="res://assets/background/space_background.tscn" id="2_deq87"]
 [ext_resource type="Texture2D" uid="uid://cgwmuppgqua43" path="res://cutscene/planets.svg" id="4_asrjl"]
-[ext_resource type="PackedScene" uid="uid://cgdat18qea2f5" path="res://tests/options.tscn" id="4_wwnm0"]
+[ext_resource type="PackedScene" uid="uid://cgdat18qea2f5" path="res://ui/options/options.tscn" id="4_wwnm0"]
 [ext_resource type="Texture2D" uid="uid://0gw4o20b3fa0" path="res://cutscene/asteroid.svg" id="5_cqcon"]
 [ext_resource type="Texture2D" uid="uid://b4atip1kb2j28" path="res://assets/planet_large.png" id="6_eibt2"]
 [ext_resource type="PackedScene" uid="uid://c5mhd08u6r1kd" path="res://ui/main_menu/ui_main_menu.tscn" id="7_uv4c6"]
