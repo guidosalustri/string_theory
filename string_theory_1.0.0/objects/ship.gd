@@ -81,21 +81,30 @@ func _process(delta: float) -> void:
 			#start_offset += Vector2(50,0)
 			if timer.time_left > 0:
 				speed += 1.0  * acceleration * delta
+				speed = clamp(speed, 0.0, max_speed)
+				var vel := (Vector2.RIGHT * speed).rotated(rotation)
+				translate(vel * delta)
 			else:
-				speed += -1.0  * acceleration * delta
-			speed = clamp(speed, 0.0, max_speed)
-			var velocity := (Vector2.RIGHT * speed).rotated(rotation)
-			translate(velocity * delta)
+				if flag:
+					set_current_state(States.ORBIT)
+				elif black_hole:
+					set_current_state(States.DRAGGED)
+				#speed += -1.0  * acceleration * delta
+			#speed = clamp(speed, 0.0, max_speed)
+			#var velocity := (Vector2.RIGHT * speed).rotated(rotation)
+			#translate(velocity * delta)
 			
-			if (Input.is_action_pressed("move_up") and move_forward) or \
-			(Input.is_action_pressed("move_left") and turn_left) or \
-			(Input.is_action_pressed("move_right") and turn_left):
-				set_current_state(States.FLY)
+			#if (Input.is_action_pressed("move_up") and move_forward) or \
+			#(Input.is_action_pressed("move_left") and turn_left) or \
+			#(Input.is_action_pressed("move_right") and turn_right):
+				else:
+					set_current_state(States.FLY)
+					set_has_energy(true)
 			
-			elif flag:
-				set_current_state(States.ORBIT)
-			elif black_hole:
-				set_current_state(States.DRAGGED)
+			#elif flag:
+			#	set_current_state(States.ORBIT)
+			#elif black_hole:
+			#	set_current_state(States.DRAGGED)
 		States.FLY:
 			_move(delta, turn_right, turn_left, move_forward)
 			if flag:
@@ -130,7 +139,7 @@ func _process(delta: float) -> void:
 func _move(delta: float, right: bool , left: bool, forward: bool) -> void:
 	#this is for testing but the idea is to make the ship lose speed when is not spinning
 	speed += (1.0 if Input.is_action_pressed("move_up") and \
-	forward and has_energy else -1.0) * acceleration * delta
+	forward and has_energy else -1.0) * acceleration * delta #and has_energy
 	speed = clamp(speed, 0.0, max_speed)
 	
 	if invert_controls:

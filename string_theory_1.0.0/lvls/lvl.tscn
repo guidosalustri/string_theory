@@ -51,7 +51,7 @@ position = Vector2(2379, 466)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 physics_interpolation_mode = 2
-position = Vector2(1039, 433)
+position = Vector2(1020, 510.5)
 position_smoothing_speed = 2.0
 
 [node name="PhantomCameraHost" type="Node" parent="Camera2D"]
@@ -83,7 +83,7 @@ sharp_limit = 8.0
 antialiased = true
 
 [node name="Ship" parent="." instance=ExtResource("2_7exvq")]
-position = Vector2(926, 482)
+position = Vector2(888, 637)
 
 [node name="Constellation" type="Node2D" parent="."]
 
@@ -127,7 +127,7 @@ wait_time = 0.5
 one_shot = true
 
 [node name="PhantomCamera2D" type="Node2D" parent="." node_paths=PackedStringArray("follow_targets")]
-position = Vector2(1039, 433)
+position = Vector2(1020, 510.5)
 script = ExtResource("7_elhit")
 follow_mode = 3
 follow_targets = [NodePath("../Ship"), NodePath("../Constellation/Star")]
