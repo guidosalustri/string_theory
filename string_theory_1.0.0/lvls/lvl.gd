@@ -76,15 +76,10 @@ func _ready() -> void:
 	phantom_camera_star.set_auto_zoom_max(1)
 	phantom_camera_star.set_auto_zoom_margin(Vector4(90, 90, 90, 90))
 	phantom_camera_star.priority = 1
-	#phantom_camera_2d.set_tween_duration(4.2)
-	
-	#phantom_camera_constellation.append_follow_targets(stars_trail[0])
+
 	for star in constellation.get_children():
 		phantom_camera_constellation.append_follow_targets(star)
-	#phantom_camera_constellation.set_auto_zoom(true)
-	#phantom_camera_constellation.set_auto_zoom_min(0.2)
-	#phantom_camera_constellation.set_auto_zoom_max(1)
-	#phantom_camera_constellation.set_auto_zoom_margin(Vector4(0, 60, 0, 60))
+
 	phantom_camera_constellation.priority = 0
 
 func _process(_delta: float) -> void:
@@ -95,40 +90,24 @@ func _process(_delta: float) -> void:
 
 
 func _on_star_changed(star: Star)-> void:
-	#if star.pass_by_ship:
-	#	if star == stars_trail[index-2]:
-	#		index -=1
-	#else:
 	if star != stars_trail[index]:
 		ship.explote()
-		# esto era cuando entraba a una estrella q no era y popeaba el dialogo
-		#_blur.material.set_shader_parameter("blur_amount", 0.7)
-		#_blur.material.set_shader_parameter("tint_amount", 0.05)
-		#_blur.material.set_shader_parameter("saturation", 0.7)
-		#canvas_layer.add_child(dialogue.instantiate())
-		#get_tree().paused = true
+
 	if index == stars_trail.size()-1:
 		phantom_camera_constellation.priority = 3
 		timer.start()
 
-	else:#  index != stars_trail.size()-1:
+	else:
 		index +=1
 		stars_trail[index].spawn()
 		phantom_camera_ship.follow_targets[1] = stars_trail[index]
-		#phantom_camera_constellation.append_follow_targets(stars_trail[index])
+
 		if phantom_camera_star.follow_targets.size() >= 2:
 			phantom_camera_star.erase_follow_targets(phantom_camera_star.follow_targets[0])
 		phantom_camera_star.append_follow_targets(stars_trail[index])
 		phantom_camera_ship.priority = 1
 		phantom_camera_star.priority = 2
-	#phantom_camera_ship.follow_targets[1] = stars_trail[index]
-	#phantom_camera_star.append_follow_targets(stars_trail[index])
-	
-	
-	#if phantom_camera_star.follow_targets.size() > 2:
-	#	phantom_camera_star.erase_follow_targets(phantom_camera_star.follow_targets[0])
-	#phantom_camera_ship.priority = 1
-	#phantom_camera_star.priority = 2
+
 
 
 	var new_vector := star.global_position
@@ -164,34 +143,23 @@ func _unhandled_input(event: InputEvent) -> void:
 		phantom_camera_star.priority = 1
 
 func _on_timer_timeout() -> void:
-	#ship.flag = false
-	#ship.last_star = true
+
 	var tween_hud := create_tween()
 	tween_hud.tween_property(hud, "modulate:a", 0, 0.5)
 	dim_out_obstacles()
 	ship.ray_cast_2d.enabled = true
-	#ship.target = Vector2(3000,500)
-	#link_line_ship.hide()
-	#print(phantom_camera_stars.get_follow_targets().size())
-	#await get_tree().create_timer(1).timeout
-	#scene transition
-	#phantom_camera_ship.priority = 0
-	#phantom_camera_star.priority = 1
-	#phantom_camera_constellation.priority = 3
-	
 	await get_tree().create_timer(0.5).timeout
-	
+
 	var tween_label := create_tween()
 	tween_label.tween_property(_label, "visible_ratio", 1.0, 0.5)
 	await tween_label.finished
-	
 	await get_tree().create_timer(0.5).timeout
 
 	var tween := create_tween()
 	tween.set_trans(Tween.TRANS_SINE)
 	tween.tween_property(color_rect, "modulate", Color.BLACK, 2)
 	await tween.finished
-	
+
 	GameManager.lvl +=1
 	GameManager.call_cutscene()
 

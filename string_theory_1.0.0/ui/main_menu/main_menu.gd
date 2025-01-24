@@ -1,6 +1,6 @@
 extends Node2D
 
-#@onready var settings_screen: TabContainer = $SettingsScreen
+
 @onready var options_screen: Control = $options
 
 @onready var main_menu_ui: Control = $MainMenuUI

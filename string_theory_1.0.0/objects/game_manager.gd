@@ -10,6 +10,8 @@ var deaths_counts := 0
 
 func call_cutscene() -> void:
 	if lvl == lvls.size():# tendria que ser una flag corre la ultima cutscene y dsp entra a la final
+		# this could just go in the lvls array as "last lvl (13)"
+		# but is actually just a final cinematic or something.
 		get_tree().change_scene_to_packed(final_scene)
 	else:
 		get_tree().change_scene_to_packed(cutscene)
