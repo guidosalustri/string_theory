@@ -7,6 +7,9 @@ extends Node
 
 var lvl := 0
 var deaths_counts := 0
+var volume_bus_master := 0
+var volume_bus_sfx := 0
+var volume_bus_music := 0
 
 func call_cutscene() -> void:
 	if lvl == lvls.size():# tendria que ser una flag corre la ultima cutscene y dsp entra a la final

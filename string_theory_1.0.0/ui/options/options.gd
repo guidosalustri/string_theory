@@ -20,13 +20,14 @@ func _ready() -> void:
 	sfx_volume_slider.value_changed.connect(_on_sfx_volume_value_changed)
 	music_volume_slider.value_changed.connect(_on_music_volume_value_changed)
 	
-	#if blur_on:
-	#	blur_color_rect.material.set_shader_parameter("blur_amount", 2.5)
-	#	blur_color_rect.material.set_shader_parameter("saturation", 1)
-
-
+	bgm_volume_slider.value = GameManager.volume_bus_master
+	sfx_volume_slider.value = GameManager.volume_bus_sfx
+	music_volume_slider.value = GameManager.volume_bus_music
 
 func _on_button_pressed() -> void:
+	GameManager.volume_bus_master = AudioServer.get_bus_volume_db(AudioServer.get_bus_index("Master"))
+	GameManager.volume_bus_sfx = AudioServer.get_bus_volume_db(AudioServer.get_bus_index("SFX"))
+	GameManager.volume_bus_music = AudioServer.get_bus_volume_db(AudioServer.get_bus_index("Music"))
 	cancel_clicked.emit()
 
 func _on_bgm_volume_value_changed(value: float) -> void:
@@ -37,4 +38,3 @@ func _on_sfx_volume_value_changed(value: float) -> void:
 
 func _on_music_volume_value_changed(value: float) -> void:
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Music"), value)
-	
