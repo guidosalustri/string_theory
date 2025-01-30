@@ -9,8 +9,6 @@ var writing_speed := 28.0
 
 @onready var gpu_particles_2d: GPUParticles2D = $CursorMarker2D/TextureRect/GPUParticles2D
 
-#@export var game: PackedScene
-#@export var options: PackedScene
 
 signal options_clicked
 
@@ -71,23 +69,6 @@ func _move_cursor(at: Vector2) -> void:
 
 
 func _on_action_texture_button_pressed( button_name: String) -> void:
-	
-	#assert(_animation_player.get_animation_list().has(animation_name), "Animation '%s' does not exist"%[animation_name])
-	#_animation_player.play(animation_name)
-	
-#	var disable_tween := create_tween()
-#	disable_tween.tween_property(_buttons_v_box_container,"modulate:a", 0.0, 1.0)\
-#	.set_trans(Tween.TRANS_QUART)\
-#	.set_ease(Tween.EASE_OUT)
-#
-	#gpu_particles_2d.emitting = true
-	#disable_tween.parallel().tween_property(_cursor_marker,"position:x", 2500, 3.0)\
-	#.set_trans(Tween.TRANS_QUAD)\
-	#.set_ease(Tween.EASE_IN_OUT)
-#
-	#await disable_tween.finished
-	#_set_buttons_disabled(true)
-
 	match button_name:
 		"play":
 			_set_buttons_disabled(true)

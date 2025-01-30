@@ -1,6 +1,6 @@
 extends Node2D
 
-# there 2 lines one always goes from the ship to the star,
+# there are 2 lines one always goes from the ship to the star,
 # the other link the stars the ship had traversed
 @onready var link_line_ship: Line2D = $LinkLineShip
 @onready var link_line_stars: Line2D = $LinkLineStars
@@ -25,11 +25,8 @@ extends Node2D
 @onready var hud: Control = $CanvasLayer/HUD
 @onready var constellation: Node2D = $Constellation
 
-#@onready var black_hole: BlackHole = $Constellation/Star4/blackHole
-
 
 @export var stars_trail: Array[Star]
-#@export var dialogue: PackedScene
 
 var index := 0
 
@@ -52,7 +49,6 @@ func _ready() -> void:
 	)
 	stars_trail[-1].area_entered.connect(func (_area: Area2D):
 		if index == stars_trail.size()-1:
-			#get_tree().change_scene_to_file("res://ui/main_menu.tscn")
 			if stars_trail[-1].current_state == stars_trail[-1].States.STAR:
 				phantom_camera_constellation.priority = 3
 				ship.monitorable = false

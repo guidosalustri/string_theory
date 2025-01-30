@@ -8,13 +8,7 @@ func _ready() -> void:
 	_camera = get_viewport().get_camera_2d()
 	set_process(_camera != null)
 
-
 func _process(_delta: float) -> void:
 	if _camera == null:
 		return
 	material.set_shader_parameter("view_offset", _camera.global_position)
-	
-	#if Input.is_action_pressed("interact"):
-	#	material.set_shader_parameter("base_scale", 2.0)
-	#else:
-	#	material.set_shader_parameter("base_scale", 0.75)

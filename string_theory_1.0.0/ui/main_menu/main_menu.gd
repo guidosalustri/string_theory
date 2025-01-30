@@ -1,10 +1,8 @@
 extends Node2D
 
-
 @onready var options_screen: Control = $options
 
 @onready var main_menu_ui: Control = $MainMenuUI
-
 
 func _ready() -> void:
 	options_screen.hide()

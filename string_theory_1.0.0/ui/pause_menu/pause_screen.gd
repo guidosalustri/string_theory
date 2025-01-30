@@ -72,7 +72,7 @@ func toggle(is_toggled: bool) -> void:
 		# elapsed time
 		speed = _tween.get_total_elapsed_time()
 		_tween.kill()
-	# create a tween
+
 	_tween = create_tween()
 	# make the tween feel nice
 	_tween.set_ease(Tween.EASE_OUT)

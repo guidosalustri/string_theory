@@ -9,7 +9,7 @@ extends Control
 @onready var sfx_volume_slider: HSlider = $UIPanelContainer/Audio/VBoxContainer2/HBoxContainer2/SFXVolumeSlider
 @onready var music_volume_slider: HSlider = $UIPanelContainer/Audio/VBoxContainer2/HBoxContainer7/VoiceVolumeSlider
 
-#@export var blur_on := false
+
 signal cancel_clicked
 
 func _ready() -> void:
