@@ -1,13 +1,12 @@
 extends Area2D
 
 signal black_hole_entered
-#var tween:  Tween
+
 var is_in_spinner := false
 var linear_speed_aprox := 0
 
 func _ready() -> void:
 	modulate.a = 0
-	#scale = Vector2(0,0)
 	set_deferred("monitoring", false)
 	set_deferred("monitorable", false)
 	area_entered.connect(_on_area_entered)
@@ -24,24 +23,13 @@ func activate(time_to_activate: float) -> void:
 	tween2.tween_property(self, "modulate:a",0.8,time_to_activate/2)
 
 func blackhole_on() -> void:
-	#if tween != null and tween.is_running():
-	#	tween.stop()
-	#tween = create_tween()
-	#tween.set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
-	#tween.tween_property(self, "modulate:a",1,0.2)
-	#tween.parallel().tween_property(self, "scale",Vector2(1,1),time_to_activate)
-	#await tween.finished
+
 	set_deferred("monitoring", true)
 	set_deferred("monitorable", true)
 	modulate.a = 1
 
 func blackhole_off() -> void:
-	#if tween != null and tween.is_running():
-	#	tween.stop()
-	#tween = create_tween()
-	#tween.set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
-	#tween.tween_property(self, "modulate:a",0,0.2)
-	#await tween.finished
+
 	modulate.a = 0
 	set_deferred("monitoring", false)
 	set_deferred("monitorable", false)

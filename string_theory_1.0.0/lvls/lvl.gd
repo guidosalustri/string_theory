@@ -88,8 +88,7 @@ func _process(_delta: float) -> void:
 func _on_star_changed(star: Star)-> void:
 	if star != stars_trail[index]:
 		ship.explote()
-
-	if index == stars_trail.size()-1:
+	elif index == stars_trail.size()-1:
 		phantom_camera_constellation.priority = 3
 		timer.start()
 

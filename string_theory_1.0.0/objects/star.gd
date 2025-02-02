@@ -28,7 +28,6 @@ func set_current_state(new_state: States) -> void:
 
 
 func _ready() -> void:
-	#area_exited.connect(_on_area_exited)
 	area_entered.connect(_on_area_entered)
 	timer.timeout.connect(_on_timer_timeout)
 	animation_player.animation_finished.connect(func(anim_name)-> void:
@@ -56,17 +55,14 @@ func spawn():
 	var tween:  Tween = create_tween()
 	tween.set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
 	tween.tween_property(self, "scale",Vector2(1,1),0.25)
-	#pass_by_ship = false
+
 	await tween.finished
-	#play_floating_animation()
+
 	animation_player_2.play("spawn")
 	if not has_spawn_already:
 		for child in get_children():
 			if child.is_in_group("obstacles"):
-				#var obs_tween:  Tween = create_tween()
-				#obs_tween.set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
-				#obs_tween.tween_property(child, "modulate:a",1,1)
-			#if child is BlackHole:
+
 				child.activate(1)
 			if child.is_in_group("spinner_bh"):
 				for lower_lvl_child in child.get_children():
@@ -76,12 +72,10 @@ func spawn():
 	has_spawn_already= true
 	if black_hole_on_star:
 		timer.start()
-#func _on_area_exited(area: Area2D) -> void:
-#	#pass_by_ship = true
-#	pass
+
 
 func _on_area_entered(area: Area2D) -> void:
-	#if not pass_by_ship:
+
 	star_entered.emit()
 	if animation_player.is_playing():
 		if animation_player.get_current_animation() == "black_hole_transition" \

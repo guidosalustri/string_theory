@@ -12,7 +12,7 @@ func _ready() -> void:
 	if blackhole1== null or blackhole2 == null:
 		set_process(false)
 		return
-	#animation_player.play("spin")
+	
 	blackhole1.global_position = global_position + Vector2(radius,0)
 	blackhole2.global_position = global_position - Vector2(radius,0)
 	blackhole1.is_in_spinner = true
