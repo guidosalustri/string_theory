@@ -53,6 +53,7 @@ func _ready() -> void:
 				phantom_camera_constellation.priority = 3
 				ship.monitorable = false
 				ship.monitoring = false
+				ship.is_last_star = true
 				timer.start()
 				hud.overcharged.disconnect(_overcharged_ship)
 		)

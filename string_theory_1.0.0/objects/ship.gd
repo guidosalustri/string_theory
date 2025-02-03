@@ -49,7 +49,7 @@ var black_hole : Area2D
 var max_speed_hud := 700
 var lvls_with_not_foward : bool= (GameManager.lvl == 7 or \
 	GameManager.lvl == 8 or GameManager.lvl == 9 or GameManager.lvl == 11) 
-
+var is_last_star := false
 
 func _ready() -> void:
 	area_entered.connect(_on_area_entered)
@@ -96,7 +96,7 @@ func _process(delta: float) -> void:
 				set_current_state(States.EXIT_LVL)
 			elif black_hole:
 				set_current_state(States.DRAGGED)
-			elif Input.is_action_pressed("spin"):
+			elif Input.is_action_pressed("spin") and not is_last_star:
 				set_current_state(States.FLY)
 		States.DRAGGED:
 			_follow(delta, black_hole.global_position)
