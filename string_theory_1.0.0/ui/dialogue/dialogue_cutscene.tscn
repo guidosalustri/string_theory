@@ -11,7 +11,7 @@
 
 [sub_resource type="Resource" id="Resource_ot6hf"]
 script = ExtResource("2_8wc3g")
-text = "Howdy Captain, my name is Marvin the Martian, I will be joining your
+text = "Howdy Captain, my name is Martin the Martian, I will be joining your
 crew as head of mechanical starting from today. I am looking
 forward to working together."
 
@@ -97,8 +97,8 @@ moment."
 
 [sub_resource type="Resource" id="Resource_qfk18"]
 script = ExtResource("2_8wc3g")
-text = "Hi Captain, my name is Martin the Martian, I am the second in charge
-on the mechanical team. We can not get a hold of Marvin, he locked
+text = "Hi Captain, my name is Maverick the Martian, I am the second in charge
+on the mechanical team. We can not get a hold of Martin, he locked
 himself in his cabin room."
 
 [sub_resource type="Resource" id="Resource_p1bjy"]
@@ -113,13 +113,12 @@ possible out there. Basically, the command panel would be out."
 
 [sub_resource type="Resource" id="Resource_6sldp"]
 script = ExtResource("2_8wc3g")
-text = "Hi Captain, Martin here. The navigation system is up again and running.
-Yet something is off with the wiring of the controls to the
-thrusters."
+text = "Hi Captain, Maverick here. The navigation system is up again and
+running. Yet something is off with the wiring of the controls..."
 
 [sub_resource type="Resource" id="Resource_wmtie"]
 script = ExtResource("2_8wc3g")
-text = "Unfortunately Marvin is holding the gravitational engine master's
+text = "Unfortunately Martin is holding the gravitational engine master's
 blueprints so we are unsure of how to rewire the controls back to
 normal."
 

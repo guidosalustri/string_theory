@@ -63,12 +63,13 @@ func _process(_delta: float) -> void:
 	panel_fuel.material.set_shader_parameter("value", timer.time_left/ time_max_fuel)
 
 func _on_star_entered_star_ui() -> void:
-	if index == stars_trail.size()-1:
-		texture_rect_tween(grid_container.get_child(index))
-		return
+	if stars_trail[index].is_state_star():
+		if index == stars_trail.size()-1:
+			texture_rect_tween(grid_container.get_child(index))
+			return
 
-	texture_rect_tween(grid_container.get_child(index))
-	index += 1
+		texture_rect_tween(grid_container.get_child(index))
+		index += 1
 
 func texture_rect_tween(tex_rect: TextureRect) -> void:
 	var tween := create_tween().set_trans(Tween.TRANS_ELASTIC).set_ease(Tween.EASE_OUT)

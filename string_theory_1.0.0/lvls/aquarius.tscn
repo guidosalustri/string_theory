@@ -234,6 +234,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="HUD" parent="CanvasLayer" instance=ExtResource("13_3wwrn")]
+time_max_fuel = 15.0
 
 [node name="CanvasLayer2" type="CanvasLayer" parent="."]
 

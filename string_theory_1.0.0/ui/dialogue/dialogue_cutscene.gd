@@ -1,14 +1,6 @@
 extends Control
 
 
-
-#var sentences: Array[String] = [
-#
-#	"Our job is easy Captain, we need to [color=3ba2f9]link stars together[/color] forming\nconstellations.",
-#	"3 mian things to remember: \n[color=3ba2f9]Never stop[/color] - always aim for the [color=3ba2f9]next target star[/color] - \nand do not let the [color=3ba2f9]fuel drop to 0.[/color]",
-#	"[shake rate=5 level=10]Keep in mind earthlings are counting on us...[/shake]",
-#]
-
 # key are lvl; value is a list of sentences. If list is empty no dialogue
 # to display and this scene should be hiden in the cutscene
 @export var dialogue_per_scene_dic = {}
@@ -28,20 +20,17 @@ signal dialogue_done
 func _ready() -> void:
 	sentences = dialogue_per_scene_dic[GameManager.lvl]
 	if len(sentences) == 0:
-		#dialogue_done.emit()
-		#print("hola")
 		hide()
 	else:
 		_texture_button.pressed.connect(_advance_dialog)
 		_advance_dialog()
 	
 	if GameManager.lvl == 9 or GameManager.lvl == 10:
-		portrait.set_current_state(portrait.States.MARTIN)
+		portrait.set_current_state(portrait.States.MAVERICK)
 
 func _process(delta: float) -> void:
 	if len(sentences) == 0:
 		dialogue_done.emit()
-		#print(visible)
 		set_process(false)
 
 func _unhandled_input(event: InputEvent) -> void:

@@ -47,7 +47,8 @@ var target_offset := Vector2(50,0)
 var target : Area2D
 var black_hole : Area2D
 var max_speed_hud := 700
-
+var lvls_with_not_foward : bool= (GameManager.lvl == 7 or \
+	GameManager.lvl == 8 or GameManager.lvl == 9 or GameManager.lvl == 11) 
 
 
 func _ready() -> void:
@@ -105,7 +106,7 @@ func _process(delta: float) -> void:
 
 	if speed<=0:
 		_particles.emitting = false
-		if not has_energy:
+		if not has_energy or lvls_with_not_foward:
 			cut_link.emit()
 			animation_player.play("die")
 			#should run GameManager.ship_dead() but one time

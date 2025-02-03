@@ -116,3 +116,7 @@ func play_floating_animation() -> void:
 	sprite_2d.position = -1.0 * position_offset
 	tween.tween_property(sprite_2d, "position", position_offset, duration)
 	tween.tween_property(sprite_2d, "position",  -1.0 * position_offset, duration)
+
+
+func is_state_star() -> bool:
+	return current_state == States.STAR
