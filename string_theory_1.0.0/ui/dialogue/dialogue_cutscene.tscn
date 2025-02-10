@@ -22,7 +22,7 @@ constellations."
 
 [sub_resource type="Resource" id="Resource_lv1p5"]
 script = ExtResource("2_8wc3g")
-text = "3 mian things to remember:
+text = "3 main things to remember:
 [color=3ba2f9]Never stop[/color] - always aim for the [color=3ba2f9]next target star[/color] - 
 and do not let the [color=3ba2f9]energy bar drop to 0 or overcharge.[/color]"
 
