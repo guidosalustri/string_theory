@@ -27,8 +27,13 @@ extends Node2D
 
 
 @export var stars_trail: Array[Star]
+@export var max_string_lenght := 900
 
 var index := 0
+#options to cut the link
+var lenght_link_line_ship := 0.0
+#var width_curve : Curve = null
+var thickness := 1.0
 
 func _ready() -> void:
 	hud.set_player(ship)
@@ -61,6 +66,9 @@ func _ready() -> void:
 	
 	stars_trail[0].spawn()
 	
+	link_line_ship.add_point(Vector2(0,0),2)
+	#width_curve = link_line_ship.width_curve
+	
 	phantom_camera_ship.set_auto_zoom(true)
 	phantom_camera_ship.set_auto_zoom_min(0.4)
 	phantom_camera_ship.set_auto_zoom_max(1)
@@ -81,7 +89,38 @@ func _ready() -> void:
 
 func _process(_delta: float) -> void:
 	if link_line_ship.points[0] != Vector2(0.0,0.0):
-		link_line_ship.points[1] = ship.global_position
+		#link_line_ship.points[1] = ship.global_position
+		
+		link_line_ship.points[2] = ship.global_position
+		var dir_line := link_line_ship.points[0].direction_to(link_line_ship.points[2])
+		lenght_link_line_ship = link_line_ship.points[0].distance_to(link_line_ship.points[2])
+		link_line_ship.points[1] = link_line_ship.points[0] + dir_line*(lenght_link_line_ship/ 2)
+	
+	# 2 options to cut off the string, 
+	#(should the string be the source of light for the ship?
+	# the further u fly fromthe star the less light u get?
+	
+	#option 1 alpha of the line (set the resours in the asset file,
+	#gradient_link_line):
+	#var visibility_line_mid_point := link_line_ship.gradient.colors[1].a
+	#if lenght_link_line_ship > max_string_lenght:
+	#	visibility_line_mid_point -= (_delta*0.5)
+	#elif link_line_ship.gradient.colors[1].a<1:
+	#	visibility_line_mid_point += (_delta*0.5)
+	#link_line_ship.gradient.colors[1].a = clampf(visibility_line_mid_point, 0.1,1)
+	#print(link_line_ship.gradient.colors[1].a)
+	
+	#option 2 width of the line (set the resours in the asset file,
+	#width_curve_link)
+	#if lenght_link_line_ship > max_string_lenght:
+	#	thickness -=(_delta*0.5)
+	#elif thickness < 1:
+	#	thickness +=(_delta*0.5)
+	##print(thickness)
+	#thickness = clampf(thickness, 0.3,1)
+	#print(thickness)
+	#link_line_ship.width_curve.set_point_value(1,thickness)
+	
 	# u have fail in GameManager.deaths_counts universes
 	#print(GameManager.deaths_counts)
 
