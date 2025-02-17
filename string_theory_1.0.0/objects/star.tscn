@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://ul1ys48qmbs4"]
+[gd_scene load_steps=22 format=3 uid="uid://ul1ys48qmbs4"]
 
 [ext_resource type="Script" path="res://objects/star.gd" id="1_lhkgp"]
 [ext_resource type="Texture2D" uid="uid://baux8wnujuj2l" path="res://assets/spark.png" id="2_06rb5"]
@@ -329,7 +329,17 @@ _data = {
 "spawn": SubResource("Animation_81ie1")
 }
 
+[sub_resource type="Gradient" id="Gradient_a7gb7"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_fbl85"]
+gradient = SubResource("Gradient_a7gb7")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.730769, 0.123932)
+
 [node name="Star" type="Area2D"]
+z_index = 4
 collision_layer = 2
 script = ExtResource("1_lhkgp")
 
@@ -376,3 +386,10 @@ visible = false
 libraries = {
 "": SubResource("AnimationLibrary_k7l5y")
 }
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+color = Color(2, 2, 0.098, 1)
+range_layer_min = -2
+shadow_enabled = true
+texture = SubResource("GradientTexture2D_fbl85")
+texture_scale = 10.0

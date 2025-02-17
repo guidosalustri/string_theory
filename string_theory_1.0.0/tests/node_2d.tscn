@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://d36orjo4fg5hp"]
+
+[ext_resource type="PackedScene" uid="uid://cfpp30kafr6wh" path="res://assets/link_gpu_particles_2d.tscn" id="1_kc0uu"]
+[ext_resource type="PackedScene" uid="uid://bxfevggvxo634" path="res://assets/background/space_background.tscn" id="2_y4kcj"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="LinkGPUParticles2D" parent="." instance=ExtResource("1_kc0uu")]
+position = Vector2(497, 368)
+
+[node name="SpaceBackground" parent="." instance=ExtResource("2_y4kcj")]
+
+[node name="CanvasModulate" type="CanvasModulate" parent="SpaceBackground"]
+color = Color(0, 0, 0, 1)

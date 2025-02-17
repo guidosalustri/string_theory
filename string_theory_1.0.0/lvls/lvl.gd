@@ -86,6 +86,7 @@ func _ready() -> void:
 		phantom_camera_constellation.append_follow_targets(star)
 
 	phantom_camera_constellation.priority = 0
+	
 
 func _process(_delta: float) -> void:
 	if link_line_ship.points[0] != Vector2(0.0,0.0):
@@ -163,14 +164,15 @@ func _on_star_changed(star: Star)-> void:
 		particle_link.emitting = true
 		particle_link.position = ((new_vector - particles_vector)*0.5) + particles_vector
 		particle_link.rotation = get_angle_to(new_vector - particles_vector)
-
+		particle_link.light_pos(particle_link.position)
+		particle_link.light_rotation(particle_link.rotation+ (PI/2))
 		# the resource need to be unique for each segment of the line, if not there will
 		# only be one resource that will be constantly modify and the particles will
 		# emit in wierd area (longer or shorter than the line itself)
 		particle_link.process_material = particle_link.process_material.duplicate()
 		# we set the emitting box to the line size
 		particle_link.process_material.emission_box_extents.x = (new_vector - particles_vector).length() * 0.5
-
+		particle_link.light_lenght((new_vector - particles_vector).length())
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("spin"):
