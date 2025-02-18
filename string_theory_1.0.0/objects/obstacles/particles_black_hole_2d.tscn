@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://bo2nk72scwry6"]
+[gd_scene load_steps=18 format=3 uid="uid://bo2nk72scwry6"]
 
 [ext_resource type="Texture2D" uid="uid://bj4l3min2h3o" path="res://assets/black_hole_no_dots.png" id="1_0wdso"]
 [ext_resource type="Script" path="res://objects/obstacles/particles_black_hole_2d.gd" id="2_hn3jl"]
@@ -90,7 +90,17 @@ _data = {
 "spin": SubResource("2")
 }
 
+[sub_resource type="Gradient" id="Gradient_8erul"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_qd6lq"]
+gradient = SubResource("Gradient_8erul")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.623932, 0.423077)
+
 [node name="ParticlesBlackHole2D" type="Sprite2D"]
+modulate = Color(0.6, 0.3, 1.7, 1)
 texture = ExtResource("1_0wdso")
 script = ExtResource("2_hn3jl")
 
@@ -104,3 +114,13 @@ libraries = {
 "": SubResource("AnimationLibrary_3y5en")
 }
 autoplay = "spin"
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+scale = Vector2(0.666667, 0.666667)
+color = Color(0.8, 0.3, 1.4, 1)
+energy = 0.5
+blend_mode = 1
+range_layer_min = -2
+shadow_enabled = true
+texture = SubResource("GradientTexture2D_qd6lq")
+texture_scale = 3.3

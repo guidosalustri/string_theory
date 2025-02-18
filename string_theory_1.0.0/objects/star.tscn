@@ -42,6 +42,15 @@ shader_parameter/line_color = Color(0, 0, 0, 1)
 shader_parameter/line_thickness = 3.0
 shader_parameter/viewport_scale = Vector2(1, 1)
 
+[sub_resource type="Gradient" id="Gradient_x7h7t"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_fbl85"]
+gradient = SubResource("Gradient_x7h7t")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.730769, 0.123932)
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_ybpwu"]
 radius = 72.0
 
@@ -169,7 +178,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+"values": [Color(0.6, 0.3, 1.7, 0), Color(0.6, 0.3, 1.7, 1)]
 }
 tracks/3/type = "method"
 tracks/3/imported = false
@@ -247,7 +256,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0, 0.3),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+"values": [Color(0.6, 0.3, 1.7, 1), Color(0.6, 0.3, 1.7, 0)]
 }
 tracks/3/type = "method"
 tracks/3/imported = false
@@ -329,15 +338,6 @@ _data = {
 "spawn": SubResource("Animation_81ie1")
 }
 
-[sub_resource type="Gradient" id="Gradient_a7gb7"]
-colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_fbl85"]
-gradient = SubResource("Gradient_a7gb7")
-fill = 1
-fill_from = Vector2(0.5, 0.5)
-fill_to = Vector2(0.730769, 0.123932)
-
 [node name="Star" type="Area2D"]
 z_index = 4
 collision_layer = 2
@@ -365,6 +365,14 @@ modulate = Color(1, 1, 0.0980392, 1)
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("2_06rb5")
 
+[node name="StarLight2D" type="PointLight2D" parent="CanvasGroup/Sprite2D"]
+scale = Vector2(0.666667, 0.666667)
+color = Color(2, 2, 0.098, 1)
+range_layer_min = -2
+shadow_enabled = true
+texture = SubResource("GradientTexture2D_fbl85")
+texture_scale = 10.0
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 rotation = 1.5708
 shape = SubResource("CircleShape2D_ybpwu")
@@ -381,15 +389,9 @@ one_shot = true
 
 [node name="ParticlesBlackHole2D" parent="." instance=ExtResource("7_rfbuw")]
 visible = false
+modulate = Color(1, 1, 1, 1)
 
 [node name="AnimationPlayer2" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_k7l5y")
 }
-
-[node name="PointLight2D" type="PointLight2D" parent="."]
-color = Color(2, 2, 0.098, 1)
-range_layer_min = -2
-shadow_enabled = true
-texture = SubResource("GradientTexture2D_fbl85")
-texture_scale = 10.0

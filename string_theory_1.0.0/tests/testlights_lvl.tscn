@@ -83,6 +83,7 @@ script = ExtResource("3_7vgt7")
 [node name="SpaceBackground" parent="." instance=ExtResource("4_jmc6q")]
 
 [node name="CanvasModulate" type="CanvasModulate" parent="SpaceBackground"]
+light_mask = 5
 color = Color(0.104934, 0.103283, 0.103694, 1)
 
 [node name="LinkLineShip" type="Line2D" parent="."]
@@ -113,12 +114,12 @@ sharp_limit = 8.0
 antialiased = true
 
 [node name="Ship" parent="." instance=ExtResource("5_rweyk")]
-z_index = 4
 position = Vector2(888, 637)
 
 [node name="PointLight2D" type="PointLight2D" parent="Ship"]
 energy = 0.7
 range_layer_min = -2
+range_item_cull_mask = 3
 shadow_enabled = true
 texture = SubResource("GradientTexture2D_wbe6w")
 texture_scale = 19.0

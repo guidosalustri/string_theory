@@ -7,6 +7,7 @@
 radius = 75.0
 
 [node name="blackHole" type="Area2D" groups=["blackhole", "obstacles"]]
+light_mask = 2
 collision_layer = 8
 script = ExtResource("1_a635d")
 
