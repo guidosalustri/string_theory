@@ -86,13 +86,13 @@ _data = {
 }
 
 [sub_resource type="Gradient" id="Gradient_tfi8l"]
-colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+colors = PackedColorArray(1.8, 1, 1, 1, 0, 0, 0, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_bvlca"]
 gradient = SubResource("Gradient_tfi8l")
 fill = 1
 fill_from = Vector2(0.5, 0.5)
-fill_to = Vector2(0.901709, 0.260684)
+fill_to = Vector2(0.91453, 0.24359)
 
 [node name="PivotAsteroid" type="Node2D" groups=["obstacles"]]
 script = ExtResource("1_510w3")
@@ -104,7 +104,7 @@ scale = Vector2(0.6, 0.6)
 collision_layer = 4
 
 [node name="Sprite2D" type="Sprite2D" parent="Asteroid"]
-modulate = Color(1.6, 0.5, 0.5, 1)
+modulate = Color(1.5, 0.079, 0.252, 1)
 light_mask = 4
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("1_28jsf")
@@ -121,8 +121,9 @@ libraries = {
 [node name="PointLight2D" type="PointLight2D" parent="Asteroid"]
 position = Vector2(-2, 2)
 scale = Vector2(2, 2)
-color = Color(1.871, 0.079, 0.252, 1)
+color = Color(2.9, 0.079, 0.252, 1)
 energy = 0.7
-range_item_cull_mask = 4
+range_layer_min = -2
+range_item_cull_mask = 5
 texture = SubResource("GradientTexture2D_bvlca")
-texture_scale = 1.7
+texture_scale = 1.6

@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://dd8x5lnqej66y"]
+[gd_scene load_steps=23 format=3 uid="uid://dd8x5lnqej66y"]
 
 [ext_resource type="Script" path="res://cutscene/cut_scene.gd" id="1_j06uc"]
 [ext_resource type="Shader" path="res://cutscene/blur.gdshader" id="2_2e1hg"]
@@ -50,6 +50,15 @@ scale_min = 0.5
 scale_max = 2.0
 scale_curve = SubResource("4")
 color_ramp = ExtResource("7_xnycu")
+
+[sub_resource type="Gradient" id="Gradient_6ap8p"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_gj7qj"]
+gradient = SubResource("Gradient_6ap8p")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.773504, 0.0940171)
 
 [sub_resource type="Animation" id="Animation_b0qdg"]
 resource_name = "Light_speed"
@@ -192,6 +201,9 @@ _data = {
 [node name="Node" type="Node"]
 script = ExtResource("1_j06uc")
 
+[node name="CanvasModulate2" type="CanvasModulate" parent="."]
+color = Color(0.0738042, 0.0724702, 0.0728028, 1)
+
 [node name="SubViewport" type="SubViewport" parent="."]
 size = Vector2i(1918, 1078)
 
@@ -227,15 +239,25 @@ amount = 64
 process_material = SubResource("ParticleProcessMaterial_2dj3a")
 texture = ExtResource("8_vccei")
 
+[node name="PointLight2D" type="PointLight2D" parent="Sprite2D"]
+energy = 0.7
+range_layer_min = -2
+range_item_cull_mask = 3
+shadow_enabled = true
+texture = SubResource("GradientTexture2D_gj7qj")
+texture_scale = 15.0
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_kr4ww")
 }
 autoplay = "RESET"
 
-[node name="Dialogue_cutscene" parent="." instance=ExtResource("9_06lu3")]
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="NinePatchRect2" parent="Dialogue_cutscene" index="2"]
+[node name="Dialogue_cutscene" parent="CanvasLayer" instance=ExtResource("9_06lu3")]
+
+[node name="NinePatchRect2" parent="CanvasLayer/Dialogue_cutscene" index="2"]
 self_modulate = Color(1, 1, 1, 0.764706)
 
 [node name="Timer" type="Timer" parent="."]
@@ -245,4 +267,4 @@ autostart = true
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 
-[editable path="Dialogue_cutscene"]
+[editable path="CanvasLayer/Dialogue_cutscene"]

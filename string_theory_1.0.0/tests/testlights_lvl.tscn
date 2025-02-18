@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://kc7sbsi06kf0"]
+[gd_scene load_steps=24 format=3 uid="uid://kc7sbsi06kf0"]
 
 [ext_resource type="Script" path="res://lvls/lvl.gd" id="1_o8ccb"]
 [ext_resource type="PackedScene" uid="uid://dqjnkl56rsiki" path="res://objects/exit_area.tscn" id="2_4sa5c"]
@@ -22,15 +22,6 @@ light_mode = 1
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_mua08"]
 light_mode = 1
-
-[sub_resource type="Gradient" id="Gradient_rp6kp"]
-colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_wbe6w"]
-gradient = SubResource("Gradient_rp6kp")
-fill = 1
-fill_from = Vector2(0.5, 0.5)
-fill_to = Vector2(0.773504, 0.0940171)
 
 [sub_resource type="Resource" id="Resource_bmus8"]
 script = ExtResource("11_8d1jh")
@@ -115,14 +106,6 @@ antialiased = true
 
 [node name="Ship" parent="." instance=ExtResource("5_rweyk")]
 position = Vector2(888, 637)
-
-[node name="PointLight2D" type="PointLight2D" parent="Ship"]
-energy = 0.7
-range_layer_min = -2
-range_item_cull_mask = 3
-shadow_enabled = true
-texture = SubResource("GradientTexture2D_wbe6w")
-texture_scale = 19.0
 
 [node name="Constellation" type="Node2D" parent="."]
 

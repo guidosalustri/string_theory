@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://em4qfalchhhd"]
+[gd_scene load_steps=21 format=3 uid="uid://em4qfalchhhd"]
 
 [ext_resource type="Texture2D" uid="uid://bniyrxn3r2v8h" path="res://assets/ship.png" id="1_130qv"]
 [ext_resource type="Script" path="res://objects/ship.gd" id="1_u1532"]
@@ -261,6 +261,15 @@ scale_min = 0.4
 scale_max = 0.4
 scale_curve = SubResource("2")
 
+[sub_resource type="Gradient" id="Gradient_1h8vc"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_7fiap"]
+gradient = SubResource("Gradient_1h8vc")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.773504, 0.0940171)
+
 [node name="Ship" type="Area2D"]
 z_index = 5
 collision_mask = 31
@@ -308,3 +317,11 @@ explosiveness = 1.0
 wait_time = 0.5
 one_shot = true
 autostart = true
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+energy = 0.7
+range_layer_min = -2
+range_item_cull_mask = 3
+shadow_enabled = true
+texture = SubResource("GradientTexture2D_7fiap")
+texture_scale = 19.0

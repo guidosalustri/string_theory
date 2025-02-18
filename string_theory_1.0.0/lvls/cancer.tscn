@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://qaaowiyhu5hm"]
+[gd_scene load_steps=22 format=3 uid="uid://qaaowiyhu5hm"]
 
 [ext_resource type="Script" path="res://lvls/lvl.gd" id="1_441it"]
 [ext_resource type="PackedScene" uid="uid://dqjnkl56rsiki" path="res://objects/exit_area.tscn" id="2_cif2a"]
@@ -14,6 +14,12 @@
 [ext_resource type="PackedScene" uid="uid://ciegbyfrx5lf3" path="res://ui/pause_menu/pause_screen.tscn" id="13_rx2lf"]
 [ext_resource type="PackedScene" uid="uid://b1xjjudghnfhm" path="res://objects/obstacles/black_hole.tscn" id="13_v1fe0"]
 [ext_resource type="AudioStream" uid="uid://bupnj85mfcp5w" path="res://assets/into-the-night-uk-drill-music-20928.mp3" id="14_11bew"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_jh652"]
+light_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_6vuu8"]
+light_mode = 1
 
 [sub_resource type="Resource" id="Resource_bmus8"]
 script = ExtResource("8_6y8fe")
@@ -40,9 +46,17 @@ shader_parameter/tint = Color(0.622155, 0.145824, 0.885064, 1)
 shader_parameter/tint_amount = 0.0
 shader_parameter/saturation = 1.0
 
+[sub_resource type="Environment" id="Environment_sxajk"]
+background_mode = 3
+glow_enabled = true
+glow_blend_mode = 4
+
 [node name="lvl" type="Node2D" node_paths=PackedStringArray("stars_trail")]
 script = ExtResource("1_441it")
 stars_trail = [NodePath("Constellation/Star"), NodePath("Constellation/Star2"), NodePath("Constellation/Star3"), NodePath("Constellation/Star2"), NodePath("Constellation/Star4"), NodePath("Constellation/Star5")]
+
+[node name="CanvasModulate2" type="CanvasModulate" parent="."]
+color = Color(0.0738042, 0.0724702, 0.0728028, 1)
 
 [node name="ExitArea" parent="." instance=ExtResource("2_cif2a")]
 position = Vector2(3389, -523)
@@ -57,11 +71,17 @@ script = ExtResource("3_4jw0t")
 
 [node name="SpaceBackground" parent="." instance=ExtResource("4_02ksg")]
 
+[node name="CanvasModulate" type="CanvasModulate" parent="SpaceBackground"]
+light_mask = 5
+color = Color(0.104934, 0.103283, 0.103694, 1)
+
 [node name="LinkLineShip" type="Line2D" parent="."]
 modulate = Color(1.5, 1.5, 1.5, 1)
+z_index = 3
+material = SubResource("CanvasItemMaterial_jh652")
 points = PackedVector2Array(0, 0, 0, 0)
 width = 6.0
-default_color = Color(0.301961, 0.65098, 1, 1)
+default_color = Color(0.302, 0.651, 3, 1)
 texture_mode = 2
 joint_mode = 2
 begin_cap_mode = 2
@@ -71,8 +91,10 @@ antialiased = true
 
 [node name="LinkLineStars" type="Line2D" parent="."]
 modulate = Color(1.5, 1.5, 1.5, 1)
+z_index = 3
+material = SubResource("CanvasItemMaterial_6vuu8")
 width = 6.0
-default_color = Color(0.301961, 0.65098, 1, 1)
+default_color = Color(0.302, 0.651, 3, 1)
 texture_mode = 2
 joint_mode = 2
 begin_cap_mode = 2
@@ -177,3 +199,6 @@ visible = false
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("14_11bew")
 autoplay = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_sxajk")

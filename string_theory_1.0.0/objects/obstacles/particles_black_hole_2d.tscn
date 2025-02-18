@@ -97,10 +97,11 @@ colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
 gradient = SubResource("Gradient_8erul")
 fill = 1
 fill_from = Vector2(0.5, 0.5)
-fill_to = Vector2(0.623932, 0.423077)
+fill_to = Vector2(0.675214, 0.410256)
 
 [node name="ParticlesBlackHole2D" type="Sprite2D"]
 modulate = Color(0.6, 0.3, 1.7, 1)
+light_mask = 2
 texture = ExtResource("1_0wdso")
 script = ExtResource("2_hn3jl")
 
@@ -118,7 +119,7 @@ autoplay = "spin"
 [node name="PointLight2D" type="PointLight2D" parent="."]
 scale = Vector2(0.666667, 0.666667)
 color = Color(0.8, 0.3, 1.4, 1)
-energy = 0.5
+energy = 0.7
 blend_mode = 1
 range_layer_min = -2
 shadow_enabled = true
