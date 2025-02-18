@@ -5,6 +5,7 @@ class_name Ship extends Area2D
 @onready var ray_cast_2d: RayCast2D = $RayCast2D
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var timer: Timer = $Timer
+@onready var point_light_2d: PointLight2D = $PointLight2D
 
 @export var max_speed := 700.0
 @export var acceleration := 250.0
@@ -209,3 +210,11 @@ func explote() -> void:
 	set_process(false)
 	cut_link.emit()
 	GameManager.ship_dead()
+
+func dim_light_on(turn_light_on: bool) -> void:
+	if turn_light_on:
+		point_light_2d.texture_scale += 0.03
+	else:
+		point_light_2d.texture_scale -= 0.05
+	var value = clampf(point_light_2d.texture_scale,0,19)
+	point_light_2d.texture_scale = value

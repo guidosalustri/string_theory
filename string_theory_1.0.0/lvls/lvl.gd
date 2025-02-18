@@ -59,6 +59,7 @@ func _ready() -> void:
 				ship.monitorable = false
 				ship.monitoring = false
 				ship.is_last_star = true
+				ship.get_node("PointLight2D").hide()
 				timer.start()
 				hud.overcharged.disconnect(_overcharged_ship)
 		)
@@ -124,7 +125,7 @@ func _process(_delta: float) -> void:
 	
 	# u have fail in GameManager.deaths_counts universes
 	#print(GameManager.deaths_counts)
-
+	adjust_ship_light()
 
 func _on_star_changed(star: Star)-> void:
 	if star != stars_trail[index]:
@@ -208,3 +209,18 @@ func dim_out_obstacles() -> void:
 
 func _overcharged_ship() -> void:
 		ship.explote()
+
+func adjust_ship_light()-> void:
+	if index >0 and index<stars_trail.size():
+		var d_ship_nextstar = ship.position.distance_to(stars_trail[index].position)
+		var d_ship_star = ship.position.distance_to(stars_trail[index-1].position)
+		var half_d_star_star = stars_trail[index].position.distance_to(stars_trail[index-1].position)/2
+		
+		if d_ship_star >= half_d_star_star and d_ship_nextstar>=half_d_star_star:
+			ship.dim_light_on(false)
+			#link_line_ship.modulate.a -=0.01
+			#link_line_ship.modulate.b -=0.1
+		else:
+			ship.dim_light_on(true)
+			#link_line_ship.modulate.a +=0.01
+			#link_line_ship.modulate.b +=0.1
