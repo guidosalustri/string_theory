@@ -146,6 +146,7 @@ motion_scale = Vector2(0.2, 0.2)
 material = SubResource("ShaderMaterial_ja1rw")
 
 [node name="Sprite2D2" type="Sprite2D" parent="ParallaxBackground/PlatensBig/CanvasGroup"]
+modulate = Color(1.5, 1.5, 1.5, 1)
 position = Vector2(322, 670)
 texture = ExtResource("4_6aqw1")
 
