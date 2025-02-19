@@ -214,7 +214,15 @@ func explote() -> void:
 func dim_light_on(turn_light_on: bool) -> void:
 	if turn_light_on:
 		point_light_2d.texture_scale += 0.03
+		point_light_2d.energy += 0.001
 	else:
 		point_light_2d.texture_scale -= 0.05
-	var value = clampf(point_light_2d.texture_scale,0,19)
+		point_light_2d.energy -= 0.004
+	var energy := clampf(point_light_2d.energy,0.3,0.7)
+	var value := clampf(point_light_2d.texture_scale,1.8,19)
 	point_light_2d.texture_scale = value
+	point_light_2d.energy = energy
+	if value <= 2:
+		cut_link.emit()
+		set_process(false)
+		animation_player.play("die")

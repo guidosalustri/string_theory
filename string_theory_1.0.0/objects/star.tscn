@@ -455,6 +455,7 @@ one_shot = true
 [node name="ParticlesBlackHole2D" parent="." instance=ExtResource("7_rfbuw")]
 visible = false
 modulate = Color(1, 1, 1, 1)
+z_index = -2
 
 [node name="AnimationPlayer2" type="AnimationPlayer" parent="."]
 libraries = {
