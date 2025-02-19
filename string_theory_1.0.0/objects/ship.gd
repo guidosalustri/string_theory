@@ -108,6 +108,7 @@ func _process(delta: float) -> void:
 	if speed<=0:
 		_particles.emitting = false
 		if not has_energy or lvls_with_not_foward:
+			print(lvls_with_not_foward)
 			cut_link.emit()
 			animation_player.play("die")
 			#should run GameManager.ship_dead() but one time
