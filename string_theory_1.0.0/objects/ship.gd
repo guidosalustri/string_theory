@@ -37,7 +37,7 @@ func set_has_energy(energy_update: bool) -> void:
 	has_energy = energy_update
 
 signal change_star(star: Star)
-signal cut_link
+signal cut_link(was_black_hole: bool)
 
 var speed := 450.0
 # to check if the ship is on a star and in process should spin
@@ -93,7 +93,7 @@ func _process(delta: float) -> void:
 			_spin_around(delta, pos1)
 			set_has_energy(true)
 			if target :
-				cut_link.emit()
+				cut_link.emit(false)
 				set_current_state(States.EXIT_LVL)
 			elif black_hole:
 				set_current_state(States.DRAGGED)
@@ -108,8 +108,7 @@ func _process(delta: float) -> void:
 	if speed<=0:
 		_particles.emitting = false
 		if not has_energy or lvls_with_not_foward:
-			print(lvls_with_not_foward)
-			cut_link.emit()
+			cut_link.emit(false)
 			animation_player.play("die")
 			#should run GameManager.ship_dead() but one time
 			#I need to put it in the animaiton itself.
@@ -188,7 +187,7 @@ func _on_area_entered(area: Area2D)->void:
 				black_hole = area
 				if speed < 500:
 					speed = 500
-				cut_link.emit()
+				cut_link.emit(true)
 				GameManager.ship_dead()
 	if area.is_in_group("blackhole"):
 
@@ -198,7 +197,7 @@ func _on_area_entered(area: Area2D)->void:
 		if black_hole.is_in_spinner:
 			max_speed = black_hole.linear_speed_aprox
 			speed = black_hole.linear_speed_aprox
-		cut_link.emit()
+		cut_link.emit(true)
 		GameManager.ship_dead()
 	if area.is_in_group("asteroid"):
 		explote()
@@ -209,10 +208,11 @@ func restart_lvl() -> void:
 func explote() -> void:
 	animation_player.play("asteroid_die")
 	set_process(false)
-	cut_link.emit()
+	cut_link.emit(false)
 	GameManager.ship_dead()
 
 func dim_light_on(turn_light_on: bool) -> void:
+	#this should be carfully balance
 	if turn_light_on:
 		point_light_2d.texture_scale += 0.03
 		point_light_2d.energy += 0.001
@@ -220,10 +220,10 @@ func dim_light_on(turn_light_on: bool) -> void:
 		point_light_2d.texture_scale -= 0.05
 		point_light_2d.energy -= 0.004
 	var energy := clampf(point_light_2d.energy,0.3,0.7)
-	var value := clampf(point_light_2d.texture_scale,1.8,19)
+	var value := clampf(point_light_2d.texture_scale,3,19)
 	point_light_2d.texture_scale = value
 	point_light_2d.energy = energy
-	if value <= 2:
-		cut_link.emit()
-		set_process(false)
-		animation_player.play("die")
+	#if value <= 2:
+		#cut_link.emit(false)
+		#set_process(false)
+		#animation_player.play("die")

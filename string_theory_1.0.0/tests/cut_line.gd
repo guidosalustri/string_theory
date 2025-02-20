@@ -1,33 +1,38 @@
 extends Line2D
 
-#@onready var pos1 :Vector2= Vector2(0,0)
-#@onready var pos2 :Vector2= Vector2(0,0)
+@onready var curve : Curve2D = Curve2D.new()
+
 var line_created := false
-@export var target : Ship = null
-#func _ready() -> void:
-#	create_line(pos1,pos2)
-	#print(points[-1])
+var target : Ship= null
+var was_black_hole := false
 
 func _physics_process(delta: float) -> void:
-	if line_created:
-		#if target.global_position.distance_to(points[-1])>5:
-		add_point(target.global_position)
-		var random_y = Vector2(0,randf_range(-15,15))
-		if points.size() > 25:
-			points[11] = points[11] + Vector2(0,randf_range(-5,5))
-			points[20] = points[20] + Vector2(0,randf_range(-15,15))
-	if points.size() > 1:
+	if points.size() > 21:
+		for i in 20:
+			remove_point(i)
+	elif points.size() >1:
 		remove_point(0)
-		
+	if line_created and target:
+		add_point(target.global_position)
 
 	
-func create_line(v1: Vector2) -> void:
-	var dir := v1.direction_to(target.global_position)
-	var d := v1.distance_to(target.global_position)
-	var max_d_between_points := 20
-	var n_points := floori(d/max_d_between_points)
-	for i in n_points:
-		var random_y = Vector2(0,randf_range(-1,1))
-		add_point(v1+(dir*max_d_between_points*i)+random_y)
-	add_point(target.global_position)
+func create_line(v1: Vector2,v2: Vector2) -> void:
+	var dir := v1.direction_to(v2)
+	var d := v1.distance_to(v2)
+	var d_between_points := d/2
+	var random_v := generate_random_vector(d_between_points)
+	for i in range(2):
+		random_v = generate_random_vector(d_between_points/2)
+		if i==0:
+			curve.add_point(v1+(dir*d_between_points*i),Vector2.ZERO,random_v)
+		else:
+			curve.add_point(v1+(dir*d_between_points*i),random_v,-random_v)
+	curve.add_point(v2,generate_random_vector(d_between_points/2),Vector2.ZERO)
 	line_created = true
+	points = curve.get_baked_points()
+
+
+static func generate_random_vector(maximum_length: float) -> Vector2:
+	var random_direction := Vector2.from_angle(randf_range(PI/2,PI))
+	var random_length := randf_range(30, maximum_length)
+	return random_direction * random_length

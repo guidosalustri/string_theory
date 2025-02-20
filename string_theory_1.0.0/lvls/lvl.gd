@@ -24,6 +24,7 @@ extends Node2D
 @onready var hud: Control = $CanvasLayer/HUD
 @onready var constellation: Node2D = $Constellation
 @onready var cut_line: Line2D = $CutLine
+@onready var animation_player: AnimationPlayer = $LinkLineShip/AnimationPlayer
 
 
 @export var stars_trail: Array[Star]
@@ -51,7 +52,13 @@ func _ready() -> void:
 	
 	ship.change_star.connect(_on_star_changed)
 	ship.cut_link.connect(cut_line_link)
-	
+	animation_player.animation_finished.connect(func(anim_name) -> void:
+		cut_line_link(false)
+		print("hola")
+		ship.animation_player.play("die")
+		ship.set_process(false)
+		)
+
 	stars_trail[-1].area_entered.connect(func (_area: Area2D):
 		if index == stars_trail.size()-1:
 			if stars_trail[-1].current_state == stars_trail[-1].States.STAR:
@@ -67,8 +74,7 @@ func _ready() -> void:
 	
 	stars_trail[0].spawn()
 	
-	#link_line_ship.add_point(Vector2(0,0),2)
-	#width_curve = link_line_ship.width_curve
+	#animation_player.play("blink")
 	
 	phantom_camera_ship.set_auto_zoom(true)
 	phantom_camera_ship.set_auto_zoom_min(0.4)
@@ -93,7 +99,7 @@ func _process(_delta: float) -> void:
 	if link_line_ship.points[0] != Vector2(0.0,0.0):
 		link_line_ship.points[1] = ship.global_position
 		
-		lenght_link_line_ship = link_line_ship.points[0].distance_to(link_line_ship.points[1])
+		#lenght_link_line_ship = link_line_ship.points[0].distance_to(link_line_ship.points[1])
 
 	adjust_ship_light()
 	
@@ -189,14 +195,21 @@ func adjust_ship_light()-> void:
 		var d_ship_nextstar = ship.position.distance_to(stars_trail[index].position)
 		var d_ship_star = ship.position.distance_to(stars_trail[index-1].position)
 		var half_d_star_star = stars_trail[index].position.distance_to(stars_trail[index-1].position)/2
-		
 		if d_ship_star >= half_d_star_star and d_ship_nextstar>=half_d_star_star:
 			ship.dim_light_on(false)
+			if not animation_player.is_playing():
+				animation_player.play("blink")
+				print(animation_player.get_current_animation_length())
 		else:
 			ship.dim_light_on(true)
+			if animation_player.is_playing():
+				animation_player.stop()
 
-
-func cut_line_link() -> void:
+func cut_line_link(was_black_hole: bool) -> void:
 	link_line_ship.hide()
-	cut_line.create_line(link_line_ship.points[0])
+	if was_black_hole:
+		cut_line.target = ship
+		cut_line.create_line(link_line_ship.points[0],link_line_ship.points[1])
+	else:
+		cut_line.create_line(link_line_ship.points[1],link_line_ship.points[0])
 	ship.cut_link.disconnect(cut_line_link)
