@@ -2,6 +2,9 @@ class_name Ship extends Area2D
 
 
 @onready var _particles: GPUParticles2D = $Sprite2D/GPUParticles2D
+@onready var side_thruster_left: Sprite2D = $Sprite2D/SideThrusterLeft
+@onready var side_thruster_right: Sprite2D = $Sprite2D/SideThrusterRight
+
 @onready var ray_cast_2d: RayCast2D = $RayCast2D
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var timer: Timer = $Timer
@@ -64,10 +67,8 @@ func _process(delta: float) -> void:
 
 		target = ray_cast_2d.get_collider() #last_star:
 
-
 	match current_state:
 		States.ENTER_LVL:
-
 			if timer.time_left > 0:
 				speed += 1.0  * acceleration * delta
 				speed = clamp(speed, 0.0, max_speed)
@@ -84,11 +85,17 @@ func _process(delta: float) -> void:
 					set_has_energy(true)
 
 		States.FLY:
+			side_thruster_left.emit = true
+			side_thruster_right.emit = true
 			_move(delta, turn_right, turn_left, move_forward)
 			if flag:
 				set_current_state(States.ORBIT)
+				side_thruster_left.emit = false
+				side_thruster_right.emit = false
 			elif black_hole:
 				set_current_state(States.DRAGGED)
+				side_thruster_left.emit = false
+				side_thruster_right.emit = false
 		States.ORBIT:
 			_spin_around(delta, pos1)
 			set_has_energy(true)
@@ -120,16 +127,20 @@ func _move(delta: float, right: bool , left: bool, forward: bool) -> void:
 	forward and has_energy else -1.0) * acceleration * delta
 	speed = clamp(speed, 0.0, max_speed)
 	
+	var direction := Input.get_vector("move_left", "move_right", "move_up", "move_down")
 	if invert_controls:
-		if Input.is_action_pressed("move_left") and right:
-			rotate(turn_speed * delta)
-		if Input.is_action_pressed("move_right") and left:
-			rotate(-turn_speed * delta)
+		direction.x *= -1
+	var turn_speed_dt : float = sign(direction.x) * turn_speed * delta
+
+	rotate(turn_speed_dt)
+
+	if sign(turn_speed_dt) == 1:
+		side_thruster_right.power = 0
+	elif sign(turn_speed_dt) == -1:
+		side_thruster_left.power = 0
 	else:
-		if Input.is_action_pressed("move_left") and left:
-			rotate(-turn_speed * delta)
-		if Input.is_action_pressed("move_right") and right:
-			rotate(turn_speed * delta)
+		side_thruster_left.power = 0
+		side_thruster_right.power = 0
 
 	var velocity := (Vector2.RIGHT * speed).rotated(rotation)
 	translate(velocity * delta)
