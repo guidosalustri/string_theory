@@ -54,7 +54,6 @@ func _ready() -> void:
 	ship.cut_link.connect(cut_line_link)
 	animation_player.animation_finished.connect(func(anim_name) -> void:
 		cut_line_link(false)
-		print("hola")
 		ship.animation_player.play("die")
 		ship.set_process(false)
 		)
@@ -110,11 +109,12 @@ func _process(_delta: float) -> void:
 func _on_star_changed(star: Star)-> void:
 	if star != stars_trail[index]:
 		ship.explote()
-	elif index == stars_trail.size()-1:
-		phantom_camera_constellation.priority = 3
-		timer.start()
+	elif not index == stars_trail.size()-1:
+		#phantom_camera_constellation.priority = 3
+		#timer.start()
+		#pass
 
-	else:
+	#else:
 		index +=1
 		stars_trail[index].spawn()
 		phantom_camera_ship.follow_targets[1] = stars_trail[index]
@@ -199,13 +199,14 @@ func adjust_ship_light()-> void:
 			ship.dim_light_on(false)
 			if not animation_player.is_playing():
 				animation_player.play("blink")
-				print(animation_player.get_current_animation_length())
 		else:
 			ship.dim_light_on(true)
 			if animation_player.is_playing():
 				animation_player.stop()
 
 func cut_line_link(was_black_hole: bool) -> void:
+	if animation_player.is_playing():
+		animation_player.stop()
 	link_line_ship.hide()
 	if was_black_hole:
 		cut_line.target = ship

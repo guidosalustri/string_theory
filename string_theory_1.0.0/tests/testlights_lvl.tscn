@@ -141,6 +141,7 @@ position = Vector2(888, 637)
 [node name="Constellation" type="Node2D" parent="."]
 
 [node name="Star" parent="Constellation" instance=ExtResource("6_5ja75")]
+modulate = Color(1.5, 1.5, 1.5, 1)
 position = Vector2(1152, 384)
 
 [node name="PivotAsteroid" parent="Constellation/Star" instance=ExtResource("7_uowiu")]

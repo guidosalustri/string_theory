@@ -121,8 +121,8 @@ libraries = {
 [node name="PointLight2D" type="PointLight2D" parent="Asteroid"]
 position = Vector2(-2, 2)
 scale = Vector2(2, 2)
-color = Color(2.9, 0.079, 0.252, 1)
-energy = 0.7
+color = Color(1.6, 0.079, 0.252, 1)
+energy = 0.4
 range_layer_min = -2
 range_item_cull_mask = 5
 texture = SubResource("GradientTexture2D_bvlca")
