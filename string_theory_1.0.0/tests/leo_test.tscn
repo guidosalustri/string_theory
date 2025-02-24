@@ -1,21 +1,21 @@
-[gd_scene load_steps=27 format=3 uid="uid://te5g11dspm3j"]
+[gd_scene load_steps=27 format=3 uid="uid://7j43w78imcf1"]
 
-[ext_resource type="Script" path="res://lvls/lvl.gd" id="1_dh5kf"]
-[ext_resource type="PackedScene" uid="uid://dqjnkl56rsiki" path="res://objects/exit_area.tscn" id="3_xyg1f"]
-[ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="4_x0ack"]
-[ext_resource type="PackedScene" uid="uid://bxfevggvxo634" path="res://assets/background/space_background.tscn" id="5_154ui"]
-[ext_resource type="PackedScene" uid="uid://em4qfalchhhd" path="res://objects/ship.tscn" id="6_wmr1v"]
-[ext_resource type="PackedScene" uid="uid://ul1ys48qmbs4" path="res://objects/star.tscn" id="7_yusx4"]
-[ext_resource type="PackedScene" uid="uid://bp4febdu6vh5y" path="res://objects/obstacles/asteroid.tscn" id="8_448px"]
-[ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="8_vmhud"]
-[ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="9_ephm5"]
-[ext_resource type="PackedScene" uid="uid://b1xjjudghnfhm" path="res://objects/obstacles/black_hole.tscn" id="9_r0r66"]
-[ext_resource type="FontFile" uid="uid://clffif4u7fy61" path="res://ui/Stacked pixel.ttf" id="10_02g1h"]
-[ext_resource type="Shader" path="res://ui/blur_for_ui.gdshader" id="11_8peua"]
-[ext_resource type="PackedScene" uid="uid://bc8nepke0pagf" path="res://ui/hud/hud.tscn" id="13_w37w8"]
-[ext_resource type="PackedScene" uid="uid://ciegbyfrx5lf3" path="res://ui/pause_menu/pause_screen.tscn" id="14_1tx3v"]
-[ext_resource type="AudioStream" uid="uid://bupnj85mfcp5w" path="res://assets/into-the-night-uk-drill-music-20928.mp3" id="14_ey1tp"]
-[ext_resource type="PackedScene" uid="uid://cw37amsu34rrt" path="res://tests/cut_line.tscn" id="16_w5rtq"]
+[ext_resource type="Script" path="res://lvls/lvl.gd" id="1_yxkfv"]
+[ext_resource type="PackedScene" uid="uid://dqjnkl56rsiki" path="res://objects/exit_area.tscn" id="2_y58dm"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="3_ru4c0"]
+[ext_resource type="PackedScene" uid="uid://bxfevggvxo634" path="res://assets/background/space_background.tscn" id="4_40ph4"]
+[ext_resource type="PackedScene" uid="uid://em4qfalchhhd" path="res://objects/ship.tscn" id="5_cen46"]
+[ext_resource type="PackedScene" uid="uid://ul1ys48qmbs4" path="res://objects/star.tscn" id="6_fcghj"]
+[ext_resource type="PackedScene" uid="uid://bp4febdu6vh5y" path="res://objects/obstacles/asteroid.tscn" id="7_wukbd"]
+[ext_resource type="PackedScene" uid="uid://b1xjjudghnfhm" path="res://objects/obstacles/black_hole.tscn" id="8_x2mo7"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="9_ngt6f"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="10_mevce"]
+[ext_resource type="FontFile" uid="uid://clffif4u7fy61" path="res://ui/Stacked pixel.ttf" id="11_uxpd0"]
+[ext_resource type="Shader" path="res://ui/blur_for_ui.gdshader" id="12_2d0vo"]
+[ext_resource type="PackedScene" uid="uid://bc8nepke0pagf" path="res://ui/hud/hud.tscn" id="13_i3fjc"]
+[ext_resource type="PackedScene" uid="uid://ciegbyfrx5lf3" path="res://ui/pause_menu/pause_screen.tscn" id="14_jbgt0"]
+[ext_resource type="AudioStream" uid="uid://bupnj85mfcp5w" path="res://assets/into-the-night-uk-drill-music-20928.mp3" id="15_rdibr"]
+[ext_resource type="PackedScene" uid="uid://cw37amsu34rrt" path="res://tests/cut_line.tscn" id="16_hmagh"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_x6pi8"]
 light_mode = 1
@@ -61,25 +61,25 @@ _data = {
 light_mode = 1
 
 [sub_resource type="Resource" id="Resource_bmus8"]
-script = ExtResource("9_ephm5")
+script = ExtResource("10_mevce")
 duration = 1.0
 transition = 0
 ease = 2
 
 [sub_resource type="Resource" id="Resource_vjox8"]
-script = ExtResource("9_ephm5")
+script = ExtResource("10_mevce")
 duration = 1.0
 transition = 0
 ease = 2
 
 [sub_resource type="Resource" id="Resource_5ot37"]
-script = ExtResource("9_ephm5")
+script = ExtResource("10_mevce")
 duration = 1.0
 transition = 0
 ease = 2
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_h14qw"]
-shader = ExtResource("11_8peua")
+shader = ExtResource("12_2d0vo")
 shader_parameter/blur_amount = 0.0
 shader_parameter/tint = Color(0.622155, 0.145824, 0.885064, 1)
 shader_parameter/tint_amount = 0.0
@@ -91,13 +91,13 @@ glow_enabled = true
 glow_blend_mode = 4
 
 [node name="lvl" type="Node2D" node_paths=PackedStringArray("stars_trail")]
-script = ExtResource("1_dh5kf")
+script = ExtResource("1_yxkfv")
 stars_trail = [NodePath("Constellation/Star"), NodePath("Constellation/Star2"), NodePath("Constellation/Star3"), NodePath("Constellation/Star4"), NodePath("Constellation/Star5"), NodePath("Constellation/Star6"), NodePath("Constellation/Star"), NodePath("Constellation/Star7"), NodePath("Constellation/Star8"), NodePath("Constellation/Star9")]
 
 [node name="CanvasModulate2" type="CanvasModulate" parent="."]
 color = Color(0.0738042, 0.0724702, 0.0728028, 1)
 
-[node name="ExitArea" parent="." instance=ExtResource("3_xyg1f")]
+[node name="ExitArea" parent="." instance=ExtResource("2_y58dm")]
 position = Vector2(2368, 64)
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -106,9 +106,9 @@ position = Vector2(781.5, 435.5)
 position_smoothing_speed = 2.0
 
 [node name="PhantomCameraHost" type="Node" parent="Camera2D"]
-script = ExtResource("4_x0ack")
+script = ExtResource("3_ru4c0")
 
-[node name="SpaceBackground" parent="." instance=ExtResource("5_154ui")]
+[node name="SpaceBackground" parent="." instance=ExtResource("4_40ph4")]
 
 [node name="CanvasModulate" type="CanvasModulate" parent="SpaceBackground"]
 light_mask = 5
@@ -146,76 +146,76 @@ end_cap_mode = 2
 sharp_limit = 8.0
 antialiased = true
 
-[node name="Ship" parent="." instance=ExtResource("6_wmr1v")]
+[node name="Ship" parent="." instance=ExtResource("5_cen46")]
 position = Vector2(539, 359)
 
 [node name="Constellation" type="Node2D" parent="."]
 
-[node name="Star" parent="Constellation" instance=ExtResource("7_yusx4")]
+[node name="Star" parent="Constellation" instance=ExtResource("6_fcghj")]
 position = Vector2(1024, 512)
 
-[node name="Star2" parent="Constellation" instance=ExtResource("7_yusx4")]
+[node name="Star2" parent="Constellation" instance=ExtResource("6_fcghj")]
 position = Vector2(1600, 768)
 
-[node name="PivotAsteroid" parent="Constellation/Star2" instance=ExtResource("8_448px")]
+[node name="PivotAsteroid" parent="Constellation/Star2" instance=ExtResource("7_wukbd")]
 
-[node name="Star3" parent="Constellation" instance=ExtResource("7_yusx4")]
+[node name="Star3" parent="Constellation" instance=ExtResource("6_fcghj")]
 position = Vector2(1920, 1472)
 
-[node name="PivotAsteroid" parent="Constellation/Star3" instance=ExtResource("8_448px")]
+[node name="PivotAsteroid" parent="Constellation/Star3" instance=ExtResource("7_wukbd")]
 anticlockwise = true
 
-[node name="Star4" parent="Constellation" instance=ExtResource("7_yusx4")]
+[node name="Star4" parent="Constellation" instance=ExtResource("6_fcghj")]
 position = Vector2(-192, 1536)
 
-[node name="blackHole" parent="Constellation/Star4" instance=ExtResource("9_r0r66")]
+[node name="blackHole" parent="Constellation/Star4" instance=ExtResource("8_x2mo7")]
 position = Vector2(258, -22)
 
-[node name="Star5" parent="Constellation" instance=ExtResource("7_yusx4")]
+[node name="Star5" parent="Constellation" instance=ExtResource("6_fcghj")]
 position = Vector2(-768, 1600)
 
-[node name="PivotAsteroid" parent="Constellation/Star5" instance=ExtResource("8_448px")]
+[node name="PivotAsteroid" parent="Constellation/Star5" instance=ExtResource("7_wukbd")]
 rotation_speed = 5.0
 asteroid_position = Vector2(350, 0)
 anticlockwise = true
 
-[node name="PivotAsteroid2" parent="Constellation/Star5" instance=ExtResource("8_448px")]
+[node name="PivotAsteroid2" parent="Constellation/Star5" instance=ExtResource("7_wukbd")]
 asteroid_position = Vector2(250, 0)
 
-[node name="Star6" parent="Constellation" instance=ExtResource("7_yusx4")]
+[node name="Star6" parent="Constellation" instance=ExtResource("6_fcghj")]
 position = Vector2(-448, 896)
 
-[node name="PivotAsteroid" parent="Constellation/Star6" instance=ExtResource("8_448px")]
+[node name="PivotAsteroid" parent="Constellation/Star6" instance=ExtResource("7_wukbd")]
 asteroid_position = Vector2(250, 0)
 
-[node name="blackHole" parent="Constellation/Star6" instance=ExtResource("9_r0r66")]
+[node name="blackHole" parent="Constellation/Star6" instance=ExtResource("8_x2mo7")]
 position = Vector2(256, -128)
 
-[node name="Star7" parent="Constellation" instance=ExtResource("7_yusx4")]
+[node name="Star7" parent="Constellation" instance=ExtResource("6_fcghj")]
 position = Vector2(1152, -64)
 
-[node name="blackHole" parent="Constellation/Star7" instance=ExtResource("9_r0r66")]
+[node name="blackHole" parent="Constellation/Star7" instance=ExtResource("8_x2mo7")]
 position = Vector2(576, 64)
 
-[node name="PivotAsteroid" parent="Constellation/Star7" instance=ExtResource("8_448px")]
+[node name="PivotAsteroid" parent="Constellation/Star7" instance=ExtResource("7_wukbd")]
 rotation_speed = 4.0
 anticlockwise = true
 
-[node name="PivotAsteroid2" parent="Constellation/Star7" instance=ExtResource("8_448px")]
+[node name="PivotAsteroid2" parent="Constellation/Star7" instance=ExtResource("7_wukbd")]
 rotation_speed = 5.0
 asteroid_position = Vector2(900, 0)
 
-[node name="Star8" parent="Constellation" instance=ExtResource("7_yusx4")]
+[node name="Star8" parent="Constellation" instance=ExtResource("6_fcghj")]
 position = Vector2(1792, -256)
 
-[node name="PivotAsteroid" parent="Constellation/Star8" instance=ExtResource("8_448px")]
+[node name="PivotAsteroid" parent="Constellation/Star8" instance=ExtResource("7_wukbd")]
 rotation_speed = 5.0
 asteroid_position = Vector2(350, 0)
 
-[node name="Star9" parent="Constellation" instance=ExtResource("7_yusx4")]
+[node name="Star9" parent="Constellation" instance=ExtResource("6_fcghj")]
 position = Vector2(2176, 64)
 
-[node name="PivotAsteroid" parent="Constellation/Star9" instance=ExtResource("8_448px")]
+[node name="PivotAsteroid" parent="Constellation/Star9" instance=ExtResource("7_wukbd")]
 rotation_speed = 2.0
 anticlockwise = true
 
@@ -225,7 +225,7 @@ one_shot = true
 
 [node name="PhantomCamera2D" type="Node2D" parent="." node_paths=PackedStringArray("follow_targets")]
 position = Vector2(781.5, 435.5)
-script = ExtResource("8_vmhud")
+script = ExtResource("9_ngt6f")
 follow_mode = 3
 follow_targets = [NodePath("../Ship"), NodePath("../Constellation/Star")]
 tween_resource = SubResource("Resource_bmus8")
@@ -233,13 +233,13 @@ draw_limits = true
 
 [node name="PhantomCameraStars" type="Node2D" parent="."]
 position = Vector2(739.5, 266.5)
-script = ExtResource("8_vmhud")
+script = ExtResource("9_ngt6f")
 follow_mode = 3
 tween_resource = SubResource("Resource_vjox8")
 draw_limits = true
 
 [node name="PhantomCamera2D2" type="Node2D" parent="."]
-script = ExtResource("8_vmhud")
+script = ExtResource("9_ngt6f")
 follow_mode = 3
 zoom = Vector2(0.4, 0.4)
 tween_resource = SubResource("Resource_5ot37")
@@ -265,7 +265,7 @@ grow_horizontal = 2
 theme_override_colors/default_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_colors/font_shadow_color = Color(0.869293, 0.111394, 0.593547, 1)
-theme_override_fonts/normal_font = ExtResource("10_02g1h")
+theme_override_fonts/normal_font = ExtResource("11_uxpd0")
 theme_override_font_sizes/normal_font_size = 120
 bbcode_enabled = true
 text = "[center]Leo[/center]"
@@ -280,18 +280,18 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="HUD" parent="CanvasLayer" instance=ExtResource("13_w37w8")]
+[node name="HUD" parent="CanvasLayer" instance=ExtResource("13_i3fjc")]
 
 [node name="CanvasLayer2" type="CanvasLayer" parent="."]
 
-[node name="PauseScreen" parent="CanvasLayer2" instance=ExtResource("14_1tx3v")]
+[node name="PauseScreen" parent="CanvasLayer2" instance=ExtResource("14_jbgt0")]
 visible = false
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("14_ey1tp")
+stream = ExtResource("15_rdibr")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_5drlf")
 
-[node name="CutLine" parent="." instance=ExtResource("16_w5rtq")]
+[node name="CutLine" parent="." instance=ExtResource("16_hmagh")]
 default_color = Color(3, 0.128, 0.302, 1)
