@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" path="res://assets/pickups/shadow.tscn" id="2_cm3tj"]
 [ext_resource type="Script" path="res://objects/pickups/items/item_gem.gd" id="2_qvmkk"]
 [ext_resource type="Texture2D" uid="uid://be8lmb157qflx" path="res://assets/pickups/pickup_health.png" id="3_b4crc"]
-[ext_resource type="Texture2D" uid="uid://bmxcojfothkaq" path="res://assets/pickups/pickup_heart_teal.png" id="3_tq70p"]
+[ext_resource type="Texture2D" uid="uid://biluxu10n4ttm" path="res://assets/pickups/pickup_gem.png" id="3_cojep"]
 [ext_resource type="PackedScene" uid="uid://cue1pyl03ey2q" path="res://assets/pickups/particles_sparkle.tscn" id="4_f1fva"]
 [ext_resource type="AudioStream" uid="uid://baepax16vgq0y" path="res://assets/pickups/powerup.wav" id="5_ln3o4"]
 
@@ -12,7 +12,7 @@
 script = ExtResource("2_qvmkk")
 amount = 1
 display_name = ""
-texture = ExtResource("3_tq70p")
+texture = ExtResource("3_cojep")
 
 [sub_resource type="CircleShape2D" id="1"]
 radius = 32.0
