@@ -137,32 +137,22 @@ antialiased = true
 
 [node name="Ship" parent="." instance=ExtResource("5_urjad")]
 position = Vector2(2816, 1920)
-max_speed = 900.0
 
 [node name="Constellation" type="Node2D" parent="."]
 
 [node name="Star" parent="Constellation" instance=ExtResource("6_mk11u")]
 position = Vector2(3584, 2048)
 
-[node name="PivotAsteroid" parent="Constellation/Star" instance=ExtResource("7_dynqx")]
-rotation_speed = 3.3
-asteroid_position = Vector2(260, 0)
-anticlockwise = true
-
 [node name="blackHole" parent="Constellation/Star" instance=ExtResource("8_s5syh")]
 position = Vector2(-320, 320)
 
-[node name="blackHole2" parent="Constellation/Star" instance=ExtResource("8_s5syh")]
-position = Vector2(-768, 256)
+[node name="PivotAsteroid" parent="Constellation/Star" instance=ExtResource("7_dynqx")]
+rotation_speed = 3.3
+asteroid_position = Vector2(260, 0)
 
 [node name="Star2" parent="Constellation" instance=ExtResource("6_mk11u")]
 position = Vector2(4160, 2624)
 black_hole_on_star = true
-
-[node name="PivotAsteroid" parent="Constellation/Star2" instance=ExtResource("7_dynqx")]
-position = Vector2(-576, -576)
-rotation_speed = 3.3
-asteroid_position = Vector2(260, 0)
 
 [node name="blackHole" parent="Constellation/Star2" instance=ExtResource("8_s5syh")]
 position = Vector2(-320, -64)
@@ -183,6 +173,9 @@ position = Vector2(384, -320)
 rotation_speed = 4.4
 asteroid_position = Vector2(210, 0)
 anticlockwise = true
+
+[node name="blackHole2" parent="Constellation/Star3" instance=ExtResource("8_s5syh")]
+position = Vector2(832, 64)
 
 [node name="Star4" parent="Constellation" instance=ExtResource("6_mk11u")]
 position = Vector2(1024, 1984)

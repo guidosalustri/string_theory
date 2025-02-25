@@ -137,90 +137,70 @@ antialiased = true
 
 [node name="Ship" parent="." instance=ExtResource("5_r54tw")]
 position = Vector2(768, 384)
-max_speed = 900.0
 
 [node name="Constellation" type="Node2D" parent="."]
 
 [node name="Star" parent="Constellation" instance=ExtResource("6_v452r")]
 position = Vector2(1152, 384)
 
+[node name="blackHole2" parent="Constellation/Star" instance=ExtResource("8_6j7hf")]
+position = Vector2(384, 128)
+
 [node name="Star2" parent="Constellation" instance=ExtResource("6_v452r")]
 position = Vector2(2048, 448)
 
-[node name="SpinnerBlackHole" parent="Constellation/Star2" node_paths=PackedStringArray("blackhole1", "blackhole2") instance=ExtResource("7_m152x")]
-blackhole1 = NodePath("blackHole")
-blackhole2 = NodePath("blackHole2")
-radius = 280.0
-rotation_speed = 2.7
-
-[node name="blackHole" parent="Constellation/Star2/SpinnerBlackHole" instance=ExtResource("8_6j7hf")]
-
-[node name="blackHole2" parent="Constellation/Star2/SpinnerBlackHole" instance=ExtResource("8_6j7hf")]
+[node name="blackHole" parent="Constellation/Star2" instance=ExtResource("8_6j7hf")]
+position = Vector2(384, -128)
 
 [node name="Star3" parent="Constellation" instance=ExtResource("6_v452r")]
 position = Vector2(2816, 512)
-black_hole_on_star = true
+
+[node name="PivotAsteroid" parent="Constellation/Star3" instance=ExtResource("9_hfiha")]
+rotation_speed = 4.1
+asteroid_position = Vector2(270, 0)
 
 [node name="Star4" parent="Constellation" instance=ExtResource("6_v452r")]
 position = Vector2(3264, 896)
 
 [node name="PivotAsteroid" parent="Constellation/Star4" instance=ExtResource("9_hfiha")]
 rotation_speed = 3.6
-asteroid_position = Vector2(280, 0)
-
-[node name="PivotAsteroid2" parent="Constellation/Star4" instance=ExtResource("9_hfiha")]
-rotation_speed = 3.4
-asteroid_position = Vector2(260, 0)
+asteroid_position = Vector2(270, 0)
 anticlockwise = true
-
-[node name="blackHole" parent="Constellation/Star4" instance=ExtResource("8_6j7hf")]
-position = Vector2(448, -384)
-
-[node name="PivotAsteroid3" parent="Constellation/Star4" instance=ExtResource("9_hfiha")]
-position = Vector2(448, -384)
-rotation_speed = 4.8
-asteroid_position = Vector2(240, 0)
-
-[node name="PivotAsteroid4" parent="Constellation/Star4" instance=ExtResource("9_hfiha")]
-position = Vector2(448, -384)
-rotation_speed = 4.9
-asteroid_position = Vector2(260, 0)
 
 [node name="Star5" parent="Constellation" instance=ExtResource("6_v452r")]
 position = Vector2(2752, 1344)
+black_hole_on_star = true
 
 [node name="Star6" parent="Constellation" instance=ExtResource("6_v452r")]
 position = Vector2(1152, 1216)
 
-[node name="PivotAsteroid" parent="Constellation/Star6" instance=ExtResource("9_hfiha")]
-rotation_speed = 2.8
-asteroid_position = Vector2(450, 0)
-anticlockwise = true
-
 [node name="PivotAsteroid2" parent="Constellation/Star6" instance=ExtResource("9_hfiha")]
 rotation_speed = 3.3
-asteroid_position = Vector2(340, 0)
+asteroid_position = Vector2(320, 0)
 anticlockwise = true
 
-[node name="PivotAsteroid3" parent="Constellation/Star6" instance=ExtResource("9_hfiha")]
-rotation_speed = 3.3
-asteroid_position = Vector2(340, 0)
+[node name="blackHole" parent="Constellation/Star6" instance=ExtResource("8_6j7hf")]
+position = Vector2(640, -192)
+
+[node name="blackHole2" parent="Constellation/Star6" instance=ExtResource("8_6j7hf")]
+position = Vector2(448, 384)
+
+[node name="blackHole3" parent="Constellation/Star6" instance=ExtResource("8_6j7hf")]
+position = Vector2(896, 128)
 
 [node name="Star7" parent="Constellation" instance=ExtResource("6_v452r")]
 position = Vector2(4672, 576)
 
-[node name="blackHole" parent="Constellation/Star7" instance=ExtResource("8_6j7hf")]
-position = Vector2(-320, 384)
+[node name="SpinnerBlackHole" parent="Constellation/Star7" node_paths=PackedStringArray("blackhole1", "blackhole2") instance=ExtResource("7_m152x")]
+position = Vector2(-704, 128)
+blackhole1 = NodePath("blackHole")
+blackhole2 = NodePath("blackHole2")
+radius = 340.0
+rotation_speed = 2.4
 
-[node name="PivotAsteroid" parent="Constellation/Star7" instance=ExtResource("9_hfiha")]
-rotation_speed = 3.0
-asteroid_position = Vector2(280, 0)
+[node name="blackHole" parent="Constellation/Star7/SpinnerBlackHole" instance=ExtResource("8_6j7hf")]
 
-[node name="PivotAsteroid2" parent="Constellation/Star7" instance=ExtResource("9_hfiha")]
-position = Vector2(-320, 384)
-rotation_speed = 5.0
-asteroid_position = Vector2(200, 0)
-anticlockwise = true
+[node name="blackHole2" parent="Constellation/Star7/SpinnerBlackHole" instance=ExtResource("8_6j7hf")]
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.5
