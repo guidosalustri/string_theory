@@ -128,6 +128,10 @@ func _move(delta: float, right: bool , left: bool, forward: bool) -> void:
 	speed = clamp(speed, 0.0, max_speed)
 	
 	var direction := Input.get_vector("move_left", "move_right", "move_up", "move_down")
+	if not left:
+		direction.x = maxf(0.0, direction.x)
+	if not right:
+		direction.x = minf(0.0, direction.x)
 	if invert_controls:
 		direction.x *= -1
 	var turn_speed_dt : float = sign(direction.x) * turn_speed * delta
