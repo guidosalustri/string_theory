@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://kc7sbsi06kf0"]
+[gd_scene load_steps=29 format=3 uid="uid://kc7sbsi06kf0"]
 
 [ext_resource type="Script" path="res://lvls/lvl.gd" id="1_o8ccb"]
 [ext_resource type="PackedScene" uid="uid://dqjnkl56rsiki" path="res://objects/exit_area.tscn" id="2_4sa5c"]
@@ -79,9 +79,6 @@ shader_parameter/saturation = 1.0
 background_mode = 3
 glow_enabled = true
 glow_blend_mode = 4
-
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_rf3dl"]
-light_mode = 1
 
 [node name="lvl" type="Node2D" node_paths=PackedStringArray("stars_trail")]
 script = ExtResource("1_o8ccb")
@@ -258,6 +255,4 @@ environment = SubResource("Environment_7pdbn")
 default_color = Color(3, 0.128, 0.302, 1)
 
 [node name="Pickup" parent="." instance=ExtResource("18_em6i3")]
-modulate = Color(1, 1.1, 1, 1)
-material = SubResource("CanvasItemMaterial_rf3dl")
-position = Vector2(159, 520)
+position = Vector2(368, 506)
