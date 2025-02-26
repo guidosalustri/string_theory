@@ -8,6 +8,9 @@ extends Node
 var lvl := 0
 var gems := 0
 var deaths_counts := 0
+var martin_on_ship := false
+
+var pickup_spawn_count := 0
 var volume_bus_master := 0
 var volume_bus_sfx := 0
 var volume_bus_music := 0

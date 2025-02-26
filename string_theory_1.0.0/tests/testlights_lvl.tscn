@@ -149,9 +149,10 @@ position = Vector2(1152, 384)
 asteroid_position = Vector2(150, 150)
 anticlockwise = true
 
-[node name="Star2" parent="Constellation" instance=ExtResource("6_5ja75")]
+[node name="Star2" parent="Constellation" node_paths=PackedStringArray("pickup") instance=ExtResource("6_5ja75")]
 position = Vector2(539, -209)
 black_hole_on_star = true
+pickup = NodePath("../../PickUps/Pickup")
 
 [node name="blackHole" parent="Constellation/Star2" instance=ExtResource("8_u5r8w")]
 position = Vector2(-629, 618)
@@ -170,6 +171,7 @@ rotation_speed = 1.0
 
 [node name="Star3" parent="Constellation" instance=ExtResource("6_5ja75")]
 position = Vector2(1536, -128)
+loose_agency_star = true
 
 [node name="PivotAsteroid" parent="Constellation/Star3" instance=ExtResource("7_uowiu")]
 
@@ -254,5 +256,7 @@ environment = SubResource("Environment_7pdbn")
 [node name="CutLine" parent="." instance=ExtResource("2_cemb3")]
 default_color = Color(3, 0.128, 0.302, 1)
 
-[node name="Pickup" parent="." instance=ExtResource("18_em6i3")]
-position = Vector2(368, 506)
+[node name="PickUps" type="Node2D" parent="."]
+
+[node name="Pickup" parent="PickUps" instance=ExtResource("18_em6i3")]
+position = Vector2(1946, -354)

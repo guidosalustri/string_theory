@@ -6,14 +6,26 @@ class_name Pickup extends Area2D
 @onready var _audio_stream_player: AudioStreamPlayer2D = %AudioStreamPlayer2D
 @onready var _animation_player: AnimationPlayer = %AnimationPlayer
 
+signal has_spawn
 
 func _ready() -> void:
 	set_item(item)
+	hide()
+	set_process(false)
+	monitoring = false
+	monitorable = false
+	scale = Vector2(0,0)
 
-	_animation_player.play("idle")
-	area_entered.connect(func (body: Area2D) -> void:
-		if body is Ship:
+	area_entered.connect(func (area: Area2D) -> void:
+		if area is Ship:
 			item.use()
+			if not area.turn_right:
+				area.turn_right=true
+			if not area.move_forward:
+				area.move_forward=true
+			elif not area.turn_left:
+				area.turn_left=true
+			#print(GameManager.gems)
 		_animation_player.play("destroy")
 		# Disable collision monitoring to prevent picking up the item multiple times
 		set_deferred("monitoring", false)
@@ -26,12 +38,17 @@ func _ready() -> void:
 		)
 	)
 
-
-func _get_configuration_warnings() -> PackedStringArray:
-	var warnings := PackedStringArray()
-	if item == null:
-		warnings.append("The pickup has no item assigned. Please assign an item to the pickup in the inspector.")
-	return warnings
+func spawn():
+	show()
+	set_process(true)
+	set_deferred("monitoring", true)
+	set_deferred("monitorable", true)
+	var tween:  Tween = create_tween()
+	tween.set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
+	tween.tween_property(self, "scale",Vector2(1,1),0.25)
+	await tween.finished
+	_animation_player.play("idle")
+	has_spawn.emit()
 
 
 func set_item(value: Item) -> void:

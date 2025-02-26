@@ -25,6 +25,7 @@ extends Node2D
 @onready var constellation: Node2D = $Constellation
 @onready var cut_line: Line2D = $CutLine
 @onready var animation_player: AnimationPlayer = $LinkLineShip/AnimationPlayer
+@onready var pick_ups: Node2D = $PickUps
 
 
 @export var stars_trail: Array[Star]
@@ -36,6 +37,7 @@ var lenght_link_line_ship := 0.0
 #var width_curve : Curve = null
 var thickness := 1.0
 var flag_cutline := true
+
 
 func _ready() -> void:
 	hud.set_player(ship)
@@ -70,6 +72,12 @@ func _ready() -> void:
 				hud.overcharged.disconnect(_overcharged_ship)
 		)
 	timer.timeout.connect(_on_timer_timeout)
+	for pickup in pick_ups.get_children():
+		pickup.has_spawn.connect(func() -> void:
+			GameManager.pickup_spawn_count+=1
+			#print(pickup_spawn_count)
+			#print(GameManager.gems)
+			)
 	
 	stars_trail[0].spawn()
 	
