@@ -1,0 +1,31 @@
+[gd_scene load_steps=9 format=3 uid="uid://bvtilym2q6v6b"]
+
+[ext_resource type="Shader" path="res://assets/ship/side_thruster/side_thruster.gdshader" id="1_7twj1"]
+[ext_resource type="Texture2D" uid="uid://sq1ennk2hfhs" path="res://assets/ship/side_thruster/ship_side_flame_sdf.png" id="1_ok3wo"]
+[ext_resource type="Texture2D" uid="uid://byhx0m56pbo6g" path="res://assets/pear_36_fire_gradient.tres" id="2_5gofc"]
+[ext_resource type="Script" path="res://assets/ship/side_thruster/side_thruster.gd" id="3_dxwj5"]
+
+[sub_resource type="Curve" id="Curve_m7lgh"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.503185, 1), 0.0, 0.0, 0, 0, Vector2(0.598726, 0.051396), -0.355504, -0.355504, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_4s4g6"]
+curve = SubResource("Curve_m7lgh")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3nd0m"]
+shader = ExtResource("1_7twj1")
+shader_parameter/deformation = 0.4
+shader_parameter/base_color = ExtResource("2_5gofc")
+shader_parameter/band_texture = SubResource("CurveTexture_4s4g6")
+
+[sub_resource type="Curve" id="Curve_5kunt"]
+_data = [Vector2(0, 0), 0.0, 0.259147, 0, 0, Vector2(0.497175, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[node name="SideThruster" type="Sprite2D"]
+material = SubResource("ShaderMaterial_3nd0m")
+position = Vector2(-65, 0)
+rotation = 1.5708
+texture = ExtResource("1_ok3wo")
+script = ExtResource("3_dxwj5")
+alpha_curve = SubResource("Curve_5kunt")

@@ -4,7 +4,7 @@ extends Node
 @onready var camera_2d: Camera2D = $SubViewport/Camera2D
 @onready var sprite_2d: Sprite2D = $Sprite2D
 @onready var gpu_particles_2d: GPUParticles2D = $Sprite2D/GPUParticles2D
-@onready var dialogue_cutscene: Control = $Dialogue_cutscene
+@onready var dialogue_cutscene: Control = $CanvasLayer/Dialogue_cutscene
 @onready var timer: Timer = $Timer
 
 

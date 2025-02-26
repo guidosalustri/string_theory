@@ -1,10 +1,50 @@
-[gd_scene load_steps=12 format=3 uid="uid://gu842no2aiky"]
+[gd_scene load_steps=21 format=3 uid="uid://gu842no2aiky"]
 
 [ext_resource type="PackedScene" uid="uid://bxfevggvxo634" path="res://assets/background/space_background.tscn" id="1_ma2qx"]
 [ext_resource type="Texture2D" uid="uid://0gw4o20b3fa0" path="res://cutscene/asteroid.svg" id="2_0ifj8"]
 [ext_resource type="Texture2D" uid="uid://cgwmuppgqua43" path="res://cutscene/planets.svg" id="3_i6tmn"]
 [ext_resource type="Texture2D" uid="uid://cl16ohu7hooi0" path="res://assets/planet.png" id="3_ys2le"]
 [ext_resource type="Texture2D" uid="uid://b4atip1kb2j28" path="res://assets/planet_large.png" id="4_6aqw1"]
+[ext_resource type="Shader" path="res://assets/group_outline.gdshader" id="4_8r1m4"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ja1rw"]
+shader = ExtResource("4_8r1m4")
+shader_parameter/line_color = Color(0.294, 0.635, 11, 1)
+shader_parameter/line_thickness = 2.0
+shader_parameter/viewport_scale = Vector2(1, 1)
+
+[sub_resource type="Gradient" id="Gradient_7mhuy"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_xkj60"]
+gradient = SubResource("Gradient_7mhuy")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.773504, 0.0940171)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_repq1"]
+shader = ExtResource("4_8r1m4")
+shader_parameter/line_color = Color(0.5, 11.892, 0.7, 1)
+shader_parameter/line_thickness = 1.0
+shader_parameter/viewport_scale = Vector2(1, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hel4i"]
+shader = ExtResource("4_8r1m4")
+shader_parameter/line_color = Color(0, 0, 0, 1)
+shader_parameter/line_thickness = 3.0
+shader_parameter/viewport_scale = Vector2(1, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6osaw"]
+shader = ExtResource("4_8r1m4")
+shader_parameter/line_color = Color(17.838, 5.945, 0, 1)
+shader_parameter/line_thickness = 1.0
+shader_parameter/viewport_scale = Vector2(1, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6f01r"]
+shader = ExtResource("4_8r1m4")
+shader_parameter/line_color = Color(1.081, 0, 11.892, 1)
+shader_parameter/line_thickness = 2.0
+shader_parameter/viewport_scale = Vector2(1, 1)
 
 [sub_resource type="Animation" id="Animation_a4747"]
 length = 0.001
@@ -82,6 +122,12 @@ _data = {
 "clockwise_spin": SubResource("Animation_tr7ud")
 }
 
+[sub_resource type="Environment" id="Environment_1jdmk"]
+background_mode = 3
+glow_enabled = true
+glow_bloom = 0.35
+glow_blend_mode = 4
+
 [node name="Node" type="Node"]
 
 [node name="SpaceBackground" parent="." instance=ExtResource("1_ma2qx")]
@@ -90,41 +136,111 @@ layer = -100
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 layer = -99
 
+[node name="CanvasModulate2" type="CanvasModulate" parent="ParallaxBackground"]
+color = Color(0.0738042, 0.0724702, 0.0728028, 1)
+
 [node name="PlatensBig" type="ParallaxLayer" parent="ParallaxBackground"]
 motion_scale = Vector2(0.2, 0.2)
 
-[node name="Earth" type="Sprite2D" parent="ParallaxBackground/PlatensBig"]
+[node name="CanvasGroup" type="CanvasGroup" parent="ParallaxBackground/PlatensBig"]
+material = SubResource("ShaderMaterial_ja1rw")
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/PlatensBig/CanvasGroup"]
+position = Vector2(4082, 141)
+texture = ExtResource("3_ys2le")
+
+[node name="PointLight2D" type="PointLight2D" parent="ParallaxBackground/PlatensBig/CanvasGroup/Sprite2D"]
+color = Color(1, 1, 3, 1)
+energy = 0.7
+range_layer_min = -99
+range_item_cull_mask = 3
+shadow_enabled = true
+texture = SubResource("GradientTexture2D_xkj60")
+texture_scale = 8.0
+
+[node name="Sprite2D2" type="Sprite2D" parent="ParallaxBackground/PlatensBig/CanvasGroup"]
+position = Vector2(322, 670)
+texture = ExtResource("4_6aqw1")
+
+[node name="PointLight2D" type="PointLight2D" parent="ParallaxBackground/PlatensBig/CanvasGroup/Sprite2D2"]
+color = Color(1, 1, 3, 1)
+energy = 0.7
+range_layer_min = -99
+range_item_cull_mask = 3
+shadow_enabled = true
+texture = SubResource("GradientTexture2D_xkj60")
+texture_scale = 9.5
+
+[node name="CanvasGroup2" type="CanvasGroup" parent="ParallaxBackground/PlatensBig"]
+material = SubResource("ShaderMaterial_repq1")
+
+[node name="Earth" type="Sprite2D" parent="ParallaxBackground/PlatensBig/CanvasGroup2"]
 position = Vector2(1836, 757)
 texture = ExtResource("3_i6tmn")
 region_enabled = true
 region_rect = Rect2(0, 0, 459.468, 434.036)
 
-[node name="Planet1" type="Sprite2D" parent="ParallaxBackground/PlatensBig"]
-position = Vector2(2795, 25.0001)
-rotation = -0.182931
-texture = ExtResource("3_i6tmn")
-region_enabled = true
-region_rect = Rect2(115.417, 409.287, 798.873, 482.177)
+[node name="PointLight2D" type="PointLight2D" parent="ParallaxBackground/PlatensBig/CanvasGroup2/Earth"]
+range_layer_min = -99
+range_item_cull_mask = 3
+shadow_enabled = true
+texture = SubResource("GradientTexture2D_xkj60")
+texture_scale = 10.0
 
-[node name="Planet2" type="Sprite2D" parent="ParallaxBackground/PlatensBig"]
-position = Vector2(3467, 675)
-texture = ExtResource("3_i6tmn")
-region_enabled = true
-region_rect = Rect2(566.209, 9.85106, 453.646, 396.583)
+[node name="CanvasGroup3" type="CanvasGroup" parent="ParallaxBackground/PlatensBig"]
+material = SubResource("ShaderMaterial_hel4i")
 
-[node name="Planet3" type="Sprite2D" parent="ParallaxBackground/PlatensBig"]
+[node name="Planet3" type="Sprite2D" parent="ParallaxBackground/PlatensBig/CanvasGroup3"]
+modulate = Color(1.4, 0.6, 0.8, 1)
 position = Vector2(734, 149)
 texture = ExtResource("3_i6tmn")
 region_enabled = true
 region_rect = Rect2(566.209, 9.85106, 453.646, 396.583)
 
-[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/PlatensBig"]
-position = Vector2(4082, 141)
-texture = ExtResource("3_ys2le")
+[node name="PointLight2D" type="PointLight2D" parent="ParallaxBackground/PlatensBig/CanvasGroup3/Planet3"]
+energy = 1.5
+range_layer_min = -99
+range_item_cull_mask = 3
+shadow_enabled = true
+texture = SubResource("GradientTexture2D_xkj60")
+texture_scale = 6.0
 
-[node name="Sprite2D2" type="Sprite2D" parent="ParallaxBackground/PlatensBig"]
-position = Vector2(322, 670)
-texture = ExtResource("4_6aqw1")
+[node name="CanvasGroup4" type="CanvasGroup" parent="ParallaxBackground/PlatensBig"]
+material = SubResource("ShaderMaterial_6osaw")
+
+[node name="Planet1" type="Sprite2D" parent="ParallaxBackground/PlatensBig/CanvasGroup4"]
+position = Vector2(2795, 64.0001)
+rotation = -0.182931
+texture = ExtResource("3_i6tmn")
+region_enabled = true
+region_rect = Rect2(115.417, 409.287, 798.873, 482.177)
+
+[node name="PointLight2D" type="PointLight2D" parent="ParallaxBackground/PlatensBig/CanvasGroup4/Planet1"]
+color = Color(22.163, 5.406, 0, 1)
+range_layer_min = -99
+range_item_cull_mask = 3
+shadow_enabled = true
+texture = SubResource("GradientTexture2D_xkj60")
+texture_scale = 10.0
+
+[node name="CanvasGroup5" type="CanvasGroup" parent="ParallaxBackground/PlatensBig"]
+material = SubResource("ShaderMaterial_6f01r")
+
+[node name="Planet2" type="Sprite2D" parent="ParallaxBackground/PlatensBig/CanvasGroup5"]
+position = Vector2(3467, 675)
+texture = ExtResource("3_i6tmn")
+region_enabled = true
+region_rect = Rect2(566.209, 9.85106, 453.646, 396.583)
+
+[node name="PointLight2D" type="PointLight2D" parent="ParallaxBackground/PlatensBig/CanvasGroup5/Planet2"]
+color = Color(1.622, 1, 10.811, 1)
+energy = 1.5
+blend_mode = 2
+range_layer_min = -99
+range_item_cull_mask = 3
+shadow_enabled = true
+texture = SubResource("GradientTexture2D_xkj60")
+texture_scale = 6.0
 
 [node name="Asteroids" type="ParallaxLayer" parent="ParallaxBackground"]
 motion_scale = Vector2(0.5, 0.5)
@@ -140,6 +256,13 @@ libraries = {
 autoplay = "spin"
 speed_scale = 0.1
 
+[node name="PointLight2D" type="PointLight2D" parent="ParallaxBackground/Asteroids/Sprite2D2"]
+range_layer_min = -99
+range_item_cull_mask = 3
+shadow_enabled = true
+texture = SubResource("GradientTexture2D_xkj60")
+texture_scale = 7.0
+
 [node name="Sprite2D6" type="Sprite2D" parent="ParallaxBackground/Asteroids"]
 position = Vector2(4478, 163)
 texture = ExtResource("2_0ifj8")
@@ -150,6 +273,13 @@ libraries = {
 }
 autoplay = "spin"
 speed_scale = 0.1
+
+[node name="PointLight2D" type="PointLight2D" parent="ParallaxBackground/Asteroids/Sprite2D6"]
+range_layer_min = -99
+range_item_cull_mask = 3
+shadow_enabled = true
+texture = SubResource("GradientTexture2D_xkj60")
+texture_scale = 6.0
 
 [node name="Sprite2D5" type="Sprite2D" parent="ParallaxBackground/Asteroids"]
 position = Vector2(3676, 228)
@@ -163,6 +293,13 @@ libraries = {
 autoplay = "spin"
 speed_scale = 0.1
 
+[node name="PointLight2D" type="PointLight2D" parent="ParallaxBackground/Asteroids/Sprite2D5"]
+range_layer_min = -99
+range_item_cull_mask = 3
+shadow_enabled = true
+texture = SubResource("GradientTexture2D_xkj60")
+texture_scale = 3.0
+
 [node name="Sprite2D3" type="Sprite2D" parent="ParallaxBackground/Asteroids"]
 position = Vector2(2721, 610)
 scale = Vector2(0.8, 0.8)
@@ -174,6 +311,13 @@ libraries = {
 }
 autoplay = "spin"
 speed_scale = 0.1
+
+[node name="PointLight2D" type="PointLight2D" parent="ParallaxBackground/Asteroids/Sprite2D3"]
+range_layer_min = -99
+range_item_cull_mask = 3
+shadow_enabled = true
+texture = SubResource("GradientTexture2D_xkj60")
+texture_scale = 4.0
 
 [node name="Sprite2D4" type="Sprite2D" parent="ParallaxBackground/Asteroids"]
 position = Vector2(1369, 752)
@@ -187,6 +331,13 @@ libraries = {
 autoplay = "spin"
 speed_scale = 0.1
 
+[node name="PointLight2D" type="PointLight2D" parent="ParallaxBackground/Asteroids/Sprite2D4"]
+range_layer_min = -99
+range_item_cull_mask = 3
+shadow_enabled = true
+texture = SubResource("GradientTexture2D_xkj60")
+texture_scale = 4.0
+
 [node name="SpriteClockwiseSpin" type="Sprite2D" parent="ParallaxBackground/Asteroids"]
 position = Vector2(5012, 732)
 texture = ExtResource("2_0ifj8")
@@ -197,6 +348,13 @@ libraries = {
 }
 autoplay = "clockwise_spin"
 speed_scale = 0.1
+
+[node name="PointLight2D" type="PointLight2D" parent="ParallaxBackground/Asteroids/SpriteClockwiseSpin"]
+range_layer_min = -99
+range_item_cull_mask = 3
+shadow_enabled = true
+texture = SubResource("GradientTexture2D_xkj60")
+texture_scale = 7.0
 
 [node name="SpriteClockwiseSpin2" type="Sprite2D" parent="ParallaxBackground/Asteroids"]
 position = Vector2(1869, 49)
@@ -209,3 +367,13 @@ libraries = {
 }
 autoplay = "clockwise_spin"
 speed_scale = 0.1
+
+[node name="PointLight2D" type="PointLight2D" parent="ParallaxBackground/Asteroids/SpriteClockwiseSpin2"]
+range_layer_min = -99
+range_item_cull_mask = 3
+shadow_enabled = true
+texture = SubResource("GradientTexture2D_xkj60")
+texture_scale = 3.0
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_1jdmk")

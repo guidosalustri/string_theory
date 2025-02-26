@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://cfpp30kafr6wh"]
+[gd_scene load_steps=8 format=3 uid="uid://cfpp30kafr6wh"]
 
 [ext_resource type="Texture2D" uid="uid://dvdqkhfqxjgcu" path="res://assets/glowing_circle.png" id="1_nee0j"]
+[ext_resource type="Script" path="res://assets/link_gpu_particles_2d.gd" id="2_vegd8"]
 
 [sub_resource type="Curve" id="Curve_in7fi"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.503614, 0.957505), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -22,6 +23,15 @@ scale_min = 0.3
 scale_max = 0.3
 scale_curve = SubResource("CurveTexture_q8l6t")
 
+[sub_resource type="Gradient" id="Gradient_vp8o5"]
+offsets = PackedFloat32Array(0, 0.450658, 0.990132)
+colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_wtrsa"]
+gradient = SubResource("Gradient_vp8o5")
+fill_from = Vector2(0.2, 0)
+fill_to = Vector2(0.8, 0)
+
 [node name="LinkGPUParticles2D" type="GPUParticles2D"]
 modulate = Color(1.5, 1.5, 1.5, 1)
 emitting = false
@@ -31,3 +41,10 @@ texture = ExtResource("1_nee0j")
 preprocess = 1.0
 randomness = 1.0
 visibility_rect = Rect2(-2500, -2500, 5000, 5000)
+script = ExtResource("2_vegd8")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+visible = false
+color = Color(0.302, 0.651, 2, 1)
+range_layer_min = -2
+texture = SubResource("GradientTexture2D_wtrsa")

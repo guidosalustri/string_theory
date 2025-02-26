@@ -2,9 +2,13 @@ class_name Ship extends Area2D
 
 
 @onready var _particles: GPUParticles2D = $Sprite2D/GPUParticles2D
+@onready var side_thruster_left: Sprite2D = $Sprite2D/SideThrusterLeft
+@onready var side_thruster_right: Sprite2D = $Sprite2D/SideThrusterRight
+
 @onready var ray_cast_2d: RayCast2D = $RayCast2D
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var timer: Timer = $Timer
+@onready var point_light_2d: PointLight2D = $PointLight2D
 
 @export var max_speed := 700.0
 @export var acceleration := 250.0
@@ -36,7 +40,7 @@ func set_has_energy(energy_update: bool) -> void:
 	has_energy = energy_update
 
 signal change_star(star: Star)
-signal cut_link
+signal cut_link(was_black_hole: bool)
 
 var speed := 450.0
 # to check if the ship is on a star and in process should spin
@@ -63,10 +67,8 @@ func _process(delta: float) -> void:
 
 		target = ray_cast_2d.get_collider() #last_star:
 
-
 	match current_state:
 		States.ENTER_LVL:
-
 			if timer.time_left > 0:
 				speed += 1.0  * acceleration * delta
 				speed = clamp(speed, 0.0, max_speed)
@@ -83,16 +85,22 @@ func _process(delta: float) -> void:
 					set_has_energy(true)
 
 		States.FLY:
+			side_thruster_left.emit = true
+			side_thruster_right.emit = true
 			_move(delta, turn_right, turn_left, move_forward)
 			if flag:
 				set_current_state(States.ORBIT)
+				side_thruster_left.emit = false
+				side_thruster_right.emit = false
 			elif black_hole:
 				set_current_state(States.DRAGGED)
+				side_thruster_left.emit = false
+				side_thruster_right.emit = false
 		States.ORBIT:
 			_spin_around(delta, pos1)
 			set_has_energy(true)
 			if target :
-				cut_link.emit()
+				cut_link.emit(false)
 				set_current_state(States.EXIT_LVL)
 			elif black_hole:
 				set_current_state(States.DRAGGED)
@@ -107,7 +115,7 @@ func _process(delta: float) -> void:
 	if speed<=0:
 		_particles.emitting = false
 		if not has_energy or lvls_with_not_foward:
-			cut_link.emit()
+			cut_link.emit(false)
 			animation_player.play("die")
 			#should run GameManager.ship_dead() but one time
 			#I need to put it in the animaiton itself.
@@ -119,16 +127,20 @@ func _move(delta: float, right: bool , left: bool, forward: bool) -> void:
 	forward and has_energy else -1.0) * acceleration * delta
 	speed = clamp(speed, 0.0, max_speed)
 	
+	var direction := Input.get_vector("move_left", "move_right", "move_up", "move_down")
 	if invert_controls:
-		if Input.is_action_pressed("move_left") and right:
-			rotate(turn_speed * delta)
-		if Input.is_action_pressed("move_right") and left:
-			rotate(-turn_speed * delta)
+		direction.x *= -1
+	var turn_speed_dt : float = sign(direction.x) * turn_speed * delta
+
+	rotate(turn_speed_dt)
+
+	if sign(turn_speed_dt) == 1:
+		side_thruster_right.power = 0
+	elif sign(turn_speed_dt) == -1:
+		side_thruster_left.power = 0
 	else:
-		if Input.is_action_pressed("move_left") and left:
-			rotate(-turn_speed * delta)
-		if Input.is_action_pressed("move_right") and right:
-			rotate(turn_speed * delta)
+		side_thruster_left.power = 0
+		side_thruster_right.power = 0
 
 	var velocity := (Vector2.RIGHT * speed).rotated(rotation)
 	translate(velocity * delta)
@@ -186,7 +198,7 @@ func _on_area_entered(area: Area2D)->void:
 				black_hole = area
 				if speed < 500:
 					speed = 500
-				cut_link.emit()
+				cut_link.emit(true)
 				GameManager.ship_dead()
 	if area.is_in_group("blackhole"):
 
@@ -196,7 +208,7 @@ func _on_area_entered(area: Area2D)->void:
 		if black_hole.is_in_spinner:
 			max_speed = black_hole.linear_speed_aprox
 			speed = black_hole.linear_speed_aprox
-		cut_link.emit()
+		cut_link.emit(true)
 		GameManager.ship_dead()
 	if area.is_in_group("asteroid"):
 		explote()
@@ -207,5 +219,22 @@ func restart_lvl() -> void:
 func explote() -> void:
 	animation_player.play("asteroid_die")
 	set_process(false)
-	cut_link.emit()
+	cut_link.emit(false)
 	GameManager.ship_dead()
+
+func dim_light_on(turn_light_on: bool) -> void:
+	#this should be carfully balance
+	if turn_light_on:
+		point_light_2d.texture_scale += 0.03
+		point_light_2d.energy += 0.001
+	else:
+		point_light_2d.texture_scale -= 0.05
+		point_light_2d.energy -= 0.004
+	var energy := clampf(point_light_2d.energy,0.3,0.7)
+	var value := clampf(point_light_2d.texture_scale,3,19)
+	point_light_2d.texture_scale = value
+	point_light_2d.energy = energy
+	#if value <= 2:
+		#cut_link.emit(false)
+		#set_process(false)
+		#animation_player.play("die")

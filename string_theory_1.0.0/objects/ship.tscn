@@ -1,9 +1,10 @@
-[gd_scene load_steps=19 format=3 uid="uid://em4qfalchhhd"]
+[gd_scene load_steps=22 format=3 uid="uid://em4qfalchhhd"]
 
 [ext_resource type="Texture2D" uid="uid://bniyrxn3r2v8h" path="res://assets/ship.png" id="1_130qv"]
 [ext_resource type="Script" path="res://objects/ship.gd" id="1_u1532"]
 [ext_resource type="Texture2D" uid="uid://byhx0m56pbo6g" path="res://assets/pear_36_fire_gradient.tres" id="3_ncfri"]
 [ext_resource type="Texture2D" uid="uid://f60df1b3rfjk" path="res://assets/puff.svg" id="3_xsnrh"]
+[ext_resource type="PackedScene" uid="uid://bvtilym2q6v6b" path="res://assets/ship/side_thruster/side_thruster.tscn" id="5_8ryym"]
 [ext_resource type="Texture2D" uid="uid://d158xruba2vkk" path="res://assets/explosion_alt.png" id="5_wjuxj"]
 
 [sub_resource type="Curve" id="Curve_85r6f"]
@@ -15,8 +16,8 @@ point_count = 2
 curve = SubResource("Curve_85r6f")
 
 [sub_resource type="Curve" id="Curve_gdqed"]
-_data = [Vector2(0, 0.272727), 0.0, 1.4, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
-point_count = 2
+_data = [Vector2(0, 0.272727), 0.0, -0.212219, 0, 0, Vector2(0.318471, 0.645305), 2.01452, 2.01452, 0, 0, Vector2(0.592357, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.331853), 0.509528, 0.0, 0, 0]
+point_count = 4
 
 [sub_resource type="CurveTexture" id="CurveTexture_67yua"]
 curve = SubResource("Curve_gdqed")
@@ -35,7 +36,7 @@ gravity = Vector3(0, 0, 0)
 linear_accel_min = 4.0
 linear_accel_max = 10.0
 linear_accel_curve = SubResource("CurveTexture_8c16y")
-scale_min = 0.5
+scale_min = 0.0
 scale_max = 2.0
 scale_curve = SubResource("CurveTexture_67yua")
 color_ramp = ExtResource("3_ncfri")
@@ -261,8 +262,17 @@ scale_min = 0.4
 scale_max = 0.4
 scale_curve = SubResource("2")
 
+[sub_resource type="Gradient" id="Gradient_1h8vc"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_7fiap"]
+gradient = SubResource("Gradient_1h8vc")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.773504, 0.0940171)
+
 [node name="Ship" type="Area2D"]
-z_index = 2
+z_index = 5
 collision_mask = 31
 script = ExtResource("1_u1532")
 
@@ -278,6 +288,18 @@ emitting = false
 amount = 64
 process_material = SubResource("ParticleProcessMaterial_n5f0s")
 texture = ExtResource("3_xsnrh")
+
+[node name="SideThrusterLeft" parent="Sprite2D" instance=ExtResource("5_8ryym")]
+position = Vector2(-54, -28)
+rotation = 2.09439
+scale = Vector2(0.25, 0.25)
+emit = false
+
+[node name="SideThrusterRight" parent="Sprite2D" instance=ExtResource("5_8ryym")]
+position = Vector2(-54, 26)
+rotation = 1.0472
+scale = Vector2(0.25, 0.25)
+emit = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_45hjj")
@@ -308,3 +330,11 @@ explosiveness = 1.0
 wait_time = 0.5
 one_shot = true
 autostart = true
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+energy = 0.7
+range_layer_min = -2
+range_item_cull_mask = 3
+shadow_enabled = true
+texture = SubResource("GradientTexture2D_7fiap")
+texture_scale = 19.0

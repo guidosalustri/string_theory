@@ -74,4 +74,5 @@ spin={
 
 [rendering]
 
+viewport/hdr_2d=true
 2d/snap/snap_2d_transforms_to_pixel=true
