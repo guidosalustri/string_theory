@@ -26,6 +26,8 @@ extends Node2D
 @onready var cut_line: Line2D = $CutLine
 @onready var animation_player: AnimationPlayer = $LinkLineShip/AnimationPlayer
 @onready var pick_ups: Node2D = $PickUps
+@onready var pick_crew_ui: Control = $CanvasLayer2/PickCrewUI
+
 
 
 @export var stars_trail: Array[Star]
@@ -101,6 +103,8 @@ func _ready() -> void:
 
 	phantom_camera_constellation.priority = 0
 	
+	if pick_crew_ui != null:
+		pick_crew_ui.toggle(GameManager.pop_selector)
 
 func _process(_delta: float) -> void:
 	if link_line_ship.points[0] != Vector2(0.0,0.0):
@@ -187,7 +191,7 @@ func _on_timer_timeout() -> void:
 	await tween.finished
 
 	GameManager.lvl +=1
-	GameManager.call_cutscene()
+	GameManager.call_selector_scene()
 
 func dim_out_obstacles() -> void:
 	for star in constellation.get_children():

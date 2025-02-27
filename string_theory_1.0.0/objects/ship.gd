@@ -218,7 +218,7 @@ func _on_area_entered(area: Area2D)->void:
 		explote()
 
 func restart_lvl() -> void:
-	GameManager.next_lvl(GameManager.lvl)
+	GameManager.start_lvl(GameManager.lvl)
 
 func explote() -> void:
 	animation_player.play("asteroid_die")

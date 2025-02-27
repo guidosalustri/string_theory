@@ -1,0 +1,179 @@
+[gd_scene load_steps=18 format=3 uid="uid://c1jkac8ny6yqf"]
+
+[ext_resource type="PackedScene" uid="uid://bxfevggvxo634" path="res://assets/background/space_background.tscn" id="1_4piu6"]
+[ext_resource type="Script" path="res://ui/selector/selector.gd" id="1_v3pr3"]
+[ext_resource type="Shader" path="res://assets/group_outline.gdshader" id="2_yvnap"]
+[ext_resource type="Texture2D" uid="uid://cgwmuppgqua43" path="res://cutscene/planets.svg" id="3_abjb8"]
+[ext_resource type="PackedScene" uid="uid://gv0sb0aqg1ux" path="res://ui/selector/dialogue_selector.tscn" id="4_n84fw"]
+[ext_resource type="Theme" uid="uid://dp1nmwxx5vbr5" path="res://ui/ui_samples_theme.tres" id="5_td1x7"]
+[ext_resource type="PackedScene" uid="uid://b8n30pc1qe5ri" path="res://ui/dialogue/portrait_dialogue.tscn" id="6_ijs4g"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kl6ma"]
+shader = ExtResource("2_yvnap")
+shader_parameter/line_color = Color(0.5, 11.892, 0.7, 1)
+shader_parameter/line_thickness = 1.0
+shader_parameter/viewport_scale = Vector2(1, 1)
+
+[sub_resource type="Gradient" id="Gradient_btl6c"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_onp0b"]
+gradient = SubResource("Gradient_btl6c")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.773504, 0.0940171)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dwmsi"]
+shader = ExtResource("2_yvnap")
+shader_parameter/line_color = Color(1.081, 0, 11.892, 1)
+shader_parameter/line_thickness = 2.0
+shader_parameter/viewport_scale = Vector2(1, 1)
+
+[sub_resource type="Gradient" id="Gradient_meswh"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_qi1js"]
+gradient = SubResource("Gradient_meswh")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.773504, 0.0940171)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tbscj"]
+shader = ExtResource("2_yvnap")
+shader_parameter/line_color = Color(17.838, 5.945, 0, 1)
+shader_parameter/line_thickness = 1.0
+shader_parameter/viewport_scale = Vector2(1, 1)
+
+[sub_resource type="Gradient" id="Gradient_7mhuy"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_p1hsi"]
+gradient = SubResource("Gradient_7mhuy")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.773504, 0.0940171)
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_rwiqq"]
+color = Color(0, 0, 0, 0)
+vertical = true
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_v3pr3")
+
+[node name="SpaceBackground" parent="." instance=ExtResource("1_4piu6")]
+
+[node name="Planets" type="Node2D" parent="."]
+
+[node name="CanvasGroup2" type="CanvasGroup" parent="Planets"]
+material = SubResource("ShaderMaterial_kl6ma")
+position = Vector2(630, 104)
+
+[node name="Earth" type="Sprite2D" parent="Planets/CanvasGroup2"]
+position = Vector2(-11, 4)
+texture = ExtResource("3_abjb8")
+region_enabled = true
+region_rect = Rect2(0, 0, 459.468, 434.036)
+
+[node name="PointLight2D" type="PointLight2D" parent="Planets/CanvasGroup2/Earth"]
+range_layer_min = -99
+range_item_cull_mask = 3
+shadow_enabled = true
+texture = SubResource("GradientTexture2D_onp0b")
+texture_scale = 10.0
+
+[node name="CanvasGroup5" type="CanvasGroup" parent="Planets"]
+material = SubResource("ShaderMaterial_dwmsi")
+position = Vector2(1711, 226)
+
+[node name="Planet2" type="Sprite2D" parent="Planets/CanvasGroup5"]
+position = Vector2(12, 18)
+texture = ExtResource("3_abjb8")
+region_enabled = true
+region_rect = Rect2(566.209, 9.85106, 453.646, 396.583)
+
+[node name="PointLight2D" type="PointLight2D" parent="Planets/CanvasGroup5/Planet2"]
+color = Color(1.622, 1, 10.811, 1)
+energy = 1.5
+range_layer_min = -99
+range_item_cull_mask = 3
+shadow_enabled = true
+texture = SubResource("GradientTexture2D_qi1js")
+texture_scale = 6.0
+
+[node name="CanvasGroup4" type="CanvasGroup" parent="Planets"]
+material = SubResource("ShaderMaterial_tbscj")
+position = Vector2(295, 970)
+
+[node name="Planet1" type="Sprite2D" parent="Planets/CanvasGroup4"]
+position = Vector2(-15, 13)
+rotation = -0.182931
+texture = ExtResource("3_abjb8")
+region_enabled = true
+region_rect = Rect2(115.417, 409.287, 798.873, 482.177)
+
+[node name="PointLight2D" type="PointLight2D" parent="Planets/CanvasGroup4/Planet1"]
+color = Color(22.163, 5.406, 0, 1)
+range_layer_min = -99
+range_item_cull_mask = 3
+shadow_enabled = true
+texture = SubResource("GradientTexture2D_p1hsi")
+texture_scale = 10.0
+
+[node name="DialogueSelector" parent="." instance=ExtResource("4_n84fw")]
+offset_left = -135.0
+offset_top = -249.0
+offset_right = -135.0
+offset_bottom = -249.0
+
+[node name="Options" type="Control" parent="."]
+process_mode = 3
+self_modulate = Color(0.231373, 0.635294, 0.976471, 1)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 987.0
+offset_top = 514.0
+offset_right = 987.0
+offset_bottom = 514.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("5_td1x7")
+
+[node name="Portrait" parent="Options" instance=ExtResource("6_ijs4g")]
+offset_left = -160.0
+offset_top = -70.0
+offset_right = -160.0
+offset_bottom = -70.0
+
+[node name="Portrait2" parent="Options" instance=ExtResource("6_ijs4g")]
+offset_left = 160.0
+offset_top = -70.0
+offset_right = 160.0
+offset_bottom = -70.0
+
+[node name="CenterContainer" type="CenterContainer" parent="Options"]
+layout_mode = 0
+offset_left = -263.0
+offset_top = 106.0
+offset_right = 271.0
+offset_bottom = 165.0
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="HBoxContainer" parent="Options/CenterContainer"]
+layout_mode = 2
+
+[node name="OptionsButton1" type="Button" parent="Options/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.937255, 0.992157, 0.372549, 1)
+text = "Select"
+
+[node name="HSeparator2" type="VSeparator" parent="Options/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 150
+theme_override_styles/separator = SubResource("StyleBoxLine_rwiqq")
+
+[node name="OptionsButton2" type="Button" parent="Options/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.937255, 0.992157, 0.372549, 1)
+text = "Select"
