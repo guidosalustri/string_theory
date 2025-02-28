@@ -33,7 +33,7 @@ func _on_animation_player_animation_finished(_anim_name: StringName) -> void:
 		tween.tween_property(sprite_2d, "position", Vector2(2500,675), 2)
 		await tween.finished
 		
-		GameManager.next_lvl(GameManager.lvl)
+		GameManager.start_lvl(GameManager.lvl)
 
 func _on_timer_timeout() -> void:
 	camera_2d.set_process(false)

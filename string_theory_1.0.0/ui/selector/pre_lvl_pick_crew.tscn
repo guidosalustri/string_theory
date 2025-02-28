@@ -1,0 +1,94 @@
+[gd_scene load_steps=7 format=3 uid="uid://bwo2qlle2kk0g"]
+
+[ext_resource type="Theme" uid="uid://dp1nmwxx5vbr5" path="res://ui/ui_samples_theme.tres" id="1_lijx0"]
+[ext_resource type="Script" path="res://ui/selector/pre_lvl_pick_crew.gd" id="2_nk26a"]
+[ext_resource type="Shader" path="res://ui/blur_for_ui.gdshader" id="3_wusih"]
+[ext_resource type="PackedScene" uid="uid://b8n30pc1qe5ri" path="res://ui/dialogue/portrait_dialogue.tscn" id="4_qxkbt"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_v6h3r"]
+shader = ExtResource("3_wusih")
+shader_parameter/blur_amount = 1.5
+shader_parameter/tint = Color(0.231373, 0.635294, 0.976471, 1)
+shader_parameter/tint_amount = 0.079
+shader_parameter/saturation = 0.3
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_1i5ue"]
+color = Color(0, 0, 0, 0)
+vertical = true
+
+[node name="PickCrewUI" type="Control"]
+process_mode = 3
+self_modulate = Color(0.231373, 0.635294, 0.976471, 1)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_lijx0")
+script = ExtResource("2_nk26a")
+menu_opened_amount = 1.0
+opening_speed = 0.5
+
+[node name="BlurColorRect" type="ColorRect" parent="."]
+unique_name_in_owner = true
+material = SubResource("ShaderMaterial_v6h3r")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Options" type="Control" parent="."]
+process_mode = 3
+self_modulate = Color(0.231373, 0.635294, 0.976471, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 987.0
+offset_top = 514.0
+offset_right = 987.0
+offset_bottom = 514.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_lijx0")
+
+[node name="Portrait" parent="Options" instance=ExtResource("4_qxkbt")]
+offset_left = -160.0
+offset_top = -70.0
+offset_right = -160.0
+offset_bottom = -70.0
+
+[node name="Portrait2" parent="Options" instance=ExtResource("4_qxkbt")]
+offset_left = 160.0
+offset_top = -70.0
+offset_right = 160.0
+offset_bottom = -70.0
+
+[node name="CenterContainer" type="CenterContainer" parent="Options"]
+layout_mode = 0
+offset_left = -263.0
+offset_top = 106.0
+offset_right = 271.0
+offset_bottom = 165.0
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="HBoxContainer" parent="Options/CenterContainer"]
+layout_mode = 2
+
+[node name="OptionsButton1" type="Button" parent="Options/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.937255, 0.992157, 0.372549, 1)
+text = "Select"
+
+[node name="HSeparator2" type="VSeparator" parent="Options/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 150
+theme_override_styles/separator = SubResource("StyleBoxLine_1i5ue")
+
+[node name="OptionsButton2" type="Button" parent="Options/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.937255, 0.992157, 0.372549, 1)
+text = "Select"

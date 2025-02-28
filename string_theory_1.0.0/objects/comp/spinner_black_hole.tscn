@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://dqrl1w65sj140"]
 
-[ext_resource type="Script" path="res://objects/spinner_black_hole.gd" id="1_5pgde"]
+[ext_resource type="Script" path="res://objects/comp/spinner_black_hole.gd" id="1_5pgde"]
 
 [node name="SpinnerBlackHole" type="Node2D" groups=["spinner_bh"]]
 script = ExtResource("1_5pgde")

@@ -6,6 +6,7 @@ extends Control
 var character := false
 var maverick_texture : Texture2D = preload("res://assets/martin_martian.png")
 var martin_texture : Texture2D = preload("res://assets/crew.png")
+var karen_texture : Texture2D = preload("res://assets/sophia.png")
 
 var martin :={
 	"name" : "Martin",
@@ -19,11 +20,19 @@ var maverick :={
 	"new_scale": Vector2(1.15,1.15),
 	}
 
-var crew :={0 : martin, 1 : maverick,}
+var karen :={
+	"name" : "Karen",
+	"texture" : karen_texture,
+	"new_scale": Vector2(1.6,1.6),
+	}
+
+
+var crew :={0 : martin, 1 : maverick, 2: karen,}
 
 enum States {
 	MARTIN,
-	MAVERICK
+	MAVERICK,
+	KAREN
 	}
 
 var current_state: States = States.MARTIN:
@@ -45,3 +54,7 @@ func pop_in() -> void:
 	tween.tween_property(_sprite_2d, "position:y", 23.0, 0.6).set_trans(Tween.TRANS_ELASTIC)
 	tween.set_ease(Tween.EASE_IN)
 	tween.parallel().tween_property(_sprite_2d, "modulate:a", 1, 0.8)
+
+func ready_for_pop_in() -> void:
+	_sprite_2d.position.y= 180
+	_sprite_2d.modulate.a= 0
