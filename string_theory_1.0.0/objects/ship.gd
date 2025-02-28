@@ -1,7 +1,5 @@
 class_name Ship extends Area2D
 
-
-@onready var _particles: GPUParticles2D = $Sprite2D/GPUParticles2D
 @onready var side_thruster_left: Sprite2D = $Sprite2D/SideThrusterLeft
 @onready var side_thruster_right: Sprite2D = $Sprite2D/SideThrusterRight
 
@@ -57,7 +55,6 @@ var is_last_star := false
 
 func _ready() -> void:
 	area_entered.connect(_on_area_entered)
-	_particles.emitting = true
 	max_speed_hud = max_speed
 
 
@@ -113,7 +110,6 @@ func _process(delta: float) -> void:
 			_follow(delta, target.global_position + target_offset)
 
 	if speed<=0:
-		_particles.emitting = false
 		if not has_energy or lvls_with_not_foward:
 			cut_link.emit(false)
 			animation_player.play("die")
@@ -184,8 +180,6 @@ func _follow(delta: float, target: Vector2) -> void:
 
 # key to fly to next star
 func _unhandled_input(event: InputEvent) -> void:
-	if event.is_action_pressed("move_up") or event.is_action_pressed("spin"):
-		_particles.emitting = true
 	if event.is_action_pressed("spin"):
 		flag= false
 
