@@ -76,8 +76,10 @@ func toggle(is_toggled: bool) -> void:
 
 func _on_buton_martin_pressed() -> void:
 	GameManager.martin_on_ship = true
+	GameManager.pop_selector = false
 	toggle(false)
 
 func _on_buton_2_pressed() -> void:
 	GameManager.martin_on_ship = false
+	GameManager.pop_selector = false
 	toggle(false)

@@ -1,7 +1,7 @@
 [gd_scene load_steps=21 format=3 uid="uid://boyantdqxsatk"]
 
 [ext_resource type="Script" path="res://lvls/lvl.gd" id="1_2hr0f"]
-[ext_resource type="PackedScene" uid="uid://dqjnkl56rsiki" path="res://objects/exit_area.tscn" id="2_ryq3n"]
+[ext_resource type="PackedScene" uid="uid://dqjnkl56rsiki" path="res://objects/comp/exit_area.tscn" id="2_ryq3n"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="3_bhomn"]
 [ext_resource type="PackedScene" uid="uid://bxfevggvxo634" path="res://assets/background/space_background.tscn" id="4_gvilq"]
 [ext_resource type="PackedScene" uid="uid://em4qfalchhhd" path="res://objects/ship.tscn" id="5_2vc0g"]
@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://bp4febdu6vh5y" path="res://objects/obstacles/asteroid.tscn" id="7_mimgj"]
 [ext_resource type="PackedScene" uid="uid://b1xjjudghnfhm" path="res://objects/obstacles/black_hole.tscn" id="8_cgcpj"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="9_ayeev"]
-[ext_resource type="PackedScene" uid="uid://dqrl1w65sj140" path="res://objects/spinner_black_hole.tscn" id="9_hke18"]
+[ext_resource type="PackedScene" uid="uid://dqrl1w65sj140" path="res://objects/comp/spinner_black_hole.tscn" id="9_hke18"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="10_icfp8"]
 [ext_resource type="FontFile" uid="uid://clffif4u7fy61" path="res://ui/Stacked pixel.ttf" id="11_ia46y"]
 [ext_resource type="Shader" path="res://ui/blur_for_ui.gdshader" id="12_76bud"]

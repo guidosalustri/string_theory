@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://c1gnyd31ix048"]
 
-[ext_resource type="Script" path="res://re_start_lvl_comp.gd" id="1_4ptcr"]
+[ext_resource type="Script" path="res://objects/comp/re_start_lvl_comp.gd" id="1_4ptcr"]
 
 [node name="ReStartLvlComp" type="Node"]
 script = ExtResource("1_4ptcr")
