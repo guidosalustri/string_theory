@@ -316,6 +316,6 @@ default_color = Color(3, 0.128, 0.302, 1)
 [node name="PickUps" type="Node2D" parent="."]
 
 [node name="Pickup" parent="PickUps" instance=ExtResource("18_tljc4")]
-position = Vector2(3008, 2368)
+position = Vector2(2240, 2624)
 
 [node name="ReStartLvlComp" parent="." instance=ExtResource("19_yiiia")]

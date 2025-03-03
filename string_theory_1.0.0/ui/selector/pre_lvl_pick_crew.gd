@@ -20,9 +20,9 @@ var _tween: Tween
 
 
 func _ready() -> void:
-
 	menu_opened_amount = 0.0
-	portrait_2.set_current_state(portrait.States.MAVERICK)
+	portrait_2.set_current_state(portrait.States.ROBERTO)
+	options_button_martin.grab_focus()
 	options_button_martin.pressed.connect(_on_buton_martin_pressed)
 	options_button_2.pressed.connect(_on_buton_2_pressed)
 

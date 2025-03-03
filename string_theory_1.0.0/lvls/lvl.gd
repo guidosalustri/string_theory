@@ -222,7 +222,8 @@ func cut_line_link(was_black_hole: bool) -> void:
 	link_line_ship.hide()
 	if was_black_hole:
 		cut_line.target = ship
-		cut_line.create_line(link_line_ship.points[0],link_line_ship.points[1])
+		if link_line_ship.points[0] != Vector2(0.0,0.0):
+			cut_line.create_line(link_line_ship.points[0],link_line_ship.points[1])
 	else:
 		cut_line.create_line(link_line_ship.points[1],link_line_ship.points[0])
 	ship.cut_link.disconnect(cut_line_link)

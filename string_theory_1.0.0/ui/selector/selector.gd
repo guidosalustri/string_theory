@@ -10,10 +10,11 @@ extends Node2D
 
 
 func _ready() -> void:
-	portrait_2.set_current_state(portrait.States.MAVERICK)
+	portrait_2.set_current_state(portrait.States.ROBERTO)
 	options.hide()
 	dialogue_selector.dialogue_done.connect(func() -> void:
 		options.show()
+		options_button_martin.grab_focus()
 		portrait.ready_for_pop_in()
 		portrait_2.ready_for_pop_in()
 		portrait.pop_in()

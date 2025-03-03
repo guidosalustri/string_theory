@@ -53,7 +53,7 @@ fill = 1
 fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(0.773504, 0.0940171)
 
-[sub_resource type="StyleBoxLine" id="StyleBoxLine_rwiqq"]
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_4vi6j"]
 color = Color(0, 0, 0, 0)
 vertical = true
 
@@ -153,11 +153,10 @@ offset_right = 160.0
 offset_bottom = -70.0
 
 [node name="CenterContainer" type="CenterContainer" parent="Options"]
-layout_mode = 0
-offset_left = -263.0
-offset_top = 106.0
-offset_right = 271.0
-offset_bottom = 165.0
+offset_left = -265.0
+offset_top = 78.0
+offset_right = 269.0
+offset_bottom = 137.0
 size_flags_vertical = 3
 
 [node name="VBoxContainer" type="HBoxContainer" parent="Options/CenterContainer"]
@@ -165,15 +164,23 @@ layout_mode = 2
 
 [node name="OptionsButton1" type="Button" parent="Options/CenterContainer/VBoxContainer"]
 layout_mode = 2
+focus_neighbor_left = NodePath("../OptionsButton2")
+focus_neighbor_right = NodePath("../OptionsButton2")
+focus_next = NodePath("../OptionsButton2")
+focus_previous = NodePath("../OptionsButton2")
 theme_override_colors/font_color = Color(0.937255, 0.992157, 0.372549, 1)
 text = "Select"
 
 [node name="HSeparator2" type="VSeparator" parent="Options/CenterContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_constants/separation = 150
-theme_override_styles/separator = SubResource("StyleBoxLine_rwiqq")
+theme_override_constants/separation = 120
+theme_override_styles/separator = SubResource("StyleBoxLine_4vi6j")
 
 [node name="OptionsButton2" type="Button" parent="Options/CenterContainer/VBoxContainer"]
 layout_mode = 2
+focus_neighbor_left = NodePath("../OptionsButton1")
+focus_neighbor_right = NodePath("../OptionsButton1")
+focus_next = NodePath("../OptionsButton1")
+focus_previous = NodePath("../OptionsButton1")
 theme_override_colors/font_color = Color(0.937255, 0.992157, 0.372549, 1)
 text = "Select"

@@ -185,31 +185,32 @@ func _unhandled_input(event: InputEvent) -> void:
 
 # ship landed on a star area
 func _on_area_entered(area: Area2D)->void:
-	if area is Star:
-		var star : Star = area as Star
-		match star.current_state:
-			star.States.STAR:
-				change_star.emit(star)
-				flag=true
-				pos1 = area.global_position
-			star.States.BLACK_HOLE:
-				black_hole = area
-				if speed < 500:
-					speed = 500
-				cut_link.emit(true)
-				GameManager.ship_dead()
-	if area.is_in_group("blackhole"):
+	if black_hole ==null:
+		if area is Star:
+			var star : Star = area as Star
+			match star.current_state:
+				star.States.STAR:
+					change_star.emit(star)
+					flag=true
+					pos1 = area.global_position
+				star.States.BLACK_HOLE:
+					black_hole = area
+					if speed < 500:
+						speed = 500
+					cut_link.emit(true)
+					GameManager.ship_dead()
+		if area.is_in_group("blackhole"):
 
-		black_hole = area
-		if speed < 500:
-			speed = 500
-		if black_hole.is_in_spinner:
-			max_speed = black_hole.linear_speed_aprox
-			speed = black_hole.linear_speed_aprox
-		cut_link.emit(true)
-		GameManager.ship_dead()
-	if area.is_in_group("asteroid"):
-		explote()
+			black_hole = area
+			if speed < 500:
+				speed = 500
+			if black_hole.is_in_spinner:
+				max_speed = black_hole.linear_speed_aprox
+				speed = black_hole.linear_speed_aprox
+			cut_link.emit(true)
+			GameManager.ship_dead()
+		if area.is_in_group("asteroid"):
+			explote()
 
 func restart_lvl() -> void:
 	GameManager.start_lvl(GameManager.lvl)

@@ -7,6 +7,7 @@ var character := false
 var maverick_texture : Texture2D = preload("res://assets/martin_martian.png")
 var martin_texture : Texture2D = preload("res://assets/crew.png")
 var karen_texture : Texture2D = preload("res://assets/sophia.png")
+var roberto_texture : Texture2D = preload("res://assets/roberto.png")
 
 var martin :={
 	"name" : "Martin",
@@ -26,13 +27,21 @@ var karen :={
 	"new_scale": Vector2(1.6,1.6),
 	}
 
+var roberto :={
+	"name" : "Roberto",
+	"texture" : roberto_texture,
+	"new_scale": Vector2(0.35,0.35),
+	}
 
-var crew :={0 : martin, 1 : maverick, 2: karen,}
+var crew :={0 : martin, 1 : maverick, 2: karen,
+	3: roberto,
+	}
 
 enum States {
 	MARTIN,
 	MAVERICK,
-	KAREN
+	KAREN,
+	ROBERTO
 	}
 
 var current_state: States = States.MARTIN:

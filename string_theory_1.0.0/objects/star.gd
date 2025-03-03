@@ -89,7 +89,7 @@ func _on_area_entered(area: Area2D) -> void:
 		await animation_player.animation_finished
 	animation_player_2.stop()
 	timer.stop()
-	if GameManager.martin_on_ship and pickup:
+	if GameManager.martin_on_ship and pickup!=null:
 		pickup.spawn()
 		
 	if GameManager.martin_on_ship and loose_agency_star \
