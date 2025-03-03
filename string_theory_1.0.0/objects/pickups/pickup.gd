@@ -6,6 +6,7 @@ class_name Pickup extends Area2D
 @onready var _audio_stream_player: AudioStreamPlayer2D = %AudioStreamPlayer2D
 @onready var _animation_player: AnimationPlayer = %AnimationPlayer
 
+var not_spawn_yet := true
 signal has_spawn
 
 func _ready() -> void:
@@ -21,7 +22,7 @@ func _ready() -> void:
 			item.use()
 			if not area.turn_right:
 				area.turn_right=true
-			if not area.move_forward:
+			elif not area.move_forward:
 				area.move_forward=true
 			elif not area.turn_left:
 				area.turn_left=true
@@ -39,16 +40,18 @@ func _ready() -> void:
 	)
 
 func spawn():
-	show()
-	set_process(true)
-	set_deferred("monitoring", true)
-	set_deferred("monitorable", true)
-	var tween:  Tween = create_tween()
-	tween.set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
-	tween.tween_property(self, "scale",Vector2(1,1),0.25)
-	await tween.finished
-	_animation_player.play("idle")
-	has_spawn.emit()
+	if not_spawn_yet:
+		show()
+		set_process(true)
+		set_deferred("monitoring", true)
+		set_deferred("monitorable", true)
+		var tween:  Tween = create_tween()
+		tween.set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
+		tween.tween_property(self, "scale",Vector2(1,1),0.25)
+		await tween.finished
+		_animation_player.play("idle")
+		has_spawn.emit()
+		not_spawn_yet = false
 
 
 func set_item(value: Item) -> void:

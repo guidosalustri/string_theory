@@ -153,6 +153,7 @@ offset_right = 160.0
 offset_bottom = -70.0
 
 [node name="CenterContainer" type="CenterContainer" parent="Options"]
+layout_mode = 0
 offset_left = -265.0
 offset_top = 78.0
 offset_right = 269.0

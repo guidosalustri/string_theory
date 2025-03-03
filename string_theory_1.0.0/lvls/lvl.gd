@@ -31,7 +31,7 @@ extends Node2D
 
 
 @export var stars_trail: Array[Star]
-@export var max_string_lenght := 900
+#@export var max_string_lenght := 900
 
 var index := 0
 #options to cut the link
@@ -77,8 +77,8 @@ func _ready() -> void:
 	for pickup in pick_ups.get_children():
 		pickup.has_spawn.connect(func() -> void:
 			GameManager.pickup_spawn_count+=1
-			#print(pickup_spawn_count)
-			#print(GameManager.gems)
+			print(GameManager.pickup_spawn_count)
+			print(GameManager.gems)
 			)
 	
 	stars_trail[0].spawn()
@@ -105,6 +105,8 @@ func _ready() -> void:
 	
 	if pick_crew_ui != null:
 		pick_crew_ui.toggle(GameManager.pop_selector)
+	GameManager.gems = 0
+	GameManager.pickup_spawn_count = 0
 
 func _process(_delta: float) -> void:
 	if link_line_ship.points[0] != Vector2(0.0,0.0):

@@ -6,7 +6,7 @@ extends Node
 @export var main_menu: PackedScene
 @export var intro_lvl_selector: PackedScene
 
-var lvl := 0
+var lvl := 2
 var gems := 0
 var deaths_counts := 0
 var martin_on_ship := false

@@ -150,10 +150,9 @@ position = Vector2(1152, 384)
 asteroid_position = Vector2(150, 150)
 anticlockwise = true
 
-[node name="Star2" parent="Constellation" node_paths=PackedStringArray("pickup") instance=ExtResource("6_5ja75")]
+[node name="Star2" parent="Constellation" instance=ExtResource("6_5ja75")]
 position = Vector2(539, -209)
 black_hole_on_star = true
-pickup = NodePath("../../PickUps/Pickup")
 
 [node name="blackHole" parent="Constellation/Star2" instance=ExtResource("8_u5r8w")]
 position = Vector2(-629, 618)

@@ -153,16 +153,17 @@ position = Vector2(-320, 320)
 rotation_speed = 3.3
 asteroid_position = Vector2(260, 0)
 
-[node name="Star2" parent="Constellation" instance=ExtResource("6_mk11u")]
+[node name="Star2" parent="Constellation" node_paths=PackedStringArray("pickup") instance=ExtResource("6_mk11u")]
 position = Vector2(4160, 2624)
 black_hole_on_star = true
+pickup = NodePath("../../PickUps/Pickup")
 
 [node name="blackHole" parent="Constellation/Star2" instance=ExtResource("8_s5syh")]
 position = Vector2(-320, -64)
 
-[node name="Star3" parent="Constellation" node_paths=PackedStringArray("pickup") instance=ExtResource("6_mk11u")]
+[node name="Star3" parent="Constellation" instance=ExtResource("6_mk11u")]
 position = Vector2(1984, 2240)
-pickup = NodePath("../../PickUps/Pickup")
+loose_agency_star = true
 
 [node name="blackHole" parent="Constellation/Star3" instance=ExtResource("8_s5syh")]
 position = Vector2(384, -320)
@@ -213,11 +214,13 @@ rotation_speed = 2.2
 
 [node name="blackHole2" parent="Constellation/Star6/SpinnerBlackHole" instance=ExtResource("8_s5syh")]
 
-[node name="Star7" parent="Constellation" instance=ExtResource("6_mk11u")]
+[node name="Star7" parent="Constellation" node_paths=PackedStringArray("pickup") instance=ExtResource("6_mk11u")]
 position = Vector2(2816, 1280)
+pickup = NodePath("../../PickUps/Pickup3")
 
 [node name="Star8" parent="Constellation" instance=ExtResource("6_mk11u")]
 position = Vector2(3584, 1344)
+loose_agency_star = true
 
 [node name="PivotAsteroid" parent="Constellation/Star8" instance=ExtResource("7_dynqx")]
 rotation_speed = 2.9
@@ -231,7 +234,6 @@ anticlockwise = true
 
 [node name="Star9" parent="Constellation" instance=ExtResource("6_mk11u")]
 position = Vector2(4160, 960)
-black_hole_on_star = true
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.5
@@ -316,6 +318,9 @@ default_color = Color(3, 0.128, 0.302, 1)
 [node name="PickUps" type="Node2D" parent="."]
 
 [node name="Pickup" parent="PickUps" instance=ExtResource("18_tljc4")]
-position = Vector2(2240, 2624)
+position = Vector2(2304, 2432)
+
+[node name="Pickup3" parent="PickUps" instance=ExtResource("18_tljc4")]
+position = Vector2(3264, 1536)
 
 [node name="ReStartLvlComp" parent="." instance=ExtResource("19_yiiia")]
