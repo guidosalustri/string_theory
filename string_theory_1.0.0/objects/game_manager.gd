@@ -10,6 +10,7 @@ var lvl := 2
 var gems := 0
 var deaths_counts := 0
 var martin_on_ship := false
+var lvl_has_pickups := false
 
 var pickup_spawn_count := 0
 var volume_bus_master := 0
