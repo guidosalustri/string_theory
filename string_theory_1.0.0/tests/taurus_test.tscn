@@ -279,5 +279,3 @@ environment = SubResource("Environment_fegh2")
 
 [node name="CutLine" parent="." instance=ExtResource("17_xcpo3")]
 default_color = Color(3, 0.128, 0.302, 1)
-
-[node name="PickUps" type="Node2D" parent="."]

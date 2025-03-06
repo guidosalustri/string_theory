@@ -14,8 +14,6 @@ signal star_entered
 signal has_spawn
 @export var black_hole_on_star := false
 @export var time_between_star_blackhole : int = 1
-@export var pickup : Pickup
-@export var loose_agency_star := false
 
 
 enum States {
@@ -90,28 +88,7 @@ func _on_area_entered(area: Area2D) -> void:
 		await animation_player.animation_finished
 	animation_player_2.stop()
 	timer.stop()
-	
-	if GameManager.lvl_has_pickups:
-		if GameManager.martin_on_ship and pickup!= null:
-			pickup.spawn()
-			
-		if GameManager.martin_on_ship and loose_agency_star \
-		and area is Ship:
-			var diff: int = GameManager.pickup_spawn_count - GameManager.gems
-			#print(diff)
-			if diff==1:
-				area.turn_left = false
-			elif diff==2:
-				area.move_forward = false
-			elif diff==3:
-				area.turn_right = false
-	elif GameManager.martin_on_ship:
-		if loose_agency_star and area.turn_left:
-			area.turn_left = false
-		elif loose_agency_star and area.move_forward:
-			area.move_foward = false
-		elif loose_agency_star and area.turn_right:
-			area.turn_right = false
+
 
 func _on_timer_timeout() -> void:
 	match current_state:

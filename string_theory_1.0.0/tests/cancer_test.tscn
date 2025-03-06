@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://78rgimw7bk8x"]
+[gd_scene load_steps=29 format=3 uid="uid://78rgimw7bk8x"]
 
 [ext_resource type="Script" path="res://lvls/lvl.gd" id="1_jblmh"]
 [ext_resource type="PackedScene" uid="uid://dqjnkl56rsiki" path="res://objects/comp/exit_area.tscn" id="2_iwyx4"]
@@ -17,9 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://ciegbyfrx5lf3" path="res://ui/pause_menu/pause_screen.tscn" id="13_hbiya"]
 [ext_resource type="AudioStream" uid="uid://bupnj85mfcp5w" path="res://assets/into-the-night-uk-drill-music-20928.mp3" id="14_1p56u"]
 [ext_resource type="PackedScene" uid="uid://cw37amsu34rrt" path="res://objects/comp/cut_line.tscn" id="15_gq4s8"]
-[ext_resource type="PackedScene" uid="uid://bwo2qlle2kk0g" path="res://ui/selector/pre_lvl_pick_crew.tscn" id="16_4lsxh"]
 [ext_resource type="PackedScene" uid="uid://c1gnyd31ix048" path="res://objects/comp/re_start_lvl_comp.tscn" id="18_lvw16"]
-[ext_resource type="PackedScene" uid="uid://dk5pncq4jw6d7" path="res://objects/pickups/pickup.tscn" id="18_qttlx"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_jh652"]
 light_mode = 1
@@ -97,7 +95,6 @@ glow_blend_mode = 4
 [node name="lvl" type="Node2D" node_paths=PackedStringArray("stars_trail")]
 script = ExtResource("1_jblmh")
 stars_trail = [NodePath("Constellation/Star"), NodePath("Constellation/Star2"), NodePath("Constellation/Star3"), NodePath("Constellation/Star2"), NodePath("Constellation/Star4"), NodePath("Constellation/Star5")]
-with_pickups = true
 
 [node name="CanvasModulate2" type="CanvasModulate" parent="."]
 color = Color(0.0738042, 0.0724702, 0.0728028, 1)
@@ -156,16 +153,14 @@ position = Vector2(576, 384)
 
 [node name="Constellation" type="Node2D" parent="."]
 
-[node name="Star" parent="Constellation" node_paths=PackedStringArray("pickup") instance=ExtResource("6_etm3x")]
+[node name="Star" parent="Constellation" instance=ExtResource("6_etm3x")]
 position = Vector2(1152, 384)
-pickup = NodePath("../../PickUps/Pickup")
 
 [node name="blackHole" parent="Constellation/Star" instance=ExtResource("7_b6280")]
 position = Vector2(448, -192)
 
 [node name="Star2" parent="Constellation" instance=ExtResource("6_etm3x")]
 position = Vector2(2048, 512)
-loose_agency_star = true
 
 [node name="blackHole" parent="Constellation/Star2" instance=ExtResource("7_b6280")]
 position = Vector2(-384, 576)
@@ -181,9 +176,8 @@ asteroid_position = Vector2(260, 0)
 asteroid_position = Vector2(280, 0)
 anticlockwise = true
 
-[node name="Star3" parent="Constellation" node_paths=PackedStringArray("pickup") instance=ExtResource("6_etm3x")]
+[node name="Star3" parent="Constellation" instance=ExtResource("6_etm3x")]
 position = Vector2(2176, 1408)
-pickup = NodePath("../../PickUps/Pickup2")
 
 [node name="SpinnerBlackHole" parent="Constellation/Star3" node_paths=PackedStringArray("blackhole1", "blackhole2") instance=ExtResource("7_6mhnu")]
 blackhole1 = NodePath("blackHole")
@@ -198,7 +192,6 @@ rotation_speed = 2.6
 
 [node name="Star4" parent="Constellation" instance=ExtResource("6_etm3x")]
 position = Vector2(2432, 128)
-loose_agency_star = true
 
 [node name="blackHole" parent="Constellation/Star4" instance=ExtResource("7_b6280")]
 position = Vector2(384, -128)
@@ -283,8 +276,6 @@ time_max_fuel = 12.0
 [node name="PauseScreen" parent="CanvasLayer2" instance=ExtResource("13_hbiya")]
 visible = false
 
-[node name="PickCrewUI" parent="CanvasLayer2" instance=ExtResource("16_4lsxh")]
-
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("14_1p56u")
 
@@ -293,13 +284,5 @@ environment = SubResource("Environment_sxajk")
 
 [node name="CutLine" parent="." instance=ExtResource("15_gq4s8")]
 default_color = Color(3, 0.128, 0.302, 1)
-
-[node name="PickUps" type="Node2D" parent="."]
-
-[node name="Pickup" parent="PickUps" instance=ExtResource("18_qttlx")]
-position = Vector2(1600, 0)
-
-[node name="Pickup2" parent="PickUps" instance=ExtResource("18_qttlx")]
-position = Vector2(1536, 960)
 
 [node name="ReStartLvlComp" parent="." instance=ExtResource("18_lvw16")]

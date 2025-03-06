@@ -25,13 +25,13 @@ extends Node2D
 @onready var constellation: Node2D = $Constellation
 @onready var cut_line: Line2D = $CutLine
 @onready var animation_player: AnimationPlayer = $LinkLineShip/AnimationPlayer
-@onready var pick_ups: Node2D = $PickUps
-@onready var pick_crew_ui: Control = $CanvasLayer2/PickCrewUI
+#@onready var pick_ups: Node2D = $PickUps
+#@onready var pick_crew_ui: Control = $CanvasLayer2/PickCrewUI
 
 
 
 @export var stars_trail: Array[Star]
-@export var with_pickups := false
+#@export var with_pickups := false
 #@export var max_string_lenght := 900
 
 var index := 0
@@ -75,12 +75,12 @@ func _ready() -> void:
 				hud.overcharged.disconnect(_overcharged_ship)
 		)
 	timer.timeout.connect(_on_timer_timeout)
-	for pickup in pick_ups.get_children():
-		pickup.has_spawn.connect(func() -> void:
-			GameManager.pickup_spawn_count+=1
-			print(GameManager.pickup_spawn_count)
-			print(GameManager.gems)
-			)
+	#for pickup in pick_ups.get_children():
+	#	pickup.has_spawn.connect(func() -> void:
+	#		GameManager.pickup_spawn_count+=1
+	#		print(GameManager.pickup_spawn_count)
+	#		print(GameManager.gems)
+	#		)
 	
 	stars_trail[0].spawn()
 	
@@ -103,12 +103,7 @@ func _ready() -> void:
 		phantom_camera_constellation.append_follow_targets(star)
 
 	phantom_camera_constellation.priority = 0
-	
-	if pick_crew_ui != null:
-		pick_crew_ui.toggle(GameManager.pop_selector)
-	GameManager.gems = 0
-	GameManager.pickup_spawn_count = 0
-	GameManager.lvl_has_pickups = with_pickups
+
 
 func _process(_delta: float) -> void:
 	if link_line_ship.points[0] != Vector2(0.0,0.0):
@@ -195,7 +190,8 @@ func _on_timer_timeout() -> void:
 	await tween.finished
 
 	GameManager.lvl +=1
-	GameManager.call_selector_scene()
+	GameManager.call_cutscene()
+
 
 func dim_out_obstacles() -> void:
 	for star in constellation.get_children():

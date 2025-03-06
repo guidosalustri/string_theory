@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cw0bs8bnlg3nh"]
+[gd_scene load_steps=10 format=3 uid="uid://cw0bs8bnlg3nh"]
 
 [ext_resource type="Script" path="res://objects/game_manager.gd" id="1_nqyrl"]
 [ext_resource type="PackedScene" uid="uid://vug55rsbi18p" path="res://tests/taurus_test.tscn" id="2_e1qwd"]
@@ -9,7 +9,6 @@
 [ext_resource type="PackedScene" uid="uid://cbyrh237sq7ul" path="res://tests/virgo_test.tscn" id="6_ko4pw"]
 [ext_resource type="PackedScene" uid="uid://cgt0lqimggmo2" path="res://cutscene/final_scene.tscn" id="7_0f68c"]
 [ext_resource type="PackedScene" uid="uid://p60tmr6ajcyy" path="res://ui/main_menu/main_menu.tscn" id="8_dccl0"]
-[ext_resource type="PackedScene" uid="uid://c1jkac8ny6yqf" path="res://ui/selector/selector.tscn" id="10_ucq4d"]
 
 [node name="Node" type="Node"]
 script = ExtResource("1_nqyrl")
@@ -17,4 +16,3 @@ lvls = Array[PackedScene]([ExtResource("2_e1qwd"), ExtResource("3_wiopj"), ExtRe
 cutscene = ExtResource("4_6jd32")
 final_scene = ExtResource("7_0f68c")
 main_menu = ExtResource("8_dccl0")
-intro_lvl_selector = ExtResource("10_ucq4d")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://kc7sbsi06kf0"]
+[gd_scene load_steps=29 format=3 uid="uid://kc7sbsi06kf0"]
 
 [ext_resource type="Script" path="res://lvls/lvl.gd" id="1_o8ccb"]
 [ext_resource type="PackedScene" uid="uid://dqjnkl56rsiki" path="res://objects/comp/exit_area.tscn" id="2_4sa5c"]
@@ -17,7 +17,6 @@
 [ext_resource type="PackedScene" uid="uid://bc8nepke0pagf" path="res://ui/hud/hud.tscn" id="14_c5605"]
 [ext_resource type="PackedScene" uid="uid://ciegbyfrx5lf3" path="res://ui/pause_menu/pause_screen.tscn" id="15_eme8q"]
 [ext_resource type="AudioStream" uid="uid://bupnj85mfcp5w" path="res://assets/into-the-night-uk-drill-music-20928.mp3" id="16_eyu4o"]
-[ext_resource type="PackedScene" uid="uid://dk5pncq4jw6d7" path="res://objects/pickups/pickup.tscn" id="18_em6i3"]
 [ext_resource type="PackedScene" uid="uid://c1gnyd31ix048" path="res://objects/comp/re_start_lvl_comp.tscn" id="19_sfwx2"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_x6pi8"]
@@ -171,7 +170,6 @@ rotation_speed = 1.0
 
 [node name="Star3" parent="Constellation" instance=ExtResource("6_5ja75")]
 position = Vector2(1536, -128)
-loose_agency_star = true
 
 [node name="PivotAsteroid" parent="Constellation/Star3" instance=ExtResource("7_uowiu")]
 
@@ -255,10 +253,5 @@ environment = SubResource("Environment_7pdbn")
 
 [node name="CutLine" parent="." instance=ExtResource("2_cemb3")]
 default_color = Color(3, 0.128, 0.302, 1)
-
-[node name="PickUps" type="Node2D" parent="."]
-
-[node name="Pickup" parent="PickUps" instance=ExtResource("18_em6i3")]
-position = Vector2(1946, -354)
 
 [node name="ReStartLvlComp" parent="." instance=ExtResource("19_sfwx2")]

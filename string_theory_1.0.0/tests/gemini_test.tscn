@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://cfj8vdecqtgfo"]
+[gd_scene load_steps=29 format=3 uid="uid://cfj8vdecqtgfo"]
 
 [ext_resource type="Script" path="res://lvls/lvl.gd" id="1_w6c6t"]
 [ext_resource type="PackedScene" uid="uid://dqjnkl56rsiki" path="res://objects/comp/exit_area.tscn" id="2_clpq7"]
@@ -15,10 +15,8 @@
 [ext_resource type="Shader" path="res://ui/blur_for_ui.gdshader" id="13_mlixe"]
 [ext_resource type="PackedScene" uid="uid://bc8nepke0pagf" path="res://ui/hud/hud.tscn" id="14_qg42o"]
 [ext_resource type="PackedScene" uid="uid://ciegbyfrx5lf3" path="res://ui/pause_menu/pause_screen.tscn" id="15_xhryd"]
-[ext_resource type="PackedScene" uid="uid://bwo2qlle2kk0g" path="res://ui/selector/pre_lvl_pick_crew.tscn" id="16_80n1m"]
 [ext_resource type="AudioStream" uid="uid://bupnj85mfcp5w" path="res://assets/into-the-night-uk-drill-music-20928.mp3" id="16_wngr8"]
 [ext_resource type="PackedScene" uid="uid://cw37amsu34rrt" path="res://objects/comp/cut_line.tscn" id="17_hk3v0"]
-[ext_resource type="PackedScene" uid="uid://dk5pncq4jw6d7" path="res://objects/pickups/pickup.tscn" id="18_tljc4"]
 [ext_resource type="PackedScene" uid="uid://c1gnyd31ix048" path="res://objects/comp/re_start_lvl_comp.tscn" id="19_yiiia"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_x6pi8"]
@@ -85,7 +83,6 @@ glow_blend_mode = 4
 [node name="lvl" type="Node2D" node_paths=PackedStringArray("stars_trail")]
 script = ExtResource("1_w6c6t")
 stars_trail = [NodePath("Constellation/Star"), NodePath("Constellation/Star2"), NodePath("Constellation/Star"), NodePath("Constellation/Star3"), NodePath("Constellation/Star4"), NodePath("Constellation/Star5"), NodePath("Constellation/Star6"), NodePath("Constellation/Star7"), NodePath("Constellation/Star8"), NodePath("Constellation/Star"), NodePath("Constellation/Star8"), NodePath("Constellation/Star9")]
-with_pickups = true
 
 [node name="CanvasModulate2" type="CanvasModulate" parent="."]
 color = Color(0.0218252, 0.0212845, 0.0214185, 1)
@@ -154,17 +151,15 @@ position = Vector2(-320, 320)
 rotation_speed = 3.3
 asteroid_position = Vector2(260, 0)
 
-[node name="Star2" parent="Constellation" node_paths=PackedStringArray("pickup") instance=ExtResource("6_mk11u")]
+[node name="Star2" parent="Constellation" instance=ExtResource("6_mk11u")]
 position = Vector2(4160, 2624)
 black_hole_on_star = true
-pickup = NodePath("../../PickUps/Pickup")
 
 [node name="blackHole" parent="Constellation/Star2" instance=ExtResource("8_s5syh")]
 position = Vector2(-320, -64)
 
 [node name="Star3" parent="Constellation" instance=ExtResource("6_mk11u")]
 position = Vector2(1984, 2240)
-loose_agency_star = true
 
 [node name="blackHole" parent="Constellation/Star3" instance=ExtResource("8_s5syh")]
 position = Vector2(384, -320)
@@ -215,13 +210,11 @@ rotation_speed = 2.2
 
 [node name="blackHole2" parent="Constellation/Star6/SpinnerBlackHole" instance=ExtResource("8_s5syh")]
 
-[node name="Star7" parent="Constellation" node_paths=PackedStringArray("pickup") instance=ExtResource("6_mk11u")]
+[node name="Star7" parent="Constellation" instance=ExtResource("6_mk11u")]
 position = Vector2(2816, 1280)
-pickup = NodePath("../../PickUps/Pickup3")
 
 [node name="Star8" parent="Constellation" instance=ExtResource("6_mk11u")]
 position = Vector2(3584, 1344)
-loose_agency_star = true
 
 [node name="PivotAsteroid" parent="Constellation/Star8" instance=ExtResource("7_dynqx")]
 rotation_speed = 2.9
@@ -305,8 +298,6 @@ time_max_fuel = 12.0
 [node name="PauseScreen" parent="CanvasLayer2" instance=ExtResource("15_xhryd")]
 visible = false
 
-[node name="PickCrewUI" parent="CanvasLayer2" instance=ExtResource("16_80n1m")]
-
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("16_wngr8")
 
@@ -315,13 +306,5 @@ environment = SubResource("Environment_8tggm")
 
 [node name="CutLine" parent="." instance=ExtResource("17_hk3v0")]
 default_color = Color(3, 0.128, 0.302, 1)
-
-[node name="PickUps" type="Node2D" parent="."]
-
-[node name="Pickup" parent="PickUps" instance=ExtResource("18_tljc4")]
-position = Vector2(2304, 2432)
-
-[node name="Pickup3" parent="PickUps" instance=ExtResource("18_tljc4")]
-position = Vector2(3264, 1536)
 
 [node name="ReStartLvlComp" parent="." instance=ExtResource("19_yiiia")]

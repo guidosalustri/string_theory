@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://7j43w78imcf1"]
+[gd_scene load_steps=28 format=3 uid="uid://7j43w78imcf1"]
 
 [ext_resource type="Script" path="res://lvls/lvl.gd" id="1_yxkfv"]
 [ext_resource type="PackedScene" uid="uid://dqjnkl56rsiki" path="res://objects/comp/exit_area.tscn" id="2_y58dm"]
@@ -15,7 +15,6 @@
 [ext_resource type="PackedScene" uid="uid://bc8nepke0pagf" path="res://ui/hud/hud.tscn" id="13_i3fjc"]
 [ext_resource type="PackedScene" uid="uid://ciegbyfrx5lf3" path="res://ui/pause_menu/pause_screen.tscn" id="14_jbgt0"]
 [ext_resource type="AudioStream" uid="uid://bupnj85mfcp5w" path="res://assets/into-the-night-uk-drill-music-20928.mp3" id="15_rdibr"]
-[ext_resource type="PackedScene" uid="uid://bwo2qlle2kk0g" path="res://ui/selector/pre_lvl_pick_crew.tscn" id="15_xja5c"]
 [ext_resource type="PackedScene" uid="uid://cw37amsu34rrt" path="res://objects/comp/cut_line.tscn" id="16_hmagh"]
 [ext_resource type="PackedScene" uid="uid://c1gnyd31ix048" path="res://objects/comp/re_start_lvl_comp.tscn" id="17_6qp8f"]
 
@@ -175,7 +174,6 @@ position = Vector2(258, -22)
 
 [node name="Star5" parent="Constellation" instance=ExtResource("6_fcghj")]
 position = Vector2(-768, 1600)
-loose_agency_star = true
 
 [node name="PivotAsteroid" parent="Constellation/Star5" instance=ExtResource("7_wukbd")]
 rotation_speed = 5.0
@@ -196,7 +194,6 @@ position = Vector2(256, -128)
 
 [node name="Star7" parent="Constellation" instance=ExtResource("6_fcghj")]
 position = Vector2(1152, -64)
-loose_agency_star = true
 
 [node name="blackHole" parent="Constellation/Star7" instance=ExtResource("8_x2mo7")]
 position = Vector2(576, 64)
@@ -211,7 +208,6 @@ asteroid_position = Vector2(900, 0)
 
 [node name="Star8" parent="Constellation" instance=ExtResource("6_fcghj")]
 position = Vector2(1792, -256)
-loose_agency_star = true
 
 [node name="PivotAsteroid" parent="Constellation/Star8" instance=ExtResource("7_wukbd")]
 rotation_speed = 5.0
@@ -292,9 +288,6 @@ grow_vertical = 2
 [node name="PauseScreen" parent="CanvasLayer2" instance=ExtResource("14_jbgt0")]
 visible = false
 
-[node name="PickCrewUI" parent="CanvasLayer2" instance=ExtResource("15_xja5c")]
-visible = false
-
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("15_rdibr")
 
@@ -303,7 +296,5 @@ environment = SubResource("Environment_5drlf")
 
 [node name="CutLine" parent="." instance=ExtResource("16_hmagh")]
 default_color = Color(3, 0.128, 0.302, 1)
-
-[node name="PickUps" type="Node2D" parent="."]
 
 [node name="ReStartLvlComp" parent="." instance=ExtResource("17_6qp8f")]
