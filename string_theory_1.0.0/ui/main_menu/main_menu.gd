@@ -1,7 +1,6 @@
-extends Node2D
+extends Control
 
 @onready var options_screen: Control = $options
-
 @onready var main_menu_ui: Control = $MainMenuUI
 
 func _ready() -> void:
