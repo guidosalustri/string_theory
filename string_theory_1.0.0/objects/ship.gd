@@ -55,8 +55,7 @@ var is_last_star := false
 
 func _ready() -> void:
 	area_entered.connect(_on_area_entered)
-	max_speed_hud = max_speed
-
+	max_speed_hud = int(max_speed)
 
 func _process(delta: float) -> void:
 	# which movement the ship should have
@@ -165,10 +164,9 @@ func _spin_around(delta: float, pos: Vector2) -> void:
 	rotate(v.angle_to(velocity))
 	translate(velocity * delta)
 
-func _follow(delta: float, target: Vector2) -> void:
-
-	if position.distance_to(target) > 10:
-		var direction := global_position.direction_to(target)
+func _follow(delta: float, pos: Vector2) -> void:
+	if position.distance_to(pos) > 10:
+		var direction := global_position.direction_to(pos)
 		var velocity := direction * speed
 
 		translate(velocity * delta)

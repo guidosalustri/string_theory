@@ -83,9 +83,9 @@ func _process(delta: float) -> void:
 
 		# This calculates the angle difference between the thruster's current rotation and the rotation in the last frame.
 		# We use this to make the thruster's flame curl in the direction of the ship's movement.
-		var angle_difference := wrapf(_last_frame_rotation - global_rotation, -PI, PI)
+		var angle_delta := wrapf(_last_frame_rotation - global_rotation, -PI, PI)
 		_last_frame_rotation = global_rotation
-		_angle_difference_smoothed = lerp_angle(_angle_difference_smoothed, angle_difference, 8.0 * delta)
+		_angle_difference_smoothed = lerp_angle(_angle_difference_smoothed, angle_delta, 8.0 * delta)
 		curl = _angle_difference_smoothed * 8.0
 
 	# Here is where we check if we need to redraw the thruster's flame, which happens at most once per frame.

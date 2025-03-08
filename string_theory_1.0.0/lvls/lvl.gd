@@ -57,7 +57,7 @@ func _ready() -> void:
 	
 	ship.change_star.connect(_on_star_changed)
 	ship.cut_link.connect(cut_line_link)
-	animation_player.animation_finished.connect(func(anim_name) -> void:
+	animation_player.animation_finished.connect(func(_anim_name: StringName) -> void:
 		cut_line_link(false)
 		ship.animation_player.play("die")
 		ship.set_process(false)
