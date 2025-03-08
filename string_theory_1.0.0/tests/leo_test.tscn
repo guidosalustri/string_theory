@@ -1,8 +1,7 @@
-[gd_scene load_steps=28 format=3 uid="uid://7j43w78imcf1"]
+[gd_scene load_steps=27 format=3 uid="uid://7j43w78imcf1"]
 
 [ext_resource type="Script" path="res://lvls/lvl.gd" id="1_yxkfv"]
 [ext_resource type="PackedScene" uid="uid://dqjnkl56rsiki" path="res://objects/comp/exit_area.tscn" id="2_y58dm"]
-[ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="3_ru4c0"]
 [ext_resource type="PackedScene" uid="uid://bxfevggvxo634" path="res://assets/background/space_background.tscn" id="4_40ph4"]
 [ext_resource type="PackedScene" uid="uid://em4qfalchhhd" path="res://objects/ship.tscn" id="5_cen46"]
 [ext_resource type="PackedScene" uid="uid://ul1ys48qmbs4" path="res://objects/star.tscn" id="6_fcghj"]
@@ -91,7 +90,7 @@ background_mode = 3
 glow_enabled = true
 glow_blend_mode = 4
 
-[node name="lvl" type="Node2D" node_paths=PackedStringArray("stars_trail")]
+[node name="lvl2" type="Node2D" node_paths=PackedStringArray("stars_trail")]
 script = ExtResource("1_yxkfv")
 stars_trail = [NodePath("Constellation/Star"), NodePath("Constellation/Star2"), NodePath("Constellation/Star3"), NodePath("Constellation/Star4"), NodePath("Constellation/Star5"), NodePath("Constellation/Star6"), NodePath("Constellation/Star"), NodePath("Constellation/Star7"), NodePath("Constellation/Star8"), NodePath("Constellation/Star9")]
 
@@ -102,12 +101,8 @@ color = Color(0.0738042, 0.0724702, 0.0728028, 1)
 position = Vector2(2368, 64)
 
 [node name="Camera2D" type="Camera2D" parent="."]
-physics_interpolation_mode = 2
 position = Vector2(781.5, 435.5)
 position_smoothing_speed = 2.0
-
-[node name="PhantomCameraHost" type="Node" parent="Camera2D"]
-script = ExtResource("3_ru4c0")
 
 [node name="SpaceBackground" parent="." instance=ExtResource("4_40ph4")]
 
