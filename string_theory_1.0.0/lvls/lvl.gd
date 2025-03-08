@@ -67,8 +67,8 @@ func _ready() -> void:
 		if index == stars_trail.size()-1:
 			if stars_trail[-1].current_state == stars_trail[-1].States.STAR:
 				phantom_camera_constellation.priority = 3
-				ship.monitorable = false
-				ship.monitoring = false
+				ship.set_deferred("monitorable", false)
+				ship.set_deferred("monitoring", false)
 				ship.is_last_star = true
 				ship.get_node("PointLight2D").hide()
 				timer.start()
