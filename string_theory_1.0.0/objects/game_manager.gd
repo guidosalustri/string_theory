@@ -11,11 +11,9 @@ var deaths_counts := 0
 #var martin_on_ship := false
 #var lvl_has_pickups := false
 
-
 var volume_bus_master := 0
 var volume_bus_sfx := 0
 var volume_bus_music := 0
-
 
 func call_cutscene() -> void:
 	if lvl == lvls.size():# tendria que ser una flag corre la ultima cutscene y dsp entra a la final
@@ -24,7 +22,6 @@ func call_cutscene() -> void:
 		get_tree().change_scene_to_packed(final_scene)
 	else:
 		get_tree().change_scene_to_packed(cutscene)
-
 
 func start_lvl(index : int) -> void:
 	get_tree().change_scene_to_packed(lvls[index])

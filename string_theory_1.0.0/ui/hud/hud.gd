@@ -31,7 +31,9 @@ func set_stars_trail(stars: Array[Star]) -> void:
 	for i in range(stars_trail.size()):
 		if i>0:
 			grid_container.add_child(texture_rect.duplicate())
-		stars_trail[i].star_entered.connect(_on_star_entered_star_ui)
+		if not stars_trail[i].star_entered.is_connected(_on_star_entered_star_ui):
+			# only connect unique stars
+			stars_trail[i].star_entered.connect(_on_star_entered_star_ui)
 
 
 func _ready() -> void:

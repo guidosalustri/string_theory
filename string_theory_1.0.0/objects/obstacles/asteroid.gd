@@ -1,6 +1,5 @@
 extends Node2D
 
-
 @onready var animation_player: AnimationPlayer = $Asteroid/AnimationPlayer
 @onready var asteroid: Area2D = $Asteroid
 
@@ -20,5 +19,5 @@ func _process(delta):
 	else:
 		rotation += rotation_speed * delta
 
-func activate(time_to_activate: float) -> void:
+func activate(_time_to_activate: float) -> void:
 	animation_player.play("activate")

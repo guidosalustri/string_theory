@@ -28,7 +28,7 @@ func _ready() -> void:
 	if GameManager.lvl == 9 or GameManager.lvl == 10:
 		portrait.set_current_state(portrait.States.MAVERICK)
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if len(sentences) == 0:
 		dialogue_done.emit()
 		set_process(false)

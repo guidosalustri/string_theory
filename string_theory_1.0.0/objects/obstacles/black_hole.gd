@@ -23,16 +23,14 @@ func activate(time_to_activate: float) -> void:
 	tween2.tween_property(self, "modulate:a",0.8,time_to_activate/2)
 
 func blackhole_on() -> void:
-
 	set_deferred("monitoring", true)
 	set_deferred("monitorable", true)
 	modulate.a = 1
 
 func blackhole_off() -> void:
-
 	modulate.a = 0
 	set_deferred("monitoring", false)
 	set_deferred("monitorable", false)
 
-func _on_area_entered(area: Area2D) -> void:
+func _on_area_entered(_area: Area2D) -> void:
 	black_hole_entered.emit()

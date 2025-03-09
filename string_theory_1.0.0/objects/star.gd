@@ -75,8 +75,7 @@ func spawn():
 		timer.start()
 
 
-func _on_area_entered(area: Area2D) -> void:
-
+func _on_area_entered(_area: Area2D) -> void:
 	star_entered.emit()
 	if animation_player.is_playing():
 		if animation_player.get_current_animation() == "black_hole_transition" \

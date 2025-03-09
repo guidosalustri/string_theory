@@ -198,7 +198,7 @@ _data = {
 "set_the_ship": SubResource("Animation_b2vot")
 }
 
-[node name="Node" type="Node"]
+[node name="CutScene" type="Node"]
 script = ExtResource("1_j06uc")
 
 [node name="CanvasModulate2" type="CanvasModulate" parent="."]

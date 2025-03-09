@@ -89,7 +89,6 @@ color = Color(0.0218252, 0.0212845, 0.0214185, 1)
 position = Vector2(3264, 64)
 
 [node name="Camera2D" type="Camera2D" parent="."]
-physics_interpolation_mode = 2
 position = Vector2(1056, 384)
 position_smoothing_speed = 2.0
 

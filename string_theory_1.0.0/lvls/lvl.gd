@@ -57,7 +57,7 @@ func _ready() -> void:
 	
 	ship.change_star.connect(_on_star_changed)
 	ship.cut_link.connect(cut_line_link)
-	animation_player.animation_finished.connect(func(anim_name) -> void:
+	animation_player.animation_finished.connect(func(_anim_name: StringName) -> void:
 		cut_line_link(false)
 		ship.animation_player.play("die")
 		ship.set_process(false)
@@ -67,8 +67,8 @@ func _ready() -> void:
 		if index == stars_trail.size()-1:
 			if stars_trail[-1].current_state == stars_trail[-1].States.STAR:
 				phantom_camera_constellation.priority = 3
-				ship.monitorable = false
-				ship.monitoring = false
+				ship.set_deferred("monitorable", false)
+				ship.set_deferred("monitoring", false)
 				ship.is_last_star = true
 				ship.get_node("PointLight2D").hide()
 				timer.start()
