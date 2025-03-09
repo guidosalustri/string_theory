@@ -1,7 +1,8 @@
-[gd_scene load_steps=28 format=3 uid="uid://cfj8vdecqtgfo"]
+[gd_scene load_steps=29 format=3 uid="uid://cfj8vdecqtgfo"]
 
 [ext_resource type="Script" path="res://lvls/lvl.gd" id="1_w6c6t"]
 [ext_resource type="PackedScene" uid="uid://dqjnkl56rsiki" path="res://objects/comp/exit_area.tscn" id="2_clpq7"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="3_1p1qy"]
 [ext_resource type="PackedScene" uid="uid://bxfevggvxo634" path="res://assets/background/space_background.tscn" id="4_0oqfo"]
 [ext_resource type="PackedScene" uid="uid://em4qfalchhhd" path="res://objects/ship.tscn" id="5_urjad"]
 [ext_resource type="PackedScene" uid="uid://ul1ys48qmbs4" path="res://objects/star.tscn" id="6_mk11u"]
@@ -92,6 +93,9 @@ position = Vector2(4352, 960)
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(3200, 1984)
 position_smoothing_speed = 2.0
+
+[node name="PhantomCameraHost" type="Node" parent="Camera2D"]
+script = ExtResource("3_1p1qy")
 
 [node name="SpaceBackground" parent="." instance=ExtResource("4_0oqfo")]
 
