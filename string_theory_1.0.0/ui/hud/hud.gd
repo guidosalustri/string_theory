@@ -4,27 +4,24 @@ extends Control
 @onready var texture_rect: TextureRect = $GridContainer/TextureRect
 @onready var label_speed: Label = $Speedometer/Label
 @onready var panel_speed: Panel = $Speedometer/PanelFront
-@onready var panel_fuel: Panel = $FuelBar/PanelFront
-@onready var timer: Timer = $Timer
+@onready var panel_fuel:= $FuelBar/PanelFront
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var timer_overcharged: Timer = $TimerOvercharged
 
-@export var time_max_fuel: float =5
+@export var fuel_fill_rate : Curve
+@export var fuel_burn_rate : Curve
+@export var max_fuel:= 5.0
+var fuel := 2.5
 
 signal overcharged
 signal no_energy
 
 var index : = 0
 
-
-var player: Ship:
-	set = set_player
+var player: Ship
 
 var stars_trail: Array[Star]:
 	set = set_stars_trail
-
-func set_player(ship: Ship) -> void:
-	player = ship
 
 func set_stars_trail(stars: Array[Star]) -> void:
 	stars_trail = stars
@@ -37,32 +34,31 @@ func set_stars_trail(stars: Array[Star]) -> void:
 
 
 func _ready() -> void:
-	timer.wait_time = time_max_fuel
 	timer_overcharged.timeout.connect(_on_timer_overcharged_timeout)
 
 func _process(_delta: float) -> void:
-	var ship_speed = clamp(int(player.speed), 0.0, player.max_speed_hud)
+	var ship_speed : int = clamp(player.speed, 0, player.max_speed_hud)
 	label_speed.text = str(snapped(ship_speed,20))
 	panel_speed.material.set_shader_parameter("value", (ship_speed * 0.75)/ player.max_speed_hud)
 
-	if panel_fuel.material.get_shader_parameter("value") == 0:
+	if player and player.current_state == Ship.States.FLY:
+		fuel = max ( fuel -  2.0 * fuel_burn_rate.sample( 1.0 - fuel / max_fuel ) * _delta, 0 )
+
+	if fuel <= 0:
 		no_energy.emit()
-		# once singal is used add in this line return
 	
-	if panel_fuel.material.get_shader_parameter("value") == 1 and timer_overcharged.is_stopped():
+	if fuel >= max_fuel and timer_overcharged.is_stopped():
 		timer_overcharged.start()
 		animation_player.play("full_energy")
-	
-	if panel_fuel.material.get_shader_parameter("value") < 1 and not timer_overcharged.is_stopped():
+
+	if fuel < max_fuel and not timer_overcharged.is_stopped():
 		timer_overcharged.stop()
 		animation_player.stop()
-	
-	if player.current_state == player.States.ORBIT:
-		var plus_time = clamp(timer.time_left + (_delta*2), 0, time_max_fuel)
-		timer.start(plus_time)
 
-	
-	panel_fuel.material.set_shader_parameter("value", timer.time_left/ time_max_fuel)
+	if player.current_state == player.States.ORBIT:
+		fuel = min(fuel + fuel_fill_rate.sample(fuel / max_fuel) * _delta, max_fuel)
+
+	panel_fuel.material.set_shader_parameter("value", fuel / max_fuel)
 
 func _on_star_entered_star_ui() -> void:
 	if stars_trail[index].is_state_star():

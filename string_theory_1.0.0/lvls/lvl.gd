@@ -28,8 +28,6 @@ extends Node2D
 #@onready var pick_ups: Node2D = $PickUps
 #@onready var pick_crew_ui: Control = $CanvasLayer2/PickCrewUI
 
-@onready var stopwatch: Stopwatch = $CanvasLayer/StopwatchContainer/Stopwatch
-
 @export var stars_trail: Array[Star]
 #@export var with_pickups := false
 #@export var max_string_lenght := 900
@@ -41,13 +39,12 @@ var lenght_link_line_ship := 0.0
 var thickness := 1.0
 var flag_cutline := true
 
-
 func _ready() -> void:
-	hud.set_player(ship)
+	hud.player = ship
 	hud.set_stars_trail(stars_trail)
 	hud.no_energy.connect(func() -> void:
 		ship.set_has_energy(false)
-		)
+	)
 	hud.overcharged.connect(_overcharged_ship)
 	
 	get_tree().paused = false
@@ -200,7 +197,7 @@ func dim_out_obstacles() -> void:
 				child.hide()
 
 func _overcharged_ship() -> void:
-		ship.explote()
+		ship.explode()
 
 func adjust_ship_light()-> void:
 	if index >0 and index<stars_trail.size():
