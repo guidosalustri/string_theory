@@ -4,7 +4,7 @@ extends Control
 @onready var texture_rect: TextureRect = $GridContainer/TextureRect
 @onready var label_speed: Label = $Speedometer/Label
 @onready var panel_speed: Panel = $Speedometer/PanelFront
-@onready var panel_fuel:= $FuelBar/PanelFront
+@onready var fuel_bar: FuelBar = $FuelBar
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var timer_overcharged: Timer = $TimerOvercharged
 
@@ -58,7 +58,7 @@ func _process(_delta: float) -> void:
 	if player.current_state == player.States.ORBIT:
 		fuel = min(fuel + fuel_fill_rate.sample(fuel / max_fuel) * _delta, max_fuel)
 
-	panel_fuel.material.set_shader_parameter("value", fuel / max_fuel)
+	fuel_bar.charge = fuel / max_fuel
 
 func _on_star_entered_star_ui() -> void:
 	if stars_trail[index].is_state_star():
