@@ -1,11 +1,13 @@
-[gd_scene load_steps=21 format=3 uid="uid://gu842no2aiky"]
+[gd_scene load_steps=23 format=3 uid="uid://gu842no2aiky"]
 
 [ext_resource type="PackedScene" uid="uid://bxfevggvxo634" path="res://assets/background/space_background.tscn" id="1_ma2qx"]
-[ext_resource type="Texture2D" uid="uid://0gw4o20b3fa0" path="res://cutscene/asteroid.svg" id="2_0ifj8"]
-[ext_resource type="Texture2D" uid="uid://cgwmuppgqua43" path="res://cutscene/planets.svg" id="3_i6tmn"]
 [ext_resource type="Texture2D" uid="uid://cl16ohu7hooi0" path="res://assets/planet.png" id="3_ys2le"]
 [ext_resource type="Texture2D" uid="uid://b4atip1kb2j28" path="res://assets/planet_large.png" id="4_6aqw1"]
 [ext_resource type="Shader" path="res://assets/group_outline.gdshader" id="4_8r1m4"]
+[ext_resource type="Texture2D" uid="uid://cau3obwh302u" path="res://cutscene/planet_blue.png" id="5_y1uo4"]
+[ext_resource type="Texture2D" uid="uid://cwwgbu82bxbho" path="res://cutscene/planet_purple.png" id="6_yrm1t"]
+[ext_resource type="Texture2D" uid="uid://dhib4dlrcw7k8" path="res://cutscene/planet_orange.png" id="7_rr36c"]
+[ext_resource type="Texture2D" uid="uid://enhad8bfjtmm" path="res://cutscene/asteroid.png" id="9_hsunt"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ja1rw"]
 shader = ExtResource("4_8r1m4")
@@ -176,9 +178,9 @@ material = SubResource("ShaderMaterial_repq1")
 
 [node name="Earth" type="Sprite2D" parent="ParallaxBackground/PlatensBig/CanvasGroup2"]
 position = Vector2(1836, 757)
-texture = ExtResource("3_i6tmn")
+texture = ExtResource("5_y1uo4")
 region_enabled = true
-region_rect = Rect2(0, 0, 459.468, 434.036)
+region_rect = Rect2(0, 0, 359, 360)
 
 [node name="PointLight2D" type="PointLight2D" parent="ParallaxBackground/PlatensBig/CanvasGroup2/Earth"]
 range_layer_min = -99
@@ -193,9 +195,9 @@ material = SubResource("ShaderMaterial_hel4i")
 [node name="Planet3" type="Sprite2D" parent="ParallaxBackground/PlatensBig/CanvasGroup3"]
 modulate = Color(1.4, 0.6, 0.8, 1)
 position = Vector2(734, 149)
-texture = ExtResource("3_i6tmn")
+texture = ExtResource("6_yrm1t")
 region_enabled = true
-region_rect = Rect2(566.209, 9.85106, 453.646, 396.583)
+region_rect = Rect2(0, 0, 364, 297)
 
 [node name="PointLight2D" type="PointLight2D" parent="ParallaxBackground/PlatensBig/CanvasGroup3/Planet3"]
 energy = 1.5
@@ -211,9 +213,9 @@ material = SubResource("ShaderMaterial_6osaw")
 [node name="Planet1" type="Sprite2D" parent="ParallaxBackground/PlatensBig/CanvasGroup4"]
 position = Vector2(2795, 64.0001)
 rotation = -0.182931
-texture = ExtResource("3_i6tmn")
+texture = ExtResource("7_rr36c")
 region_enabled = true
-region_rect = Rect2(115.417, 409.287, 798.873, 482.177)
+region_rect = Rect2(0, 0, 750, 362)
 
 [node name="PointLight2D" type="PointLight2D" parent="ParallaxBackground/PlatensBig/CanvasGroup4/Planet1"]
 color = Color(22.163, 5.406, 0, 1)
@@ -228,9 +230,9 @@ material = SubResource("ShaderMaterial_6f01r")
 
 [node name="Planet2" type="Sprite2D" parent="ParallaxBackground/PlatensBig/CanvasGroup5"]
 position = Vector2(3467, 675)
-texture = ExtResource("3_i6tmn")
+texture = ExtResource("6_yrm1t")
 region_enabled = true
-region_rect = Rect2(566.209, 9.85106, 453.646, 396.583)
+region_rect = Rect2(0, 0, 364, 297)
 
 [node name="PointLight2D" type="PointLight2D" parent="ParallaxBackground/PlatensBig/CanvasGroup5/Planet2"]
 color = Color(1.622, 1, 10.811, 1)
@@ -247,7 +249,7 @@ motion_scale = Vector2(0.5, 0.5)
 
 [node name="Sprite2D2" type="Sprite2D" parent="ParallaxBackground/Asteroids"]
 position = Vector2(2256, 249)
-texture = ExtResource("2_0ifj8")
+texture = ExtResource("9_hsunt")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="ParallaxBackground/Asteroids/Sprite2D2"]
 libraries = {
@@ -265,7 +267,7 @@ texture_scale = 7.0
 
 [node name="Sprite2D6" type="Sprite2D" parent="ParallaxBackground/Asteroids"]
 position = Vector2(4478, 163)
-texture = ExtResource("2_0ifj8")
+texture = ExtResource("9_hsunt")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="ParallaxBackground/Asteroids/Sprite2D6"]
 libraries = {
@@ -284,7 +286,7 @@ texture_scale = 6.0
 [node name="Sprite2D5" type="Sprite2D" parent="ParallaxBackground/Asteroids"]
 position = Vector2(3676, 228)
 scale = Vector2(0.5, 0.5)
-texture = ExtResource("2_0ifj8")
+texture = ExtResource("9_hsunt")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="ParallaxBackground/Asteroids/Sprite2D5"]
 libraries = {
@@ -303,7 +305,7 @@ texture_scale = 3.0
 [node name="Sprite2D3" type="Sprite2D" parent="ParallaxBackground/Asteroids"]
 position = Vector2(2721, 610)
 scale = Vector2(0.8, 0.8)
-texture = ExtResource("2_0ifj8")
+texture = ExtResource("9_hsunt")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="ParallaxBackground/Asteroids/Sprite2D3"]
 libraries = {
@@ -322,7 +324,7 @@ texture_scale = 4.0
 [node name="Sprite2D4" type="Sprite2D" parent="ParallaxBackground/Asteroids"]
 position = Vector2(1369, 752)
 scale = Vector2(0.7, 0.7)
-texture = ExtResource("2_0ifj8")
+texture = ExtResource("9_hsunt")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="ParallaxBackground/Asteroids/Sprite2D4"]
 libraries = {
@@ -340,7 +342,7 @@ texture_scale = 4.0
 
 [node name="SpriteClockwiseSpin" type="Sprite2D" parent="ParallaxBackground/Asteroids"]
 position = Vector2(5012, 732)
-texture = ExtResource("2_0ifj8")
+texture = ExtResource("9_hsunt")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="ParallaxBackground/Asteroids/SpriteClockwiseSpin"]
 libraries = {
@@ -359,7 +361,7 @@ texture_scale = 7.0
 [node name="SpriteClockwiseSpin2" type="Sprite2D" parent="ParallaxBackground/Asteroids"]
 position = Vector2(1869, 49)
 scale = Vector2(0.4, 0.4)
-texture = ExtResource("2_0ifj8")
+texture = ExtResource("9_hsunt")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="ParallaxBackground/Asteroids/SpriteClockwiseSpin2"]
 libraries = {

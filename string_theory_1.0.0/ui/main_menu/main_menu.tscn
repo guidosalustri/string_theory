@@ -1,20 +1,21 @@
-[gd_scene load_steps=12 format=3 uid="uid://p60tmr6ajcyy"]
+[gd_scene load_steps=13 format=3 uid="uid://p60tmr6ajcyy"]
 
 [ext_resource type="Script" path="res://ui/main_menu/main_menu.gd" id="1_q02l5"]
 [ext_resource type="Material" uid="uid://cgvnmpq6vnska" path="res://assets/background/space_material.tres" id="2_cw3ai"]
 [ext_resource type="Script" path="res://assets/background/space_background.gd" id="3_wqx65"]
-[ext_resource type="Texture2D" uid="uid://cgwmuppgqua43" path="res://cutscene/planets.svg" id="4_asrjl"]
 [ext_resource type="PackedScene" uid="uid://cgdat18qea2f5" path="res://ui/options/options.tscn" id="4_wwnm0"]
-[ext_resource type="Texture2D" uid="uid://0gw4o20b3fa0" path="res://cutscene/asteroid.svg" id="5_cqcon"]
+[ext_resource type="Texture2D" uid="uid://enhad8bfjtmm" path="res://cutscene/asteroid.png" id="5_ar6ui"]
 [ext_resource type="Texture2D" uid="uid://b4atip1kb2j28" path="res://assets/planet_large.png" id="6_eibt2"]
+[ext_resource type="Texture2D" uid="uid://dhib4dlrcw7k8" path="res://cutscene/planet_orange.png" id="7_i3qf4"]
 [ext_resource type="PackedScene" uid="uid://c5mhd08u6r1kd" path="res://ui/main_menu/ui_main_menu.tscn" id="7_uv4c6"]
+[ext_resource type="Texture2D" uid="uid://cwwgbu82bxbho" path="res://cutscene/planet_purple.png" id="8_471ar"]
 
 [sub_resource type="Animation" id="Animation_rllgk"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Planets/Sprite2D3:rotation")
+tracks/0/path = NodePath("Planets/Asteroid:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -26,7 +27,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Planets/Sprite2D4:rotation")
+tracks/1/path = NodePath("Planets/Asteroid2:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -43,7 +44,7 @@ loop_mode = 2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Planets/Sprite2D3:rotation")
+tracks/0/path = NodePath("Planets/Asteroid:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -55,7 +56,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Planets/Sprite2D4:rotation")
+tracks/1/path = NodePath("Planets/Asteroid2:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -102,35 +103,31 @@ size_flags_horizontal = 4
 
 [node name="Planets" type="Node2D" parent="."]
 
-[node name="Sprite2D" type="Sprite2D" parent="Planets"]
-position = Vector2(1877, 147)
-rotation = -0.390317
-texture = ExtResource("4_asrjl")
-region_enabled = true
-region_rect = Rect2(116.24, 449.17, 786.222, 420.426)
-
-[node name="Sprite2D2" type="Sprite2D" parent="Planets"]
-position = Vector2(1745, 928)
-texture = ExtResource("4_asrjl")
-region_enabled = true
-region_rect = Rect2(583.38, 0, 440.62, 391.488)
-
-[node name="Sprite2D3" type="Sprite2D" parent="Planets"]
+[node name="Asteroid" type="Sprite2D" parent="Planets"]
 position = Vector2(1400, 835)
 rotation = -0.00940101
 scale = Vector2(0.734391, 0.74491)
-texture = ExtResource("5_cqcon")
+texture = ExtResource("5_ar6ui")
 region_enabled = true
 region_rect = Rect2(5.25543, 0.827011, 251.562, 253.805)
 
-[node name="Sprite2D4" type="Sprite2D" parent="Planets"]
+[node name="Asteroid2" type="Sprite2D" parent="Planets"]
 position = Vector2(279, 199)
 rotation = -0.523599
-texture = ExtResource("5_cqcon")
+texture = ExtResource("5_ar6ui")
 
 [node name="Sprite2D5" type="Sprite2D" parent="Planets"]
 position = Vector2(248, 878)
 texture = ExtResource("6_eibt2")
+
+[node name="PlanetOrange" type="Sprite2D" parent="Planets"]
+position = Vector2(1883, 144)
+rotation = -0.385171
+texture = ExtResource("7_i3qf4")
+
+[node name="PlanetPurple" type="Sprite2D" parent="Planets"]
+position = Vector2(1740, 922)
+texture = ExtResource("8_471ar")
 
 [node name="MainMenuUI" parent="." instance=ExtResource("7_uv4c6")]
 layout_mode = 1
