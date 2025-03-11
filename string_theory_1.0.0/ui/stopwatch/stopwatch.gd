@@ -24,7 +24,7 @@ var _accumulator := 0.0:
 		_accumulator = value
 		var mins := int(value / 60.0)
 		var seconds :=  int( value - mins * 60 )
-		var ms := int ( value * 1000.0 - mins * 60 * 1000 - seconds * 1000 ) / 10
+		var ms := int (( value * 1000.0 - mins * 60 * 1000 - seconds * 1000 ) / 10)
 		text = str( mins ) + ":" + str( seconds ) + "." + str (ms)
 
 func start() -> void:

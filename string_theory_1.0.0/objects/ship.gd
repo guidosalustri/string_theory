@@ -198,7 +198,6 @@ func _on_area_entered(area: Area2D)->void:
 					cut_link.emit(true)
 					GameManager.ship_dead()
 		if area.is_in_group("blackhole"):
-
 			black_hole = area
 			if speed < 500:
 				speed = 500
@@ -208,12 +207,12 @@ func _on_area_entered(area: Area2D)->void:
 			cut_link.emit(true)
 			GameManager.ship_dead()
 		if area.is_in_group("asteroid"):
-			explote()
+			explode()
 
 func restart_lvl() -> void:
 	GameManager.start_lvl(GameManager.lvl)
 
-func explote() -> void:
+func explode() -> void:
 	animation_player.play("asteroid_die")
 	set_process(false)
 	cut_link.emit(false)

@@ -1,10 +1,19 @@
-[gd_scene load_steps=39 format=3 uid="uid://bc8nepke0pagf"]
+[gd_scene load_steps=43 format=3 uid="uid://bc8nepke0pagf"]
 
 [ext_resource type="Script" path="res://ui/hud/hud.gd" id="1_22hk0"]
 [ext_resource type="Theme" uid="uid://dp1nmwxx5vbr5" path="res://ui/ui_samples_theme.tres" id="2_uscdq"]
 [ext_resource type="Shader" path="res://ui/hud/fuelprogressbar.gdshader" id="3_jl2ku"]
 [ext_resource type="Texture2D" uid="uid://baux8wnujuj2l" path="res://assets/spark.png" id="3_lveu8"]
 [ext_resource type="Shader" path="res://ui/hud/progressbar.gdshader" id="4_unkjd"]
+[ext_resource type="Script" path="res://ui/stopwatch/stopwatch.gd" id="6_coa2k"]
+
+[sub_resource type="Curve" id="Curve_p8c20"]
+_data = [Vector2(1e-05, 1), 0.0, 0.0, 0, 0, Vector2(0.397089, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.490691), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Curve" id="Curve_k5chp"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.315565, 0.939488), -0.316591, -0.316591, 0, 0, Vector2(0.73774, 0.72506), -1.33404, -1.33404, 0, 0, Vector2(1, 0.31924), 0.0, 0.0, 0, 0]
+point_count = 4
 
 [sub_resource type="Gradient" id="Gradient_bgjqv"]
 offsets = PackedFloat32Array(0)
@@ -265,6 +274,10 @@ _data = {
 "full_energy": SubResource("Animation_ussov")
 }
 
+[sub_resource type="LabelSettings" id="LabelSettings_bpi28"]
+font_size = 48
+font_color = Color(0.789472, 0.841139, 0.982446, 1)
+
 [node name="HUD" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -273,7 +286,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_22hk0")
-time_max_fuel = 6.0
+fuel_fill_rate = SubResource("Curve_p8c20")
+fuel_burn_rate = SubResource("Curve_k5chp")
 
 [node name="Speedometer" type="Control" parent="."]
 layout_mode = 1
@@ -383,11 +397,6 @@ modulate = Color(1, 1, 1, 0.2)
 layout_mode = 2
 texture = ExtResource("3_lveu8")
 
-[node name="Timer" type="Timer" parent="."]
-wait_time = 5.0
-one_shot = true
-autostart = true
-
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_bjm7u")
@@ -395,3 +404,21 @@ libraries = {
 
 [node name="TimerOvercharged" type="Timer" parent="."]
 wait_time = 2.5
+
+[node name="StopwatchContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -231.0
+offset_bottom = 67.0
+grow_horizontal = 0
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 40
+
+[node name="Stopwatch" type="Label" parent="StopwatchContainer"]
+layout_mode = 2
+text = "MM:ss.ms"
+label_settings = SubResource("LabelSettings_bpi28")
+script = ExtResource("6_coa2k")
+autostart = true
