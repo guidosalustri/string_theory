@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://cbyrh237sq7ul"]
+[gd_scene load_steps=31 format=3 uid="uid://cbyrh237sq7ul"]
 
 [ext_resource type="Script" path="res://lvls/lvl.gd" id="1_ydxyn"]
 [ext_resource type="PackedScene" uid="uid://dqjnkl56rsiki" path="res://objects/comp/exit_area.tscn" id="2_d7g0l"]
@@ -15,6 +15,7 @@
 [ext_resource type="Shader" path="res://ui/blur_for_ui.gdshader" id="13_ljgju"]
 [ext_resource type="PackedScene" uid="uid://bc8nepke0pagf" path="res://ui/hud/hud.tscn" id="14_gt8px"]
 [ext_resource type="PackedScene" uid="uid://ciegbyfrx5lf3" path="res://ui/pause_menu/pause_screen.tscn" id="15_3w868"]
+[ext_resource type="Script" path="res://ui/stopwatch/stopwatch.gd" id="15_we3ts"]
 [ext_resource type="AudioStream" uid="uid://bupnj85mfcp5w" path="res://assets/into-the-night-uk-drill-music-20928.mp3" id="16_whef5"]
 [ext_resource type="PackedScene" uid="uid://cw37amsu34rrt" path="res://objects/comp/cut_line.tscn" id="17_ei0bj"]
 [ext_resource type="PackedScene" uid="uid://c1gnyd31ix048" path="res://objects/comp/re_start_lvl_comp.tscn" id="18_cx7jx"]
@@ -74,6 +75,10 @@ shader_parameter/blur_amount = 0.0
 shader_parameter/tint = Color(0.622155, 0.145824, 0.885064, 1)
 shader_parameter/tint_amount = 0.0
 shader_parameter/saturation = 1.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_acsvh"]
+font_size = 48
+font_color = Color(0.789472, 0.841139, 0.982446, 1)
 
 [sub_resource type="Environment" id="Environment_l8yql"]
 background_mode = 3
@@ -299,6 +304,23 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="HUD" parent="CanvasLayer" instance=ExtResource("14_gt8px")]
+
+[node name="StopwatchContainer" type="MarginContainer" parent="CanvasLayer"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -231.0
+offset_bottom = 67.0
+grow_horizontal = 0
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 40
+
+[node name="Stopwatch" type="Label" parent="CanvasLayer/StopwatchContainer"]
+layout_mode = 2
+text = "MM:ss.ms"
+label_settings = SubResource("LabelSettings_acsvh")
+script = ExtResource("15_we3ts")
+autostart = true
 
 [node name="CanvasLayer2" type="CanvasLayer" parent="."]
 
