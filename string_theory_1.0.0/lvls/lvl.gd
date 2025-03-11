@@ -28,7 +28,7 @@ extends Node2D
 #@onready var pick_ups: Node2D = $PickUps
 #@onready var pick_crew_ui: Control = $CanvasLayer2/PickCrewUI
 
-
+@onready var stopwatch: Stopwatch = $CanvasLayer/StopwatchContainer/Stopwatch
 
 @export var stars_trail: Array[Star]
 #@export var with_pickups := false
