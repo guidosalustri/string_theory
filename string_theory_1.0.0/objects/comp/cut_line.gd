@@ -7,17 +7,17 @@ var line_created := false
 var target : Ship= null
 var was_black_hole := false
 
-func _physics_process(_delta: float) -> void:
-	if get_point_count() > 21:
-		while get_point_count() > 0:
+func _physics_process(delta: float) -> void:
+	if points.size() > 21:
+		for i in range(20):
 			remove_point(0)
-	elif get_point_count() > 1:
+	elif points.size() > 1:
 		remove_point(0)
 		collision_gpu_particles_2d.position = points[0]
 	if line_created:
 		if target:
 			add_point(target.global_position)
-		if get_point_count() == 1:
+		if points.size() == 1:
 			queue_free()
 
 func create_line(v1: Vector2,v2: Vector2) -> void:
