@@ -1,9 +1,9 @@
 [gd_scene load_steps=3 format=3 uid="uid://b8ihvesn60er7"]
 
 [ext_resource type="Theme" uid="uid://dp1nmwxx5vbr5" path="res://ui/ui_samples_theme.tres" id="1"]
-[ext_resource type="Script" path="res://ui/ui_tutorial/fit_to_dialog_ui.gd" id="1_vt12l"]
+[ext_resource type="Script" path="res://ui/ui_tutorial/tutorial_dialog_ui.gd" id="1_vt12l"]
 
-[node name="FitToDialogUI" type="Control"]
+[node name="TutorialDialogUI" type="Control"]
 custom_minimum_size = Vector2(1920, 1080)
 layout_mode = 3
 anchors_preset = 0
@@ -15,6 +15,8 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_top = -300.0
+offset_bottom = -300.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1")
@@ -23,5 +25,13 @@ theme = ExtResource("1")
 layout_mode = 2
 
 [node name="Label" type="Label" parent="CenterContainer/PanelContainer"]
-unique_name_in_owner = true
 layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CenterContainer/PanelContainer"]
+layout_mode = 2
+theme_override_colors/default_color = Color(1, 0.835294, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+bbcode_enabled = true
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
