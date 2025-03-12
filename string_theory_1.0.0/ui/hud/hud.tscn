@@ -1,10 +1,8 @@
-[gd_scene load_steps=19 format=3 uid="uid://bc8nepke0pagf"]
+[gd_scene load_steps=8 format=3 uid="uid://bc8nepke0pagf"]
 
 [ext_resource type="Script" path="res://ui/hud/hud.gd" id="1_22hk0"]
-[ext_resource type="Theme" uid="uid://dp1nmwxx5vbr5" path="res://ui/ui_samples_theme.tres" id="2_uscdq"]
-[ext_resource type="PackedScene" uid="uid://dqe7vmhm3mhvm" path="res://ui/fuel_bar/fuel_bar.tscn" id="4_4s3sj"]
-[ext_resource type="Shader" path="res://ui/hud/progressbar.gdshader" id="4_unkjd"]
-[ext_resource type="PackedScene" uid="uid://0qamkncpbo8o" path="res://ui/starts/stars.tscn" id="5_woo44"]
+[ext_resource type="PackedScene" uid="uid://b6qyus7bgu1w3" path="res://ui/speedometer/gauge.tscn" id="2_gmknf"]
+[ext_resource type="PackedScene" uid="uid://0qamkncpbo8o" path="res://ui/starts/stars_progress.tscn" id="5_woo44"]
 [ext_resource type="Script" path="res://ui/stopwatch/stopwatch.gd" id="6_coa2k"]
 
 [sub_resource type="Curve" id="Curve_p8c20"]
@@ -14,65 +12,6 @@ point_count = 3
 [sub_resource type="Curve" id="Curve_k5chp"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.315565, 0.939488), -0.316591, -0.316591, 0, 0, Vector2(0.73774, 0.72506), -1.33404, -1.33404, 0, 0, Vector2(1, 0.31924), 0.0, 0.0, 0, 0]
 point_count = 4
-
-[sub_resource type="Gradient" id="Gradient_bgjqv"]
-offsets = PackedFloat32Array(0)
-colors = PackedColorArray(0.317647, 0.317647, 0.317647, 0.301961)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_3w4sx"]
-gradient = SubResource("Gradient_bgjqv")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ho3w4"]
-shader = ExtResource("4_unkjd")
-shader_parameter/value = 1.0
-shader_parameter/segments = 1
-shader_parameter/radius = 0.48
-shader_parameter/hollow_radius = 0.0
-shader_parameter/margin = 0.0
-shader_parameter/rotation = null
-shader_parameter/progress_rotation = null
-shader_parameter/use_value_gradient = false
-shader_parameter/gradient = SubResource("GradientTexture1D_3w4sx")
-
-[sub_resource type="Gradient" id="Gradient_houit"]
-offsets = PackedFloat32Array(0)
-colors = PackedColorArray(0.231373, 0.231373, 0.231373, 0.380392)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_4ygqv"]
-gradient = SubResource("Gradient_houit")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_t2gie"]
-shader = ExtResource("4_unkjd")
-shader_parameter/value = 0.75
-shader_parameter/segments = 30
-shader_parameter/radius = 0.5
-shader_parameter/hollow_radius = 0.2
-shader_parameter/margin = 0.4
-shader_parameter/rotation = 4.75e-08
-shader_parameter/progress_rotation = -0.75
-shader_parameter/use_value_gradient = false
-shader_parameter/gradient = SubResource("GradientTexture1D_4ygqv")
-
-[sub_resource type="Gradient" id="Gradient_u7baf"]
-interpolation_mode = 2
-interpolation_color_space = 2
-offsets = PackedFloat32Array(0.121324, 0.231618, 0.286765, 0.349265, 0.525735, 0.764706, 0.897059)
-colors = PackedColorArray(0, 2, 0.105, 1, 1.2, 1.2, 0, 1, 1.26832, 0.490872, -0.483496, 1, 1.212, 0.248, 0, 1, 0.790089, 0.000347311, 0.756517, 1, 0.24, 0.15, 1.28, 1, 0, 2, 0.106, 1)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_i3eha"]
-gradient = SubResource("Gradient_u7baf")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_dmqt7"]
-shader = ExtResource("4_unkjd")
-shader_parameter/value = 0.75
-shader_parameter/segments = 30
-shader_parameter/radius = 0.5
-shader_parameter/hollow_radius = 0.2
-shader_parameter/margin = 0.4
-shader_parameter/rotation = 4.75e-08
-shader_parameter/progress_rotation = -0.75
-shader_parameter/use_value_gradient = false
-shader_parameter/gradient = SubResource("GradientTexture1D_i3eha")
 
 [sub_resource type="LabelSettings" id="LabelSettings_bpi28"]
 font_size = 48
@@ -88,79 +27,7 @@ grow_vertical = 2
 script = ExtResource("1_22hk0")
 fuel_fill_rate = SubResource("Curve_p8c20")
 fuel_burn_rate = SubResource("Curve_k5chp")
-
-[node name="Speedometer" type="Control" parent="."]
-layout_mode = 1
-anchors_preset = 0
-offset_left = 10.0
-offset_top = 295.0
-offset_right = 291.0
-offset_bottom = 584.0
-rotation = -1.5708
-
-[node name="PanelBack" type="Panel" parent="Speedometer"]
-visible = false
-material = SubResource("ShaderMaterial_ho3w4")
-layout_mode = 0
-offset_right = 275.0
-offset_bottom = 275.0
-
-[node name="PanelMiddle" type="Panel" parent="Speedometer"]
-material = SubResource("ShaderMaterial_t2gie")
-layout_mode = 0
-offset_right = 275.0
-offset_bottom = 275.0
-
-[node name="PanelFront" type="Panel" parent="Speedometer"]
-material = SubResource("ShaderMaterial_dmqt7")
-layout_mode = 0
-offset_right = 275.0
-offset_bottom = 275.0
-
-[node name="Label" type="Label" parent="Speedometer"]
-layout_mode = 0
-offset_left = 170.0
-offset_top = 80.0
-offset_right = 290.0
-offset_bottom = 145.0
-rotation = 1.5708
-theme = ExtResource("2_uscdq")
-theme_override_colors/font_color = Color(0.937255, 0.992157, 0.372549, 1)
-theme_override_font_sizes/font_size = 80
-text = "600"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Label" type="Label" parent="."]
-layout_mode = 0
-offset_left = 239.0
-offset_top = 72.0
-offset_right = 775.0
-offset_bottom = 137.0
-theme = ExtResource("2_uscdq")
-theme_override_colors/font_color = Color(0.937255, 0.992157, 0.372549, 1)
-theme_override_font_sizes/font_size = 48
-text = "Mega E-volts"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Stars" parent="." instance=ExtResource("5_woo44")]
-layout_mode = 0
-offset_left = 223.0
-offset_top = 140.0
-offset_right = 653.0
-offset_bottom = 240.0
-
-[node name="FuelBar" parent="." instance=ExtResource("4_4s3sj")]
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -1697.0
-offset_top = 122.0
-offset_right = -1689.24
-offset_bottom = 122.0
-grow_horizontal = 0
+metadata/_edit_vertical_guides_ = [1880.0, 40.0]
 
 [node name="TimerOvercharged" type="Timer" parent="."]
 wait_time = 2.5
@@ -182,3 +49,24 @@ text = "MM:ss.ms"
 label_settings = SubResource("LabelSettings_bpi28")
 script = ExtResource("6_coa2k")
 autostart = true
+
+[node name="SpeedAndEnergy" parent="." instance=ExtResource("2_gmknf")]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -398.0
+offset_top = -269.0
+offset_right = -398.0
+offset_bottom = -269.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="StarsProgress" parent="." instance=ExtResource("5_woo44")]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 49.0
+offset_right = 432.0
+offset_bottom = 117.0

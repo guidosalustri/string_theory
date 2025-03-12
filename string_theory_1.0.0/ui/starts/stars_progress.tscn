@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://0qamkncpbo8o"]
+
+[ext_resource type="Script" path="res://ui/starts/stars_progress.gd" id="1_fndhf"]
+[ext_resource type="Texture2D" uid="uid://baux8wnujuj2l" path="res://assets/spark.png" id="2_4bnrv"]
+
+[node name="StarProgress" type="GridContainer"]
+offset_right = 392.0
+offset_bottom = 68.0
+size_flags_vertical = 0
+columns = 11
+script = ExtResource("1_fndhf")
+starCount = 17
+connectedStarCount = 2
+
+[node name="Star" type="TextureRect" parent="."]
+modulate = Color(1, 0.909804, 0.321569, 1)
+layout_mode = 2
+texture = ExtResource("2_4bnrv")
