@@ -1,23 +1,16 @@
-[gd_scene load_steps=9 format=3 uid="uid://dqe7vmhm3mhvm"]
+[gd_scene load_steps=10 format=3 uid="uid://dqe7vmhm3mhvm"]
 
 [ext_resource type="Script" path="res://ui/fuel_bar/fuel_bar.gd" id="1_yf6hq"]
 
 [sub_resource type="Gradient" id="Gradient_hw6lb"]
-offsets = PackedFloat32Array(0, 0.466513, 1)
-colors = PackedColorArray(0.281168, 0.733695, 0.634145, 1, 0.716247, 0.699246, 0.579904, 1, 0.509314, 0.43852, 0.724679, 1)
+offsets = PackedFloat32Array(0, 0.293303, 0.503464, 0.635104, 0.803695, 0.993072)
+colors = PackedColorArray(0.4122, 0.3096, 0.72, 1, 0.2052, 0.76, 0.639793, 1, 0.2528, 0.79, 0.62884, 1, 0.877993, 0.784559, 0.495096, 1, 0.72, 0.66288, 0.2304, 1, 0.73, 0.3796, 0.48472, 1)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_i4tiq"]
 gradient = SubResource("Gradient_hw6lb")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kur4u"]
-bg_color = Color(0.0637032, 0.111913, 0.266687, 1)
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0vyvw"]
-bg_color = Color(0.352652, 0.705461, 0.873544, 1)
+bg_color = Color(0.815458, 0.776425, 0.985998, 1)
 corner_radius_top_left = 10
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
@@ -36,6 +29,26 @@ bg_color = Color(1, 1, 1, 1)
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 
+[sub_resource type="Animation" id="Animation_2418r"]
+resource_name = "full_energy"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 0,
+"values": []
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_dep65"]
+_data = {
+"full_energy": SubResource("Animation_2418r")
+}
+
 [node name="FuelBar" type="Control" node_paths=PackedStringArray("panels")]
 layout_mode = 3
 anchors_preset = 0
@@ -46,134 +59,116 @@ script = ExtResource("1_yf6hq")
 charge = 1.0
 panels = [NodePath("VBoxContainer/Panel"), NodePath("VBoxContainer/Panel2"), NodePath("VBoxContainer/Panel3"), NodePath("VBoxContainer/Panel4"), NodePath("VBoxContainer/Panel5"), NodePath("VBoxContainer/Panel6"), NodePath("VBoxContainer/Panel7"), NodePath("VBoxContainer/Panel8"), NodePath("VBoxContainer/Panel9"), NodePath("VBoxContainer/Panel10"), NodePath("VBoxContainer/Panel11"), NodePath("VBoxContainer/Panel12"), NodePath("VBoxContainer/Panel13")]
 color = SubResource("GradientTexture1D_i4tiq")
-metadata/_edit_group_ = true
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+offset_right = 430.0
+offset_bottom = 40.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_kur4u")
-
-[node name="Panel2" type="Panel" parent="."]
-visible = false
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -210.0
-offset_top = -15.0
-offset_right = 257.0
-offset_bottom = 18.0
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(0.9, 0.9)
-theme_override_styles/panel = SubResource("StyleBoxFlat_0vyvw")
 
 [node name="VBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.009
-anchor_top = 0.125
-anchor_right = 0.991
-anchor_bottom = 0.875
-offset_left = 0.13
-offset_right = -0.130035
+offset_left = 5.0
+offset_top = 5.0
+offset_right = 425.0
+offset_bottom = 35.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 5
 
 [node name="Panel" type="Panel" parent="VBoxContainer"]
-modulate = Color(0.509314, 0.43852, 0.724679, 1)
+modulate = Color(0.73, 0.3796, 0.48472, 1)
 custom_minimum_size = Vector2(26, 30)
 layout_mode = 2
 size_flags_horizontal = 0
 theme_override_styles/panel = SubResource("StyleBoxFlat_uibef")
 
 [node name="Panel2" type="Panel" parent="VBoxContainer"]
-modulate = Color(0.509314, 0.43852, 0.724679, 1)
+modulate = Color(0.73, 0.3796, 0.48472, 1)
 custom_minimum_size = Vector2(28, 30)
 layout_mode = 2
 size_flags_horizontal = 0
 theme_override_styles/panel = SubResource("StyleBoxFlat_t8n40")
 
 [node name="Panel3" type="Panel" parent="VBoxContainer"]
-modulate = Color(0.509314, 0.43852, 0.724679, 1)
+modulate = Color(0.73, 0.3796, 0.48472, 1)
 custom_minimum_size = Vector2(28, 30)
 layout_mode = 2
 size_flags_horizontal = 0
 theme_override_styles/panel = SubResource("StyleBoxFlat_t8n40")
 
 [node name="Panel4" type="Panel" parent="VBoxContainer"]
-modulate = Color(0.509314, 0.43852, 0.724679, 1)
+modulate = Color(0.73, 0.3796, 0.48472, 1)
 custom_minimum_size = Vector2(28, 30)
 layout_mode = 2
 size_flags_horizontal = 0
 theme_override_styles/panel = SubResource("StyleBoxFlat_t8n40")
 
 [node name="Panel5" type="Panel" parent="VBoxContainer"]
-modulate = Color(0.509314, 0.43852, 0.724679, 1)
+modulate = Color(0.73, 0.3796, 0.48472, 1)
 custom_minimum_size = Vector2(28, 30)
 layout_mode = 2
 size_flags_horizontal = 0
 theme_override_styles/panel = SubResource("StyleBoxFlat_t8n40")
 
 [node name="Panel6" type="Panel" parent="VBoxContainer"]
-modulate = Color(0.509314, 0.43852, 0.724679, 1)
+modulate = Color(0.73, 0.3796, 0.48472, 1)
 custom_minimum_size = Vector2(28, 30)
 layout_mode = 2
 size_flags_horizontal = 0
 theme_override_styles/panel = SubResource("StyleBoxFlat_t8n40")
 
 [node name="Panel7" type="Panel" parent="VBoxContainer"]
-modulate = Color(0.509314, 0.43852, 0.724679, 1)
+modulate = Color(0.73, 0.3796, 0.48472, 1)
 custom_minimum_size = Vector2(28, 30)
 layout_mode = 2
 size_flags_horizontal = 0
 theme_override_styles/panel = SubResource("StyleBoxFlat_t8n40")
 
 [node name="Panel8" type="Panel" parent="VBoxContainer"]
-modulate = Color(0.509314, 0.43852, 0.724679, 1)
+modulate = Color(0.73, 0.3796, 0.48472, 1)
 custom_minimum_size = Vector2(28, 30)
 layout_mode = 2
 size_flags_horizontal = 0
 theme_override_styles/panel = SubResource("StyleBoxFlat_t8n40")
 
 [node name="Panel9" type="Panel" parent="VBoxContainer"]
-modulate = Color(0.509314, 0.43852, 0.724679, 1)
+modulate = Color(0.73, 0.3796, 0.48472, 1)
 custom_minimum_size = Vector2(28, 30)
 layout_mode = 2
 size_flags_horizontal = 0
 theme_override_styles/panel = SubResource("StyleBoxFlat_t8n40")
 
 [node name="Panel10" type="Panel" parent="VBoxContainer"]
-modulate = Color(0.509314, 0.43852, 0.724679, 1)
+modulate = Color(0.73, 0.3796, 0.48472, 1)
 custom_minimum_size = Vector2(28, 30)
 layout_mode = 2
 size_flags_horizontal = 0
 theme_override_styles/panel = SubResource("StyleBoxFlat_t8n40")
 
 [node name="Panel11" type="Panel" parent="VBoxContainer"]
-modulate = Color(0.509314, 0.43852, 0.724679, 1)
+modulate = Color(0.73, 0.3796, 0.48472, 1)
 custom_minimum_size = Vector2(28, 30)
 layout_mode = 2
 size_flags_horizontal = 0
 theme_override_styles/panel = SubResource("StyleBoxFlat_t8n40")
 
 [node name="Panel12" type="Panel" parent="VBoxContainer"]
-modulate = Color(0.509314, 0.43852, 0.724679, 1)
+modulate = Color(0.73, 0.3796, 0.48472, 1)
 custom_minimum_size = Vector2(28, 30)
 layout_mode = 2
 size_flags_horizontal = 0
 theme_override_styles/panel = SubResource("StyleBoxFlat_t8n40")
 
 [node name="Panel13" type="Panel" parent="VBoxContainer"]
-modulate = Color(0.509314, 0.43852, 0.724679, 1)
+modulate = Color(0.73, 0.3796, 0.48472, 1)
 custom_minimum_size = Vector2(26, 30)
 layout_mode = 2
 size_flags_horizontal = 0
 theme_override_styles/panel = SubResource("StyleBoxFlat_hd3iu")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_dep65")
+}

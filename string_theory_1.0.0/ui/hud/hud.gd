@@ -5,7 +5,6 @@ extends Control
 @onready var label_speed: Label = $Speedometer/Label
 @onready var panel_speed: Panel = $Speedometer/PanelFront
 @onready var fuel_bar: FuelBar = $FuelBar
-@onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var timer_overcharged: Timer = $TimerOvercharged
 
 @export var fuel_fill_rate : Curve
@@ -34,6 +33,7 @@ func set_stars_trail(stars: Array[Star]) -> void:
 
 
 func _ready() -> void:
+	fuel_bar.charge = fuel / max_fuel
 	timer_overcharged.timeout.connect(_on_timer_overcharged_timeout)
 
 func _process(_delta: float) -> void:
@@ -49,11 +49,11 @@ func _process(_delta: float) -> void:
 	
 	if fuel >= max_fuel and timer_overcharged.is_stopped():
 		timer_overcharged.start()
-		animation_player.play("full_energy")
+		fuel_bar.animation_player.play("full_energy")
 
 	if fuel < max_fuel and not timer_overcharged.is_stopped():
 		timer_overcharged.stop()
-		animation_player.stop()
+		fuel_bar.animation_player.stop()
 
 	if player.current_state == player.States.ORBIT:
 		fuel = min(fuel + fuel_fill_rate.sample(fuel / max_fuel) * _delta, max_fuel)
@@ -75,6 +75,6 @@ func texture_rect_tween(tex_rect: TextureRect) -> void:
 	tween.parallel().tween_property(tex_rect, "scale", Vector2(1.2,1.2), 0.1)
 
 func _on_timer_overcharged_timeout() -> void:
-	animation_player.stop()
+	fuel_bar.animation_player.stop()
 	overcharged.emit()
 	set_process(false)

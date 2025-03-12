@@ -5,17 +5,22 @@ class_name FuelBar extends Control
 @export var panels : Array[Panel]
 @export var color : GradientTexture1D
 
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
+
 var visiblePanels : int
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	for panel in panels:
 		panel.hide()
-	visiblePanels = charge * panels.size()
+	visiblePanels = charge * float(panels.size())
+
+	for idx in range(0, visiblePanels):
+		panels[idx].show()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	_displayCharge(charge * panels.size())
+	_displayCharge(charge * float(panels.size()))
 
 func _displayCharge(_visible: int) -> void:
 	if _visible == visiblePanels:
