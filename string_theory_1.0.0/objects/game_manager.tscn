@@ -1,7 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://cw0bs8bnlg3nh"]
+[gd_scene load_steps=11 format=3 uid="uid://cw0bs8bnlg3nh"]
 
 [ext_resource type="Script" path="res://objects/game_manager.gd" id="1_nqyrl"]
 [ext_resource type="PackedScene" uid="uid://vug55rsbi18p" path="res://tests/taurus_test.tscn" id="2_e1qwd"]
+[ext_resource type="PackedScene" uid="uid://ybilhl70y2hu" path="res://tests/aries_test.tscn" id="2_nao5d"]
 [ext_resource type="PackedScene" uid="uid://cfj8vdecqtgfo" path="res://tests/gemini_test.tscn" id="3_wiopj"]
 [ext_resource type="PackedScene" uid="uid://78rgimw7bk8x" path="res://tests/cancer_test.tscn" id="4_5rlpe"]
 [ext_resource type="PackedScene" uid="uid://dd8x5lnqej66y" path="res://cutscene/cut_scene.tscn" id="4_6jd32"]
@@ -12,7 +13,7 @@
 
 [node name="Node" type="Node"]
 script = ExtResource("1_nqyrl")
-lvls = Array[PackedScene]([ExtResource("2_e1qwd"), ExtResource("3_wiopj"), ExtResource("4_5rlpe"), ExtResource("5_b2rxa"), ExtResource("6_ko4pw")])
+lvls = Array[PackedScene]([ExtResource("2_nao5d"), ExtResource("2_e1qwd"), ExtResource("3_wiopj"), ExtResource("4_5rlpe"), ExtResource("5_b2rxa"), ExtResource("6_ko4pw")])
 cutscene = ExtResource("4_6jd32")
 final_scene = ExtResource("7_0f68c")
 main_menu = ExtResource("8_dccl0")
