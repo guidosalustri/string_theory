@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://d2xvfly2q0pnk"]
+
+[ext_resource type="Script" path="res://ui/ui_tutorial/detector_for_tutorial_dialog.gd" id="1_r7v6j"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qrs8f"]
+radius = 72.0
+
+[node name="DetectorForDialog" type="Area2D"]
+collision_layer = 0
+script = ExtResource("1_r7v6j")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_qrs8f")
+debug_color = Color(0.484641, 0.435492, 1, 0.42)
