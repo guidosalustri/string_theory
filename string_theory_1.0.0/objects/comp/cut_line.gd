@@ -11,6 +11,7 @@ func _physics_process(delta: float) -> void:
 	if points.size() > 21:
 		for i in range(20):
 			remove_point(0)
+			collision_gpu_particles_2d.position = points[0]
 	elif points.size() > 1:
 		remove_point(0)
 		collision_gpu_particles_2d.position = points[0]

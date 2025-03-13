@@ -6,7 +6,7 @@ const TEXT_DISPLAY_SPEED := 50.0
 var lines = [
 	"Great!!! You are orbiting your first star.\
 	\nPress [color=3ba2f9]'Ctrl'[/color] or [color=3ba2f9]'Spacebar'[/color] to eject yourself.",
-	"Fly to the next one to [color=3ba2f9]connect[/color] them.",
+	"Fly to the next star to [color=3ba2f9]connect[/color] them.",
 	"Well done!! Be mindful of how the ship\
 	\nengine [color=3ba2f9]charges[/color] while you [color=3ba2f9]orbit[/color] stars!",
 	"",

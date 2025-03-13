@@ -23,6 +23,7 @@ func call_cutscene() -> void:
 	else:
 		get_tree().change_scene_to_packed(cutscene)
 
+
 func start_lvl(index : int) -> void:
 	get_tree().change_scene_to_packed(lvls[index])
 

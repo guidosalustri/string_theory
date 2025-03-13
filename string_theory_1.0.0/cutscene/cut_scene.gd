@@ -17,9 +17,6 @@ func _ready() -> void:
 		timer.timeout.connect(_on_timer_timeout)
 
 
-func _process(_delta: float) -> void:
-	pass
-
 func _on_animation_player_animation_finished(_anim_name: StringName) -> void:
 	if _anim_name == "set_the_ship":
 		animation_player.play("Light_speed")

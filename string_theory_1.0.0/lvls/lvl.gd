@@ -169,7 +169,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		phantom_camera_star.priority = 1
 
 func _on_timer_timeout() -> void:
-
+	cut_line.hide()
 	var tween_hud := create_tween()
 	tween_hud.tween_property(hud, "modulate:a", 0, 0.5)
 	dim_out_obstacles()
