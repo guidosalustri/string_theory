@@ -12,11 +12,11 @@ void fragment() {
 	COLOR.rgb = (
 	 	flame_color.rgb +
 		texture(
-			band_texture, 
+			band_texture,
 			vec2(UV.y * 2.0 - TIME * 2.0, 0.0)
 		).x * 0.25 * (1.0 - UV.y)
 	);
-	
+
 	float inverted_deformation = (1.0 - deformation);
 	float sine = ( 1.0 + sin(UV.y * PI * 4.0 + TIME * 20.0) ) / 2.0;
 	float signed_distance_field = texture(TEXTURE, UV).a;
