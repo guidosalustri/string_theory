@@ -79,8 +79,9 @@ background_mode = 3
 glow_enabled = true
 glow_blend_mode = 4
 
-[node name="lvl" type="Node2D" node_paths=PackedStringArray("stars_trail")]
+[node name="lvl" type="Node2D" node_paths=PackedStringArray("canvas_layer_3", "stars_trail")]
 script = ExtResource("1_sjy30")
+canvas_layer_3 = NodePath("CanvasLayer3")
 stars_trail = [NodePath("Constellation/Star"), NodePath("Constellation/Star2"), NodePath("Constellation/Star3"), NodePath("Constellation/Star4")]
 
 [node name="CanvasModulate2" type="CanvasModulate" parent="."]
@@ -90,7 +91,7 @@ color = Color(0.0218252, 0.0212845, 0.0214185, 1)
 position = Vector2(3968, 320)
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(960, 384)
+position = Vector2(576, 544)
 position_smoothing_speed = 2.0
 
 [node name="PhantomCameraHost" type="Node" parent="Camera2D"]
@@ -135,25 +136,25 @@ sharp_limit = 8.0
 antialiased = true
 
 [node name="Ship" parent="." instance=ExtResource("5_68va2")]
-position = Vector2(768, 384)
+position = Vector2(256, 512)
 
 [node name="Constellation" type="Node2D" parent="."]
 
 [node name="Star" parent="Constellation" instance=ExtResource("6_dsmi0")]
-position = Vector2(1152, 384)
+position = Vector2(896, 576)
 
 [node name="Star2" parent="Constellation" instance=ExtResource("6_dsmi0")]
-position = Vector2(2048, 256)
+position = Vector2(1856, 320)
 
 [node name="Star3" parent="Constellation" instance=ExtResource("6_dsmi0")]
-position = Vector2(2880, 192)
+position = Vector2(2816, 192)
 
 [node name="PivotAsteroid2" parent="Constellation/Star3" instance=ExtResource("7_p8yqt")]
 rotation_speed = 2.7
 asteroid_position = Vector2(290, 0)
 
 [node name="Star4" parent="Constellation" instance=ExtResource("6_dsmi0")]
-position = Vector2(3712, 320)
+position = Vector2(3648, 448)
 black_hole_on_star = true
 
 [node name="Timer" type="Timer" parent="."]
@@ -161,7 +162,7 @@ wait_time = 0.5
 one_shot = true
 
 [node name="PhantomCamera2D" type="Node2D" parent="." node_paths=PackedStringArray("follow_targets")]
-position = Vector2(960, 384)
+position = Vector2(576, 544)
 script = ExtResource("8_nq0uo")
 follow_mode = 3
 follow_targets = [NodePath("../Ship"), NodePath("../Constellation/Star")]
@@ -219,10 +220,6 @@ grow_vertical = 2
 
 [node name="CanvasLayer2" type="CanvasLayer" parent="."]
 
-[node name="TutorialDialogUI" parent="CanvasLayer2" instance=ExtResource("17_216tu")]
-offset_right = 1920.0
-offset_bottom = 1080.0
-
 [node name="PauseScreen" parent="CanvasLayer2" instance=ExtResource("13_ve8mh")]
 visible = false
 
@@ -235,14 +232,44 @@ environment = SubResource("Environment_0jpjx")
 [node name="CutLine" parent="." instance=ExtResource("15_p3rse")]
 default_color = Color(3, 0.128, 0.302, 1)
 
-[node name="DetectorForDialog" parent="." node_paths=PackedStringArray("dialog") instance=ExtResource("16_lnb7l")]
-position = Vector2(1152, 385)
-dialog = NodePath("../CanvasLayer2/TutorialDialogUI")
+[node name="CanvasLayer3" type="CanvasLayer" parent="."]
+follow_viewport_enabled = true
 
-[node name="DetectorForDialog2" parent="." node_paths=PackedStringArray("dialog") instance=ExtResource("16_lnb7l")]
-position = Vector2(2048, 258)
-dialog = NodePath("../CanvasLayer2/TutorialDialogUI")
+[node name="TutorialDialogUI" parent="CanvasLayer3" instance=ExtResource("17_216tu")]
+offset_right = 1920.0
+offset_bottom = 1080.0
 
-[node name="DetectorForDialog3" parent="." node_paths=PackedStringArray("dialog") instance=ExtResource("16_lnb7l")]
-position = Vector2(2878, 192)
-dialog = NodePath("../CanvasLayer2/TutorialDialogUI")
+[node name="RichTextLabel" parent="CanvasLayer3/TutorialDialogUI" index="1"]
+layout_mode = 0
+offset_left = 1352.0
+offset_top = 695.0
+offset_right = 2177.0
+offset_bottom = 734.0
+
+[node name="RichTextLabel2" parent="CanvasLayer3/TutorialDialogUI" index="2"]
+layout_mode = 0
+offset_left = 2240.0
+offset_top = 565.0
+offset_right = 2873.0
+offset_bottom = 604.0
+
+[node name="DetectorForDialog" parent="CanvasLayer3" node_paths=PackedStringArray("dialog") instance=ExtResource("16_lnb7l")]
+position = Vector2(896, 576)
+dialog = NodePath("../TutorialDialogUI")
+display_text = "Great!!! You are orbiting your first star.
+Press [color=3ba2f9]'Ctrl'[/color] or [color=3ba2f9]'Spacebar'[/color] to eject yourself."
+
+[node name="DetectorForDialog2" parent="CanvasLayer3" node_paths=PackedStringArray("dialog") instance=ExtResource("16_lnb7l")]
+position = Vector2(1856, 320)
+dialog = NodePath("../TutorialDialogUI")
+display_text = "Well done!! Be mindful of how the ship
+engine [color=3ba2f9]charges[/color] while you [color=3ba2f9]orbit[/color] stars!
+"
+
+[node name="DetectorForDialog3" parent="CanvasLayer3" node_paths=PackedStringArray("dialog") instance=ExtResource("16_lnb7l")]
+position = Vector2(2816, 192)
+dialog = NodePath("../TutorialDialogUI")
+display_text = "But keep in mind that running out of energy
+means [color=3ba2f9]losing propulsion[/color]..."
+
+[editable path="CanvasLayer3/TutorialDialogUI"]

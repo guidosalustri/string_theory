@@ -27,6 +27,7 @@ extends Node2D
 @onready var animation_player: AnimationPlayer = $LinkLineShip/AnimationPlayer
 #@onready var pick_ups: Node2D = $PickUps
 #@onready var pick_crew_ui: Control = $CanvasLayer2/PickCrewUI
+@export var canvas_layer_3: CanvasLayer
 
 @export var stars_trail: Array[Star]
 #@export var with_pickups := false
@@ -169,6 +170,8 @@ func _unhandled_input(event: InputEvent) -> void:
 		phantom_camera_star.priority = 1
 
 func _on_timer_timeout() -> void:
+	if canvas_layer_3:
+		canvas_layer_3.hide()
 	cut_line.hide()
 	var tween_hud := create_tween()
 	tween_hud.tween_property(hud, "modulate:a", 0, 0.5)
