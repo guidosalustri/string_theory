@@ -15,11 +15,11 @@ shader_parameter/line_color = Color(0.294, 0.635, 11, 1)
 shader_parameter/line_thickness = 2.0
 shader_parameter/viewport_scale = Vector2(1, 1)
 
-[sub_resource type="Gradient" id="Gradient_4fj4g"]
+[sub_resource type="Gradient" id="Gradient_4vov4"]
 colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_xkj60"]
-gradient = SubResource("Gradient_4fj4g")
+gradient = SubResource("Gradient_4vov4")
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(0.773504, 0.0940171)

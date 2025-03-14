@@ -78,7 +78,8 @@ func _advance_dialog() -> void:
 
 func fade_out() -> void:
 	dialogue_done.emit()
+	portrait.pop_out()
 	var tween := create_tween()
-	tween.parallel().tween_property(self, "modulate:a", 0, 0.4)
+	tween.parallel().tween_property(self, "modulate:a", 0, 0.8)
 	#.set_trans(Tween.TRANS_ELASTIC)
 	#tween.set_ease(Tween.EASE_IN)

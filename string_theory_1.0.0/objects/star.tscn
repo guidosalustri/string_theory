@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://ul1ys48qmbs4"]
+[gd_scene load_steps=23 format=3 uid="uid://ul1ys48qmbs4"]
 
 [ext_resource type="Script" path="res://objects/star.gd" id="1_lhkgp"]
 [ext_resource type="Texture2D" uid="uid://baux8wnujuj2l" path="res://assets/spark.png" id="2_06rb5"]
@@ -393,19 +393,47 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.15, 0.3),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector2(1.5, 1.5), Vector2(1.8, 1.8), Vector2(1.5, 1.5)]
+"values": [Vector2(1.5, 1.5), Vector2(1.9, 1.9), Vector2(1.5, 1.5)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("HaloCircle:radius")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [12.0, 15.0, 12.0]
+}
+
+[sub_resource type="Animation" id="Animation_bk3dk"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HaloCircle:radius")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [12.0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_k7l5y"]
 _data = {
+"RESET": SubResource("Animation_bk3dk"),
 "spawn": SubResource("Animation_81ie1")
 }
 
-[sub_resource type="Gradient" id="Gradient_x7h7t"]
+[sub_resource type="Gradient" id="Gradient_mxo86"]
 colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_fbl85"]
-gradient = SubResource("Gradient_x7h7t")
+gradient = SubResource("Gradient_mxo86")
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(0.730769, 0.123932)
