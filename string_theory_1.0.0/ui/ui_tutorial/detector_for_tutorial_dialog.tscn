@@ -24,6 +24,7 @@ offset_bottom = -188.0
 theme = ExtResource("2_ltcwf")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Control"]
+layout_mode = 0
 offset_left = -224.0
 offset_top = -132.0
 offset_right = -224.0

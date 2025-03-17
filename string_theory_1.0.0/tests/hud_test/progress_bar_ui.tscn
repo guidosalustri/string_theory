@@ -1,0 +1,57 @@
+[gd_scene load_steps=6 format=3 uid="uid://dudwdr0tw5i3g"]
+
+[ext_resource type="Script" path="res://tests/hud_test/progress_bar_ui.gd" id="2_c1nmb"]
+[ext_resource type="Theme" uid="uid://dp1nmwxx5vbr5" path="res://ui/ui_samples_theme.tres" id="3"]
+[ext_resource type="Texture2D" uid="uid://dnuqh834ty0d4" path="res://tests/hud_test/progressbar_fill.png" id="4"]
+[ext_resource type="Texture2D" uid="uid://det81b5fck85o" path="res://tests/hud_test/progressbar_back.png" id="5"]
+[ext_resource type="Texture2D" uid="uid://df42cvwoill5d" path="res://tests/hud_test/progressbar_top.png" id="6"]
+
+[node name="ProgressBarUI" type="Control"]
+custom_minimum_size = Vector2(1920, 1080)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+theme = ExtResource("3")
+script = ExtResource("2_c1nmb")
+health = 30
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="."]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(954, 152)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -540.0
+offset_top = -180.0
+offset_right = 540.0
+offset_bottom = -28.0
+grow_horizontal = 2
+grow_vertical = 2
+value = 30.0
+texture_under = ExtResource("5")
+texture_over = ExtResource("6")
+texture_progress = ExtResource("4")
+tint_progress = Color(0.651372, 0.392941, 0.361961, 1)
+
+[node name="HealButton" type="Button" parent="."]
+layout_mode = 1
+offset_left = 1211.0
+offset_top = 600.0
+offset_right = 1529.0
+offset_bottom = 752.0
+text = "Heal"
+
+[node name="DamageButton" type="Button" parent="."]
+layout_mode = 1
+offset_left = 398.0
+offset_top = 600.0
+offset_right = 716.0
+offset_bottom = 752.0
+text = "Damage"
+
+[connection signal="pressed" from="HealButton" to="." method="_on_heal_button_pressed"]
+[connection signal="pressed" from="DamageButton" to="." method="_on_damage_button_pressed"]

@@ -240,14 +240,12 @@ offset_right = 1920.0
 offset_bottom = 1080.0
 
 [node name="RichTextLabel" parent="CanvasLayer3/TutorialDialogUI" index="1"]
-layout_mode = 0
 offset_left = 1352.0
 offset_top = 695.0
 offset_right = 2177.0
 offset_bottom = 734.0
 
 [node name="RichTextLabel2" parent="CanvasLayer3/TutorialDialogUI" index="2"]
-layout_mode = 0
 offset_left = 2240.0
 offset_top = 565.0
 offset_right = 2873.0
