@@ -13,7 +13,9 @@ class_name Ship extends Area2D
 @export var turn_speed := 5.0
 
 @export var turn_right := true
+var has_fuel_right := true
 @export var turn_left := true
+var has_fuel_left := true
 @export var move_forward := true
 @export var invert_controls := false
 
@@ -123,9 +125,9 @@ func _move(delta: float, right: bool , left: bool, forward: bool) -> void:
 	speed = clamp(speed, 0.0, max_speed)
 	
 	var direction := Input.get_vector("move_left", "move_right", "move_up", "move_down")
-	if not left:
+	if not left or not has_fuel_left:
 		direction.x = maxf(0.0, direction.x)
-	if not right:
+	if not right or not has_fuel_right:
 		direction.x = minf(0.0, direction.x)
 	if invert_controls:
 		direction.x *= -1
