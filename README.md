@@ -1,2 +1,3 @@
 # string_theory
  
+The theory of strings...
