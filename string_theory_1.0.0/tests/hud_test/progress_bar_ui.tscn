@@ -14,7 +14,7 @@ offset_right = 1920.0
 offset_bottom = 1080.0
 theme = ExtResource("3")
 script = ExtResource("2_c1nmb")
-health = 30
+health = 60
 
 [node name="TextureProgressBar" type="TextureProgressBar" parent="."]
 unique_name_in_owner = true
@@ -31,11 +31,11 @@ offset_right = 540.0
 offset_bottom = -28.0
 grow_horizontal = 2
 grow_vertical = 2
-value = 30.0
+value = 60.0
 texture_under = ExtResource("5")
 texture_over = ExtResource("6")
 texture_progress = ExtResource("4")
-tint_progress = Color(0.651372, 0.392941, 0.361961, 1)
+tint_progress = Color(0.612549, 0.597647, 0.363137, 1)
 
 [node name="HealButton" type="Button" parent="."]
 layout_mode = 1

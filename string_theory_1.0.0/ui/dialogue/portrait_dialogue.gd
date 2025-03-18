@@ -70,6 +70,6 @@ func ready_for_pop_in() -> void:
 
 func pop_out() -> void:
 	var tween := create_tween()
-	tween.tween_property(_sprite_2d, "position:y", -290.0, 0.7).set_trans(Tween.TRANS_ELASTIC)
+	tween.tween_property(_sprite_2d, "position:y", -290.0, 1.0).set_trans(Tween.TRANS_ELASTIC)
 	tween.set_ease(Tween.EASE_IN)
 	tween.parallel().tween_property(_sprite_2d, "modulate:a", 0, 0.8)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://cqhxlf7w4dm1y"]
+[gd_scene load_steps=32 format=3 uid="uid://cqhxlf7w4dm1y"]
 
 [ext_resource type="Script" path="res://ui/dialogue/dialogue_cutscene.gd" id="1_wklqp"]
 [ext_resource type="Script" path="res://ui/dialogue/dialogue_entry.gd" id="2_8wc3g"]
@@ -11,58 +11,37 @@
 
 [sub_resource type="Resource" id="Resource_ot6hf"]
 script = ExtResource("2_8wc3g")
-text = "Howdy Captain, my name is Martin the Martian, I will be joining your
-crew as head of mechanical starting from today. I am looking
-forward to working together."
+text = "Hi capitan, my name is [color=3ba2f9]Martin D'Martian[/color]. I am head of the [color=3ba2f9]mechanical 
+team[/color] in this spaceship. I am looking forward to working together."
 
 [sub_resource type="Resource" id="Resource_knag6"]
 script = ExtResource("2_8wc3g")
-text = "Our job is easy Cap, we need to [color=3ba2f9]link stars together[/color] forming
-constellations."
+text = "You seem like an [color=3ba2f9]experienced[/color] captain. Nevertheless I need to go 
+through some [color=3ba2f9]technicalities[/color] with you... 
+You know, [color=3ba2f9]protocol[/color]..."
 
-[sub_resource type="Resource" id="Resource_lv1p5"]
+[sub_resource type="Resource" id="Resource_eqqfy"]
 script = ExtResource("2_8wc3g")
-text = "3 main things to remember:
-[color=3ba2f9]Never stop[/color] - always aim for the [color=3ba2f9]next target star[/color] - 
-and do not let the [color=3ba2f9]energy bar drop to 0 or overcharge.[/color]"
+text = "Ohh, that was [color=3ba2f9]smooth[/color] as a [color=3ba2f9]smoothie[/color], Cap!! 
+As you may know, the ship is [color=3ba2f9]powered[/color] by a gravitational engine. So 
+[color=3ba2f9]orbiting[/color] stars will [color=3ba2f9]charge[/color] it."
 
-[sub_resource type="Resource" id="Resource_rkulb"]
+[sub_resource type="Resource" id="Resource_fh5xq"]
 script = ExtResource("2_8wc3g")
-text = "[shake rate=5 level=10]Keep in mind earthlings personalities depend on us... but don't stress
-too much, I am right here by your beside.[/shake]"
+text = "But the engine could also be [color=3ba2f9]overcharged[/color], leading to an [color=3ba2f9]explosion[/color]. On 
+contrast, running out of energy means [color=3ba2f9]losing[/color] the [color=3ba2f9]thrusters[/color] to 
+accelerate."
 
-[sub_resource type="Resource" id="Resource_peqd3"]
+[sub_resource type="Resource" id="Resource_ko3bd"]
 script = ExtResource("2_8wc3g")
-text = "Cap, you are doing great. We spot a small issue on the right thruster, it seems like we will need to do some maintenance on it."
+text = "Being [color=3ba2f9]stranded[/color] in outer space is [color=3ba2f9]scary[/color], please try to avoid it.  Also, 
+the [color=3ba2f9]illumination system[/color] quickly [color=3ba2f9]diminishes[/color] if we drift far away 
+from stars."
 
-[sub_resource type="Resource" id="Resource_33g06"]
+[sub_resource type="Resource" id="Resource_f2hoh"]
 script = ExtResource("2_8wc3g")
-text = "It’s a good thing we spot it beforehand, we will tackle it right away."
-
-[sub_resource type="Resource" id="Resource_3yuww"]
-script = ExtResource("2_8wc3g")
-text = "This means, you will not be able to propel to the right in the next
-constellation. It's unfortunate I know but this will save us a lot of
-headaches in the future, trust me."
-
-[sub_resource type="Resource" id="Resource_81xdg"]
-script = ExtResource("2_8wc3g")
-text = "We truly appreciate your flexibility."
-
-[sub_resource type="Resource" id="Resource_tppbr"]
-script = ExtResource("2_8wc3g")
-text = "I have some updates on the thruster situation. First, I wish to inform
-you that we successfully fixed the right thruster. It should be good
-to go at least for another 30000 light years."
-
-[sub_resource type="Resource" id="Resource_btf0w"]
-script = ExtResource("2_8wc3g")
-text = "Unfortunately, now the left thruster seems to be failing. I am aware this makes your life harder, but do not worry Cap, I will fix it
-shortly."
-
-[sub_resource type="Resource" id="Resource_n1h6j"]
-script = ExtResource("2_8wc3g")
-text = "We value your effort and understanding."
+text = "Now yes cap, everything is [color=3ba2f9]set[/color] and ready. Let's [color=3ba2f9]pull[/color] these [color=3ba2f9]strings[/color] 
+together!!"
 
 [sub_resource type="Resource" id="Resource_5nnx8"]
 script = ExtResource("2_8wc3g")
@@ -187,12 +166,12 @@ grow_vertical = 2
 size_flags_vertical = 8
 script = ExtResource("1_wklqp")
 dialogue_per_scene_dic = {
-0: [SubResource("Resource_ot6hf"), SubResource("Resource_knag6"), SubResource("Resource_lv1p5"), SubResource("Resource_rkulb")],
-1: [],
+0: [SubResource("Resource_ot6hf"), SubResource("Resource_knag6")],
+1: [SubResource("Resource_eqqfy"), SubResource("Resource_fh5xq"), SubResource("Resource_ko3bd"), SubResource("Resource_f2hoh")],
 2: [],
-3: [SubResource("Resource_peqd3"), SubResource("Resource_33g06"), SubResource("Resource_3yuww"), SubResource("Resource_81xdg")],
+3: [],
 4: [],
-5: [SubResource("Resource_tppbr"), SubResource("Resource_btf0w"), SubResource("Resource_n1h6j")],
+5: [],
 6: [],
 7: [SubResource("Resource_5nnx8"), SubResource("Resource_uaf6j"), SubResource("Resource_kyk81")],
 8: [SubResource("Resource_nl5s7"), SubResource("Resource_kjcbh"), SubResource("Resource_q4nhy")],

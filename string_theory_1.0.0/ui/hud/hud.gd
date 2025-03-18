@@ -4,10 +4,15 @@ extends Control
 @onready var stars_progress: StarsProgress = $StarsProgress
 @onready var speed: Gauge = $SpeedAndEnergy
 @onready var energy: EnergyHUD = $Energy
+@onready var texture_progress_bar: TextureProgressBar = %TextureProgressBar
 
 @export var fuel_fill_rate : Curve
 @export var fuel_burn_rate : Curve
 @export var max_fuel:= 5.0
+
+@export var color_fuel_low := Color(1, 0.188, 0.188)
+@export var color_fuel_high := Color(0.141, 1, 0.282)
+
 var fuel := max_fuel / 2.0
 var fuel_left := max_fuel / 2.0
 var fuel_right := max_fuel / 2.0
@@ -72,6 +77,9 @@ func _process(_delta: float) -> void:
 	energy.left_thruster_charge = fuel_left / max_fuel
 	energy.main_thruster_charge = fuel / max_fuel
 	energy.right_thruster_charge = fuel_right / max_fuel
+	
+	texture_progress_bar.value = fuel / max_fuel * 100
+	texture_progress_bar.tint_progress = color_fuel_low.lerp(color_fuel_high, fuel / max_fuel)
 	
 	player.has_fuel_left = fuel_left > 0
 	player.has_fuel_right = fuel_right > 0

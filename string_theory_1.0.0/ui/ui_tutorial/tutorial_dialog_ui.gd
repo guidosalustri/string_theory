@@ -39,7 +39,6 @@ func _ready() -> void:
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("spin") and  allow_input_for_dialog:
-		print("hola")
 		play_dialog()
 		allow_input_for_dialog=false
 

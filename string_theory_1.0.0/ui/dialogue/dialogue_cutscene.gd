@@ -14,6 +14,7 @@ extends Control
 var sentences: Array
 var _tween: Tween = null
 var _current_sentence := 0
+var allow_input := true
 signal dialogue_done
 
 
@@ -31,10 +32,11 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	if len(sentences) == 0:
 		dialogue_done.emit()
+		allow_input = false
 		set_process(false)
 
 func _unhandled_input(event: InputEvent) -> void:
-	if event.is_action_pressed("ui_accept"):
+	if event.is_action_pressed("ui_accept") and allow_input:
 		_advance_dialog()
 
 func _advance_dialog() -> void:
@@ -78,6 +80,7 @@ func _advance_dialog() -> void:
 
 func fade_out() -> void:
 	dialogue_done.emit()
+	allow_input = false
 	portrait.pop_out()
 	var tween := create_tween()
 	tween.parallel().tween_property(self, "modulate:a", 0, 0.8)

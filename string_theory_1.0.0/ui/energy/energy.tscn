@@ -17,9 +17,6 @@ offset_right = 230.0
 offset_bottom = 212.432
 script = ExtResource("1_lcp82")
 level_gradient = SubResource("Gradient_3ix5c")
-left_thruster_charge = null
-main_thruster_charge = null
-right_thruster_charge = null
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
 layout_mode = 2
