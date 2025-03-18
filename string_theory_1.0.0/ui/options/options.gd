@@ -2,13 +2,13 @@ extends Control
 
 @onready var blur_color_rect: ColorRect = $BlurColorRect
 
-@onready var button_cancel_text: Button = $UIPanelContainer/Controls/VBoxContainer/VBoxContainer/GoBackButton
-@onready var button_cancel_audio: Button = $UIPanelContainer/Audio/VBoxContainer2/VBoxContainer/GoBackButton
+@onready var button_cancel_text: Button = $UIPanelContainer/Controls/VBoxContainer/MarginContainer/GoBackButton
+@onready var button_cancel_audio: Button = $UIPanelContainer/Audio/VBoxContainer2/MarginContainer/GoBackButton
 
-@onready var bgm_volume_slider: HSlider = $UIPanelContainer/Audio/VBoxContainer2/HBoxContainer/BGMVolumeSlider
-@onready var sfx_volume_slider: HSlider = $UIPanelContainer/Audio/VBoxContainer2/HBoxContainer2/SFXVolumeSlider
-@onready var music_volume_slider: HSlider = $UIPanelContainer/Audio/VBoxContainer2/HBoxContainer7/VoiceVolumeSlider
-
+@onready var bgm_volume_slider: HSlider = $UIPanelContainer/Audio/VBoxContainer2/MarginContainer2/VBoxContainer/GridContainer/BGMVolumeSlider
+@onready var sfx_volume_slider: HSlider = $UIPanelContainer/Audio/VBoxContainer2/MarginContainer2/VBoxContainer/GridContainer/SFXVolumeSlider
+@onready var music_volume_slider: HSlider = $UIPanelContainer/Audio/VBoxContainer2/MarginContainer2/VBoxContainer/GridContainer/VoiceVolumeSlider
+@onready var auto_advance_dialogue_checkbox: CheckButton = $UIPanelContainer/Audio/VBoxContainer2/MarginContainer2/VBoxContainer/GridContainer/AutoAdvanceDialogueCheckbox
 
 signal cancel_clicked
 
