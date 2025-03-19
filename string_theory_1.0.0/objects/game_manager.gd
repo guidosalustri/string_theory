@@ -5,6 +5,8 @@ extends Node
 @export var final_scene: PackedScene
 @export var main_menu: PackedScene
 
+@onready var data_collection: DataCollection = $DataCollection
+
 var lvl := 0
 
 var deaths_counts := 0
@@ -21,13 +23,19 @@ func call_cutscene() -> void:
 		# but is actually just a final cinematic or something.
 		get_tree().change_scene_to_packed(final_scene)
 	else:
+		data_collection.stopwatch_util.set_paused(true)
 		get_tree().change_scene_to_packed(cutscene)
 
-
 func start_lvl(index : int) -> void:
+	if index == 0:
+		data_collection.stopwatch_util.start()
+
+	data_collection.stopwatch_util.set_paused(false)
 	get_tree().change_scene_to_packed(lvls[index])
 
 func call_main_menu() -> void:
+	data_collection.stopwatch_util.stop()
+
 	get_tree().change_scene_to_packed(main_menu)
 
 func ship_dead() -> void:

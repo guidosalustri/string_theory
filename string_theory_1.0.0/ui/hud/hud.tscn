@@ -3,23 +3,12 @@
 [ext_resource type="Script" path="res://ui/hud/hud.gd" id="1_22hk0"]
 [ext_resource type="PackedScene" uid="uid://c2d66fpkooeey" path="res://ui/speedometer/gauge.tscn" id="2_gmknf"]
 [ext_resource type="PackedScene" uid="uid://dex1whd46vc03" path="res://ui/energy/energy.tscn" id="3_7vh8r"]
+[ext_resource type="PackedScene" uid="uid://cixa6p85qfex8" path="res://objects/stopwatch_util/stopwatch_util.tscn" id="4_rt7cw"]
 [ext_resource type="PackedScene" uid="uid://0qamkncpbo8o" path="res://ui/starts/stars_progress.tscn" id="5_woo44"]
 [ext_resource type="Script" path="res://ui/stopwatch/stopwatch.gd" id="6_coa2k"]
 [ext_resource type="Texture2D" uid="uid://cphm4o67je8n1" path="res://ui/hud/ship_ui_top.png" id="6_qbwhn"]
 [ext_resource type="Texture2D" uid="uid://dvkwtmjgeutc7" path="res://ui/hud/ship_ui_bottom.png" id="6_xudnp"]
 [ext_resource type="Texture2D" uid="uid://c41ulanlqlvoq" path="res://ui/hud/ship_white.png" id="7_2fdl5"]
-
-[sub_resource type="Curve" id="Curve_p8c20"]
-_data = [Vector2(1e-05, 1), 0.0, 0.0, 0, 0, Vector2(0.397089, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.490691), 0.0, 0.0, 0, 0]
-point_count = 3
-
-[sub_resource type="Curve" id="Curve_k5chp"]
-_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.315565, 0.939488), -0.316591, -0.316591, 0, 0, Vector2(0.73774, 0.72506), -1.33404, -1.33404, 0, 0, Vector2(1, 0.31924), 0.0, 0.0, 0, 0]
-point_count = 4
-
-[sub_resource type="LabelSettings" id="LabelSettings_bpi28"]
-font_size = 48
-font_color = Color(0.789472, 0.841139, 0.982446, 1)
 
 [node name="HUD" type="Control"]
 layout_mode = 3
@@ -29,8 +18,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_22hk0")
-fuel_fill_rate = SubResource("Curve_p8c20")
-fuel_burn_rate = SubResource("Curve_k5chp")
 color_fuel_low = Color(1, 0.188, 0.188, 0.8)
 color_fuel_high = Color(0.141, 1, 0.282, 0.65)
 
@@ -49,17 +36,19 @@ layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -295.0
-offset_top = 79.0
-offset_right = -39.0
-offset_bottom = 146.0
+offset_left = -283.0
+offset_top = 66.0
+offset_right = -52.0
+offset_bottom = 133.0
 grow_horizontal = 0
+theme_override_colors/font_color = Color(0.752628, 0.823663, 0.969443, 1)
+theme_override_font_sizes/font_size = 48
 text = "MM:ss.ms"
-label_settings = SubResource("LabelSettings_bpi28")
-horizontal_alignment = 1
-vertical_alignment = 1
 script = ExtResource("6_coa2k")
+
+[node name="StopwatchUtil" parent="Stopwatch" instance=ExtResource("4_rt7cw")]
 autostart = true
+timer_process_callback = 1
 
 [node name="SpeedAndEnergy" parent="." instance=ExtResource("2_gmknf")]
 layout_mode = 2

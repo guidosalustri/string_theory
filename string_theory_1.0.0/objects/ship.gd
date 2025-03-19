@@ -12,12 +12,24 @@ class_name Ship extends Area2D
 @export var acceleration := 250.0
 @export var turn_speed := 5.0
 
+@export var max_fuel:= 5.0
+@export var fuel_fill_rate : Curve
+@export var fuel_burn_rate : Curve
+var fuel := max_fuel / 2.0
+var fuel_left := max_fuel / 2.0
+var fuel_right := max_fuel / 2.0
+
 @export var turn_right := true
-var has_fuel_right := true
 @export var turn_left := true
-var has_fuel_left := true
 @export var move_forward := true
 @export var invert_controls := false
+
+var has_fuel: bool:
+	get: return fuel > 0
+var has_fuel_left: bool:
+	get: return fuel_left > 0
+var has_fuel_right: bool:
+	get: return fuel_right > 0
 
 enum States {
 	ENTER_LVL,
@@ -31,7 +43,13 @@ var current_state: States = States.ENTER_LVL:
 	set = set_current_state
 
 func set_current_state(new_state: States) -> void:
+	if current_state == States.FLY and new_state == States.ORBIT:
+		GameManager.data_collection.log_attach_detach_to_star( DataCollection.ship_action.ATTACH, fuel / max_fuel )
+	elif current_state == States.ORBIT and new_state == States.FLY:
+		GameManager.data_collection.log_attach_detach_to_star( DataCollection.ship_action.DETACH, fuel / max_fuel )
+
 	current_state = new_state
+
 
 var has_energy := true:
 	set = set_has_energy
@@ -116,6 +134,21 @@ func _process(delta: float) -> void:
 			animation_player.play("die")
 			#should run GameManager.ship_dead() but one time
 			#I need to put it in the animaiton itself.
+
+func _physics_process(delta: float) -> void:
+	# Decrease energy level
+	if current_state == Ship.States.FLY:
+		fuel = max ( fuel -  2.0 * fuel_burn_rate.sample( 1.0 - fuel / max_fuel ) * delta, 0 )
+		if Input.is_action_pressed("move_left"):
+			fuel_left = max ( fuel_left -  2.0 * fuel_burn_rate.sample( 1.0 - fuel_left / max_fuel ) * delta, 0 )
+		if Input.is_action_pressed("move_right"):
+			fuel_right = max ( fuel_right -  2.0 * fuel_burn_rate.sample( 1.0 - fuel_right / max_fuel ) * delta, 0 )
+
+	# Increase energy level
+	if current_state == States.ORBIT:
+		fuel = min(fuel + fuel_fill_rate.sample(fuel / max_fuel) * delta, max_fuel)
+		fuel_left = min(fuel_left + fuel_fill_rate.sample(fuel_left / max_fuel) / 2.0 * delta, max_fuel)
+		fuel_right = min(fuel_right + fuel_fill_rate.sample(fuel_right / max_fuel) / 2.0 * delta, max_fuel)
 
 # steering 
 func _move(delta: float, right: bool , left: bool, forward: bool) -> void:

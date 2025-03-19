@@ -39,8 +39,6 @@ func _ready() -> void:
 		resume_button.grab_focus()
 	)
 
-
-
 ## Called when [member menu_opened_amount] is changed.
 func set_menu_opened_amount(amount: float) -> void:
 	visible = amount > 0
@@ -64,6 +62,8 @@ func set_menu_opened_amount(amount: float) -> void:
 
 
 func toggle(is_toggled: bool) -> void:
+	GameManager.data_collection.stopwatch_util.set_paused(is_toggled)
+
 	var speed := opening_speed
 	# if there's a tween, and it is animating, kill it.
 	# just checking for `null` isn't enough,
@@ -89,8 +89,6 @@ func toggle(is_toggled: bool) -> void:
 		options_button.focus_mode = Control.FOCUS_ALL
 		quit_button.focus_mode = Control.FOCUS_ALL
 		resume_button.grab_focus()
-		
-
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_cancel"):
