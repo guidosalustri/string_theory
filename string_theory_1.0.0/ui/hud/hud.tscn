@@ -1,11 +1,12 @@
-[gd_scene load_steps=11 format=3 uid="uid://bc8nepke0pagf"]
+[gd_scene load_steps=12 format=3 uid="uid://bc8nepke0pagf"]
 
 [ext_resource type="Script" path="res://ui/hud/hud.gd" id="1_22hk0"]
 [ext_resource type="PackedScene" uid="uid://c2d66fpkooeey" path="res://ui/speedometer/gauge.tscn" id="2_gmknf"]
 [ext_resource type="PackedScene" uid="uid://dex1whd46vc03" path="res://ui/energy/energy.tscn" id="3_7vh8r"]
 [ext_resource type="PackedScene" uid="uid://0qamkncpbo8o" path="res://ui/starts/stars_progress.tscn" id="5_woo44"]
-[ext_resource type="Texture2D" uid="uid://dcbity7bykl3" path="res://ui/hud/ship_border.png" id="6_8s2pk"]
 [ext_resource type="Script" path="res://ui/stopwatch/stopwatch.gd" id="6_coa2k"]
+[ext_resource type="Texture2D" uid="uid://cphm4o67je8n1" path="res://ui/hud/ship_ui_top.png" id="6_qbwhn"]
+[ext_resource type="Texture2D" uid="uid://dvkwtmjgeutc7" path="res://ui/hud/ship_ui_bottom.png" id="6_xudnp"]
 [ext_resource type="Texture2D" uid="uid://c41ulanlqlvoq" path="res://ui/hud/ship_white.png" id="7_2fdl5"]
 
 [sub_resource type="Curve" id="Curve_p8c20"]
@@ -69,6 +70,7 @@ offset_bottom = 1058.0
 size_flags_horizontal = 4
 
 [node name="Energy" parent="." instance=ExtResource("3_7vh8r")]
+visible = false
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
@@ -97,7 +99,9 @@ grow_vertical = 2
 rotation = -1.5708
 value = 80.0
 nine_patch_stretch = true
-texture_over = ExtResource("6_8s2pk")
+texture_under = ExtResource("6_xudnp")
+texture_over = ExtResource("6_qbwhn")
 texture_progress = ExtResource("7_2fdl5")
+tint_under = Color(1, 1, 1, 0.827)
 tint_over = Color(0.051971, 0.051971, 0.051971, 1)
 tint_progress = Color(0.8488, 1.6376, 0.3642, 1)

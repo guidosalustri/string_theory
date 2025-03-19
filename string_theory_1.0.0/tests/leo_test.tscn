@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://7j43w78imcf1"]
+[gd_scene load_steps=29 format=3 uid="uid://7j43w78imcf1"]
 
 [ext_resource type="Script" path="res://lvls/lvl.gd" id="1_yxkfv"]
 [ext_resource type="PackedScene" uid="uid://dqjnkl56rsiki" path="res://objects/comp/exit_area.tscn" id="2_y58dm"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://ul1ys48qmbs4" path="res://objects/star.tscn" id="6_fcghj"]
 [ext_resource type="PackedScene" uid="uid://bp4febdu6vh5y" path="res://objects/obstacles/asteroid.tscn" id="7_wukbd"]
 [ext_resource type="PackedScene" uid="uid://b1xjjudghnfhm" path="res://objects/obstacles/black_hole.tscn" id="8_x2mo7"]
+[ext_resource type="PackedScene" uid="uid://dqrl1w65sj140" path="res://objects/comp/spinner_black_hole.tscn" id="9_37po4"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="9_ngt6f"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="10_mevce"]
 [ext_resource type="FontFile" uid="uid://clffif4u7fy61" path="res://ui/Stacked pixel.ttf" id="11_uxpd0"]
@@ -189,7 +190,22 @@ position = Vector2(-448, 896)
 asteroid_position = Vector2(250, 0)
 
 [node name="blackHole" parent="Constellation/Star6" instance=ExtResource("8_x2mo7")]
-position = Vector2(256, -128)
+position = Vector2(519, -242)
+
+[node name="blackHole2" parent="Constellation/Star6" instance=ExtResource("8_x2mo7")]
+position = Vector2(930, -230)
+
+[node name="SpinnerBlackHole" parent="Constellation/Star6" node_paths=PackedStringArray("blackhole1", "blackhole2") instance=ExtResource("9_37po4")]
+position = Vector2(734, -219)
+blackhole1 = NodePath("blackHole")
+blackhole2 = NodePath("blackHole2")
+radius = 500.0
+anticlockwise = true
+rotation_speed = 3.6
+
+[node name="blackHole" parent="Constellation/Star6/SpinnerBlackHole" instance=ExtResource("8_x2mo7")]
+
+[node name="blackHole2" parent="Constellation/Star6/SpinnerBlackHole" instance=ExtResource("8_x2mo7")]
 
 [node name="Star7" parent="Constellation" instance=ExtResource("6_fcghj")]
 position = Vector2(1152, -64)
