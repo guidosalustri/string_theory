@@ -18,19 +18,23 @@ var volume_bus_sfx := 0
 var volume_bus_music := 0
 
 func call_cutscene() -> void:
-	if lvl == lvls.size():# tendria que ser una flag corre la ultima cutscene y dsp entra a la final
+	if lvl == lvls.size() - 1:# tendria que ser una flag corre la ultima cutscene y dsp entra a la final
 		# this could just go in the lvls array as "last lvl (13)"
 		# but is actually just a final cinematic or something.
 		get_tree().change_scene_to_packed(final_scene)
 	else:
-		data_collection.stopwatch_util.set_paused(true)
 		get_tree().change_scene_to_packed(cutscene)
 
 func start_lvl(index : int) -> void:
 	if index == 0:
 		data_collection.stopwatch_util.start()
-
 	data_collection.stopwatch_util.set_paused(false)
+	
+	GameManager.data_collection.log_level_start_complete(
+		GameManager.lvls[index].resource_path.get_file(),
+		DataCollection.level_status.START
+	)
+	
 	get_tree().change_scene_to_packed(lvls[index])
 
 func call_main_menu() -> void:

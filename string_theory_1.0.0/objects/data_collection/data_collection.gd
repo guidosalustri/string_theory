@@ -49,6 +49,9 @@ var player_death_cause_value := {
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	pass
+
+func start_write():
 	var path : String
 	if OS.has_feature("standalone"):
 		var dir := OS.get_executable_path().get_base_dir()

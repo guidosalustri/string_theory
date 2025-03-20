@@ -64,6 +64,13 @@ func _ready() -> void:
 	stars_trail[-1].area_entered.connect(func (_area: Area2D):
 		if index == stars_trail.size()-1:
 			if stars_trail[-1].current_state == stars_trail[-1].States.STAR:
+				await get_tree().create_timer(0.00000000000001).timeout
+				GameManager.data_collection.log_level_start_complete(
+					GameManager.lvls[GameManager.lvl].resource_path.get_file(),
+					DataCollection.level_status.COMPLETE
+				)
+				GameManager.data_collection.stopwatch_util.set_paused(true)
+				
 				phantom_camera_constellation.priority = 3
 				ship.set_deferred("monitorable", false)
 				ship.set_deferred("monitoring", false)
@@ -189,7 +196,7 @@ func _on_timer_timeout() -> void:
 	tween.tween_property(color_rect, "modulate", Color.BLACK, 2)
 	await tween.finished
 
-	GameManager.lvl +=1
+	GameManager.lvl += 1
 	GameManager.call_cutscene()
 
 
