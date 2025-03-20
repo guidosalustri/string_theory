@@ -13,7 +13,7 @@ func _ready() -> void:
 	animation_player.play("spin")
 	asteroid.position = asteroid_position
 
-func _process(delta):
+func _physics_process(delta: float) -> void:
 	if anticlockwise:
 		rotation -= rotation_speed * delta
 	else:

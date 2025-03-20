@@ -95,6 +95,8 @@ position = Vector2(3200, 1984)
 position_smoothing_speed = 2.0
 
 [node name="PhantomCameraHost" type="Node" parent="Camera2D"]
+process_priority = 300
+process_physics_priority = 300
 script = ExtResource("3_1p1qy")
 
 [node name="SpaceBackground" parent="." instance=ExtResource("4_0oqfo")]
@@ -233,7 +235,8 @@ black_hole_on_star = true
 wait_time = 0.5
 one_shot = true
 
-[node name="PhantomCamera2D" type="Node2D" parent="." node_paths=PackedStringArray("follow_targets")]
+[node name="PhantomCameraShip" type="Node2D" parent="." node_paths=PackedStringArray("follow_targets")]
+top_level = true
 position = Vector2(3200, 1984)
 script = ExtResource("10_i1aws")
 follow_mode = 3
@@ -242,13 +245,15 @@ tween_resource = SubResource("Resource_bmus8")
 draw_limits = true
 
 [node name="PhantomCameraStars" type="Node2D" parent="."]
+top_level = true
 position = Vector2(739.5, 266.5)
 script = ExtResource("10_i1aws")
 follow_mode = 3
 tween_resource = SubResource("Resource_vjox8")
 draw_limits = true
 
-[node name="PhantomCamera2D2" type="Node2D" parent="."]
+[node name="PhantomCameraConstellation" type="Node2D" parent="."]
+top_level = true
 script = ExtResource("10_i1aws")
 follow_mode = 3
 zoom = Vector2(0.4, 0.4)

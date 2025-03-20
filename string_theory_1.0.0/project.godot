@@ -79,6 +79,10 @@ spin={
 ]
 }
 
+[physics]
+
+common/physics_interpolation=true
+
 [rendering]
 
 viewport/hdr_2d=true

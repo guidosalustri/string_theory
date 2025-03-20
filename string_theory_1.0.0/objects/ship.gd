@@ -80,19 +80,9 @@ func _ready() -> void:
 	max_speed_hud = int(max_speed)
 
 func _process(delta: float) -> void:
-	# which movement the ship should have
-	if ray_cast_2d.is_colliding():
-
-		target = ray_cast_2d.get_collider() #last_star:
-
 	match current_state:
 		States.ENTER_LVL:
-			if timer.time_left > 0:
-				speed += 1.0  * acceleration * delta
-				speed = clamp(speed, 0.0, max_speed)
-				var vel := (Vector2.RIGHT * speed).rotated(rotation)
-				translate(vel * delta)
-			else:
+			if timer.time_left <= 0:
 				if flag:
 					set_current_state(States.ORBIT)
 				elif black_hole:
@@ -101,11 +91,11 @@ func _process(delta: float) -> void:
 				else:
 					set_current_state(States.FLY)
 					set_has_energy(true)
-
 		States.FLY:
+			_decrease_energy_level(delta)
+
 			side_thruster_left.emit = true
 			side_thruster_right.emit = true
-			_move(delta, turn_right, turn_left, move_forward)
 			if flag:
 				set_current_state(States.ORBIT)
 				side_thruster_left.emit = false
@@ -115,7 +105,7 @@ func _process(delta: float) -> void:
 				side_thruster_left.emit = false
 				side_thruster_right.emit = false
 		States.ORBIT:
-			_spin_around(delta, pos1)
+			_increase_energy_level(delta)
 			set_has_energy(true)
 			if target :
 				cut_link.emit(false)
@@ -124,11 +114,6 @@ func _process(delta: float) -> void:
 				set_current_state(States.DRAGGED)
 			elif Input.is_action_pressed("spin") and not is_last_star:
 				set_current_state(States.FLY)
-		States.DRAGGED:
-			_follow(delta, black_hole.global_position)
-		States.EXIT_LVL:
-			target_offset+= Vector2(50,0)
-			_follow(delta, target.global_position + target_offset)
 
 	if speed<=0:
 		if (not has_energy or lvls_with_not_foward) and not dying:
@@ -140,20 +125,27 @@ func _process(delta: float) -> void:
 		dying = false
 
 func _physics_process(delta: float) -> void:
-	# Decrease energy level
-	if current_state == Ship.States.FLY:
-		fuel = max ( fuel -  fuel_burn_rate * delta, 0 )
-		if Input.is_action_pressed("move_left"):
-			fuel_left = max ( fuel_left -  fuel_burn_rate * delta, 0 )
-		if Input.is_action_pressed("move_right"):
-			fuel_right = max ( fuel_right -  fuel_burn_rate * delta, 0 )
+	# which movement the ship should have
+	if ray_cast_2d.is_colliding():
+		target = ray_cast_2d.get_collider()
 
-	# Increase energy level
-	if current_state == States.ORBIT:
-		fuel = min(fuel + fuel_fill_rate * delta, max_fuel)
-		fuel_left = min(fuel_left + fuel_fill_rate / 2.0 * delta, max_fuel)
-		fuel_right = min(fuel_right + fuel_fill_rate / 2.0 * delta, max_fuel)
-	
+	match current_state:
+		States.ENTER_LVL:
+			if timer.time_left > 0:
+				speed += 1.0  * acceleration * delta
+				speed = clamp(speed, 0.0, max_speed)
+				var vel := (Vector2.RIGHT * speed).rotated(rotation)
+				translate(vel * delta)
+		States.FLY:
+			_move(delta, turn_right, turn_left, move_forward)
+		States.ORBIT:
+			_spin_around(delta, pos1)
+		States.DRAGGED:
+			_follow(delta, black_hole.global_position)
+		States.EXIT_LVL:
+			target_offset+= Vector2(50,0)
+			_follow(delta, target.global_position + target_offset)
+
 	GameManager.data_collection.log_player_pos(position)
 
 # steering 
@@ -275,3 +267,15 @@ func dim_light_on(turn_light_on: bool) -> void:
 		#cut_link.emit(false)
 		#set_process(false)
 		#animation_player.play("die")
+
+func _increase_energy_level(delta: float):
+	fuel = min(fuel + fuel_fill_rate.sample(fuel / max_fuel) * delta, max_fuel)
+	fuel_left = min(fuel_left + fuel_fill_rate.sample(fuel_left / max_fuel) / 2.0 * delta, max_fuel)
+	fuel_right = min(fuel_right + fuel_fill_rate.sample(fuel_right / max_fuel) / 2.0 * delta, max_fuel)
+
+func _decrease_energy_level(delta: float):
+	fuel = max ( fuel -  2.0 * fuel_burn_rate.sample( 1.0 - fuel / max_fuel ) * delta, 0 )
+	if Input.is_action_pressed("move_left"):
+		fuel_left = max ( fuel_left -  2.0 * fuel_burn_rate.sample( 1.0 - fuel_left / max_fuel ) * delta, 0 )
+	if Input.is_action_pressed("move_right"):
+		fuel_right = max ( fuel_right -  2.0 * fuel_burn_rate.sample( 1.0 - fuel_right / max_fuel ) * delta, 0 )

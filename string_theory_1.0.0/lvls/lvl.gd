@@ -10,9 +10,9 @@ extends Node2D
 # maybe it will be better for each entity to has its own camera
 @onready var camera_2d: Camera2D = $Camera2D
 
-@onready var phantom_camera_ship: PhantomCamera2D = $PhantomCamera2D
+@onready var phantom_camera_ship: PhantomCamera2D = $PhantomCameraShip
 @onready var phantom_camera_star: PhantomCamera2D = $PhantomCameraStars
-@onready var phantom_camera_constellation: PhantomCamera2D = $PhantomCamera2D2
+@onready var phantom_camera_constellation: PhantomCamera2D = $PhantomCameraConstellation
 
 
 @onready var timer: Timer = $Timer
@@ -60,8 +60,11 @@ func _ready() -> void:
 		cut_line_link(false)
 		ship.animation_player.play("die")
 		ship.set_process(false)
-		)
+	)
 
+	stars_trail[0].area_entered.connect(func (_area: Area2D):
+		link_line_ship.show()
+	)
 	stars_trail[-1].area_entered.connect(func (_area: Area2D):
 		if index == stars_trail.size()-1:
 			if stars_trail[-1].current_state == stars_trail[-1].States.STAR:
@@ -71,7 +74,7 @@ func _ready() -> void:
 					DataCollection.level_status.COMPLETE
 				)
 				
-				phantom_camera_constellation.priority = 3
+				phantom_camera_constellation.set_priority(3)
 				ship.set_deferred("monitorable", false)
 				ship.set_deferred("monitoring", false)
 				ship.is_last_star = true
@@ -95,25 +98,23 @@ func _ready() -> void:
 	phantom_camera_ship.set_auto_zoom_min(0.4)
 	phantom_camera_ship.set_auto_zoom_max(1)
 	phantom_camera_ship.set_auto_zoom_margin(Vector4(90, 90, 90, 90))
-	phantom_camera_ship.priority = 2
+	phantom_camera_ship.set_priority(2)
 	
 	phantom_camera_star.append_follow_targets(stars_trail[0])
 	phantom_camera_star.set_auto_zoom(true)
 	phantom_camera_star.set_auto_zoom_min(0.4)
 	phantom_camera_star.set_auto_zoom_max(1)
 	phantom_camera_star.set_auto_zoom_margin(Vector4(90, 90, 90, 90))
-	phantom_camera_star.priority = 1
+	phantom_camera_star.set_priority(1)
 
 	for star in constellation.get_children():
 		phantom_camera_constellation.append_follow_targets(star)
 
-	phantom_camera_constellation.priority = 0
-
+	phantom_camera_constellation.set_priority(0)
+	
+	link_line_ship.hide()
 
 func _process(_delta: float) -> void:
-	if link_line_ship.points[0] != Vector2(0.0,0.0):
-		link_line_ship.points[1] = ship.global_position
-		
 		#lenght_link_line_ship = link_line_ship.points[0].distance_to(link_line_ship.points[1])
 
 	adjust_ship_light()
@@ -121,6 +122,8 @@ func _process(_delta: float) -> void:
 	#if lenght_link_line_ship > max_string_lenght and flag_cutline:
 	#	flag_cutline = false
 	#	cut_line_link()
+#func _physics_process(delta: float) -> void:
+	link_line_ship.points[1] = ship.global_position
 
 func _on_star_changed(star: Star)-> void:
 	if star != stars_trail[index]:
@@ -134,15 +137,13 @@ func _on_star_changed(star: Star)-> void:
 	#else:
 		index +=1
 		stars_trail[index].spawn()
-		phantom_camera_ship.follow_targets[1] = stars_trail[index]
+		phantom_camera_ship.set_follow_targets([ship, stars_trail[index]])
 
 		if phantom_camera_star.follow_targets.size() >= 2:
 			phantom_camera_star.erase_follow_targets(phantom_camera_star.follow_targets[0])
 		phantom_camera_star.append_follow_targets(stars_trail[index])
-		phantom_camera_ship.priority = 1
-		phantom_camera_star.priority = 2
-
-
+		phantom_camera_ship.set_priority(1)
+		phantom_camera_star.set_priority(2)
 
 	var new_vector := star.global_position
 	link_line_ship.points[0] = new_vector
@@ -174,8 +175,8 @@ func _on_star_changed(star: Star)-> void:
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("spin"):
-		phantom_camera_ship.priority = 2
-		phantom_camera_star.priority = 1
+		phantom_camera_ship.set_priority(2)
+		phantom_camera_star.set_priority(1)
 
 func _on_timer_timeout() -> void:
 	if canvas_layer_3:

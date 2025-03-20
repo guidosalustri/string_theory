@@ -78,3 +78,4 @@ func log_run_out_of_fuel( ) -> void:
 
 func log_player_pos( _pos: Vector2 ) -> void:
 	push_error("UNIMPLEMENTED ERROR: DataCollection.log_player_pos()")
+
