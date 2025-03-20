@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://cgdat18qea2f5"]
+[gd_scene load_steps=6 format=3 uid="uid://cgdat18qea2f5"]
 
 [ext_resource type="Theme" uid="uid://dvowqtgyecjg1" path="res://ui/options_theme.tres" id="1_05i7w"]
 [ext_resource type="Script" path="res://ui/options/options.gd" id="2_x27yi"]
@@ -11,48 +11,11 @@ shader_parameter/tint = Color(0.231373, 0.635294, 0.976471, 1)
 shader_parameter/tint_amount = 0.079
 shader_parameter/saturation = 0.3
 
-[sub_resource type="StyleBoxLine" id="StyleBoxLine_m4vpl"]
-vertical = true
-
-[sub_resource type="StyleBoxLine" id="StyleBoxLine_p6bgi"]
-color = Color(0.937255, 0.992157, 0.372549, 1)
-grow_begin = 50.0
-grow_end = 0.0
-thickness = 0
-
-[sub_resource type="StyleBoxLine" id="StyleBoxLine_rjdbk"]
-color = Color(0.937255, 0.992157, 0.372549, 1)
-grow_begin = -5.0
-grow_end = -15.0
-thickness = 4
-vertical = true
-
-[sub_resource type="StyleBoxLine" id="StyleBoxLine_jji6f"]
-color = Color(0.937255, 0.992157, 0.372549, 1)
-grow_begin = -195.0
-grow_end = -195.0
-thickness = 3
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hai6n"]
-draw_center = false
-
 [sub_resource type="StyleBoxLine" id="StyleBoxLine_bcglv"]
 color = Color(0.937255, 0.992157, 0.372549, 1)
-grow_begin = -105.0
+grow_begin = -35.0
 grow_end = -35.0
 thickness = 3
-
-[sub_resource type="StyleBoxLine" id="StyleBoxLine_2gcjo"]
-vertical = true
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gprmf"]
-draw_center = false
-
-[sub_resource type="StyleBoxLine" id="StyleBoxLine_pjnq3"]
-color = Color(0.937255, 0.992157, 0.372549, 1)
-grow_begin = -105.0
-grow_end = -35.0
-thickness = 0
 
 [node name="options" type="Control"]
 process_mode = 3
@@ -86,7 +49,7 @@ anchor_bottom = 0.5
 offset_left = -314.0
 offset_top = -309.0
 offset_right = 354.0
-offset_bottom = 334.0
+offset_bottom = 181.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 0
@@ -103,137 +66,161 @@ metadata/_tab_index = 0
 self_modulate = Color(1, 1, 1, 0.011)
 layout_mode = 2
 
-[node name="HSeparator3" type="HSeparator" parent="UIPanelContainer/Controls/VBoxContainer"]
+[node name="MarginContainer2" type="MarginContainer" parent="UIPanelContainer/Controls/VBoxContainer"]
 layout_mode = 2
-theme_override_constants/separation = 25
-theme_override_styles/separator = SubResource("StyleBoxLine_m4vpl")
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 60
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 20
 
-[node name="HBoxContainer" type="HBoxContainer" parent="UIPanelContainer/Controls/VBoxContainer"]
+[node name="ControlsTable" type="GridContainer" parent="UIPanelContainer/Controls/VBoxContainer/MarginContainer2"]
 layout_mode = 2
-alignment = 1
+theme_override_constants/h_separation = 80
+theme_override_constants/v_separation = 20
+columns = 2
 
-[node name="Label" type="Label" parent="UIPanelContainer/Controls/VBoxContainer/HBoxContainer"]
-custom_minimum_size = Vector2(2.08165e-12, 128)
+[node name="ActionAccelerate" type="Label" parent="UIPanelContainer/Controls/VBoxContainer/MarginContainer2/ControlsTable"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.937255, 0.992157, 0.372549, 1)
 theme_override_font_sizes/font_size = 60
-text = "  For"
+text = "Accelerate"
 vertical_alignment = 1
 
-[node name="W" type="Button" parent="UIPanelContainer/Controls/VBoxContainer/HBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="UIPanelContainer/Controls/VBoxContainer/MarginContainer2/ControlsTable"]
 layout_mode = 2
+
+[node name="W" type="Button" parent="UIPanelContainer/Controls/VBoxContainer/MarginContainer2/ControlsTable/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
 size_flags_vertical = 4
 theme_override_colors/font_disabled_color = Color(0.937255, 0.992157, 0.372549, 1)
 theme_override_colors/font_color = Color(0.937255, 0.992157, 0.372549, 1)
-theme_override_font_sizes/font_size = 90
+theme_override_font_sizes/font_size = 48
 disabled = true
 text = "w"
 
-[node name="Label2" type="Label" parent="UIPanelContainer/Controls/VBoxContainer/HBoxContainer"]
-custom_minimum_size = Vector2(2.08165e-12, 128)
+[node name="UP" type="Button" parent="UIPanelContainer/Controls/VBoxContainer/MarginContainer2/ControlsTable/HBoxContainer"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.937255, 0.992157, 0.372549, 1)
-theme_override_font_sizes/font_size = 60
-text = "ard  "
-vertical_alignment = 1
-
-[node name="HBoxContainer2" type="HBoxContainer" parent="UIPanelContainer/Controls/VBoxContainer"]
-layout_mode = 2
-alignment = 1
-
-[node name="HSeparator2" type="HSeparator" parent="UIPanelContainer/Controls/VBoxContainer/HBoxContainer2"]
-layout_mode = 2
-theme_override_styles/separator = SubResource("StyleBoxLine_p6bgi")
-
-[node name="Label" type="Label" parent="UIPanelContainer/Controls/VBoxContainer/HBoxContainer2"]
-custom_minimum_size = Vector2(2.08165e-12, 128)
-layout_mode = 2
-theme_override_colors/font_color = Color(0.937255, 0.992157, 0.372549, 1)
-theme_override_font_sizes/font_size = 60
-text = "left"
-vertical_alignment = 1
-
-[node name="A" type="Button" parent="UIPanelContainer/Controls/VBoxContainer/HBoxContainer2"]
-layout_mode = 2
+size_flags_horizontal = 3
 size_flags_vertical = 4
 theme_override_colors/font_disabled_color = Color(0.937255, 0.992157, 0.372549, 1)
 theme_override_colors/font_color = Color(0.937255, 0.992157, 0.372549, 1)
-theme_override_font_sizes/font_size = 95
+theme_override_font_sizes/font_size = 48
+disabled = true
+text = "UP"
+
+[node name="TurnLeft" type="Label" parent="UIPanelContainer/Controls/VBoxContainer/MarginContainer2/ControlsTable"]
+custom_minimum_size = Vector2(2.08165e-12, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.937255, 0.992157, 0.372549, 1)
+theme_override_font_sizes/font_size = 60
+text = "Turn Left
+"
+vertical_alignment = 1
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="UIPanelContainer/Controls/VBoxContainer/MarginContainer2/ControlsTable"]
+layout_mode = 2
+
+[node name="A" type="Button" parent="UIPanelContainer/Controls/VBoxContainer/MarginContainer2/ControlsTable/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme_override_colors/font_disabled_color = Color(0.937255, 0.992157, 0.372549, 1)
+theme_override_colors/font_color = Color(0.937255, 0.992157, 0.372549, 1)
+theme_override_font_sizes/font_size = 48
 disabled = true
 text = "a"
 
-[node name="VSeparator" type="VSeparator" parent="UIPanelContainer/Controls/VBoxContainer/HBoxContainer2"]
+[node name="Left" type="Button" parent="UIPanelContainer/Controls/VBoxContainer/MarginContainer2/ControlsTable/HBoxContainer2"]
 layout_mode = 2
-theme_override_constants/separation = 75
-theme_override_styles/separator = SubResource("StyleBoxLine_rjdbk")
-
-[node name="D" type="Button" parent="UIPanelContainer/Controls/VBoxContainer/HBoxContainer2"]
-layout_mode = 2
+size_flags_horizontal = 3
 size_flags_vertical = 4
 theme_override_colors/font_disabled_color = Color(0.937255, 0.992157, 0.372549, 1)
 theme_override_colors/font_color = Color(0.937255, 0.992157, 0.372549, 1)
-theme_override_font_sizes/font_size = 95
+theme_override_font_sizes/font_size = 48
 disabled = true
-text = "d"
+text = "Left"
 
-[node name="Label2" type="Label" parent="UIPanelContainer/Controls/VBoxContainer/HBoxContainer2"]
-custom_minimum_size = Vector2(2.08165e-12, 128)
+[node name="TurnRight" type="Label" parent="UIPanelContainer/Controls/VBoxContainer/MarginContainer2/ControlsTable"]
+custom_minimum_size = Vector2(2.08165e-12, 0)
 layout_mode = 2
 theme_override_colors/font_color = Color(0.937255, 0.992157, 0.372549, 1)
 theme_override_font_sizes/font_size = 60
-text = "right"
+text = "Turn Right"
 vertical_alignment = 1
 
-[node name="HSeparator2" type="HSeparator" parent="UIPanelContainer/Controls/VBoxContainer"]
+[node name="HBoxContainer3" type="HBoxContainer" parent="UIPanelContainer/Controls/VBoxContainer/MarginContainer2/ControlsTable"]
 layout_mode = 2
-theme_override_constants/separation = 25
-theme_override_styles/separator = SubResource("StyleBoxLine_jji6f")
 
-[node name="HBoxContainer3" type="HBoxContainer" parent="UIPanelContainer/Controls/VBoxContainer"]
+[node name="D" type="Button" parent="UIPanelContainer/Controls/VBoxContainer/MarginContainer2/ControlsTable/HBoxContainer3"]
 layout_mode = 2
-alignment = 1
-
-[node name="ctrl" type="Button" parent="UIPanelContainer/Controls/VBoxContainer/HBoxContainer3"]
-layout_mode = 2
+size_flags_horizontal = 3
 size_flags_vertical = 4
 theme_override_colors/font_disabled_color = Color(0.937255, 0.992157, 0.372549, 1)
 theme_override_colors/font_color = Color(0.937255, 0.992157, 0.372549, 1)
-theme_override_font_sizes/font_size = 60
+theme_override_font_sizes/font_size = 48
 disabled = true
-text = "ctrl"
+text = "d
+"
 
-[node name="Label2" type="Label" parent="UIPanelContainer/Controls/VBoxContainer/HBoxContainer3"]
-custom_minimum_size = Vector2(2.08165e-12, 128)
+[node name="Right" type="Button" parent="UIPanelContainer/Controls/VBoxContainer/MarginContainer2/ControlsTable/HBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme_override_colors/font_disabled_color = Color(0.937255, 0.992157, 0.372549, 1)
+theme_override_colors/font_color = Color(0.937255, 0.992157, 0.372549, 1)
+theme_override_font_sizes/font_size = 48
+disabled = true
+text = "Right"
+
+[node name="TurnRight2" type="Label" parent="UIPanelContainer/Controls/VBoxContainer/MarginContainer2/ControlsTable"]
+custom_minimum_size = Vector2(2.08165e-12, 0)
 layout_mode = 2
 theme_override_colors/font_color = Color(0.937255, 0.992157, 0.372549, 1)
 theme_override_font_sizes/font_size = 60
-text = "Let go star"
+text = "Detach from star"
 vertical_alignment = 1
 
-[node name="VSeparator" type="VSeparator" parent="UIPanelContainer/Controls/VBoxContainer/HBoxContainer3"]
+[node name="HBoxContainer4" type="HBoxContainer" parent="UIPanelContainer/Controls/VBoxContainer/MarginContainer2/ControlsTable"]
 layout_mode = 2
-theme_override_constants/separation = 30
-theme_override_styles/separator = SubResource("StyleBoxFlat_hai6n")
+
+[node name="Right2" type="Button" parent="UIPanelContainer/Controls/VBoxContainer/MarginContainer2/ControlsTable/HBoxContainer4"]
+custom_minimum_size = Vector2(140, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme_override_colors/font_disabled_color = Color(0.937255, 0.992157, 0.372549, 1)
+theme_override_colors/font_color = Color(0.937255, 0.992157, 0.372549, 1)
+theme_override_font_sizes/font_size = 48
+disabled = true
+text = "Ctrl"
+
+[node name="Right3" type="Button" parent="UIPanelContainer/Controls/VBoxContainer/MarginContainer2/ControlsTable/HBoxContainer4"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme_override_colors/font_disabled_color = Color(0.937255, 0.992157, 0.372549, 1)
+theme_override_colors/font_color = Color(0.937255, 0.992157, 0.372549, 1)
+theme_override_font_sizes/font_size = 48
+disabled = true
+text = "Space"
 
 [node name="HSeparator4" type="HSeparator" parent="UIPanelContainer/Controls/VBoxContainer"]
 layout_mode = 2
-theme_override_constants/separation = 35
+theme_override_constants/separation = 25
 theme_override_styles/separator = SubResource("StyleBoxLine_bcglv")
 
-[node name="VBoxContainer" type="HBoxContainer" parent="UIPanelContainer/Controls/VBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="UIPanelContainer/Controls/VBoxContainer"]
 layout_mode = 2
-alignment = 2
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 40
 
-[node name="GoBackButton" type="Button" parent="UIPanelContainer/Controls/VBoxContainer/VBoxContainer"]
+[node name="GoBackButton" type="Button" parent="UIPanelContainer/Controls/VBoxContainer/MarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 8
 theme_override_colors/font_color = Color(0.937255, 0.992157, 0.372549, 1)
 text = "Go Back"
-
-[node name="VSeparator" type="VSeparator" parent="UIPanelContainer/Controls/VBoxContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_constants/separation = 20
-theme_override_styles/separator = SubResource("StyleBoxFlat_hai6n")
 
 [node name="Audio" type="PanelContainer" parent="UIPanelContainer"]
 visible = false
@@ -246,133 +233,91 @@ layout_mode = 2
 size_flags_vertical = 3
 theme_type_variation = &"VBoxSecondary"
 
-[node name="HSeparator3" type="HSeparator" parent="UIPanelContainer/Audio/VBoxContainer2"]
+[node name="MarginContainer2" type="MarginContainer" parent="UIPanelContainer/Audio/VBoxContainer2"]
 layout_mode = 2
-theme_override_constants/separation = 35
-theme_override_styles/separator = SubResource("StyleBoxLine_2gcjo")
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 60
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 20
 
-[node name="HBoxContainer" type="HBoxContainer" parent="UIPanelContainer/Audio/VBoxContainer2"]
+[node name="VBoxContainer" type="VBoxContainer" parent="UIPanelContainer/Audio/VBoxContainer2/MarginContainer2"]
 layout_mode = 2
 
-[node name="VSeparator" type="VSeparator" parent="UIPanelContainer/Audio/VBoxContainer2/HBoxContainer"]
+[node name="GridContainer" type="GridContainer" parent="UIPanelContainer/Audio/VBoxContainer2/MarginContainer2/VBoxContainer"]
 layout_mode = 2
-theme_override_constants/separation = 5
-theme_override_styles/separator = SubResource("StyleBoxFlat_gprmf")
+theme_override_constants/h_separation = 40
+theme_override_constants/v_separation = 20
+columns = 2
 
-[node name="Label" type="Label" parent="UIPanelContainer/Audio/VBoxContainer2/HBoxContainer"]
+[node name="Label" type="Label" parent="UIPanelContainer/Audio/VBoxContainer2/MarginContainer2/VBoxContainer/GridContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_type_variation = &"OptionLabel"
 theme_override_colors/font_color = Color(0.937255, 0.992157, 0.372549, 1)
 text = "BGM Volume"
 
-[node name="BGMVolumeSlider" type="HSlider" parent="UIPanelContainer/Audio/VBoxContainer2/HBoxContainer"]
+[node name="BGMVolumeSlider" type="HSlider" parent="UIPanelContainer/Audio/VBoxContainer2/MarginContainer2/VBoxContainer/GridContainer"]
 modulate = Color(0.231373, 0.635294, 0.976471, 1)
+clip_contents = true
+custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 min_value = -50.0
 max_value = 0.0
 
-[node name="VSeparator2" type="VSeparator" parent="UIPanelContainer/Audio/VBoxContainer2/HBoxContainer"]
-layout_mode = 2
-theme_override_constants/separation = 5
-theme_override_styles/separator = SubResource("StyleBoxFlat_gprmf")
-
-[node name="HBoxContainer2" type="HBoxContainer" parent="UIPanelContainer/Audio/VBoxContainer2"]
-layout_mode = 2
-
-[node name="VSeparator2" type="VSeparator" parent="UIPanelContainer/Audio/VBoxContainer2/HBoxContainer2"]
-layout_mode = 2
-theme_override_constants/separation = 5
-theme_override_styles/separator = SubResource("StyleBoxFlat_gprmf")
-
-[node name="Label" type="Label" parent="UIPanelContainer/Audio/VBoxContainer2/HBoxContainer2"]
+[node name="Label2" type="Label" parent="UIPanelContainer/Audio/VBoxContainer2/MarginContainer2/VBoxContainer/GridContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_type_variation = &"OptionLabel"
 theme_override_colors/font_color = Color(0.937255, 0.992157, 0.372549, 1)
 text = "SFX Volume"
 
-[node name="SFXVolumeSlider" type="HSlider" parent="UIPanelContainer/Audio/VBoxContainer2/HBoxContainer2"]
+[node name="SFXVolumeSlider" type="HSlider" parent="UIPanelContainer/Audio/VBoxContainer2/MarginContainer2/VBoxContainer/GridContainer"]
 modulate = Color(0.231373, 0.635294, 0.976471, 1)
 layout_mode = 2
 size_flags_horizontal = 3
 min_value = -50.0
 max_value = 0.0
 
-[node name="VSeparator" type="VSeparator" parent="UIPanelContainer/Audio/VBoxContainer2/HBoxContainer2"]
-layout_mode = 2
-theme_override_constants/separation = 5
-theme_override_styles/separator = SubResource("StyleBoxFlat_gprmf")
-
-[node name="HBoxContainer7" type="HBoxContainer" parent="UIPanelContainer/Audio/VBoxContainer2"]
-layout_mode = 2
-
-[node name="VSeparator2" type="VSeparator" parent="UIPanelContainer/Audio/VBoxContainer2/HBoxContainer7"]
-layout_mode = 2
-theme_override_constants/separation = 5
-theme_override_styles/separator = SubResource("StyleBoxFlat_gprmf")
-
-[node name="Label" type="Label" parent="UIPanelContainer/Audio/VBoxContainer2/HBoxContainer7"]
+[node name="Label3" type="Label" parent="UIPanelContainer/Audio/VBoxContainer2/MarginContainer2/VBoxContainer/GridContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_type_variation = &"OptionLabel"
 theme_override_colors/font_color = Color(0.937255, 0.992157, 0.372549, 1)
 text = "Music Volume"
 
-[node name="VoiceVolumeSlider" type="HSlider" parent="UIPanelContainer/Audio/VBoxContainer2/HBoxContainer7"]
+[node name="VoiceVolumeSlider" type="HSlider" parent="UIPanelContainer/Audio/VBoxContainer2/MarginContainer2/VBoxContainer/GridContainer"]
 modulate = Color(0.231373, 0.635294, 0.976471, 1)
 layout_mode = 2
 size_flags_horizontal = 3
 min_value = -50.0
 max_value = 0.0
 
-[node name="VSeparator" type="VSeparator" parent="UIPanelContainer/Audio/VBoxContainer2/HBoxContainer7"]
-layout_mode = 2
-theme_override_constants/separation = 5
-theme_override_styles/separator = SubResource("StyleBoxFlat_gprmf")
-
-[node name="HBoxContainer3" type="HBoxContainer" parent="UIPanelContainer/Audio/VBoxContainer2"]
-layout_mode = 2
-
-[node name="VSeparator" type="VSeparator" parent="UIPanelContainer/Audio/VBoxContainer2/HBoxContainer3"]
-layout_mode = 2
-theme_override_constants/separation = 5
-theme_override_styles/separator = SubResource("StyleBoxFlat_gprmf")
-
-[node name="Label" type="Label" parent="UIPanelContainer/Audio/VBoxContainer2/HBoxContainer3"]
+[node name="Label4" type="Label" parent="UIPanelContainer/Audio/VBoxContainer2/MarginContainer2/VBoxContainer/GridContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_type_variation = &"OptionLabel"
 theme_override_colors/font_color = Color(0.937255, 0.992157, 0.372549, 1)
 text = "Auto advance dialogue"
 
-[node name="AutoAdvanceDialogueCheckbox" type="CheckButton" parent="UIPanelContainer/Audio/VBoxContainer2/HBoxContainer3"]
+[node name="AutoAdvanceDialogueCheckbox" type="CheckButton" parent="UIPanelContainer/Audio/VBoxContainer2/MarginContainer2/VBoxContainer/GridContainer"]
 modulate = Color(0.231373, 0.635294, 0.976471, 1)
 layout_mode = 2
-size_flags_horizontal = 2
-
-[node name="HSeparator5" type="HSeparator" parent="UIPanelContainer/Audio/VBoxContainer2"]
-layout_mode = 2
-theme_override_constants/separation = 105
-theme_override_styles/separator = SubResource("StyleBoxLine_pjnq3")
+size_flags_horizontal = 10
 
 [node name="HSeparator4" type="HSeparator" parent="UIPanelContainer/Audio/VBoxContainer2"]
 layout_mode = 2
 theme_override_constants/separation = 25
 theme_override_styles/separator = SubResource("StyleBoxLine_bcglv")
 
-[node name="VBoxContainer" type="HBoxContainer" parent="UIPanelContainer/Audio/VBoxContainer2"]
+[node name="MarginContainer" type="MarginContainer" parent="UIPanelContainer/Audio/VBoxContainer2"]
 layout_mode = 2
-alignment = 2
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 40
 
-[node name="GoBackButton" type="Button" parent="UIPanelContainer/Audio/VBoxContainer2/VBoxContainer"]
+[node name="GoBackButton" type="Button" parent="UIPanelContainer/Audio/VBoxContainer2/MarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 8
 theme_override_colors/font_color = Color(0.937255, 0.992157, 0.372549, 1)
 text = "Go Back"
-
-[node name="VSeparator" type="VSeparator" parent="UIPanelContainer/Audio/VBoxContainer2/VBoxContainer"]
-layout_mode = 2
-theme_override_constants/separation = 20
-theme_override_styles/separator = SubResource("StyleBoxFlat_gprmf")

@@ -218,11 +218,6 @@ grow_vertical = 2
 
 [node name="HUD" parent="CanvasLayer" instance=ExtResource("12_pjq8s")]
 
-[node name="CanvasLayer2" type="CanvasLayer" parent="."]
-
-[node name="PauseScreen" parent="CanvasLayer2" instance=ExtResource("13_ve8mh")]
-visible = false
-
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("14_he6wx")
 
@@ -269,5 +264,10 @@ position = Vector2(2816, 192)
 dialog = NodePath("../TutorialDialogUI")
 display_text = "But keep in mind that running out of energy
 means [color=3ba2f9]losing propulsion[/color]..."
+
+[node name="CanvasLayer2" type="CanvasLayer" parent="."]
+
+[node name="PauseScreen" parent="CanvasLayer2" instance=ExtResource("13_ve8mh")]
+visible = false
 
 [editable path="CanvasLayer3/TutorialDialogUI"]
