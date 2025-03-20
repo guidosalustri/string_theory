@@ -115,4 +115,5 @@ func _on_action_texture_button_pressed( button_name: String) -> void:
 		"options":
 			options_clicked.emit()
 		"exit":
+			GameManager.data_collection.log_game_quit(DataCollection.game_quit_cause.MENU)
 			get_tree().quit()

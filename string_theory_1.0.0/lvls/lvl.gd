@@ -56,6 +56,7 @@ func _ready() -> void:
 	ship.change_star.connect(_on_star_changed)
 	ship.cut_link.connect(cut_line_link)
 	animation_player.animation_finished.connect(func(_anim_name: StringName) -> void:
+		GameManager.data_collection.log_player_death(DataCollection.player_death_cause.STRAY)
 		cut_line_link(false)
 		ship.animation_player.play("die")
 		ship.set_process(false)
@@ -124,6 +125,7 @@ func _process(_delta: float) -> void:
 
 func _on_star_changed(star: Star)-> void:
 	if star != stars_trail[index]:
+		GameManager.data_collection.log_player_death(DataCollection.player_death_cause.STAR_COLISSION)
 		ship.explode()
 	elif not index == stars_trail.size()-1:
 		#phantom_camera_constellation.priority = 3
@@ -207,7 +209,8 @@ func dim_out_obstacles() -> void:
 				child.hide()
 
 func _overcharged_ship() -> void:
-		ship.explode()
+	GameManager.data_collection.log_player_death(DataCollection.player_death_cause.OVERCHARGE)
+	ship.explode()
 
 func adjust_ship_light()-> void:
 	if index >0 and index<stars_trail.size():

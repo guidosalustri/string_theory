@@ -32,16 +32,20 @@ var game_quit_cause_value := {
 
 enum player_death_cause {
 	BLACK_HOLE,
-	METEOR,
+	ASTEROID,
 	STAR_COLISSION,
-	OUT_OF_FUEL
+	OVERCHARGE,
+	OUT_OF_FUEL,
+	STRAY
 }
 
 var player_death_cause_value := {
 	player_death_cause.BLACK_HOLE: "black_hole",
-	player_death_cause.METEOR: "meteor",
+	player_death_cause.ASTEROID: "asteroid",
 	player_death_cause.STAR_COLISSION: "star_colission",
-	player_death_cause.OUT_OF_FUEL: "out_of_fuel"
+	player_death_cause.OVERCHARGE: "overcharge",
+	player_death_cause.OUT_OF_FUEL: "out_of_fuel",
+	player_death_cause.STRAY: "stray"
 }
 
 @onready var stopwatch_util: StopwatchUtil = $StopwatchUtil
@@ -92,6 +96,11 @@ func log_game_quit( cause: game_quit_cause = game_quit_cause.UNKNOWN  ) -> void:
 	file.store_string( _game_quit(time, cause) )
 	file.flush()
 
+func log_level_quit( ) -> void:
+	var time := int(stopwatch_util.time() * 1000.0)
+	file.store_string( _level_quit(time) )
+	file.flush()
+
 func log_player_death( cause: player_death_cause ) -> void:
 	var time := int(stopwatch_util.time() * 1000.0)
 	file.store_string( _player_death(time, cause) )
@@ -119,6 +128,9 @@ func _game_complete( timestamp: int ) -> String:
 
 func _game_quit( timestamp: int, cause: game_quit_cause ) -> String:
 	return str("[gq], ", str(timestamp), ", ", game_quit_cause_value[cause], "\n")
+
+func _level_quit( timestamp: int ) -> String:
+	return str("[lq], ", str(timestamp), "\n")
 
 func _player_death( timestamp: int, cause: player_death_cause) -> String:
 	return str("[pd], ", str(timestamp), ", ", player_death_cause_value[cause], "\n")

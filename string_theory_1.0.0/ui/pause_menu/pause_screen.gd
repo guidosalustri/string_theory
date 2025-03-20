@@ -28,6 +28,7 @@ func _ready() -> void:
 	resume_button.pressed.connect(toggle.bind(false))
 	quit_button.pressed.connect(func() -> void:
 		get_tree().paused = false
+		GameManager.data_collection.log_level_quit()
 		GameManager.call_main_menu()
 	)
 	options_button.pressed.connect(func() -> void:

@@ -73,6 +73,8 @@ var lvls_with_not_foward : bool= (GameManager.lvl == 7 or \
 	GameManager.lvl == 8 or GameManager.lvl == 9 or GameManager.lvl == 11) 
 var is_last_star := false
 
+var dying := false
+
 func _ready() -> void:
 	area_entered.connect(_on_area_entered)
 	max_speed_hud = int(max_speed)
@@ -129,11 +131,13 @@ func _process(delta: float) -> void:
 			_follow(delta, target.global_position + target_offset)
 
 	if speed<=0:
-		if not has_energy or lvls_with_not_foward:
+		if (not has_energy or lvls_with_not_foward) and not dying:
+			dying = true
+			GameManager.data_collection.log_player_death(DataCollection.player_death_cause.OUT_OF_FUEL)
 			cut_link.emit(false)
 			animation_player.play("die")
-			#should run GameManager.ship_dead() but one time
-			#I need to put it in the animaiton itself.
+	else:
+		dying = false
 
 func _physics_process(delta: float) -> void:
 	# Decrease energy level
@@ -231,7 +235,7 @@ func _on_area_entered(area: Area2D)->void:
 					if speed < 500:
 						speed = 500
 					cut_link.emit(true)
-					GameManager.ship_dead()
+					GameManager.data_collection.log_player_death(DataCollection.player_death_cause.BLACK_HOLE)
 		if area.is_in_group("blackhole"):
 			black_hole = area
 			if speed < 500:
@@ -240,8 +244,9 @@ func _on_area_entered(area: Area2D)->void:
 				max_speed = black_hole.linear_speed_aprox
 				speed = black_hole.linear_speed_aprox
 			cut_link.emit(true)
-			GameManager.ship_dead()
+			GameManager.data_collection.log_player_death(DataCollection.player_death_cause.BLACK_HOLE)
 		if area.is_in_group("asteroid"):
+			GameManager.data_collection.log_player_death(DataCollection.player_death_cause.ASTEROID)
 			explode()
 
 func restart_lvl() -> void:
@@ -251,7 +256,6 @@ func explode() -> void:
 	animation_player.play("asteroid_die")
 	set_process(false)
 	cut_link.emit(false)
-	GameManager.ship_dead()
 
 func dim_light_on(turn_light_on: bool) -> void:
 	#this should be carfully balance
