@@ -5,7 +5,7 @@ extends Node
 @export var final_scene: PackedScene
 @export var main_menu: PackedScene
 
-var lvl := 5
+var lvl := 0
 
 var deaths_counts := 0
 #var martin_on_ship := false

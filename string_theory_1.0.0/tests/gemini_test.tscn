@@ -227,6 +227,7 @@ anticlockwise = true
 
 [node name="Star9" parent="Constellation" instance=ExtResource("6_mk11u")]
 position = Vector2(4160, 960)
+black_hole_on_star = true
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.5
