@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://c2d66fpkooeey"]
 
-[ext_resource type="Script" path="res://ui/speedometer/gauge.gd" id="1_bs0cu"]
-[ext_resource type="Shader" path="res://ui/speedometer_old/gauge.gdshader" id="2_5sl7l"]
+[ext_resource type="Script" path="res://ui/speedometer_smbat/gauge.gd" id="1_bs0cu"]
+[ext_resource type="Shader" path="res://ui/speedometer_and_fuel/gauge.gdshader" id="2_5sl7l"]
 [ext_resource type="Theme" uid="uid://dp1nmwxx5vbr5" path="res://ui/ui_samples_theme.tres" id="3_kks3c"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xkly7"]

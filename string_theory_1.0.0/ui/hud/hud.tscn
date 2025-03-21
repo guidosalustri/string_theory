@@ -1,14 +1,11 @@
-[gd_scene load_steps=12 format=3 uid="uid://bc8nepke0pagf"]
+[gd_scene load_steps=7 format=3 uid="uid://bc8nepke0pagf"]
 
 [ext_resource type="Script" path="res://ui/hud/hud.gd" id="1_22hk0"]
-[ext_resource type="PackedScene" uid="uid://c2d66fpkooeey" path="res://ui/speedometer/gauge.tscn" id="2_gmknf"]
-[ext_resource type="PackedScene" uid="uid://dex1whd46vc03" path="res://ui/energy/energy.tscn" id="3_7vh8r"]
 [ext_resource type="PackedScene" uid="uid://cixa6p85qfex8" path="res://objects/stopwatch_util/stopwatch_util.tscn" id="4_rt7cw"]
+[ext_resource type="PackedScene" uid="uid://cge6vkntaqmpp" path="res://ui/speedometer_rainbow/speedometer_rainbow.tscn" id="5_0ul4y"]
 [ext_resource type="PackedScene" uid="uid://0qamkncpbo8o" path="res://ui/starts/stars_progress.tscn" id="5_woo44"]
 [ext_resource type="Script" path="res://ui/stopwatch/stopwatch.gd" id="6_coa2k"]
-[ext_resource type="Texture2D" uid="uid://cphm4o67je8n1" path="res://ui/hud/ship_ui_top.png" id="6_qbwhn"]
-[ext_resource type="Texture2D" uid="uid://dvkwtmjgeutc7" path="res://ui/hud/ship_ui_bottom.png" id="6_xudnp"]
-[ext_resource type="Texture2D" uid="uid://c41ulanlqlvoq" path="res://ui/hud/ship_white.png" id="7_2fdl5"]
+[ext_resource type="PackedScene" uid="uid://dpn6duokfpeii" path="res://ui/fuel_bar_rainbow/fuel_bar_rainbow.tscn" id="6_qevbr"]
 
 [node name="HUD" type="Control"]
 layout_mode = 3
@@ -20,16 +17,18 @@ grow_vertical = 2
 script = ExtResource("1_22hk0")
 color_fuel_low = Color(1, 0.188, 0.188, 0.8)
 color_fuel_high = Color(0.141, 1, 0.282, 0.65)
+metadata/_edit_vertical_guides_ = [45.0]
+metadata/_edit_horizontal_guides_ = [79.0]
 
 [node name="TimerOvercharged" type="Timer" parent="."]
 wait_time = 2.5
 
 [node name="StarsProgress" parent="." instance=ExtResource("5_woo44")]
 layout_mode = 1
-offset_left = 46.0
-offset_top = 69.0
-offset_right = 438.0
-offset_bottom = 137.0
+offset_left = 262.0
+offset_top = 211.0
+offset_right = 726.0
+offset_bottom = 279.0
 
 [node name="Stopwatch" type="Label" parent="."]
 layout_mode = 1
@@ -50,47 +49,14 @@ script = ExtResource("6_coa2k")
 autostart = true
 timer_process_callback = 1
 
-[node name="SpeedAndEnergy" parent="." instance=ExtResource("2_gmknf")]
-layout_mode = 2
-offset_left = 1624.0
-offset_top = 802.0
-offset_right = 1880.0
-offset_bottom = 1058.0
-size_flags_horizontal = 4
+[node name="SpeedometerRainbow" parent="." instance=ExtResource("5_0ul4y")]
+offset_left = 46.0
+offset_top = 81.0
+offset_right = 346.0
+offset_bottom = 381.0
 
-[node name="Energy" parent="." instance=ExtResource("3_7vh8r")]
-visible = false
-layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_left = 43.0
-offset_top = -284.0
-offset_right = 273.0
-offset_bottom = -71.568
-grow_vertical = 0
-
-[node name="TextureProgressBar" type="TextureProgressBar" parent="."]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(96, 96)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -894.0
-offset_top = 434.0
-offset_right = -702.0
-offset_bottom = 626.0
-grow_horizontal = 2
-grow_vertical = 2
-rotation = -1.5708
-value = 80.0
-nine_patch_stretch = true
-texture_under = ExtResource("6_xudnp")
-texture_over = ExtResource("6_qbwhn")
-texture_progress = ExtResource("7_2fdl5")
-tint_under = Color(1, 1, 1, 0.827)
-tint_over = Color(0.051971, 0.051971, 0.051971, 1)
-tint_progress = Color(0.8488, 1.6376, 0.3642, 1)
+[node name="FuelBarRainbow" parent="." instance=ExtResource("6_qevbr")]
+offset_left = 260.0
+offset_top = 170.0
+offset_right = 695.0
+offset_bottom = 210.0

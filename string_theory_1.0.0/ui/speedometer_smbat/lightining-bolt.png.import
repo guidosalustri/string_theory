@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c80urv8g2fvvv"
-path="res://.godot/imported/lightining-bolt.png-bb5ac435fb63cb6041cca0012503a4dc.ctex"
+uid="uid://cacf1sifwssvl"
+path="res://.godot/imported/lightining-bolt.png-47a6ef820ea5b06e89b22e29edb5a0d8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ui/speedometer_old/lightining-bolt.png"
-dest_files=["res://.godot/imported/lightining-bolt.png-bb5ac435fb63cb6041cca0012503a4dc.ctex"]
+source_file="res://ui/speedometer_smbat/lightining-bolt.png"
+dest_files=["res://.godot/imported/lightining-bolt.png-47a6ef820ea5b06e89b22e29edb5a0d8.ctex"]
 
 [params]
 
