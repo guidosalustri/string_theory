@@ -1,10 +1,10 @@
 [gd_scene load_steps=3 format=3 uid="uid://b1b1qf5v7fp86"]
 
-[ext_resource type="Script" path="res://objects/data_collection/data_collection.gd" id="1_8r5vu"]
+[ext_resource type="Script" path="res://objects/data_collection/data_collection_dummy.gd" id="1_ipkj4"]
 [ext_resource type="PackedScene" uid="uid://cixa6p85qfex8" path="res://objects/stopwatch_util/stopwatch_util.tscn" id="2_rpeky"]
 
 [node name="DataCollection" type="Node"]
-script = ExtResource("1_8r5vu")
+script = ExtResource("1_ipkj4")
 
 [node name="StopwatchUtil" parent="." instance=ExtResource("2_rpeky")]
 timer_process_callback = 1

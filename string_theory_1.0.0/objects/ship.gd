@@ -153,6 +153,8 @@ func _physics_process(delta: float) -> void:
 		fuel = min(fuel + fuel_fill_rate.sample(fuel / max_fuel) * delta, max_fuel)
 		fuel_left = min(fuel_left + fuel_fill_rate.sample(fuel_left / max_fuel) / 2.0 * delta, max_fuel)
 		fuel_right = min(fuel_right + fuel_fill_rate.sample(fuel_right / max_fuel) / 2.0 * delta, max_fuel)
+	
+	GameManager.data_collection.log_player_pos(position)
 
 # steering 
 func _move(delta: float, right: bool , left: bool, forward: bool) -> void:

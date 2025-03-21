@@ -70,7 +70,6 @@ func _ready() -> void:
 					GameManager.lvls[GameManager.lvl].resource_path.get_file(),
 					DataCollection.level_status.COMPLETE
 				)
-				GameManager.data_collection.stopwatch_util.set_paused(true)
 				
 				phantom_camera_constellation.priority = 3
 				ship.set_deferred("monitorable", false)

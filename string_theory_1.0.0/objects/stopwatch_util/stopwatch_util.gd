@@ -31,14 +31,13 @@ func stop() -> void:
 	_accumulator = 0
 
 func is_stopped() -> bool:
-	return _processing
+	return not _processing
 
 func set_paused(value: bool) -> void:
 	if _paused == value:
 		return
 	_paused = value
 	_set_process(_processing)
-	print(value)
 
 func is_paused() -> bool:
 	return _paused

@@ -7,6 +7,8 @@ extends Node
 
 @onready var data_collection: DataCollection = $DataCollection
 
+var data_collection_impl := preload("res://objects/data_collection/data_collection_impl.gd")
+
 var lvl := 0
 
 var deaths_counts := 0
@@ -30,10 +32,6 @@ func call_cutscene() -> void:
 		get_tree().change_scene_to_packed(cutscene)
 
 func start_lvl(index : int) -> void:
-	if index == 0 or data_collection.stopwatch_util.is_stopped():
-		data_collection.stopwatch_util.start()
-	data_collection.stopwatch_util.set_paused(false)
-	
 	if _lvl_fresh_start:
 		GameManager.data_collection.log_level_start_complete(
 			GameManager.lvls[index].resource_path.get_file(),
@@ -44,11 +42,12 @@ func start_lvl(index : int) -> void:
 	lvl = index
 	get_tree().change_scene_to_packed(lvls[index])
 
-func call_main_menu() -> void:
-	data_collection.stopwatch_util.stop()
-
+func call_main_menu() -> void: 
 	get_tree().change_scene_to_packed(main_menu)
 
 func _exit_tree() -> void:
-	if data_collection.file: # not the best way to do it, but works for now
-		data_collection.log_game_quit()
+	data_collection.log_game_quit()
+
+func enable_data_collection() -> void:
+	data_collection.set_script(data_collection_impl)
+	data_collection.start_write()

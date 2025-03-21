@@ -63,7 +63,7 @@ func set_menu_opened_amount(amount: float) -> void:
 
 
 func toggle(is_toggled: bool) -> void:
-	GameManager.data_collection.stopwatch_util.set_paused(is_toggled)
+	GameManager.data_collection.game_paused.emit(is_toggled)
 
 	var speed := opening_speed
 	# if there's a tween, and it is animating, kill it.
