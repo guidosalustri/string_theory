@@ -13,8 +13,8 @@ class_name Ship extends Area2D
 @export var turn_speed := 5.0
 
 @export var max_fuel:= 5.0
-@export var fuel_fill_rate : Curve
-@export var fuel_burn_rate : Curve
+@export var fuel_fill_rate := 2.0
+@export var fuel_burn_rate := 1.0
 var fuel := max_fuel / 2.0
 var fuel_left := max_fuel / 2.0
 var fuel_right := max_fuel / 2.0
@@ -142,17 +142,17 @@ func _process(delta: float) -> void:
 func _physics_process(delta: float) -> void:
 	# Decrease energy level
 	if current_state == Ship.States.FLY:
-		fuel = max ( fuel -  2.0 * fuel_burn_rate.sample( 1.0 - fuel / max_fuel ) * delta, 0 )
+		fuel = max ( fuel -  fuel_burn_rate * delta, 0 )
 		if Input.is_action_pressed("move_left"):
-			fuel_left = max ( fuel_left -  2.0 * fuel_burn_rate.sample( 1.0 - fuel_left / max_fuel ) * delta, 0 )
+			fuel_left = max ( fuel_left -  fuel_burn_rate * delta, 0 )
 		if Input.is_action_pressed("move_right"):
-			fuel_right = max ( fuel_right -  2.0 * fuel_burn_rate.sample( 1.0 - fuel_right / max_fuel ) * delta, 0 )
+			fuel_right = max ( fuel_right -  fuel_burn_rate * delta, 0 )
 
 	# Increase energy level
 	if current_state == States.ORBIT:
-		fuel = min(fuel + fuel_fill_rate.sample(fuel / max_fuel) * delta, max_fuel)
-		fuel_left = min(fuel_left + fuel_fill_rate.sample(fuel_left / max_fuel) / 2.0 * delta, max_fuel)
-		fuel_right = min(fuel_right + fuel_fill_rate.sample(fuel_right / max_fuel) / 2.0 * delta, max_fuel)
+		fuel = min(fuel + fuel_fill_rate * delta, max_fuel)
+		fuel_left = min(fuel_left + fuel_fill_rate / 2.0 * delta, max_fuel)
+		fuel_right = min(fuel_right + fuel_fill_rate / 2.0 * delta, max_fuel)
 	
 	GameManager.data_collection.log_player_pos(position)
 

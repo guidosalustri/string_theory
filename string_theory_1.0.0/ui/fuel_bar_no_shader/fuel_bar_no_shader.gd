@@ -1,5 +1,5 @@
 @tool
-class_name FuelBar extends Control
+class_name FuelBarNoShader extends Control
 
 @export_range(0.0, 1.0) var charge := 0.5
 @export var panels : Array[Panel]

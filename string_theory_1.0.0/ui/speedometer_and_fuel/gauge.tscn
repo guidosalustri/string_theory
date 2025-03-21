@@ -1,9 +1,9 @@
 [gd_scene load_steps=21 format=3 uid="uid://b6qyus7bgu1w3"]
 
-[ext_resource type="Script" path="res://ui/speedometer_old/gauge.gd" id="1_bs0cu"]
-[ext_resource type="Shader" path="res://ui/speedometer_old/gauge.gdshader" id="2_rxo2n"]
+[ext_resource type="Script" path="res://ui/speedometer_and_fuel/gauge.gd" id="1_bs0cu"]
+[ext_resource type="Shader" path="res://ui/speedometer_and_fuel/gauge.gdshader" id="2_rxo2n"]
 [ext_resource type="Theme" uid="uid://dp1nmwxx5vbr5" path="res://ui/ui_samples_theme.tres" id="3_kks3c"]
-[ext_resource type="Texture2D" uid="uid://c80urv8g2fvvv" path="res://ui/speedometer_old/lightining-bolt.png" id="4_qss3f"]
+[ext_resource type="Texture2D" uid="uid://c80urv8g2fvvv" path="res://ui/speedometer_and_fuel/lightining-bolt.png" id="4_qss3f"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xkly7"]
 shader = ExtResource("2_rxo2n")
@@ -227,7 +227,6 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="SecondaryGauge" type="TextureRect" parent="."]
-visible = false
 material = SubResource("ShaderMaterial_00vjj")
 layout_mode = 0
 offset_left = 1.0
@@ -238,7 +237,6 @@ rotation = -1.5708
 texture = SubResource("GradientTexture2D_o02ko")
 
 [node name="SecondaryGaugeFrame" type="TextureRect" parent="."]
-visible = false
 material = SubResource("ShaderMaterial_tssa5")
 layout_mode = 0
 offset_top = 178.0
@@ -248,7 +246,6 @@ rotation = -1.5708
 texture = SubResource("GradientTexture2D_f5ofb")
 
 [node name="FullSprite" type="Sprite2D" parent="."]
-visible = false
 position = Vector2(84, 59)
 
 [node name="Full" type="Label" parent="FullSprite"]
@@ -261,7 +258,6 @@ theme_override_font_sizes/font_size = 38
 text = "F"
 
 [node name="EmptySprite" type="Sprite2D" parent="."]
-visible = false
 position = Vector2(85, 164)
 rotation = -0.0453674
 
@@ -277,7 +273,6 @@ text = "E
 "
 
 [node name="EnergyIcon" type="Sprite2D" parent="."]
-visible = false
 self_modulate = Color(0.937255, 0.992157, 0.372549, 1)
 position = Vector2(56, 113)
 texture = ExtResource("4_qss3f")
@@ -295,12 +290,10 @@ joint_mode = 1
 end_cap_mode = 2
 
 [node name="SecondaryLine" type="Node2D" parent="."]
-visible = false
 position = Vector2(64, 111)
 rotation = 4.88692
 
 [node name="SecondaryLine" type="Line2D" parent="SecondaryLine"]
-visible = false
 position = Vector2(20, -1.52588e-05)
 points = PackedVector2Array(0, 0, 60, 0)
 width = 3.0

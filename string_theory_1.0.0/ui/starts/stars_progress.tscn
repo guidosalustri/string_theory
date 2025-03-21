@@ -7,10 +7,10 @@
 offset_right = 392.0
 offset_bottom = 68.0
 size_flags_vertical = 0
-columns = 11
+columns = 13
 script = ExtResource("1_fndhf")
-starCount = 17
-connectedStarCount = 2
+starCount = 20
+connectedStarCount = 7
 
 [node name="Star" type="TextureRect" parent="."]
 modulate = Color(1, 0.909804, 0.321569, 1)

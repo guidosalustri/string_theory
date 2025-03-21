@@ -1,18 +1,10 @@
-[gd_scene load_steps=18 format=3 uid="uid://em4qfalchhhd"]
+[gd_scene load_steps=16 format=3 uid="uid://em4qfalchhhd"]
 
 [ext_resource type="Texture2D" uid="uid://bniyrxn3r2v8h" path="res://assets/ship.png" id="1_130qv"]
 [ext_resource type="Script" path="res://objects/ship.gd" id="1_u1532"]
 [ext_resource type="PackedScene" uid="uid://2rsowtwrtfr2" path="res://assets/ship/main_thruster/main_thruster.tscn" id="4_2cjet"]
 [ext_resource type="PackedScene" uid="uid://bvtilym2q6v6b" path="res://assets/ship/side_thruster/side_thruster.tscn" id="5_8ryym"]
 [ext_resource type="Texture2D" uid="uid://d158xruba2vkk" path="res://assets/explosion_alt.png" id="5_wjuxj"]
-
-[sub_resource type="Curve" id="Curve_xr5lr"]
-_data = [Vector2(0.414583, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.499611), 0.0, 0.0, 0, 0]
-point_count = 2
-
-[sub_resource type="Curve" id="Curve_bxrw1"]
-_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.302083, 0.903966), -0.330836, -0.330836, 0, 0, Vector2(0.733333, 0.73717), -0.866474, -0.866474, 0, 0, Vector2(1, 0.292379), 0.0, 0.0, 0, 0]
-point_count = 4
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_45hjj"]
 radius = 33.3766
@@ -224,8 +216,6 @@ fill_to = Vector2(0.773504, 0.0940171)
 z_index = 5
 collision_mask = 31
 script = ExtResource("1_u1532")
-fuel_fill_rate = SubResource("Curve_xr5lr")
-fuel_burn_rate = SubResource("Curve_bxrw1")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_130qv")
