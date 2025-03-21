@@ -1,15 +1,15 @@
 [gd_scene load_steps=26 format=3 uid="uid://qaaowiyhu5hm"]
 
-[ext_resource type="Script" path="res://lvls/lvl.gd" id="1_441it"]
+[ext_resource type="Script" uid="uid://b1wf0gdhf0vhd" path="res://lvls/lvl.gd" id="1_441it"]
 [ext_resource type="PackedScene" uid="uid://dqjnkl56rsiki" path="res://objects/comp/exit_area.tscn" id="2_cif2a"]
-[ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="3_4jw0t"]
+[ext_resource type="Script" uid="uid://p8y27lj8qm0w" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="3_4jw0t"]
 [ext_resource type="PackedScene" uid="uid://bxfevggvxo634" path="res://assets/background/space_background.tscn" id="4_02ksg"]
 [ext_resource type="PackedScene" uid="uid://em4qfalchhhd" path="res://objects/ship.tscn" id="5_8aew6"]
 [ext_resource type="PackedScene" uid="uid://ul1ys48qmbs4" path="res://objects/star.tscn" id="6_m7b1q"]
-[ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="7_v6y6d"]
-[ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="8_6y8fe"]
+[ext_resource type="Script" uid="uid://7sappikp3ig7" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="7_v6y6d"]
+[ext_resource type="Script" uid="uid://k2kyeodww6ki" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="8_6y8fe"]
 [ext_resource type="FontFile" uid="uid://clffif4u7fy61" path="res://ui/Stacked pixel.ttf" id="10_lfls2"]
-[ext_resource type="Shader" path="res://ui/blur_for_ui.gdshader" id="10_ywsy5"]
+[ext_resource type="Shader" uid="uid://dnbinwyvgk7bb" path="res://ui/blur_for_ui.gdshader" id="10_ywsy5"]
 [ext_resource type="PackedScene" uid="uid://bc8nepke0pagf" path="res://ui/hud/hud.tscn" id="11_giruf"]
 [ext_resource type="PackedScene" uid="uid://ciegbyfrx5lf3" path="res://ui/pause_menu/pause_screen.tscn" id="13_rx2lf"]
 [ext_resource type="PackedScene" uid="uid://b1xjjudghnfhm" path="res://objects/obstacles/black_hole.tscn" id="13_v1fe0"]
@@ -52,8 +52,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_4m2av"]
 _data = {
-"RESET": SubResource("Animation_iwntf"),
-"blink": SubResource("Animation_8de3h")
+&"RESET": SubResource("Animation_iwntf"),
+&"blink": SubResource("Animation_8de3h")
 }
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_mua08"]

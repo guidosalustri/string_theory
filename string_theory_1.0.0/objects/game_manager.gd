@@ -9,7 +9,7 @@ extends Node
 
 var data_collection_impl := preload("res://objects/data_collection/data_collection_impl.gd")
 
-var lvl := 0
+var lvl := 5
 
 var deaths_counts := 0
 #var martin_on_ship := false

@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://d2xvfly2q0pnk"]
 
-[ext_resource type="Script" path="res://ui/ui_tutorial/detector_for_tutorial_dialog.gd" id="1_r7v6j"]
+[ext_resource type="Script" uid="uid://bt6dxclaog785" path="res://ui/ui_tutorial/detector_for_tutorial_dialog.gd" id="1_r7v6j"]
 [ext_resource type="Theme" uid="uid://dp1nmwxx5vbr5" path="res://ui/ui_samples_theme.tres" id="2_ltcwf"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_qrs8f"]

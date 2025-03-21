@@ -1,14 +1,14 @@
 [gd_scene load_steps=12 format=3 uid="uid://c5mhd08u6r1kd"]
 
 [ext_resource type="Theme" uid="uid://dp1nmwxx5vbr5" path="res://ui/ui_samples_theme.tres" id="1_fa8ny"]
-[ext_resource type="Script" path="res://ui/main_menu/ui_main_menu.gd" id="2"]
+[ext_resource type="Script" uid="uid://5kuckmck8s3i" path="res://ui/main_menu/ui_main_menu.gd" id="2"]
 [ext_resource type="PackedScene" uid="uid://rh7t1gxyk68u" path="res://ui/main_menu/action_texture_button.tscn" id="3_0nxyj"]
 [ext_resource type="Texture2D" uid="uid://bniyrxn3r2v8h" path="res://assets/ship.png" id="4_d5opo"]
 [ext_resource type="Texture2D" uid="uid://byhx0m56pbo6g" path="res://assets/pear_36_fire_gradient.tres" id="5_t607u"]
 [ext_resource type="Texture2D" uid="uid://f60df1b3rfjk" path="res://assets/puff.svg" id="6_sl785"]
 
 [sub_resource type="Curve" id="Curve_ki5fu"]
-max_value = 200.0
+_limits = [0.0, 200.0, 0.0, 1.0]
 _data = [Vector2(0, 200), 0.0, -759.091, 0, 1, Vector2(0.263473, 0), -759.091, 0.0, 1, 0]
 point_count = 2
 

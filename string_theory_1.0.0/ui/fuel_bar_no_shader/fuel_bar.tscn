@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://dqe7vmhm3mhvm"]
 
-[ext_resource type="Script" path="res://ui/fuel_bar_no_shader/fuel_bar_no_shader.gd" id="1_yf6hq"]
+[ext_resource type="Script" uid="uid://de47nw5j25w00" path="res://ui/fuel_bar_no_shader/fuel_bar_no_shader.gd" id="1_yf6hq"]
 
 [sub_resource type="Gradient" id="Gradient_hw6lb"]
 offsets = PackedFloat32Array(0, 0.293303, 0.503464, 0.635104, 0.803695, 0.993072)
@@ -46,7 +46,7 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_dep65"]
 _data = {
-"full_energy": SubResource("Animation_2418r")
+&"full_energy": SubResource("Animation_2418r")
 }
 
 [node name="FuelBarNoShader" type="Control" node_paths=PackedStringArray("panels")]

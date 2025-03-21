@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://0qamkncpbo8o"]
 
-[ext_resource type="Script" path="res://ui/starts/stars_progress.gd" id="1_fndhf"]
+[ext_resource type="Script" uid="uid://cpdk2kwejhb7b" path="res://ui/starts/stars_progress.gd" id="1_fndhf"]
 [ext_resource type="Texture2D" uid="uid://baux8wnujuj2l" path="res://assets/spark.png" id="2_4bnrv"]
 
 [node name="StarProgress" type="GridContainer"]

@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="String_Theory_1.0.0"
-config/features=PackedStringArray("4.3", "Forward Plus")
+config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]
@@ -81,5 +81,6 @@ spin={
 
 [rendering]
 
+renderer/rendering_method="mobile"
 viewport/hdr_2d=true
 2d/snap/snap_2d_transforms_to_pixel=true

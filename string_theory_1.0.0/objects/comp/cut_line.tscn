@@ -1,6 +1,6 @@
 [gd_scene load_steps=11 format=3 uid="uid://cw37amsu34rrt"]
 
-[ext_resource type="Script" path="res://objects/comp/cut_line.gd" id="1_36ypm"]
+[ext_resource type="Script" uid="uid://d0u5e3rbhe1eu" path="res://objects/comp/cut_line.gd" id="1_36ypm"]
 [ext_resource type="Texture2D" uid="uid://dvdqkhfqxjgcu" path="res://assets/glowing_circle.png" id="2_uruok"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_x6pi8"]

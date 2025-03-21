@@ -1,16 +1,16 @@
 [gd_scene load_steps=28 format=3 uid="uid://ybilhl70y2hu"]
 
-[ext_resource type="Script" path="res://lvls/lvl.gd" id="1_sjy30"]
+[ext_resource type="Script" uid="uid://b1wf0gdhf0vhd" path="res://lvls/lvl.gd" id="1_sjy30"]
 [ext_resource type="PackedScene" uid="uid://dqjnkl56rsiki" path="res://objects/comp/exit_area.tscn" id="2_sv7eb"]
-[ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="3_t5tku"]
+[ext_resource type="Script" uid="uid://p8y27lj8qm0w" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="3_t5tku"]
 [ext_resource type="PackedScene" uid="uid://bxfevggvxo634" path="res://assets/background/space_background.tscn" id="4_yecxm"]
 [ext_resource type="PackedScene" uid="uid://em4qfalchhhd" path="res://objects/ship.tscn" id="5_68va2"]
 [ext_resource type="PackedScene" uid="uid://ul1ys48qmbs4" path="res://objects/star.tscn" id="6_dsmi0"]
 [ext_resource type="PackedScene" uid="uid://bp4febdu6vh5y" path="res://objects/obstacles/asteroid.tscn" id="7_p8yqt"]
-[ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="8_nq0uo"]
-[ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="9_w27xj"]
+[ext_resource type="Script" uid="uid://7sappikp3ig7" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="8_nq0uo"]
+[ext_resource type="Script" uid="uid://k2kyeodww6ki" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="9_w27xj"]
 [ext_resource type="FontFile" uid="uid://clffif4u7fy61" path="res://ui/Stacked pixel.ttf" id="10_ubvm3"]
-[ext_resource type="Shader" path="res://ui/blur_for_ui.gdshader" id="11_kpgh0"]
+[ext_resource type="Shader" uid="uid://dnbinwyvgk7bb" path="res://ui/blur_for_ui.gdshader" id="11_kpgh0"]
 [ext_resource type="PackedScene" uid="uid://bc8nepke0pagf" path="res://ui/hud/hud.tscn" id="12_pjq8s"]
 [ext_resource type="PackedScene" uid="uid://ciegbyfrx5lf3" path="res://ui/pause_menu/pause_screen.tscn" id="13_ve8mh"]
 [ext_resource type="AudioStream" uid="uid://bupnj85mfcp5w" path="res://assets/into-the-night-uk-drill-music-20928.mp3" id="14_he6wx"]
@@ -42,8 +42,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_4m2av"]
 _data = {
-"RESET": SubResource("Animation_iwntf"),
-"blink": SubResource("Animation_8de3h")
+&"RESET": SubResource("Animation_iwntf"),
+&"blink": SubResource("Animation_8de3h")
 }
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_mua08"]

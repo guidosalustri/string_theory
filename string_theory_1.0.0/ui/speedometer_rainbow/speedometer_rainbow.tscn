@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://cge6vkntaqmpp"]
 
-[ext_resource type="Script" path="res://ui/speedometer_rainbow/speedometer_rainbow.gd" id="1_duuor"]
-[ext_resource type="Shader" path="res://ui/hud/progressbar.gdshader" id="1_phruh"]
+[ext_resource type="Script" uid="uid://d2xfeibtqgmtc" path="res://ui/speedometer_rainbow/speedometer_rainbow.gd" id="1_duuor"]
+[ext_resource type="Shader" uid="uid://itpexouw0xa1" path="res://ui/hud/progressbar.gdshader" id="1_phruh"]
 [ext_resource type="Theme" uid="uid://dp1nmwxx5vbr5" path="res://ui/ui_samples_theme.tres" id="2_y6xmg"]
 
 [sub_resource type="Gradient" id="Gradient_6p0ic"]
@@ -18,10 +18,10 @@ shader_parameter/segments = 30
 shader_parameter/radius = 0.5
 shader_parameter/hollow_radius = 0.2
 shader_parameter/margin = 0.4
-shader_parameter/rotation = null
+shader_parameter/rotation = 0.0
 shader_parameter/progress_rotation = -0.75
-shader_parameter/use_value_gradient = false
 shader_parameter/gradient = SubResource("GradientTexture1D_bquex")
+shader_parameter/use_value_gradient = false
 
 [sub_resource type="Gradient" id="Gradient_30efr"]
 offsets = PackedFloat32Array(0.122353, 0.214118, 0.305882, 0.374118, 0.512941, 0.682353, 0.887059)
@@ -37,10 +37,10 @@ shader_parameter/segments = 30
 shader_parameter/radius = 0.5
 shader_parameter/hollow_radius = 0.2
 shader_parameter/margin = 0.4
-shader_parameter/rotation = null
+shader_parameter/rotation = 0.0
 shader_parameter/progress_rotation = -0.75
-shader_parameter/use_value_gradient = false
 shader_parameter/gradient = SubResource("GradientTexture1D_m4cpw")
+shader_parameter/use_value_gradient = false
 
 [node name="SpeedometerRainbow" type="Control"]
 layout_mode = 3

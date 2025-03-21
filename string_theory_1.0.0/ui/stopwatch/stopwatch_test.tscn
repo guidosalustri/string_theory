@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://dy3yayavnoxl7"]
 
-[ext_resource type="Script" path="res://ui/stopwatch/stopwatch_test.gd" id="1_7ux8c"]
+[ext_resource type="Script" uid="uid://2ljlp4gg2ish" path="res://ui/stopwatch/stopwatch_test.gd" id="1_7ux8c"]
 [ext_resource type="PackedScene" uid="uid://ddkh4f8q5m5ff" path="res://ui/stopwatch/stopwatch.tscn" id="1_vvv1q"]
 
 [node name="StopwatchTest" type="Control"]

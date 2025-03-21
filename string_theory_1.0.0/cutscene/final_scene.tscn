@@ -1,12 +1,12 @@
 [gd_scene load_steps=16 format=3 uid="uid://cgt0lqimggmo2"]
 
-[ext_resource type="Script" path="res://cutscene/final_scene.gd" id="1_ed78j"]
+[ext_resource type="Script" uid="uid://bkwn5u1h7ccpx" path="res://cutscene/final_scene.gd" id="1_ed78j"]
 [ext_resource type="PackedScene" uid="uid://bxfevggvxo634" path="res://assets/background/space_background.tscn" id="1_px7yw"]
 [ext_resource type="PackedScene" uid="uid://p60tmr6ajcyy" path="res://ui/main_menu/main_menu.tscn" id="2_fkf2h"]
 [ext_resource type="Texture2D" uid="uid://bniyrxn3r2v8h" path="res://assets/ship.png" id="5_gv2u6"]
 [ext_resource type="PackedScene" uid="uid://b1xjjudghnfhm" path="res://objects/obstacles/black_hole.tscn" id="5_q4so5"]
 [ext_resource type="Texture2D" uid="uid://byhx0m56pbo6g" path="res://assets/pear_36_fire_gradient.tres" id="7_7bvca"]
-[ext_resource type="Script" path="res://assets/confettis/confettis_area.gd" id="7_botj0"]
+[ext_resource type="Script" uid="uid://0u5s3bo2p8ny" path="res://assets/confettis/confettis_area.gd" id="7_botj0"]
 [ext_resource type="FontFile" uid="uid://clffif4u7fy61" path="res://ui/Stacked pixel.ttf" id="8_76oqx"]
 [ext_resource type="Texture2D" uid="uid://f60df1b3rfjk" path="res://assets/puff.svg" id="8_tp6ko"]
 
@@ -17,7 +17,7 @@ _data = {
 point_count = 8
 
 [sub_resource type="Curve" id="Curve_ukiwf"]
-max_value = 200.0
+_limits = [0.0, 200.0, 0.0, 1.0]
 _data = [Vector2(0, 200), 0.0, -759.091, 0, 1, Vector2(0.263473, 0), -759.091, 0.0, 1, 0]
 point_count = 2
 

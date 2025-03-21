@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://cfpp30kafr6wh"]
 
 [ext_resource type="Texture2D" uid="uid://dvdqkhfqxjgcu" path="res://assets/glowing_circle.png" id="1_nee0j"]
-[ext_resource type="Script" path="res://assets/link_gpu_particles_2d.gd" id="2_vegd8"]
+[ext_resource type="Script" uid="uid://d3m5alf8ocp1x" path="res://assets/link_gpu_particles_2d.gd" id="2_vegd8"]
 
 [sub_resource type="Curve" id="Curve_in7fi"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.503614, 0.957505), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]

@@ -1,8 +1,8 @@
 [gd_scene load_steps=14 format=3 uid="uid://2rsowtwrtfr2"]
 
-[ext_resource type="Script" path="res://assets/ship/main_thruster/main_thruster.gd" id="1_7rjx5"]
+[ext_resource type="Script" uid="uid://djo4p774hnulw" path="res://assets/ship/main_thruster/main_thruster.gd" id="1_7rjx5"]
 [ext_resource type="Texture2D" uid="uid://csikjqqgyivxr" path="res://assets/ship/main_thruster/ship_flame_sdf.png" id="1_mwjek"]
-[ext_resource type="Shader" path="res://assets/ship/ship_flame.gdshader" id="1_ne7jv"]
+[ext_resource type="Shader" uid="uid://cc06ejy3edjrf" path="res://assets/ship/ship_flame.gdshader" id="1_ne7jv"]
 [ext_resource type="Texture2D" uid="uid://byhx0m56pbo6g" path="res://assets/pear_36_fire_gradient.tres" id="2_f8cc6"]
 [ext_resource type="Texture2D" uid="uid://6dln25nw0i1e" path="res://assets/ship/spark.png" id="2_gwyx4"]
 
@@ -15,9 +15,9 @@ curve = SubResource("Curve_u341n")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_matsn"]
 shader = ExtResource("1_ne7jv")
-shader_parameter/deformation = 0.4
 shader_parameter/base_color = ExtResource("2_f8cc6")
 shader_parameter/band_gradient = SubResource("CurveTexture_5k8t3")
+shader_parameter/deformation = 0.4
 
 [sub_resource type="Curve" id="Curve_1hj2c"]
 _data = [Vector2(0.195876, 0), 0.0, 0.0, 0, 0, Vector2(0.896907, 1), 0.0, 0.0, 0, 0]
@@ -63,7 +63,7 @@ alpha_curve = SubResource("Curve_at66m")
 unique_name_in_owner = true
 position = Vector2(2, 0)
 amount = 4
-process_material = SubResource("ParticleProcessMaterial_vo24j")
 texture = ExtResource("2_gwyx4")
 lifetime = 0.35
 local_coords = true
+process_material = SubResource("ParticleProcessMaterial_vo24j")

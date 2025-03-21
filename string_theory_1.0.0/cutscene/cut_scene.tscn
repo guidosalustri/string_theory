@@ -1,8 +1,8 @@
 [gd_scene load_steps=23 format=3 uid="uid://dd8x5lnqej66y"]
 
-[ext_resource type="Script" path="res://cutscene/cut_scene.gd" id="1_j06uc"]
-[ext_resource type="Shader" path="res://cutscene/blur.gdshader" id="2_2e1hg"]
-[ext_resource type="Script" path="res://cutscene/camera_cut_scene.gd" id="2_op7gm"]
+[ext_resource type="Script" uid="uid://biwgltcckdpau" path="res://cutscene/cut_scene.gd" id="1_j06uc"]
+[ext_resource type="Shader" uid="uid://dodbo1f6pi8st" path="res://cutscene/blur.gdshader" id="2_2e1hg"]
+[ext_resource type="Script" uid="uid://cfre2exo4ean0" path="res://cutscene/camera_cut_scene.gd" id="2_op7gm"]
 [ext_resource type="PackedScene" uid="uid://gu842no2aiky" path="res://cutscene/background_asteroids.tscn" id="3_ckfui"]
 [ext_resource type="Texture2D" uid="uid://bniyrxn3r2v8h" path="res://assets/ship.png" id="3_mwyjp"]
 [ext_resource type="PackedScene" uid="uid://cs72uiiumr18y" path="res://cutscene/particles_ship_dash.tscn" id="5_r316d"]
@@ -18,7 +18,7 @@ shader_parameter/blur_scale = Vector2(0, 0)
 viewport_path = NodePath("SubViewport")
 
 [sub_resource type="Curve" id="Curve_ukiwf"]
-max_value = 200.0
+_limits = [0.0, 200.0, 0.0, 1.0]
 _data = [Vector2(0, 200), 0.0, -759.091, 0, 1, Vector2(0.263473, 0), -759.091, 0.0, 1, 0]
 point_count = 2
 
@@ -193,9 +193,9 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_kr4ww"]
 _data = {
-"Light_speed": SubResource("Animation_b0qdg"),
-"RESET": SubResource("Animation_slcna"),
-"set_the_ship": SubResource("Animation_b2vot")
+&"Light_speed": SubResource("Animation_b0qdg"),
+&"RESET": SubResource("Animation_slcna"),
+&"set_the_ship": SubResource("Animation_b2vot")
 }
 
 [node name="CutScene" type="Node"]

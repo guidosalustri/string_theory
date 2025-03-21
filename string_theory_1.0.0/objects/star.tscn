@@ -1,10 +1,10 @@
 [gd_scene load_steps=23 format=3 uid="uid://ul1ys48qmbs4"]
 
-[ext_resource type="Script" path="res://objects/star.gd" id="1_lhkgp"]
+[ext_resource type="Script" uid="uid://7bh26uyqr2xg" path="res://objects/star.gd" id="1_lhkgp"]
 [ext_resource type="Texture2D" uid="uid://baux8wnujuj2l" path="res://assets/spark.png" id="2_06rb5"]
 [ext_resource type="PackedScene" uid="uid://b646dec74n3dy" path="res://assets/halo_circle.tscn" id="3_tnftf"]
-[ext_resource type="Shader" path="res://assets/halo_circle.gdshader" id="4_72cat"]
-[ext_resource type="Shader" path="res://assets/group_outline.gdshader" id="5_6fouf"]
+[ext_resource type="Shader" uid="uid://ciwrrow4nqaaf" path="res://assets/halo_circle.gdshader" id="4_72cat"]
+[ext_resource type="Shader" uid="uid://7xet2lboo2oi" path="res://assets/group_outline.gdshader" id="5_6fouf"]
 [ext_resource type="PackedScene" uid="uid://bdooawbxdlh2s" path="res://assets/sparks_particles.tscn" id="6_gh7l6"]
 [ext_resource type="PackedScene" uid="uid://bo2nk72scwry6" path="res://objects/obstacles/particles_black_hole_2d.tscn" id="7_rfbuw"]
 
@@ -362,9 +362,9 @@ tracks/7/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_x8m1r"]
 _data = {
-"RESET": SubResource("Animation_y7jgj"),
-"black_hole_transition": SubResource("Animation_r6bm7"),
-"star_transition": SubResource("Animation_ldaav")
+&"RESET": SubResource("Animation_y7jgj"),
+&"black_hole_transition": SubResource("Animation_r6bm7"),
+&"star_transition": SubResource("Animation_ldaav")
 }
 
 [sub_resource type="Animation" id="Animation_bk3dk"]
@@ -425,8 +425,8 @@ tracks/2/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_k7l5y"]
 _data = {
-"RESET": SubResource("Animation_bk3dk"),
-"spawn": SubResource("Animation_81ie1")
+&"RESET": SubResource("Animation_bk3dk"),
+&"spawn": SubResource("Animation_81ie1")
 }
 
 [sub_resource type="Gradient" id="Gradient_mxo86"]

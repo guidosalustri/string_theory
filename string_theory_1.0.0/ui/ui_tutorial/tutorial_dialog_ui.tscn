@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://b8ihvesn60er7"]
 
 [ext_resource type="Theme" uid="uid://dp1nmwxx5vbr5" path="res://ui/ui_samples_theme.tres" id="1"]
-[ext_resource type="Script" path="res://ui/ui_tutorial/tutorial_dialog_ui.gd" id="1_vt12l"]
+[ext_resource type="Script" uid="uid://b0ndvow1x0wqx" path="res://ui/ui_tutorial/tutorial_dialog_ui.gd" id="1_vt12l"]
 
 [node name="TutorialDialogUI" type="Control"]
 custom_minimum_size = Vector2(1920, 1080)
