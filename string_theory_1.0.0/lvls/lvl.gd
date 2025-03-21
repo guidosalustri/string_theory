@@ -56,6 +56,7 @@ func _ready() -> void:
 	ship.change_star.connect(_on_star_changed)
 	ship.cut_link.connect(cut_line_link)
 	animation_player.animation_finished.connect(func(_anim_name: StringName) -> void:
+		GameManager.data_collection.log_player_death(DataCollection.player_death_cause.STRAY)
 		cut_line_link(false)
 		ship.animation_player.play("die")
 		ship.set_process(false)
@@ -64,6 +65,12 @@ func _ready() -> void:
 	stars_trail[-1].area_entered.connect(func (_area: Area2D):
 		if index == stars_trail.size()-1:
 			if stars_trail[-1].current_state == stars_trail[-1].States.STAR:
+				await get_tree().create_timer(0.00000000000001).timeout
+				GameManager.data_collection.log_level_start_complete(
+					GameManager.lvls[GameManager.lvl].resource_path.get_file(),
+					DataCollection.level_status.COMPLETE
+				)
+				
 				phantom_camera_constellation.priority = 3
 				ship.set_deferred("monitorable", false)
 				ship.set_deferred("monitoring", false)
@@ -117,6 +124,7 @@ func _process(_delta: float) -> void:
 
 func _on_star_changed(star: Star)-> void:
 	if star != stars_trail[index]:
+		GameManager.data_collection.log_player_death(DataCollection.player_death_cause.STAR_COLISSION)
 		ship.explode()
 	elif not index == stars_trail.size()-1:
 		#phantom_camera_constellation.priority = 3
@@ -189,7 +197,7 @@ func _on_timer_timeout() -> void:
 	tween.tween_property(color_rect, "modulate", Color.BLACK, 2)
 	await tween.finished
 
-	GameManager.lvl +=1
+	GameManager.lvl += 1
 	GameManager.call_cutscene()
 
 
@@ -200,7 +208,8 @@ func dim_out_obstacles() -> void:
 				child.hide()
 
 func _overcharged_ship() -> void:
-		ship.explode()
+	GameManager.data_collection.log_player_death(DataCollection.player_death_cause.OVERCHARGE)
+	ship.explode()
 
 func adjust_ship_light()-> void:
 	if index >0 and index<stars_trail.size():

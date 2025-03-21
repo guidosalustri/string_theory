@@ -7,7 +7,7 @@ var line_created := false
 var target : Ship= null
 var was_black_hole := false
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	if points.size() > 21:
 		for i in range(20):
 			remove_point(0)
