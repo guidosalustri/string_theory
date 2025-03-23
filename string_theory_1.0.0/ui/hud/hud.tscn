@@ -15,8 +15,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_22hk0")
-color_fuel_low = Color(1, 0.188, 0.188, 0.8)
-color_fuel_high = Color(0.141, 1, 0.282, 0.65)
 metadata/_edit_vertical_guides_ = [45.0]
 metadata/_edit_horizontal_guides_ = [79.0]
 

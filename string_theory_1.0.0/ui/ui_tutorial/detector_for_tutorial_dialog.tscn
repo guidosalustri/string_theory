@@ -17,10 +17,10 @@ debug_color = Color(0.484641, 0.435492, 1, 0.42)
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
-offset_left = -286.0
-offset_top = -228.0
-offset_right = -246.0
-offset_bottom = -188.0
+offset_left = -178.0
+offset_top = 415.0
+offset_right = -138.0
+offset_bottom = 455.0
 theme = ExtResource("2_ltcwf")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Control"]

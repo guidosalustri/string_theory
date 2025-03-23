@@ -1,7 +1,8 @@
-[gd_scene load_steps=22 format=3 uid="uid://dpn6duokfpeii"]
+[gd_scene load_steps=23 format=3 uid="uid://dpn6duokfpeii"]
 
 [ext_resource type="Script" uid="uid://b0yypoeqkeqey" path="res://ui/fuel_bar_rainbow/fuel_bar_rainbow.gd" id="1_0kqxd"]
 [ext_resource type="Shader" uid="uid://ddussvfpy5c8h" path="res://ui/hud/fuelprogressbar.gdshader" id="1_5eukr"]
+[ext_resource type="Theme" uid="uid://dp1nmwxx5vbr5" path="res://ui/ui_samples_theme.tres" id="3_4qk8w"]
 
 [sub_resource type="Gradient" id="Gradient_nmsie"]
 offsets = PackedFloat32Array(0)
@@ -218,5 +219,16 @@ offset_bottom = 40.0215
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_fkiof")
+&"": SubResource("AnimationLibrary_fkiof")
 }
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 146.994
+offset_top = -37.993
+offset_right = 441.994
+offset_bottom = 11.007
+theme = ExtResource("3_4qk8w")
+theme_override_colors/font_color = Color(0.937255, 0.992157, 0.372549, 1)
+theme_override_font_sizes/font_size = 48
+text = "Mega E-volts"

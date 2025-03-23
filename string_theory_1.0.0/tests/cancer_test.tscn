@@ -131,7 +131,7 @@ antialiased = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="LinkLineShip"]
 libraries = {
-"": SubResource("AnimationLibrary_4m2av")
+&"": SubResource("AnimationLibrary_4m2av")
 }
 
 [node name="LinkLineStars" type="Line2D" parent="."]

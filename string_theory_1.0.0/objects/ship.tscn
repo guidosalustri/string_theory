@@ -216,6 +216,8 @@ fill_to = Vector2(0.773504, 0.0940171)
 z_index = 5
 collision_mask = 31
 script = ExtResource("1_u1532")
+fuel_fill_rate = 1.0
+fuel_burn_rate = 1.5
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_130qv")

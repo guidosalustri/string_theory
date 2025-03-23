@@ -22,7 +22,7 @@ You know, [color=3ba2f9]protocol[/color]..."
 
 [sub_resource type="Resource" id="Resource_eqqfy"]
 script = ExtResource("2_8wc3g")
-text = "Ohh, that was [color=3ba2f9]smooth[/color] as a [color=3ba2f9]smoothie[/color], Cap!! 
+text = "Ohh, that was [color=3ba2f9]smooth[/color] as a [color=3ba2f9]smoothie[/color]!!! 
 As you may know, the ship is [color=3ba2f9]powered[/color] by a gravitational engine. So 
 [color=3ba2f9]orbiting[/color] stars will [color=3ba2f9]charge[/color] it."
 
@@ -40,7 +40,7 @@ from stars."
 
 [sub_resource type="Resource" id="Resource_f2hoh"]
 script = ExtResource("2_8wc3g")
-text = "Now yes cap, everything is [color=3ba2f9]set[/color] and ready. Let's [color=3ba2f9]pull[/color] these [color=3ba2f9]strings[/color] 
+text = "Now everything is [color=3ba2f9]set[/color] and ready. Let's [color=3ba2f9]pull[/color] these [color=3ba2f9]strings[/color] 
 together!!"
 
 [sub_resource type="Resource" id="Resource_5nnx8"]
@@ -187,16 +187,16 @@ bus = &"SFX"
 
 [node name="Portrait" parent="." instance=ExtResource("3_save7")]
 offset_left = 148.0
-offset_top = 920.0
+offset_top = 902.0
 offset_right = 148.0
-offset_bottom = 920.0
+offset_bottom = 902.0
 
 [node name="NinePatchRect2" type="NinePatchRect" parent="."]
 layout_mode = 0
 offset_left = 301.0
-offset_top = 793.0
+offset_top = 807.0
 offset_right = 1901.0
-offset_bottom = 1006.0
+offset_bottom = 1020.0
 theme = ExtResource("4_0glvc")
 texture = ExtResource("5_qvyfd")
 patch_margin_left = 29
@@ -243,6 +243,6 @@ stretch_mode = 4
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_q65in")
+&"": SubResource("AnimationLibrary_q65in")
 }
 autoplay = "arrow"

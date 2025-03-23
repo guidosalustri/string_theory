@@ -27,7 +27,7 @@ var _tween: Tween = null
 var allow_input_for_dialog := false
 var index :=0
 var labels :=[]
-@onready var rich_text_label1: RichTextLabel = $CenterContainer/PanelContainer/RichTextLabel
+#@onready var rich_text_label1: RichTextLabel = $CenterContainer/PanelContainer/RichTextLabel
 @onready var rich_text_label: RichTextLabel = $RichTextLabel
 @onready var rich_text_label_2: RichTextLabel = $RichTextLabel2
 

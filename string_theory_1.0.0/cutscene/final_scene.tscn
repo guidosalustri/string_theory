@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://cgt0lqimggmo2"]
+[gd_scene load_steps=19 format=3 uid="uid://cgt0lqimggmo2"]
 
 [ext_resource type="Script" uid="uid://bkwn5u1h7ccpx" path="res://cutscene/final_scene.gd" id="1_ed78j"]
 [ext_resource type="PackedScene" uid="uid://bxfevggvxo634" path="res://assets/background/space_background.tscn" id="1_px7yw"]
@@ -9,6 +9,9 @@
 [ext_resource type="Script" uid="uid://0u5s3bo2p8ny" path="res://assets/confettis/confettis_area.gd" id="7_botj0"]
 [ext_resource type="FontFile" uid="uid://clffif4u7fy61" path="res://ui/Stacked pixel.ttf" id="8_76oqx"]
 [ext_resource type="Texture2D" uid="uid://f60df1b3rfjk" path="res://assets/puff.svg" id="8_tp6ko"]
+[ext_resource type="Texture2D" uid="uid://tsf63gb1jnta" path="res://assets/circle_mask.png" id="10_1b11i"]
+[ext_resource type="Texture2D" uid="uid://cqg0c3dogxjc8" path="res://assets/martin_martian.png" id="11_6j1ny"]
+[ext_resource type="Texture2D" uid="uid://yjjrd3e6s26w" path="res://assets/crew.png" id="12_6j1ny"]
 
 [sub_resource type="Curve2D" id="Curve2D_0pcab"]
 _data = {
@@ -60,9 +63,11 @@ position = Vector2(394, 360)
 [node name="SpaceBackground" parent="." instance=ExtResource("1_px7yw")]
 
 [node name="blackHole2" parent="." instance=ExtResource("5_q4so5")]
+visible = false
 position = Vector2(1080, 347)
 
 [node name="blackHole" parent="." instance=ExtResource("5_q4so5")]
+visible = false
 position = Vector2(-329, 370)
 
 [node name="Confettis" type="Node2D" parent="."]
@@ -129,11 +134,10 @@ modulate = Color(1.2, 1.2, 1.2, 1)
 show_behind_parent = true
 position = Vector2(-25.9615, 0.00150633)
 rotation = 1.78717
-scale = Vector2(1, 1)
 emitting = false
 amount = 64
-process_material = SubResource("ParticleProcessMaterial_2dj3a")
 texture = ExtResource("8_tp6ko")
+process_material = SubResource("ParticleProcessMaterial_2dj3a")
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
@@ -156,9 +160,89 @@ size_flags_horizontal = 0
 theme_override_fonts/normal_font = ExtResource("8_76oqx")
 theme_override_font_sizes/normal_font_size = 65
 bbcode_enabled = true
-text = "Congrats Cap, All Constellations  Were Linked Up !!!"
+text = "Congrats, All Constellations  Were Linked Up !!!"
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 5.0
+wait_time = 8.0
 one_shot = true
 autostart = true
+
+[node name="Control2" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -325.0
+offset_top = 360.0
+offset_right = -285.0
+offset_bottom = 400.0
+
+[node name="Shadow" type="Sprite2D" parent="Control2"]
+self_modulate = Color(0.156863, 0.0784314, 0.305882, 0.435294)
+position = Vector2(8, 23)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("10_1b11i")
+
+[node name="Border" type="Sprite2D" parent="Control2"]
+self_modulate = Color(0, 0.478431, 0.764706, 1)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("10_1b11i")
+
+[node name="Frame" type="Sprite2D" parent="Control2/Border"]
+self_modulate = Color(0.0235294, 0.113725, 0.329412, 1)
+clip_children = 2
+position = Vector2(-3.05176e-05, -6.10352e-05)
+scale = Vector2(0.945835, 0.945835)
+texture = ExtResource("10_1b11i")
+
+[node name="Node2D" type="Node2D" parent="Control2/Border/Frame"]
+position = Vector2(4.19617e-05, 7.62939e-05)
+
+[node name="Sprite2D" type="Sprite2D" parent="Control2/Border/Frame/Node2D"]
+position = Vector2(-1.90735e-05, 113.656)
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("11_6j1ny")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Control2/Border/Frame/Node2D"]
+position = Vector2(0, -114.202)
+rotation = 3.14159
+scale = Vector2(1.9, 1.9)
+texture = ExtResource("12_6j1ny")
+
+[node name="Control3" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 1062.0
+offset_top = 360.0
+offset_right = 1102.0
+offset_bottom = 400.0
+
+[node name="Shadow" type="Sprite2D" parent="Control3"]
+self_modulate = Color(0.156863, 0.0784314, 0.305882, 0.435294)
+position = Vector2(8, 23)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("10_1b11i")
+
+[node name="Border" type="Sprite2D" parent="Control3"]
+self_modulate = Color(0, 0.478431, 0.764706, 1)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("10_1b11i")
+
+[node name="Frame" type="Sprite2D" parent="Control3/Border"]
+self_modulate = Color(0.0235294, 0.113725, 0.329412, 1)
+clip_children = 2
+position = Vector2(-3.05176e-05, -6.10352e-05)
+scale = Vector2(0.945835, 0.945835)
+texture = ExtResource("10_1b11i")
+
+[node name="Node2D" type="Node2D" parent="Control3/Border/Frame"]
+position = Vector2(4.19617e-05, 7.62939e-05)
+
+[node name="Sprite2D2" type="Sprite2D" parent="Control3/Border/Frame/Node2D"]
+position = Vector2(0, -120.81)
+rotation = 3.14159
+scale = Vector2(1.9, 1.9)
+texture = ExtResource("12_6j1ny")
+
+[node name="Sprite2D" type="Sprite2D" parent="Control3/Border/Frame/Node2D"]
+position = Vector2(-1.90735e-05, 113.656)
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("11_6j1ny")

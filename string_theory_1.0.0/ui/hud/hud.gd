@@ -5,8 +5,6 @@ extends Control
 @onready var fuel_bar_rainbow: FuelBarRainbow = $FuelBarRainbow
 @onready var speedometer_rainbow: SpeedometerRainbow = $SpeedometerRainbow
 
-@export var color_fuel_low := Color(1, 0.188, 0.188)
-@export var color_fuel_high := Color(0.141, 1, 0.282)
 
 signal overcharged
 signal no_energy
