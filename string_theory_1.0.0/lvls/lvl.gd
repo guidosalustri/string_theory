@@ -78,6 +78,10 @@ func _ready() -> void:
 				ship.get_node("PointLight2D").hide()
 				timer.start()
 				hud.overcharged.disconnect(_overcharged_ship)
+				if canvas_layer_3:
+					for child in canvas_layer_3.get_children():
+						var tween_tutorial := create_tween()
+						tween_tutorial.tween_property(child, "modulate:a", 0, 0.3)
 		)
 	timer.timeout.connect(_on_timer_timeout)
 	#for pickup in pick_ups.get_children():
@@ -178,8 +182,8 @@ func _unhandled_input(event: InputEvent) -> void:
 		phantom_camera_star.priority = 1
 
 func _on_timer_timeout() -> void:
-	if canvas_layer_3:
-		canvas_layer_3.hide()
+	#if canvas_layer_3:
+	#	canvas_layer_3.hide()
 	cut_line.hide()
 	var tween_hud := create_tween()
 	tween_hud.tween_property(hud, "modulate:a", 0, 0.5)

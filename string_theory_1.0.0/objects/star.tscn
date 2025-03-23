@@ -452,10 +452,10 @@ halo_color = Color(0.937255, 0.992157, 0.372549, 1)
 modulate = Color(0.730993, 0.730979, 7.70092e-07, 1)
 emitting = false
 amount = 3
-process_material = SubResource("ParticleProcessMaterial_dvrd3")
 texture = ExtResource("2_06rb5")
 randomness = 1.0
 visibility_rect = Rect2(-2500, -2500, 5000, 5000)
+process_material = SubResource("ParticleProcessMaterial_dvrd3")
 
 [node name="CanvasGroup" type="CanvasGroup" parent="."]
 material = SubResource("ShaderMaterial_nmnhs")
@@ -474,7 +474,7 @@ modulate = Color(1.573, 1.573, 0, 0.894)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_x8m1r")
+&"": SubResource("AnimationLibrary_x8m1r")
 }
 
 [node name="Timer" type="Timer" parent="."]
@@ -487,12 +487,12 @@ z_index = -2
 
 [node name="AnimationPlayer2" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_k7l5y")
+&"": SubResource("AnimationLibrary_k7l5y")
 }
 
 [node name="StarLight2D" type="PointLight2D" parent="."]
 color = Color(2, 2, 0.098, 1)
+energy = 0.6
 range_layer_min = -2
-shadow_enabled = true
 texture = SubResource("GradientTexture2D_fbl85")
 texture_scale = 10.0

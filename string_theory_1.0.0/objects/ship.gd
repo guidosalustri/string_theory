@@ -263,11 +263,11 @@ func dim_light_on(turn_light_on: bool) -> void:
 	#this should be carfully balance
 	if turn_light_on:
 		point_light_2d.texture_scale += 0.015
-		point_light_2d.energy += 0.008
+		point_light_2d.energy += 0.0008
 	else:
 		point_light_2d.texture_scale -= 0.015
-		point_light_2d.energy -= 0.004
-	var energy := clampf(point_light_2d.energy,0.3,0.7)
+		point_light_2d.energy -= 0.0005
+	var energy := clampf(point_light_2d.energy,0.1,0.4)
 	var value := clampf(point_light_2d.texture_scale,3,19)
 	point_light_2d.texture_scale = value
 	point_light_2d.energy = energy

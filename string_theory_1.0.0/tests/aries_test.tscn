@@ -34,10 +34,10 @@ tracks/0/path = NodePath(".:default_color")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.266667, 0.766667, 1.03333, 1.53333, 1.8, 2.26667, 2.5, 3.2, 3.96667, 4.13333, 4.56667, 4.93333, 5.36667, 6),
+"times": PackedFloat32Array(0, 0.266667, 0.466667, 0.666667, 1.2, 1.4, 1.6, 2.06667, 2.26667, 2.46667, 3.2, 4.13333, 4.93333, 5.63333, 6),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [Color(0.302, 0.651, 3, 1), Color(3, 0.128, 0.302, 1), Color(0.302, 0.651, 3, 1), Color(3, 0.128, 0.302, 1), Color(0.302, 0.651, 3, 1), Color(3, 0.128, 0.302, 1), Color(0.302, 0.651, 3, 1), Color(3, 0.128, 0.302, 1), Color(3, 0.128, 0.302, 1), Color(0.302, 0.651, 3, 1), Color(0.302, 0.651, 3, 1), Color(3, 0.128, 0.302, 1), Color(0.302, 0.651, 3, 1), Color(3, 0.128, 0.302, 1), Color(3, 0.128, 0.302, 1)]
+"values": [Color(0.302, 0.651, 3, 1), Color(3, 0.128, 0.302, 1), Color(1, 1, 1, 1), Color(3, 0.128, 0.302, 1), Color(3, 0.128, 0.302, 1), Color(1, 1, 1, 1), Color(3, 0.128, 0.302, 1), Color(3, 0.128, 0.302, 1), Color(1, 1, 1, 1), Color(3, 0.128, 0.302, 1), Color(3, 0.128, 0.302, 1), Color(0.302, 0.651, 3, 1), Color(0.302, 0.651, 3, 1), Color(1, 1, 1, 1), Color(3, 0.128, 0.302, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_4m2av"]
