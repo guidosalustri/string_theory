@@ -9,5 +9,7 @@ var max_speed := 700.0
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	front.material.set_shader_parameter("value", (speed * 0.45)/ max_speed)
-	label.text = str(snapped(int(speed),25))
+	var speed_speedometer :float = min((speed * 0.45)/ max_speed,0.45)
+	var speed_label :float = min(speed, max_speed)
+	front.material.set_shader_parameter("value", speed_speedometer)
+	label.text = str(snapped(int(speed_label),25))

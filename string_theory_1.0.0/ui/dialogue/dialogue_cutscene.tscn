@@ -40,7 +40,7 @@ from stars."
 
 [sub_resource type="Resource" id="Resource_f2hoh"]
 script = ExtResource("2_8wc3g")
-text = "Now everything is [color=3ba2f9]set[/color] and ready. Let's [color=3ba2f9]pull[/color] these [color=3ba2f9]strings[/color] 
+text = "Now yes! everything is [color=3ba2f9]set[/color] and ready. Let's [color=3ba2f9]pull[/color] these [color=3ba2f9]strings[/color] 
 together!!"
 
 [sub_resource type="Resource" id="Resource_5nnx8"]

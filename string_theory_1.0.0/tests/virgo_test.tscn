@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://cbyrh237sq7ul"]
+[gd_scene load_steps=28 format=3 uid="uid://cbyrh237sq7ul"]
 
 [ext_resource type="Script" uid="uid://b1wf0gdhf0vhd" path="res://lvls/lvl.gd" id="1_ydxyn"]
 [ext_resource type="PackedScene" uid="uid://dqjnkl56rsiki" path="res://objects/comp/exit_area.tscn" id="2_d7g0l"]
@@ -17,7 +17,6 @@
 [ext_resource type="PackedScene" uid="uid://ciegbyfrx5lf3" path="res://ui/pause_menu/pause_screen.tscn" id="15_3w868"]
 [ext_resource type="AudioStream" uid="uid://bupnj85mfcp5w" path="res://assets/into-the-night-uk-drill-music-20928.mp3" id="16_whef5"]
 [ext_resource type="PackedScene" uid="uid://cw37amsu34rrt" path="res://objects/comp/cut_line.tscn" id="17_ei0bj"]
-[ext_resource type="PackedScene" uid="uid://c1gnyd31ix048" path="res://objects/comp/re_start_lvl_comp.tscn" id="18_cx7jx"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_x6pi8"]
 light_mode = 1
@@ -312,5 +311,3 @@ environment = SubResource("Environment_l8yql")
 
 [node name="CutLine" parent="." instance=ExtResource("17_ei0bj")]
 default_color = Color(3, 0.128, 0.302, 1)
-
-[node name="ReStartLvlComp" parent="." instance=ExtResource("18_cx7jx")]
