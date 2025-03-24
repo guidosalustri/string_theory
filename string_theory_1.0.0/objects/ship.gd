@@ -257,6 +257,8 @@ func restart_lvl() -> void:
 func explode() -> void:
 	animation_player.play("asteroid_die")
 	set_process(false)
+	set_deferred("monitoring", true)
+	set_deferred("monitorable", true)
 	cut_link.emit(false)
 
 func dim_light_on(turn_light_on: bool) -> void:

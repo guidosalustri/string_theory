@@ -84,7 +84,7 @@ script = ExtResource("1_ydxyn")
 stars_trail = [NodePath("Constellation/Star"), NodePath("Constellation/Star2"), NodePath("Constellation/Star3"), NodePath("Constellation/Star4"), NodePath("Constellation/Star5"), NodePath("Constellation/Star4"), NodePath("Constellation/Star3"), NodePath("Constellation/Star6"), NodePath("Constellation/Star7"), NodePath("Constellation/Star6"), NodePath("Constellation/Star8"), NodePath("Constellation/Star9"), NodePath("Constellation/Star10"), NodePath("Constellation/Star9"), NodePath("Constellation/Star8"), NodePath("Constellation/Star"), NodePath("Constellation/Star11"), NodePath("Constellation/Star12")]
 
 [node name="CanvasModulate2" type="CanvasModulate" parent="."]
-color = Color(0.0218252, 0.0212845, 0.0214185, 1)
+color = Color(0.0235294, 0.0196078, 0.0196078, 1)
 
 [node name="ExitArea" parent="." instance=ExtResource("2_d7g0l")]
 position = Vector2(2368, 256)
@@ -100,7 +100,7 @@ script = ExtResource("3_d7yul")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="SpaceBackground"]
 light_mask = 5
-color = Color(0.0235294, 0.0196078, 0.0196078, 1)
+color = Color(0.0666667, 0.0627451, 0.0666667, 1)
 
 [node name="LinkLineShip" type="Line2D" parent="."]
 modulate = Color(1.5, 1.5, 1.5, 1)
