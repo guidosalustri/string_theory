@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://bxfevggvxo634" path="res://assets/background/space_background.tscn" id="1_ma2qx"]
 [ext_resource type="Texture2D" uid="uid://cl16ohu7hooi0" path="res://assets/planet.png" id="3_ys2le"]
 [ext_resource type="Texture2D" uid="uid://b4atip1kb2j28" path="res://assets/planet_large.png" id="4_6aqw1"]
-[ext_resource type="Shader" path="res://assets/group_outline.gdshader" id="4_8r1m4"]
+[ext_resource type="Shader" uid="uid://7xet2lboo2oi" path="res://assets/group_outline.gdshader" id="4_8r1m4"]
 [ext_resource type="Texture2D" uid="uid://cau3obwh302u" path="res://cutscene/planet_blue.png" id="5_y1uo4"]
 [ext_resource type="Texture2D" uid="uid://cwwgbu82bxbho" path="res://cutscene/planet_purple.png" id="6_yrm1t"]
 [ext_resource type="Texture2D" uid="uid://dhib4dlrcw7k8" path="res://cutscene/planet_orange.png" id="7_rr36c"]
@@ -82,8 +82,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_kxrjc"]
 _data = {
-"RESET": SubResource("Animation_a4747"),
-"spin": SubResource("Animation_jle7p")
+&"RESET": SubResource("Animation_a4747"),
+&"spin": SubResource("Animation_jle7p")
 }
 
 [sub_resource type="Animation" id="Animation_f1y2k"]
@@ -120,8 +120,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_sr0vt"]
 _data = {
-"RESET": SubResource("Animation_f1y2k"),
-"clockwise_spin": SubResource("Animation_tr7ud")
+&"RESET": SubResource("Animation_f1y2k"),
+&"clockwise_spin": SubResource("Animation_tr7ud")
 }
 
 [sub_resource type="Environment" id="Environment_1jdmk"]

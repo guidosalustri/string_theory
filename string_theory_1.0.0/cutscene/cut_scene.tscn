@@ -1,8 +1,8 @@
 [gd_scene load_steps=23 format=3 uid="uid://dd8x5lnqej66y"]
 
-[ext_resource type="Script" path="res://cutscene/cut_scene.gd" id="1_j06uc"]
-[ext_resource type="Shader" path="res://cutscene/blur.gdshader" id="2_2e1hg"]
-[ext_resource type="Script" path="res://cutscene/camera_cut_scene.gd" id="2_op7gm"]
+[ext_resource type="Script" uid="uid://biwgltcckdpau" path="res://cutscene/cut_scene.gd" id="1_j06uc"]
+[ext_resource type="Shader" uid="uid://dodbo1f6pi8st" path="res://cutscene/blur.gdshader" id="2_2e1hg"]
+[ext_resource type="Script" uid="uid://cfre2exo4ean0" path="res://cutscene/camera_cut_scene.gd" id="2_op7gm"]
 [ext_resource type="PackedScene" uid="uid://gu842no2aiky" path="res://cutscene/background_asteroids.tscn" id="3_ckfui"]
 [ext_resource type="Texture2D" uid="uid://bniyrxn3r2v8h" path="res://assets/ship.png" id="3_mwyjp"]
 [ext_resource type="PackedScene" uid="uid://cs72uiiumr18y" path="res://cutscene/particles_ship_dash.tscn" id="5_r316d"]
@@ -18,7 +18,7 @@ shader_parameter/blur_scale = Vector2(0, 0)
 viewport_path = NodePath("SubViewport")
 
 [sub_resource type="Curve" id="Curve_ukiwf"]
-max_value = 200.0
+_limits = [0.0, 200.0, 0.0, 1.0]
 _data = [Vector2(0, 200), 0.0, -759.091, 0, 1, Vector2(0.263473, 0), -759.091, 0.0, 1, 0]
 point_count = 2
 
@@ -193,9 +193,9 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_kr4ww"]
 _data = {
-"Light_speed": SubResource("Animation_b0qdg"),
-"RESET": SubResource("Animation_slcna"),
-"set_the_ship": SubResource("Animation_b2vot")
+&"Light_speed": SubResource("Animation_b0qdg"),
+&"RESET": SubResource("Animation_slcna"),
+&"set_the_ship": SubResource("Animation_b2vot")
 }
 
 [node name="CutScene" type="Node"]
@@ -236,8 +236,8 @@ position = Vector2(-29, 0)
 rotation = 1.5708
 emitting = false
 amount = 64
-process_material = SubResource("ParticleProcessMaterial_2dj3a")
 texture = ExtResource("8_vccei")
+process_material = SubResource("ParticleProcessMaterial_2dj3a")
 
 [node name="PointLight2D" type="PointLight2D" parent="Sprite2D"]
 energy = 0.7
@@ -249,46 +249,13 @@ texture_scale = 15.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_kr4ww")
+&"": SubResource("AnimationLibrary_kr4ww")
 }
 autoplay = "RESET"
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Dialogue_cutscene" parent="CanvasLayer" instance=ExtResource("9_06lu3")]
-metadata/_edit_vertical_guides_ = [152.0]
-metadata/_edit_horizontal_guides_ = [917.0]
-
-[node name="Portrait" parent="CanvasLayer/Dialogue_cutscene" index="1"]
-layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_left = 151.0
-offset_top = -165.0
-offset_right = 151.0
-offset_bottom = -165.0
-grow_vertical = 0
-
-[node name="NinePatchRect2" parent="CanvasLayer/Dialogue_cutscene" index="2"]
-self_modulate = Color(1, 1, 1, 0.764706)
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.168
-anchor_top = 0.757
-anchor_right = 0.992
-anchor_bottom = 0.884
-offset_left = -17.56
-offset_top = -33.5601
-offset_right = 0.359863
-offset_bottom = 42.2799
-grow_horizontal = 2
-grow_vertical = 0
-metadata/_edit_use_anchors_ = true
-
-[node name="RichTextLabel" parent="CanvasLayer/Dialogue_cutscene/NinePatchRect2" index="0"]
-grow_horizontal = 2
-grow_vertical = 2
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 2.6
@@ -296,5 +263,3 @@ one_shot = true
 autostart = true
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
-
-[editable path="CanvasLayer/Dialogue_cutscene"]

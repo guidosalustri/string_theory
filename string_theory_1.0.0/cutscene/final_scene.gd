@@ -5,6 +5,8 @@ extends Node2D
 @onready var confettis: Node2D = $Confettis
 @onready var _rich_text_label: RichTextLabel = $Control/Label
 @onready var timer: Timer = $Timer
+@onready var node_2d: Node2D = $Control2/Border/Frame/Node2D
+@onready var node_2d2: Node2D = $Control3/Border/Frame/Node2D
 
 @export var main_menu: PackedScene
 
@@ -27,3 +29,5 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	path_follow_2d.progress += 900 * delta
+	node_2d.rotation -= PI * delta
+	node_2d2.rotation -= PI * delta

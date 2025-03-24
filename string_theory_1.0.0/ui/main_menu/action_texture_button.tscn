@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://b8qopo2fmxwmm" path="res://ui/main_menu/menu_action_bg_pressed.png" id="2_hoq48"]
 [ext_resource type="Texture2D" uid="uid://bymuybueh17wq" path="res://ui/main_menu/menu_action_bg_disabled.png" id="3_eqvsy"]
 [ext_resource type="Texture2D" uid="uid://c538d8sq6lnrr" path="res://ui/main_menu/menu_action_bg_focused.png" id="4_d060j"]
-[ext_resource type="Script" path="res://ui/main_menu/action_texture_button.gd" id="5_274oy"]
+[ext_resource type="Script" uid="uid://cdpspe7rregfw" path="res://ui/main_menu/action_texture_button.gd" id="5_274oy"]
 
 [node name="ActionTextureButton" type="TextureButton"]
 offset_right = 334.0

@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://b1xjjudghnfhm"]
 
 [ext_resource type="PackedScene" uid="uid://bo2nk72scwry6" path="res://objects/obstacles/particles_black_hole_2d.tscn" id="1_6y4hc"]
-[ext_resource type="Script" path="res://objects/obstacles/black_hole.gd" id="1_a635d"]
+[ext_resource type="Script" uid="uid://c1i11cbop2wbq" path="res://objects/obstacles/black_hole.gd" id="1_a635d"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bitrt"]
 radius = 75.0

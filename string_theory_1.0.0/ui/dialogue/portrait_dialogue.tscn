@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://b8n30pc1qe5ri"]
 
-[ext_resource type="Script" path="res://ui/dialogue/portrait_dialogue.gd" id="1_x7wa6"]
+[ext_resource type="Script" uid="uid://d0xi6i2mt5hiu" path="res://ui/dialogue/portrait_dialogue.gd" id="1_x7wa6"]
 [ext_resource type="Texture2D" uid="uid://yjjrd3e6s26w" path="res://assets/crew.png" id="2_useky"]
 [ext_resource type="Texture2D" uid="uid://tsf63gb1jnta" path="res://assets/circle_mask.png" id="4_x3jw2"]
 [ext_resource type="Theme" uid="uid://dp1nmwxx5vbr5" path="res://ui/ui_samples_theme.tres" id="4_xyofg"]

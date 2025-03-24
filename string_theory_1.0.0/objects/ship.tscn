@@ -1,7 +1,7 @@
 [gd_scene load_steps=16 format=3 uid="uid://em4qfalchhhd"]
 
 [ext_resource type="Texture2D" uid="uid://bniyrxn3r2v8h" path="res://assets/ship.png" id="1_130qv"]
-[ext_resource type="Script" path="res://objects/ship.gd" id="1_u1532"]
+[ext_resource type="Script" uid="uid://de6wuudcwljov" path="res://objects/ship.gd" id="1_u1532"]
 [ext_resource type="PackedScene" uid="uid://2rsowtwrtfr2" path="res://assets/ship/main_thruster/main_thruster.tscn" id="4_2cjet"]
 [ext_resource type="PackedScene" uid="uid://bvtilym2q6v6b" path="res://assets/ship/side_thruster/side_thruster.tscn" id="5_8ryym"]
 [ext_resource type="Texture2D" uid="uid://d158xruba2vkk" path="res://assets/explosion_alt.png" id="5_wjuxj"]
@@ -183,9 +183,9 @@ tracks/2/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_itayj"]
 _data = {
-"RESET": SubResource("Animation_ukub7"),
-"asteroid_die": SubResource("Animation_c0uyr"),
-"die": SubResource("Animation_jqhsw")
+&"RESET": SubResource("Animation_ukub7"),
+&"asteroid_die": SubResource("Animation_c0uyr"),
+&"die": SubResource("Animation_jqhsw")
 }
 
 [sub_resource type="Curve" id="Curve_mfuy6"]
@@ -216,6 +216,8 @@ fill_to = Vector2(0.773504, 0.0940171)
 z_index = 5
 collision_mask = 31
 script = ExtResource("1_u1532")
+fuel_fill_rate = 1.0
+fuel_burn_rate = 1.5
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_130qv")
@@ -248,18 +250,18 @@ collide_with_bodies = false
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_itayj")
+&"": SubResource("AnimationLibrary_itayj")
 }
 
 [node name="BlastGPUParticles2D" type="GPUParticles2D" parent="."]
 unique_name_in_owner = true
 emitting = false
 amount = 2
-process_material = SubResource("ParticleProcessMaterial_xy3fy")
 texture = ExtResource("5_wjuxj")
 lifetime = 1.5
 one_shot = true
 explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_xy3fy")
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.5
@@ -267,9 +269,8 @@ one_shot = true
 autostart = true
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
-energy = 0.7
+energy = 0.4
 range_layer_min = -2
 range_item_cull_mask = 3
-shadow_enabled = true
 texture = SubResource("GradientTexture2D_7fiap")
 texture_scale = 19.0

@@ -1,6 +1,6 @@
 [gd_scene load_steps=17 format=3 uid="uid://cf8eyj6ujp34v"]
 
-[ext_resource type="Shader" path="res://ui/hud/fuelprogressbar.gdshader" id="1_me3u2"]
+[ext_resource type="Shader" uid="uid://ddussvfpy5c8h" path="res://ui/hud/fuelprogressbar.gdshader" id="1_me3u2"]
 
 [sub_resource type="Gradient" id="Gradient_cijoy"]
 offsets = PackedFloat32Array(0)
@@ -23,10 +23,10 @@ shader_parameter/value = 1.0
 shader_parameter/count = 1
 shader_parameter/margin = Vector2(0, 0.35)
 shader_parameter/shear_angle = -0.1
-shader_parameter/use_value_gradient = false
-shader_parameter/invert = false
 shader_parameter/gradient_x = SubResource("GradientTexture1D_rgvq8")
 shader_parameter/gradient_y = SubResource("GradientTexture1D_iy5vn")
+shader_parameter/use_value_gradient = false
+shader_parameter/invert = false
 
 [sub_resource type="Gradient" id="Gradient_a61hs"]
 offsets = PackedFloat32Array(0)
@@ -49,10 +49,10 @@ shader_parameter/value = 1.0
 shader_parameter/count = 15
 shader_parameter/margin = Vector2(0.15, 0.45)
 shader_parameter/shear_angle = -0.1
-shader_parameter/use_value_gradient = true
-shader_parameter/invert = false
 shader_parameter/gradient_x = SubResource("GradientTexture1D_oafcq")
 shader_parameter/gradient_y = SubResource("GradientTexture1D_kiugx")
+shader_parameter/use_value_gradient = true
+shader_parameter/invert = false
 
 [sub_resource type="Gradient" id="Gradient_6cljf"]
 offsets = PackedFloat32Array(0.0992647, 0.334559, 0.459559, 0.602941, 1)
@@ -75,10 +75,10 @@ shader_parameter/value = 0.939
 shader_parameter/count = 15
 shader_parameter/margin = Vector2(0.1, 0.45)
 shader_parameter/shear_angle = -0.1
-shader_parameter/use_value_gradient = true
-shader_parameter/invert = false
 shader_parameter/gradient_x = SubResource("GradientTexture1D_c5iiq")
 shader_parameter/gradient_y = SubResource("GradientTexture1D_fbx5j")
+shader_parameter/use_value_gradient = true
+shader_parameter/invert = false
 
 [node name="FuelBar" type="Control"]
 layout_mode = 3

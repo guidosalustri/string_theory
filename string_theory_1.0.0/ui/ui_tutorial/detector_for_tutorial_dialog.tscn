@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://d2xvfly2q0pnk"]
 
-[ext_resource type="Script" path="res://ui/ui_tutorial/detector_for_tutorial_dialog.gd" id="1_r7v6j"]
+[ext_resource type="Script" uid="uid://bt6dxclaog785" path="res://ui/ui_tutorial/detector_for_tutorial_dialog.gd" id="1_r7v6j"]
 [ext_resource type="Theme" uid="uid://dp1nmwxx5vbr5" path="res://ui/ui_samples_theme.tres" id="2_ltcwf"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_qrs8f"]
@@ -17,10 +17,10 @@ debug_color = Color(0.484641, 0.435492, 1, 0.42)
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
-offset_left = -286.0
-offset_top = -228.0
-offset_right = -246.0
-offset_bottom = -188.0
+offset_left = -178.0
+offset_top = 415.0
+offset_right = -138.0
+offset_bottom = 455.0
 theme = ExtResource("2_ltcwf")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Control"]

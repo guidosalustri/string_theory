@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://dudwdr0tw5i3g"]
 
-[ext_resource type="Script" path="res://tests/hud_test/progress_bar_ui.gd" id="2_c1nmb"]
+[ext_resource type="Script" uid="uid://b7f7lpoj6mf3x" path="res://tests/hud_test/progress_bar_ui.gd" id="2_c1nmb"]
 [ext_resource type="Theme" uid="uid://dp1nmwxx5vbr5" path="res://ui/ui_samples_theme.tres" id="3"]
 [ext_resource type="Texture2D" uid="uid://dnuqh834ty0d4" path="res://tests/hud_test/progressbar_fill.png" id="4"]
 [ext_resource type="Texture2D" uid="uid://det81b5fck85o" path="res://tests/hud_test/progressbar_back.png" id="5"]

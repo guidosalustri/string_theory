@@ -1,7 +1,7 @@
 [gd_scene load_steps=21 format=3 uid="uid://b6qyus7bgu1w3"]
 
-[ext_resource type="Script" path="res://ui/speedometer_and_fuel/gauge.gd" id="1_bs0cu"]
-[ext_resource type="Shader" path="res://ui/speedometer_and_fuel/gauge.gdshader" id="2_rxo2n"]
+[ext_resource type="Script" uid="uid://cvamcthkdqkws" path="res://ui/speedometer_and_fuel/gauge.gd" id="1_bs0cu"]
+[ext_resource type="Shader" uid="uid://c3gfub4jp6jwo" path="res://ui/speedometer_and_fuel/gauge.gdshader" id="2_rxo2n"]
 [ext_resource type="Theme" uid="uid://dp1nmwxx5vbr5" path="res://ui/ui_samples_theme.tres" id="3_kks3c"]
 [ext_resource type="Texture2D" uid="uid://c80urv8g2fvvv" path="res://ui/speedometer_and_fuel/lightining-bolt.png" id="4_qss3f"]
 
@@ -184,9 +184,9 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_6xqxj"]
 _data = {
-"RESET": SubResource("Animation_w04sm"),
-"empty_charge": SubResource("Animation_vjvse"),
-"full_charge": SubResource("Animation_q4hkl")
+&"RESET": SubResource("Animation_w04sm"),
+&"empty_charge": SubResource("Animation_vjvse"),
+&"full_charge": SubResource("Animation_q4hkl")
 }
 
 [node name="Gauge" type="Control"]

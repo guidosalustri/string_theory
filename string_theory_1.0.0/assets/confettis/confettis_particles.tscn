@@ -1,8 +1,8 @@
 [gd_scene load_steps=10 format=3 uid="uid://n7g8xtnt3qag"]
 
-[ext_resource type="Shader" path="res://assets/confettis/confettis_particles_visual.gdshader" id="1_4xawh"]
+[ext_resource type="Shader" uid="uid://ju3jqsovvqk0" path="res://assets/confettis/confettis_particles_visual.gdshader" id="1_4xawh"]
 [ext_resource type="Texture2D" uid="uid://duxphb43vpsr7" path="res://assets/confettis/circle_32x32.png" id="2_jw3dr"]
-[ext_resource type="Script" path="res://assets/confettis/confettis_particles.gd" id="3_y3sjq"]
+[ext_resource type="Script" uid="uid://bgy6q1kcmmp8u" path="res://assets/confettis/confettis_particles.gd" id="3_y3sjq"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ef5pu"]
 shader = ExtResource("1_4xawh")

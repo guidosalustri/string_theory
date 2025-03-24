@@ -78,6 +78,10 @@ func _ready() -> void:
 				ship.get_node("PointLight2D").hide()
 				timer.start()
 				hud.overcharged.disconnect(_overcharged_ship)
+				if canvas_layer_3:
+					for child in canvas_layer_3.get_children():
+						var tween_tutorial := create_tween()
+						tween_tutorial.tween_property(child, "modulate:a", 0, 0.3)
 		)
 	timer.timeout.connect(_on_timer_timeout)
 	#for pickup in pick_ups.get_children():
@@ -126,6 +130,7 @@ func _on_star_changed(star: Star)-> void:
 	if star != stars_trail[index]:
 		GameManager.data_collection.log_player_death(DataCollection.player_death_cause.STAR_COLISSION)
 		ship.explode()
+		return
 	elif not index == stars_trail.size()-1:
 		#phantom_camera_constellation.priority = 3
 		#timer.start()
@@ -178,8 +183,6 @@ func _unhandled_input(event: InputEvent) -> void:
 		phantom_camera_star.priority = 1
 
 func _on_timer_timeout() -> void:
-	if canvas_layer_3:
-		canvas_layer_3.hide()
 	cut_line.hide()
 	var tween_hud := create_tween()
 	tween_hud.tween_property(hud, "modulate:a", 0, 0.5)

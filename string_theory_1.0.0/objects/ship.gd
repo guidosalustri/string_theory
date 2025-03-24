@@ -257,17 +257,19 @@ func restart_lvl() -> void:
 func explode() -> void:
 	animation_player.play("asteroid_die")
 	set_process(false)
+	set_deferred("monitoring", true)
+	set_deferred("monitorable", true)
 	cut_link.emit(false)
 
 func dim_light_on(turn_light_on: bool) -> void:
 	#this should be carfully balance
 	if turn_light_on:
-		point_light_2d.texture_scale += 0.03
-		point_light_2d.energy += 0.001
+		point_light_2d.texture_scale += 0.015
+		point_light_2d.energy += 0.0008
 	else:
-		point_light_2d.texture_scale -= 0.05
-		point_light_2d.energy -= 0.004
-	var energy := clampf(point_light_2d.energy,0.3,0.7)
+		point_light_2d.texture_scale -= 0.015
+		point_light_2d.energy -= 0.0005
+	var energy := clampf(point_light_2d.energy,0.1,0.4)
 	var value := clampf(point_light_2d.texture_scale,3,19)
 	point_light_2d.texture_scale = value
 	point_light_2d.energy = energy

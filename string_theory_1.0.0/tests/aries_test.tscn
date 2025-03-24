@@ -1,16 +1,16 @@
 [gd_scene load_steps=28 format=3 uid="uid://ybilhl70y2hu"]
 
-[ext_resource type="Script" path="res://lvls/lvl.gd" id="1_sjy30"]
+[ext_resource type="Script" uid="uid://b1wf0gdhf0vhd" path="res://lvls/lvl.gd" id="1_sjy30"]
 [ext_resource type="PackedScene" uid="uid://dqjnkl56rsiki" path="res://objects/comp/exit_area.tscn" id="2_sv7eb"]
-[ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="3_t5tku"]
+[ext_resource type="Script" uid="uid://p8y27lj8qm0w" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="3_t5tku"]
 [ext_resource type="PackedScene" uid="uid://bxfevggvxo634" path="res://assets/background/space_background.tscn" id="4_yecxm"]
 [ext_resource type="PackedScene" uid="uid://em4qfalchhhd" path="res://objects/ship.tscn" id="5_68va2"]
 [ext_resource type="PackedScene" uid="uid://ul1ys48qmbs4" path="res://objects/star.tscn" id="6_dsmi0"]
 [ext_resource type="PackedScene" uid="uid://bp4febdu6vh5y" path="res://objects/obstacles/asteroid.tscn" id="7_p8yqt"]
-[ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="8_nq0uo"]
-[ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="9_w27xj"]
+[ext_resource type="Script" uid="uid://7sappikp3ig7" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="8_nq0uo"]
+[ext_resource type="Script" uid="uid://k2kyeodww6ki" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="9_w27xj"]
 [ext_resource type="FontFile" uid="uid://clffif4u7fy61" path="res://ui/Stacked pixel.ttf" id="10_ubvm3"]
-[ext_resource type="Shader" path="res://ui/blur_for_ui.gdshader" id="11_kpgh0"]
+[ext_resource type="Shader" uid="uid://dnbinwyvgk7bb" path="res://ui/blur_for_ui.gdshader" id="11_kpgh0"]
 [ext_resource type="PackedScene" uid="uid://bc8nepke0pagf" path="res://ui/hud/hud.tscn" id="12_pjq8s"]
 [ext_resource type="PackedScene" uid="uid://ciegbyfrx5lf3" path="res://ui/pause_menu/pause_screen.tscn" id="13_ve8mh"]
 [ext_resource type="AudioStream" uid="uid://bupnj85mfcp5w" path="res://assets/into-the-night-uk-drill-music-20928.mp3" id="14_he6wx"]
@@ -34,16 +34,16 @@ tracks/0/path = NodePath(".:default_color")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.266667, 0.766667, 1.03333, 1.53333, 1.8, 2.26667, 2.5, 3.2, 3.96667, 4.13333, 4.56667, 4.93333, 5.36667, 6),
+"times": PackedFloat32Array(0, 0.266667, 0.466667, 0.666667, 1.2, 1.4, 1.6, 2.06667, 2.26667, 2.46667, 3.2, 4.13333, 4.93333, 5.63333, 6),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [Color(0.302, 0.651, 3, 1), Color(3, 0.128, 0.302, 1), Color(0.302, 0.651, 3, 1), Color(3, 0.128, 0.302, 1), Color(0.302, 0.651, 3, 1), Color(3, 0.128, 0.302, 1), Color(0.302, 0.651, 3, 1), Color(3, 0.128, 0.302, 1), Color(3, 0.128, 0.302, 1), Color(0.302, 0.651, 3, 1), Color(0.302, 0.651, 3, 1), Color(3, 0.128, 0.302, 1), Color(0.302, 0.651, 3, 1), Color(3, 0.128, 0.302, 1), Color(3, 0.128, 0.302, 1)]
+"values": [Color(0.302, 0.651, 3, 1), Color(3, 0.128, 0.302, 1), Color(1, 1, 1, 1), Color(3, 0.128, 0.302, 1), Color(3, 0.128, 0.302, 1), Color(1, 1, 1, 1), Color(3, 0.128, 0.302, 1), Color(3, 0.128, 0.302, 1), Color(1, 1, 1, 1), Color(3, 0.128, 0.302, 1), Color(3, 0.128, 0.302, 1), Color(0.302, 0.651, 3, 1), Color(0.302, 0.651, 3, 1), Color(1, 1, 1, 1), Color(3, 0.128, 0.302, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_4m2av"]
 _data = {
-"RESET": SubResource("Animation_iwntf"),
-"blink": SubResource("Animation_8de3h")
+&"RESET": SubResource("Animation_iwntf"),
+&"blink": SubResource("Animation_8de3h")
 }
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_mua08"]
@@ -101,7 +101,7 @@ script = ExtResource("3_t5tku")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="SpaceBackground"]
 light_mask = 5
-color = Color(0.0235294, 0.0196078, 0.0196078, 1)
+color = Color(0.0666667, 0.0627451, 0.0666667, 1)
 
 [node name="LinkLineShip" type="Line2D" parent="."]
 modulate = Color(1.5, 1.5, 1.5, 1)
@@ -119,7 +119,7 @@ antialiased = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="LinkLineShip"]
 libraries = {
-"": SubResource("AnimationLibrary_4m2av")
+&"": SubResource("AnimationLibrary_4m2av")
 }
 
 [node name="LinkLineStars" type="Line2D" parent="."]
@@ -234,17 +234,17 @@ follow_viewport_enabled = true
 offset_right = 1920.0
 offset_bottom = 1080.0
 
-[node name="RichTextLabel" parent="CanvasLayer3/TutorialDialogUI" index="1"]
-offset_left = 1352.0
-offset_top = 695.0
-offset_right = 2177.0
-offset_bottom = 734.0
+[node name="RichTextLabel" parent="CanvasLayer3/TutorialDialogUI" index="0"]
+offset_left = 732.0
+offset_top = 226.0
+offset_right = 1557.0
+offset_bottom = 265.0
 
-[node name="RichTextLabel2" parent="CanvasLayer3/TutorialDialogUI" index="2"]
-offset_left = 2240.0
-offset_top = 565.0
-offset_right = 2873.0
-offset_bottom = 604.0
+[node name="RichTextLabel2" parent="CanvasLayer3/TutorialDialogUI" index="1"]
+offset_left = 1955.0
+offset_top = 23.0
+offset_right = 2588.0
+offset_bottom = 62.0
 
 [node name="DetectorForDialog" parent="CanvasLayer3" node_paths=PackedStringArray("dialog") instance=ExtResource("16_lnb7l")]
 position = Vector2(896, 576)

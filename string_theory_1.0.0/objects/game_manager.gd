@@ -23,7 +23,7 @@ var _lvl_fresh_start := false
 
 func call_cutscene() -> void:
 	_lvl_fresh_start = true
-	if lvl == lvls.size() - 1:# tendria que ser una flag corre la ultima cutscene y dsp entra a la final
+	if lvl == lvls.size():# - 1:# tendria que ser una flag corre la ultima cutscene y dsp entra a la final
 		# this could just go in the lvls array as "last lvl (13)"
 		# but is actually just a final cinematic or something.
 		data_collection.log_game_complete()

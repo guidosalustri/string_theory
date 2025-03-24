@@ -1,8 +1,8 @@
 [gd_scene load_steps=13 format=3 uid="uid://p60tmr6ajcyy"]
 
-[ext_resource type="Script" path="res://ui/main_menu/main_menu.gd" id="1_q02l5"]
+[ext_resource type="Script" uid="uid://b00h7lsfudnkh" path="res://ui/main_menu/main_menu.gd" id="1_q02l5"]
 [ext_resource type="Material" uid="uid://cgvnmpq6vnska" path="res://assets/background/space_material.tres" id="2_cw3ai"]
-[ext_resource type="Script" path="res://assets/background/space_background.gd" id="3_wqx65"]
+[ext_resource type="Script" uid="uid://btevi1uqbys7t" path="res://assets/background/space_background.gd" id="3_wqx65"]
 [ext_resource type="PackedScene" uid="uid://cgdat18qea2f5" path="res://ui/options/options.tscn" id="4_wwnm0"]
 [ext_resource type="Texture2D" uid="uid://enhad8bfjtmm" path="res://cutscene/asteroid.png" id="5_ar6ui"]
 [ext_resource type="Texture2D" uid="uid://b4atip1kb2j28" path="res://assets/planet_large.png" id="6_eibt2"]
@@ -68,8 +68,8 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_1aohc"]
 _data = {
-"RESET": SubResource("Animation_rllgk"),
-"planets": SubResource("Animation_a1lx5")
+&"RESET": SubResource("Animation_rllgk"),
+&"planets": SubResource("Animation_a1lx5")
 }
 
 [node name="MainMenu" type="Control"]
@@ -145,6 +145,6 @@ size_flags_vertical = 6
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_1aohc")
+&"": SubResource("AnimationLibrary_1aohc")
 }
 autoplay = "planets"
