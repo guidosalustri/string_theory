@@ -28,6 +28,11 @@ func log_attach_detach_to_star( action: ship_action, energy_level_normalized: fl
 	file.store_string( _attach_detach_to_star( time, action, energy_level_normalized ) )
 	file.flush()
 
+func log_aim_score( aim_score: float ) -> void:
+	var time := int(stopwatch_util.time() * 1000.0)
+	file.store_string( _aim_score(time, aim_score) )
+	file.flush()
+
 func log_level_start_complete( level_name: String, status: level_status ) -> void:
 	if status == level_status.START:
 		if stopwatch_util.is_stopped():
@@ -67,14 +72,17 @@ func log_run_out_of_fuel( ) -> void:
 	file.store_string( _run_out_of_fuel(time))
 	file.flush()
 
-func log_player_pos( pos: Vector2 ) -> void:
+func log_player_pos( pos: Vector2, rotation: float ) -> void:
 	var time := int(stopwatch_util.time() * 1000.0)
-	file.store_string( _player_pos(time, pos.x, pos.y))
+	file.store_string( _player_pos(time, pos.x, pos.y, rotation) )
 	file.flush()
 
 # String generator
 func _attach_detach_to_star( timestamp: int, action: ship_action, energy_level_normalized: float ) -> String:
 	return str( "[sad], ", str(timestamp), ", ", ship_action_value[action], ", ", str(energy_level_normalized), "\n" )
+
+func _aim_score( timestamp: int, aim_score: float ) -> String:
+	return str( "[as], ", str(timestamp), ", ", str(aim_score), "\n" )
 
 func _level_start_complete( timestamp: int, level_name: String, status: level_status ) -> String:
 	return str( "[elsc], ", str(timestamp), ", ",  level_name, ", ", level_status_value[status], "\n" )
@@ -94,5 +102,5 @@ func _player_death( timestamp: int, cause: player_death_cause) -> String:
 func _run_out_of_fuel( timestamp: int ) -> String:
 	return str("[rof], ", str(timestamp), "\n")
 
-func _player_pos( timestamp: int, x: float, y: float ) -> String:
-	return str("[pos], ", str(timestamp), ", ", str(x), ", ", str(y), "\n")
+func _player_pos( timestamp: int, x: float, y: float, rotation: float ) -> String:
+	return str("[pos], ", str(timestamp), ", ", str(x), ", ", str(y), ", ", rotation, "\n")

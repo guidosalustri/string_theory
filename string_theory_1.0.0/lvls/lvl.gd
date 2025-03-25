@@ -53,7 +53,7 @@ func _ready() -> void:
 	_blur.material.set_shader_parameter("tint_amount", 0.0)
 	_blur.material.set_shader_parameter("saturation", 1.0)
 	
-	ship.change_star.connect(_on_star_changed)
+	ship.star_entered.connect(_on_star_changed)
 	ship.cut_link.connect(cut_line_link)
 	animation_player.animation_finished.connect(func(_anim_name: StringName) -> void:
 		GameManager.data_collection.log_player_death(DataCollection.player_death_cause.STRAY)
@@ -146,8 +146,7 @@ func _on_star_changed(star: Star)-> void:
 		phantom_camera_star.append_follow_targets(stars_trail[index])
 		phantom_camera_ship.priority = 1
 		phantom_camera_star.priority = 2
-
-
+		ship.target_star = stars_trail[index]
 
 	var new_vector := star.global_position
 	link_line_ship.points[0] = new_vector

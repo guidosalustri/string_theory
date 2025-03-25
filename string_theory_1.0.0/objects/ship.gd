@@ -31,6 +31,8 @@ var has_fuel_left: bool:
 var has_fuel_right: bool:
 	get: return fuel_right > 0
 
+var target_star : Node2D
+
 enum States {
 	ENTER_LVL,
 	FLY,
@@ -46,8 +48,11 @@ func set_current_state(new_state: States) -> void:
 	if current_state == States.FLY and new_state == States.ORBIT:
 		GameManager.data_collection.log_attach_detach_to_star( DataCollection.ship_action.ATTACH, fuel / max_fuel )
 	elif current_state == States.ORBIT and new_state == States.FLY:
+		var v0 := Vector2( cos(rotation), sin(rotation) )
+		var v1 := Vector2( target_star.global_position ) - global_position
+		v1 = v1.normalized()
 		GameManager.data_collection.log_attach_detach_to_star( DataCollection.ship_action.DETACH, fuel / max_fuel )
-
+		GameManager.data_collection.log_aim_score( v0.dot(v1) )
 	current_state = new_state
 
 
@@ -57,7 +62,7 @@ var has_energy := true:
 func set_has_energy(energy_update: bool) -> void:
 	has_energy = energy_update
 
-signal change_star(star: Star)
+signal star_entered(star: Star)
 signal cut_link(was_black_hole: bool)
 
 var speed := 450.0
@@ -154,7 +159,7 @@ func _physics_process(delta: float) -> void:
 		fuel_left = min(fuel_left + fuel_fill_rate / 2.0 * delta, max_fuel)
 		fuel_right = min(fuel_right + fuel_fill_rate / 2.0 * delta, max_fuel)
 	
-	GameManager.data_collection.log_player_pos(position)
+	GameManager.data_collection.log_player_pos(position, rotation)
 
 # steering 
 func _move(delta: float, right: bool , left: bool, forward: bool) -> void:
@@ -229,7 +234,7 @@ func _on_area_entered(area: Area2D)->void:
 			var star : Star = area as Star
 			match star.current_state:
 				star.States.STAR:
-					change_star.emit(star)
+					star_entered.emit(star)
 					flag=true
 					pos1 = area.global_position
 				star.States.BLACK_HOLE:

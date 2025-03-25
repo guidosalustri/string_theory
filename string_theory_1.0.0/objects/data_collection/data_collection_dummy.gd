@@ -6,6 +6,9 @@ func start_write():
 func log_attach_detach_to_star( _action: ship_action, _energy_level_normalized: float ) -> void:
 	pass
 
+func log_aim_score( _aim_score: float ) -> void:
+	pass
+
 func log_level_start_complete( _level_name: String, _status: level_status ) -> void:
 	pass
 
@@ -24,5 +27,5 @@ func log_player_death( _cause: player_death_cause ) -> void:
 func log_run_out_of_fuel( ) -> void:
 	pass
 
-func log_player_pos( _pos: Vector2 ) -> void:
+func log_player_pos( _pos: Vector2, _rotation: float ) -> void:
 	pass
