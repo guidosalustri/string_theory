@@ -271,6 +271,6 @@ autostart = true
 [node name="PointLight2D" type="PointLight2D" parent="."]
 energy = 0.4
 range_layer_min = -2
-range_item_cull_mask = 3
+range_item_cull_mask = 7
 texture = SubResource("GradientTexture2D_7fiap")
 texture_scale = 19.0

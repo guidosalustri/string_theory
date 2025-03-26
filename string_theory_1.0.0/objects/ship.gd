@@ -2,6 +2,7 @@ class_name Ship extends Area2D
 
 @onready var side_thruster_left: Sprite2D = $Sprite2D/SideThrusterLeft
 @onready var side_thruster_right: Sprite2D = $Sprite2D/SideThrusterRight
+@onready var main_thruster: Line2D = $Sprite2D/MainThruster
 
 @onready var ray_cast_2d: RayCast2D = $RayCast2D
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
@@ -97,6 +98,7 @@ func _process(delta: float) -> void:
 				speed = clamp(speed, 0.0, max_speed)
 				var vel := (Vector2.RIGHT * speed).rotated(rotation)
 				translate(vel * delta)
+				main_thruster.power = 1.0
 			else:
 				if flag:
 					set_current_state(States.ORBIT)
@@ -134,6 +136,7 @@ func _process(delta: float) -> void:
 		States.EXIT_LVL:
 			target_offset+= Vector2(50,0)
 			_follow(delta, target.global_position + target_offset)
+			main_thruster.power = 1.0
 
 	if speed<=0:
 		if (not has_energy or lvls_with_not_foward) and not dying:

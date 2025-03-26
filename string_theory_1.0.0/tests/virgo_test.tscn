@@ -277,8 +277,8 @@ color = Color(0, 0, 0, 1)
 [node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer"]
 anchors_preset = 10
 anchor_right = 1.0
-offset_top = 128.0
-offset_bottom = 224.0
+offset_top = 108.0
+offset_bottom = 288.0
 grow_horizontal = 2
 theme_override_colors/default_color = Color(1, 0.835294, 0, 1)
 theme_override_fonts/normal_font = ExtResource("12_6vy7q")
