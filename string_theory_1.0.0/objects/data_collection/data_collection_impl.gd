@@ -14,7 +14,7 @@ func start_write():
 		datetime_dict.erase("year")
 		datetime_dict.erase("weekday")
 		var time := Time.get_datetime_string_from_datetime_dict(datetime_dict, false)
-		path = str( dir, "/log_", time, ".csv" )
+		path = str( dir, "/log", ".csv" )
 	else:
 		var dir := OS.get_user_data_dir()
 		path = str( dir, "/log.csv" )
