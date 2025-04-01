@@ -224,11 +224,11 @@ libraries = {
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 0
-offset_left = 146.994
-offset_top = -37.993
-offset_right = 441.994
-offset_bottom = 11.007
+offset_left = 174.994
+offset_top = -38.9958
+offset_right = 600.994
+offset_bottom = 10.0042
 theme = ExtResource("3_4qk8w")
 theme_override_colors/font_color = Color(0.937255, 0.992157, 0.372549, 1)
 theme_override_font_sizes/font_size = 48
-text = "Mega E-volts"
+text = "Giga E-volts"
