@@ -94,6 +94,12 @@ text = "Options"
 layout_mode = 2
 size_flags_horizontal = 4
 focus_neighbor_bottom = NodePath("../ActionTextureButton1")
+text = "Credits"
+
+[node name="ActionTextureButton4" parent="ButtonsVBoxContainer" instance=ExtResource("3_0nxyj")]
+layout_mode = 2
+size_flags_horizontal = 4
+focus_neighbor_bottom = NodePath("../ActionTextureButton1")
 text = "Exit"
 
 [node name="CursorMarker2D" type="Marker2D" parent="."]

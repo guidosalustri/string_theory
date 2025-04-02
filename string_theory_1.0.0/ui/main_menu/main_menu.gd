@@ -13,7 +13,6 @@ func _on_options_clicked() -> void:
 	main_menu_ui.hide()
 	options_screen.show()
 
-
 func _on_cancel_clicked() -> void:
 	options_screen.hide()
 	main_menu_ui.show()

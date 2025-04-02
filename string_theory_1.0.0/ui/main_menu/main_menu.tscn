@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://p60tmr6ajcyy"]
+[gd_scene load_steps=14 format=3 uid="uid://p60tmr6ajcyy"]
 
 [ext_resource type="Script" uid="uid://b00h7lsfudnkh" path="res://ui/main_menu/main_menu.gd" id="1_q02l5"]
 [ext_resource type="Material" uid="uid://cgvnmpq6vnska" path="res://assets/background/space_material.tres" id="2_cw3ai"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://dhib4dlrcw7k8" path="res://cutscene/planet_orange.png" id="7_i3qf4"]
 [ext_resource type="PackedScene" uid="uid://c5mhd08u6r1kd" path="res://ui/main_menu/ui_main_menu.tscn" id="7_uv4c6"]
 [ext_resource type="Texture2D" uid="uid://cwwgbu82bxbho" path="res://cutscene/planet_purple.png" id="8_471ar"]
+[ext_resource type="PackedScene" uid="uid://befjxgmhgj01d" path="res://ui/credits_page.tscn" id="9_4e78x"]
 
 [sub_resource type="Animation" id="Animation_rllgk"]
 length = 0.001
@@ -128,6 +129,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 size_flags_horizontal = 4
+
+[node name="CreditsPage" parent="." instance=ExtResource("9_4e78x")]
+visible = false
 
 [node name="MainMenuUI" parent="." instance=ExtResource("7_uv4c6")]
 layout_mode = 1

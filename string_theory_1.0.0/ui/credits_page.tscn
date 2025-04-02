@@ -1,0 +1,76 @@
+[gd_scene load_steps=3 format=3 uid="uid://befjxgmhgj01d"]
+
+[ext_resource type="Script" uid="uid://dk6tadwwd7lgc" path="res://ui/credits_page.gd" id="1_a3t5g"]
+[ext_resource type="Theme" uid="uid://dvowqtgyecjg1" path="res://ui/options_theme.tres" id="2_bp0ar"]
+
+[node name="CreditsPage" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_a3t5g")
+metadata/_edit_horizontal_guides_ = [540.0]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 803.0
+offset_top = 900.0
+offset_right = 1118.0
+offset_bottom = 1665.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GameBy" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_bp0ar")
+text = "GAME BY"
+
+[node name="Guido" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Gudo Salustri"
+
+[node name="Smbat" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Smbat Voskanyan"
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 150
+
+[node name="MusicBy" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_bp0ar")
+text = "MUSIC BY"
+
+[node name="Ani" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Ani Ulbricht"
+
+[node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 150
+
+[node name="AssetsBy" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_bp0ar")
+text = "ASSETS BY"
+
+[node name="GDQuest" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "GDQuest"
+
+[node name="MarginContainer3" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 150
+
+[node name="Also" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_bp0ar")
+text = "SPECIAL THANKS"
+
+[node name="Also2" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "imjp94"
