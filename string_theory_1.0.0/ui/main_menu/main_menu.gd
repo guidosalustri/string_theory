@@ -8,6 +8,8 @@ func _ready() -> void:
 	main_menu_ui.options_clicked.connect(_on_options_clicked)
 	options_screen.cancel_clicked.connect(_on_cancel_clicked)
 	GameManager.lvl = 0
+	
+	GameManager.play_in_menu_and_end_music()
 
 func _on_options_clicked() -> void:
 	main_menu_ui.hide()
