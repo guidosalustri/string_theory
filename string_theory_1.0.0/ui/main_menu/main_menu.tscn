@@ -132,6 +132,7 @@ size_flags_horizontal = 4
 
 [node name="CreditsPage" parent="." instance=ExtResource("9_4e78x")]
 visible = false
+layout_mode = 1
 
 [node name="MainMenuUI" parent="." instance=ExtResource("7_uv4c6")]
 layout_mode = 1
