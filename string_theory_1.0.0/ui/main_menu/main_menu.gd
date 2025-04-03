@@ -24,6 +24,7 @@ func _on_cancel_clicked() -> void:
 
 func _on_credits_over() -> void:
 	main_menu_ui.show()
+	main_menu_ui._set_buttons_disabled(false)
 
 func _on_credits_clicked() -> void:
 	main_menu_ui.hide()
