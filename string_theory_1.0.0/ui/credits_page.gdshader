@@ -19,5 +19,5 @@ void fragment() {
     }
 
     COLOR *= c;
-	COLOR.a = min( COLOR.a, smoothstep(1.0, 0.0, easeOutCubic( 2.0 * normalized_dist ) ) );
+	COLOR.a = mix( 0.0, COLOR.a, smoothstep(1.0, 0.0, easeOutCubic( 2.0 * normalized_dist ) ) );
 }

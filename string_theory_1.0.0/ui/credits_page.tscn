@@ -48,7 +48,7 @@ offset_top = 63.0
 offset_right = 473.0
 offset_bottom = 113.0
 theme_override_font_sizes/font_size = 36
-text = "Gudo Salustri"
+text = "Guido Salustri"
 horizontal_alignment = 1
 
 [node name="Smbat" type="Label" parent="VBoxContainer/CanvasGroup"]

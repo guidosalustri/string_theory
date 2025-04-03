@@ -4,24 +4,27 @@ extends Control
 
 signal credits_over
 
-func _ready() -> void:
-	container.modulate.a = 0.0
-	visibility_changed.connect( func() -> void: if visible: start_show() else: reset() )
+var showTween: Tween
 
 func start_show() -> void:
-	var move := get_tree().create_tween()
-	move.tween_property(container, "position:y", -385.0, 18.0)
-	move.parallel().tween_property(container, "modulate:a", 1.0, 1.5)
-	await move.finished
-	await get_tree().create_timer(1.0)
-	credits_over.emit()
-
-func reset() -> void:
-	container.position.y = 1000.0
-	container.modulate.a = 0.0
+	container.position.y = 1000
+	container.modulate.a = 1.0
+	show()
+	set_process_input(true)
+	showTween = create_tween()
+	# Scroll up
+	showTween.tween_property(container, "position:y", -385.0, 18.0)
+	showTween.tween_interval(0.5)
+	# Fade out
+	showTween.tween_property(container, "modulate:a", 0.0, 1.5)
+	showTween.tween_callback(hide)
+	showTween.tween_callback(credits_over.emit)
 
 func _unhandled_input(event: InputEvent) -> void:
-	if (Input.is_action_just_pressed("exit")):
+	if (event.is_action_pressed("exit")):
 		if (visible):
-			
+			set_process_input(false)
+			showTween.kill()
+			hide()
 			credits_over.emit()
+	
