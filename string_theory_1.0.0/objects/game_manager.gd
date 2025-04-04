@@ -63,6 +63,8 @@ func enable_data_collection() -> void:
 	data_collection.start_write()
 
 func play_in_menu_and_end_music() -> void:
+	if in_menu_and_end_music.playing:
+		return
 	if in_game_music_begin.playing:
 		_stop(in_game_music_begin)
 	if in_game_music_loop.playing:

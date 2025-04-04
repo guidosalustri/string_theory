@@ -11,6 +11,7 @@ extends Node2D
 @export var main_menu: PackedScene
 
 func _ready() -> void:
+	GameManager.play_in_menu_and_end_music()
 	smoke.emitting = true
 	for confetti in confettis.get_children():
 		confetti.pop_confettis()
