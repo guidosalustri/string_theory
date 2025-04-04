@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://cw0bs8bnlg3nh"]
+[gd_scene load_steps=17 format=3 uid="uid://cw0bs8bnlg3nh"]
 
 [ext_resource type="Script" uid="uid://cy77idmdspf8g" path="res://objects/game_manager.gd" id="1_nqyrl"]
 [ext_resource type="PackedScene" uid="uid://vug55rsbi18p" path="res://tests/taurus_test.tscn" id="2_e1qwd"]
@@ -11,6 +11,11 @@
 [ext_resource type="PackedScene" uid="uid://cgt0lqimggmo2" path="res://cutscene/final_scene.tscn" id="7_0f68c"]
 [ext_resource type="PackedScene" uid="uid://p60tmr6ajcyy" path="res://ui/main_menu/main_menu.tscn" id="8_dccl0"]
 [ext_resource type="PackedScene" uid="uid://b1b1qf5v7fp86" path="res://objects/data_collection/data_collection.tscn" id="11_14pkw"]
+[ext_resource type="AudioStream" uid="uid://be34m3h7oixhl" path="res://assets/audio/in-game-end.ogg" id="12_6yqrg"]
+[ext_resource type="AudioStream" uid="uid://c10l7ptmt85mx" path="res://assets/audio/in-game-loop.ogg" id="12_atkno"]
+[ext_resource type="AudioStream" uid="uid://0i84112nknjp" path="res://assets/audio/in-game-begin.ogg" id="12_yptnw"]
+[ext_resource type="AudioStream" uid="uid://5tauhk0cad57" path="res://assets/audio/menu.ogg" id="13_6yqrg"]
+[ext_resource type="AudioStream" uid="uid://rkr4tofnvpyx" path="res://assets/audio/dialogue.ogg" id="13_sss03"]
 
 [node name="Node" type="Node"]
 script = ExtResource("1_nqyrl")
@@ -20,3 +25,26 @@ final_scene = ExtResource("7_0f68c")
 main_menu = ExtResource("8_dccl0")
 
 [node name="DataCollection" parent="." instance=ExtResource("11_14pkw")]
+
+[node name="InGameMusicBegin" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("12_yptnw")
+volume_db = -40.0
+
+[node name="InGameMusicLoop" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("12_atkno")
+volume_db = -40.0
+parameters/looping = true
+
+[node name="InGameMusicEnd" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("12_6yqrg")
+volume_db = -40.0
+
+[node name="MenuAndEndingMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("13_6yqrg")
+volume_db = -40.0
+parameters/looping = true
+
+[node name="DialogueMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("13_sss03")
+volume_db = -40.0
+parameters/looping = true

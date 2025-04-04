@@ -65,6 +65,7 @@ func _ready() -> void:
 	stars_trail[-1].area_entered.connect(func (_area: Area2D):
 		if index == stars_trail.size()-1:
 			if stars_trail[-1].current_state == stars_trail[-1].States.STAR:
+				GameManager.play_in_game_music_end()
 				await get_tree().create_timer(0.00000000000001).timeout
 				GameManager.data_collection.log_level_start_complete(
 					GameManager.lvls[GameManager.lvl].resource_path.get_file(),

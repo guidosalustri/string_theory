@@ -182,7 +182,8 @@ dialogue_per_scene_dic = {
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_a3skc")
-volume_db = -15.0
+volume_db = -18.0
+pitch_scale = 0.9
 bus = &"SFX"
 
 [node name="Portrait" parent="." instance=ExtResource("3_save7")]

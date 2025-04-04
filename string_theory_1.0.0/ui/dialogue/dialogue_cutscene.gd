@@ -23,6 +23,7 @@ func _ready() -> void:
 	if len(sentences) == 0:
 		hide()
 	else:
+		GameManager.play_dialogue_music()
 		_texture_button.pressed.connect(_advance_dialog)
 		_advance_dialog()
 	
