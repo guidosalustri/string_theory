@@ -7,13 +7,13 @@ signal credits_over
 var showTween: Tween
 
 func start_show() -> void:
-	container.position.y = 1000
+	container.position.y = 850
 	container.modulate.a = 1.0
 	show()
 	set_process_input(true)
 	showTween = create_tween()
 	# Scroll up
-	showTween.tween_property(container, "position:y", -385.0, 18.0)
+	showTween.tween_property(container, "position:y", -795.0, 16.0)
 	showTween.tween_interval(0.5)
 	# Fade out
 	showTween.tween_property(container, "modulate:a", 0.0, 1.5)
