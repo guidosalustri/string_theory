@@ -73,16 +73,16 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -167.0
-offset_top = -68.0
+offset_top = -53.0
 offset_right = 167.0
-offset_bottom = 228.0
+offset_bottom = 343.0
 grow_horizontal = 2
 grow_vertical = 2
 
 [node name="ActionTextureButton1" parent="ButtonsVBoxContainer" instance=ExtResource("3_0nxyj")]
 layout_mode = 2
 size_flags_horizontal = 4
-focus_neighbor_top = NodePath("../ActionTextureButton3")
+focus_neighbor_top = NodePath("../ActionTextureButton4")
 text = "Play"
 
 [node name="ActionTextureButton2" parent="ButtonsVBoxContainer" instance=ExtResource("3_0nxyj")]
@@ -91,6 +91,11 @@ size_flags_horizontal = 4
 text = "Options"
 
 [node name="ActionTextureButton3" parent="ButtonsVBoxContainer" instance=ExtResource("3_0nxyj")]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Credits"
+
+[node name="ActionTextureButton4" parent="ButtonsVBoxContainer" instance=ExtResource("3_0nxyj")]
 layout_mode = 2
 size_flags_horizontal = 4
 focus_neighbor_bottom = NodePath("../ActionTextureButton1")

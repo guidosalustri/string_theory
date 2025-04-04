@@ -1,0 +1,132 @@
+[gd_scene load_steps=5 format=3 uid="uid://befjxgmhgj01d"]
+
+[ext_resource type="Script" uid="uid://dk6tadwwd7lgc" path="res://ui/credits_page.gd" id="1_a3t5g"]
+[ext_resource type="Shader" uid="uid://b5x2tr53jmge0" path="res://ui/credits_page.gdshader" id="2_a3t5g"]
+[ext_resource type="Theme" uid="uid://dvowqtgyecjg1" path="res://ui/options_theme.tres" id="2_bp0ar"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_a3t5g"]
+shader = ExtResource("2_a3t5g")
+
+[node name="CreditsPage" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_a3t5g")
+metadata/_edit_horizontal_guides_ = [540.0]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -236.0
+offset_top = 460.0
+offset_right = 237.0
+offset_bottom = 1440.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CanvasGroup" type="CanvasGroup" parent="VBoxContainer"]
+material = SubResource("ShaderMaterial_a3t5g")
+
+[node name="GameBy" type="Label" parent="VBoxContainer/CanvasGroup"]
+offset_right = 473.0
+offset_bottom = 59.0
+theme = ExtResource("2_bp0ar")
+theme_override_colors/font_color = Color(0.87, 0.6612, 0.087, 1)
+theme_override_font_sizes/font_size = 72
+text = "GAME BY"
+horizontal_alignment = 1
+
+[node name="Guido" type="Label" parent="VBoxContainer/CanvasGroup"]
+offset_top = 63.0
+offset_right = 473.0
+offset_bottom = 113.0
+theme_override_font_sizes/font_size = 36
+text = "Guido Salustri"
+horizontal_alignment = 1
+
+[node name="Smbat" type="Label" parent="VBoxContainer/CanvasGroup"]
+offset_top = 117.0
+offset_right = 473.0
+offset_bottom = 167.0
+theme_override_font_sizes/font_size = 36
+text = "Smbat Voskanyan"
+horizontal_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/CanvasGroup"]
+offset_top = 171.0
+offset_right = 473.0
+offset_bottom = 321.0
+theme_override_constants/margin_top = 150
+
+[node name="MusicBy" type="Label" parent="VBoxContainer/CanvasGroup"]
+offset_top = 325.0
+offset_right = 473.0
+offset_bottom = 384.0
+theme = ExtResource("2_bp0ar")
+theme_override_colors/font_color = Color(0.87, 0.6612, 0.087, 1)
+theme_override_font_sizes/font_size = 72
+text = "MUSIC BY"
+horizontal_alignment = 1
+
+[node name="Ani" type="Label" parent="VBoxContainer/CanvasGroup"]
+offset_top = 388.0
+offset_right = 473.0
+offset_bottom = 438.0
+theme_override_font_sizes/font_size = 36
+text = "Ani Ulbricht"
+horizontal_alignment = 1
+
+[node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer/CanvasGroup"]
+offset_top = 442.0
+offset_right = 473.0
+offset_bottom = 592.0
+theme_override_constants/margin_top = 150
+
+[node name="AssetsBy" type="Label" parent="VBoxContainer/CanvasGroup"]
+offset_top = 596.0
+offset_right = 473.0
+offset_bottom = 655.0
+theme = ExtResource("2_bp0ar")
+theme_override_colors/font_color = Color(0.87, 0.6612, 0.087, 1)
+theme_override_font_sizes/font_size = 72
+text = "ASSETS BY"
+horizontal_alignment = 1
+
+[node name="GDQuest" type="Label" parent="VBoxContainer/CanvasGroup"]
+offset_top = 659.0
+offset_right = 473.0
+offset_bottom = 709.0
+theme_override_font_sizes/font_size = 36
+text = "GDQuest"
+horizontal_alignment = 1
+
+[node name="MarginContainer3" type="MarginContainer" parent="VBoxContainer/CanvasGroup"]
+offset_top = 713.0
+offset_right = 473.0
+offset_bottom = 863.0
+theme_override_constants/margin_top = 150
+
+[node name="Also" type="Label" parent="VBoxContainer/CanvasGroup"]
+offset_top = 867.0
+offset_right = 473.0
+offset_bottom = 926.0
+theme = ExtResource("2_bp0ar")
+theme_override_colors/font_color = Color(0.87, 0.6612, 0.087, 1)
+theme_override_font_sizes/font_size = 72
+text = "SPECIAL THANKS"
+vertical_alignment = 1
+
+[node name="imjp94" type="Label" parent="VBoxContainer/CanvasGroup"]
+offset_top = 930.0
+offset_right = 473.0
+offset_bottom = 980.0
+theme_override_font_sizes/font_size = 36
+text = "imjp94"
+horizontal_alignment = 1
