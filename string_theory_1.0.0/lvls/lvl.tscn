@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://ul1ys48qmbs4" path="res://objects/star.tscn" id="4_voijg"]
 [ext_resource type="Script" uid="uid://7sappikp3ig7" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="7_elhit"]
 [ext_resource type="Script" uid="uid://k2kyeodww6ki" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="8_0q563"]
-[ext_resource type="PackedScene" uid="uid://bp4febdu6vh5y" path="res://objects/obstacles/asteroid.tscn" id="8_yvmbm"]
+[ext_resource type="PackedScene" uid="uid://bp4febdu6vh5y" path="res://objects/obstacles/pivot_asteroid.tscn" id="8_yvmbm"]
 [ext_resource type="PackedScene" uid="uid://dqrl1w65sj140" path="res://objects/comp/spinner_black_hole.tscn" id="9_p1j8f"]
 [ext_resource type="AudioStream" uid="uid://bupnj85mfcp5w" path="res://assets/into-the-night-uk-drill-music-20928.mp3" id="10_mbfnk"]
 [ext_resource type="Shader" uid="uid://dnbinwyvgk7bb" path="res://ui/blur_for_ui.gdshader" id="11_0t7yb"]

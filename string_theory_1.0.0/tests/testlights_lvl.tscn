@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://kc7sbsi06kf0"]
+[gd_scene load_steps=29 format=3 uid="uid://kc7sbsi06kf0"]
 
 [ext_resource type="Script" uid="uid://b1wf0gdhf0vhd" path="res://lvls/lvl.gd" id="1_o8ccb"]
 [ext_resource type="PackedScene" uid="uid://dqjnkl56rsiki" path="res://objects/comp/exit_area.tscn" id="2_4sa5c"]
@@ -7,8 +7,9 @@
 [ext_resource type="PackedScene" uid="uid://bxfevggvxo634" path="res://assets/background/space_background.tscn" id="4_jmc6q"]
 [ext_resource type="PackedScene" uid="uid://em4qfalchhhd" path="res://objects/ship.tscn" id="5_rweyk"]
 [ext_resource type="PackedScene" uid="uid://ul1ys48qmbs4" path="res://objects/star.tscn" id="6_5ja75"]
-[ext_resource type="PackedScene" uid="uid://bp4febdu6vh5y" path="res://objects/obstacles/asteroid.tscn" id="7_uowiu"]
+[ext_resource type="PackedScene" uid="uid://bp4febdu6vh5y" path="res://objects/obstacles/pivot_asteroid.tscn" id="7_uowiu"]
 [ext_resource type="PackedScene" uid="uid://b1xjjudghnfhm" path="res://objects/obstacles/black_hole.tscn" id="8_u5r8w"]
+[ext_resource type="PackedScene" uid="uid://bttykdc0l1xxq" path="res://objects/comp/spinner_obstacles.tscn" id="9_6aylv"]
 [ext_resource type="Script" uid="uid://7sappikp3ig7" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="10_p8b6b"]
 [ext_resource type="Script" uid="uid://k2kyeodww6ki" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="11_8d1jh"]
 [ext_resource type="FontFile" uid="uid://clffif4u7fy61" path="res://ui/Stacked pixel.ttf" id="12_y28ku"]
@@ -91,6 +92,7 @@ position = Vector2(2379, 466)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(1020, 510.5)
+process_callback = 0
 position_smoothing_speed = 2.0
 
 [node name="PhantomCameraHost" type="Node" parent="Camera2D"]
@@ -149,10 +151,18 @@ anticlockwise = true
 
 [node name="Star2" parent="Constellation" instance=ExtResource("6_5ja75")]
 position = Vector2(539, -209)
-black_hole_on_star = true
 
 [node name="blackHole" parent="Constellation/Star2" instance=ExtResource("8_u5r8w")]
 position = Vector2(-629, 618)
+
+[node name="SpinnerObstacles" parent="Constellation/Star2" node_paths=PackedStringArray("obstacles") instance=ExtResource("9_6aylv")]
+obstacles = [NodePath("blackHole"), NodePath("blackHole2")]
+radius = 350.0
+rotation_speed = 2.7
+
+[node name="blackHole" parent="Constellation/Star2/SpinnerObstacles" instance=ExtResource("8_u5r8w")]
+
+[node name="blackHole2" parent="Constellation/Star2/SpinnerObstacles" instance=ExtResource("8_u5r8w")]
 
 [node name="Star3" parent="Constellation" instance=ExtResource("6_5ja75")]
 position = Vector2(1536, -128)

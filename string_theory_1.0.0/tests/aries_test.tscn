@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bxfevggvxo634" path="res://assets/background/space_background.tscn" id="4_yecxm"]
 [ext_resource type="PackedScene" uid="uid://em4qfalchhhd" path="res://objects/ship.tscn" id="5_68va2"]
 [ext_resource type="PackedScene" uid="uid://ul1ys48qmbs4" path="res://objects/star.tscn" id="6_dsmi0"]
-[ext_resource type="PackedScene" uid="uid://bp4febdu6vh5y" path="res://objects/obstacles/asteroid.tscn" id="7_p8yqt"]
+[ext_resource type="PackedScene" uid="uid://bp4febdu6vh5y" path="res://objects/obstacles/pivot_asteroid.tscn" id="7_p8yqt"]
 [ext_resource type="Script" uid="uid://7sappikp3ig7" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="8_nq0uo"]
 [ext_resource type="Script" uid="uid://k2kyeodww6ki" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="9_w27xj"]
 [ext_resource type="FontFile" uid="uid://clffif4u7fy61" path="res://ui/Stacked pixel.ttf" id="10_ubvm3"]
@@ -92,6 +92,7 @@ position = Vector2(3968, 320)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(576, 544)
+process_callback = 0
 position_smoothing_speed = 2.0
 
 [node name="PhantomCameraHost" type="Node" parent="Camera2D"]

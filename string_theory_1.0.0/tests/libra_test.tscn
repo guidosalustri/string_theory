@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://em4qfalchhhd" path="res://objects/ship.tscn" id="5_e0ntv"]
 [ext_resource type="PackedScene" uid="uid://ul1ys48qmbs4" path="res://objects/star.tscn" id="6_jbir8"]
 [ext_resource type="PackedScene" uid="uid://b1xjjudghnfhm" path="res://objects/obstacles/black_hole.tscn" id="7_x4hgf"]
-[ext_resource type="PackedScene" uid="uid://bp4febdu6vh5y" path="res://objects/obstacles/asteroid.tscn" id="8_rd00a"]
+[ext_resource type="PackedScene" uid="uid://bp4febdu6vh5y" path="res://objects/obstacles/pivot_asteroid.tscn" id="8_rd00a"]
 [ext_resource type="Script" uid="uid://7sappikp3ig7" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="9_i0ox4"]
 [ext_resource type="Script" uid="uid://k2kyeodww6ki" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="10_o62rs"]
 [ext_resource type="FontFile" uid="uid://clffif4u7fy61" path="res://ui/Stacked pixel.ttf" id="11_w1oki"]
@@ -90,6 +90,7 @@ position = Vector2(3264, 64)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(1056, 384)
+process_callback = 0
 position_smoothing_speed = 2.0
 
 [node name="PhantomCameraHost" type="Node" parent="Camera2D"]
@@ -117,7 +118,7 @@ antialiased = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="LinkLineShip"]
 libraries = {
-"": SubResource("AnimationLibrary_4m2av")
+&"": SubResource("AnimationLibrary_4m2av")
 }
 
 [node name="LinkLineStars" type="Line2D" parent="."]
@@ -135,7 +136,6 @@ antialiased = true
 
 [node name="Ship" parent="." instance=ExtResource("5_e0ntv")]
 position = Vector2(832, 384)
-turn_right = false
 
 [node name="Constellation" type="Node2D" parent="."]
 

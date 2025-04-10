@@ -164,7 +164,7 @@ func _on_star_changed(star: Star)-> void:
 	if particles_vector != new_vector:
 		var particle_link = particles_scene.instantiate()
 		link_line_stars.add_child(particle_link)
-		particle_link.emitting = true
+		particle_link.emitting = false
 		particle_link.position = ((new_vector - particles_vector)*0.5) + particles_vector
 		particle_link.rotation = get_angle_to(new_vector - particles_vector)
 		particle_link.light_pos(particle_link.position)
@@ -176,6 +176,8 @@ func _on_star_changed(star: Star)-> void:
 		# we set the emitting box to the line size
 		particle_link.process_material.emission_box_extents.x = (new_vector - particles_vector).length() * 0.5
 		particle_link.light_lenght((new_vector - particles_vector).length())
+		await get_tree().create_timer(0.05).timeout
+		particle_link.emitting = true
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("spin"):
