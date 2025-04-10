@@ -85,17 +85,18 @@ _data = {
 &"spin": SubResource("Animation_583tx")
 }
 
-[sub_resource type="Gradient" id="Gradient_tfi8l"]
+[sub_resource type="Gradient" id="Gradient_5bhxj"]
 colors = PackedColorArray(1.8, 1, 1, 1, 0, 0, 0, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_bvlca"]
-gradient = SubResource("Gradient_tfi8l")
+gradient = SubResource("Gradient_5bhxj")
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(0.91453, 0.24359)
 
 [node name="Asteroid" type="Area2D" groups=["asteroid", "obstacles"]]
 z_index = 1
+scale = Vector2(0.6, 0.6)
 collision_layer = 4
 script = ExtResource("1_5bhxj")
 

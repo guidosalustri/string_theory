@@ -1,0 +1,28 @@
+[gd_scene load_steps=6 format=3 uid="uid://d4du8b30u7feq"]
+
+[ext_resource type="Script" uid="uid://bu06ak40ptjha" path="res://path_obstacles.gd" id="1_02kl1"]
+[ext_resource type="PackedScene" uid="uid://bcslqepvdrl6n" path="res://objects/obstacles/asteroid.tscn" id="2_um245"]
+[ext_resource type="PackedScene" uid="uid://4tr4k3y5eyvc" path="res://trail_asteroid.tscn" id="3_um245"]
+[ext_resource type="PackedScene" uid="uid://dpdhgcq2h8eh4" path="res://asteroid_trail.tscn" id="4_dlnws"]
+
+[sub_resource type="Curve2D" id="Curve2D_dlnws"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 649, 354)
+}
+point_count = 2
+
+[node name="Path2D" type="Path2D"]
+curve = SubResource("Curve2D_dlnws")
+script = ExtResource("1_02kl1")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="."]
+rotation = 0.499347
+loop = false
+
+[node name="Asteroid" parent="PathFollow2D" instance=ExtResource("2_um245")]
+
+[node name="TrailAsteroid" parent="PathFollow2D/Asteroid" instance=ExtResource("3_um245")]
+
+[node name="AsteroidTrail" parent="PathFollow2D/Asteroid" instance=ExtResource("4_dlnws")]
+position = Vector2(2.26125, 0.665071)
