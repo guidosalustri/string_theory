@@ -165,7 +165,7 @@ func _physics_process(delta: float) -> void:
 	GameManager.data_collection.log_player_pos(position, rotation)
 
 # steering 
-func _move(delta: float, right: bool , left: bool, forward: bool) -> void:
+func _move(delta: float, right: bool, left: bool, forward: bool) -> void:
 
 	speed += (1.0 if Input.is_action_pressed("move_up") and \
 	forward and has_energy else -1.0) * acceleration * delta

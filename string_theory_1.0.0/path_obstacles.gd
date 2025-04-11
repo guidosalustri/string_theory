@@ -6,16 +6,12 @@ extends Path2D
 @onready var trail_asteroid: GPUParticles2D = $PathFollow2D/Asteroid/TrailAsteroid
 @onready var asteroid_trail: Line2D = $PathFollow2D/Asteroid/AsteroidTrail
 
-
-
 var way_back := false
 
 func _ready() -> void:
-	asteroid.activate(1)
-	await asteroid.animation_player.animation_finished
-	asteroid.animation_player.play("spin")
-	#trail_asteroid.emitting = true
-	asteroid_trail.power = 1
+	set_process(false)
+	asteroid_trail.light_collision_on(false)
+	asteroid.light_on(false)
 
 func _process(delta: float) -> void:
 	if way_back:
@@ -35,4 +31,13 @@ func _process(delta: float) -> void:
 		asteroid_trail.rotation = PI
 		await get_tree().create_timer(0.1).timeout
 		asteroid_trail.show()
-	
+
+func activate(_time_to_activate: float) -> void:
+	await get_tree().create_timer(0.1).timeout
+	set_process(true)
+	asteroid.light_on(true)
+	asteroid.activate(_time_to_activate)
+	asteroid_trail.power = 1
+	asteroid_trail.light_collision_on(true)
+	await asteroid.animation_player.animation_finished
+	asteroid.animation_player.play("spin")

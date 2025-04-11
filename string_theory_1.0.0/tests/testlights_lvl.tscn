@@ -51,6 +51,13 @@ _data = {
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_mua08"]
 light_mode = 1
 
+[sub_resource type="Curve2D" id="Curve2D_0nacd"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 36, -71, 0, 0, 0, 0, 1628, -346)
+}
+point_count = 2
+
 [sub_resource type="Resource" id="Resource_bmus8"]
 script = ExtResource("11_8d1jh")
 duration = 1.0
@@ -80,13 +87,6 @@ shader_parameter/saturation = 1.0
 background_mode = 3
 glow_enabled = true
 glow_blend_mode = 4
-
-[sub_resource type="Curve2D" id="Curve2D_0nacd"]
-resource_local_to_scene = true
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, 316, 203, 0, 0, 0, 0, 1117, -268)
-}
-point_count = 2
 
 [sub_resource type="Curve2D" id="Curve2D_mhruf"]
 resource_local_to_scene = true
@@ -176,6 +176,11 @@ rotation_speed = 1.5
 
 [node name="blackHole" parent="Constellation/Star2/SpinnerObstacles" instance=ExtResource("8_u5r8w")]
 
+[node name="Path2D" parent="Constellation/Star2" instance=ExtResource("19_0nacd")]
+position = Vector2(-374, 583)
+curve = SubResource("Curve2D_0nacd")
+move_speed = 0.3
+
 [node name="Star3" parent="Constellation" instance=ExtResource("6_5ja75")]
 position = Vector2(1536, -128)
 
@@ -257,11 +262,6 @@ environment = SubResource("Environment_7pdbn")
 default_color = Color(3, 0.128, 0.302, 1)
 
 [node name="ReStartLvlComp" parent="." instance=ExtResource("19_sfwx2")]
-
-[node name="Path2D" parent="." instance=ExtResource("19_0nacd")]
-position = Vector2(165, 374)
-curve = SubResource("Curve2D_0nacd")
-move_speed = 0.8
 
 [node name="Path2D2" parent="." instance=ExtResource("19_0nacd")]
 curve = SubResource("Curve2D_mhruf")

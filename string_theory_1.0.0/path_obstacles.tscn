@@ -12,7 +12,7 @@ _data = {
 }
 point_count = 2
 
-[node name="Path2D" type="Path2D"]
+[node name="PathAteroid" type="Path2D" groups=["obstacles"]]
 curve = SubResource("Curve2D_dlnws")
 script = ExtResource("1_02kl1")
 

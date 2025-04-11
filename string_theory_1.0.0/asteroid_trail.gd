@@ -46,6 +46,8 @@ var _angle_difference_smoothed := 0.0
 var _do_redraw := false
 
 @onready var gpu_particles_2d = %GPUParticles2D
+@onready var point_light_2d: PointLight2D = $PointLight2D
+@onready var area_2d: Area2D = $Area2D
 
 
 func _ready() -> void:
@@ -109,3 +111,7 @@ func _update_drawing():
 		new_points[index] = Vector2.from_angle(curl * ratio) * segment_length + point_previous
 
 	points = new_points
+
+func light_collision_on(on:bool) ->void:
+	area_2d.monitorable=on
+	point_light_2d.enabled = on

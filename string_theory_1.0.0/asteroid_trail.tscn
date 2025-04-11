@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://dpdhgcq2h8eh4"]
+[gd_scene load_steps=17 format=3 uid="uid://dpdhgcq2h8eh4"]
 
 [ext_resource type="Shader" uid="uid://cc06ejy3edjrf" path="res://assets/ship/ship_flame.gdshader" id="1_s2utw"]
 [ext_resource type="Texture2D" uid="uid://byhx0m56pbo6g" path="res://assets/pear_36_fire_gradient.tres" id="2_q3bn4"]
@@ -56,6 +56,10 @@ fill = 1
 fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(0.91453, 0.24359)
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7b87v"]
+radius = 12.8571
+height = 68.0
+
 [node name="AsteroidTrail" type="Line2D"]
 z_index = -1
 material = SubResource("ShaderMaterial_matsn")
@@ -80,7 +84,7 @@ local_coords = true
 process_material = SubResource("ParticleProcessMaterial_vo24j")
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
-position = Vector2(-2, 2)
+position = Vector2(9.2, -0.285698)
 scale = Vector2(2, 2)
 color = Color(1.6, 0.079, 0.252, 1)
 energy = 0.2
@@ -88,3 +92,13 @@ range_layer_min = -2
 range_item_cull_mask = 5
 texture = SubResource("GradientTexture2D_7b87v")
 texture_scale = 1.6
+
+[node name="Area2D" type="Area2D" parent="." groups=["asteroid"]]
+z_index = 1
+scale = Vector2(0.6, 0.6)
+collision_layer = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" groups=["asteroid"]]
+position = Vector2(73.3333, 0.000132795)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_7b87v")

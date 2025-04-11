@@ -63,7 +63,6 @@ func spawn():
 	if not has_spawn_already:
 		for child in get_children():
 			if child.is_in_group("obstacles"):
-
 				child.activate(1)
 			if child.is_in_group("spinner_bh"):
 				for lower_lvl_child in child.get_children():
