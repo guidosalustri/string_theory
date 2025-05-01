@@ -44,6 +44,8 @@ var _angle_difference_smoothed := 0.0
 # It's a coding pattern called "lazy evaluation" or "dirty flag" and it's used to ensure 
 # we only run calculations when necessary.
 var _do_redraw := false
+var thruster_on := false
+
 
 @onready var gpu_particles_2d = %GPUParticles2D
 
@@ -53,17 +55,17 @@ func _ready() -> void:
 	gpu_particles_2d.emitting = Engine.is_editor_hint()
 	if not Engine.is_editor_hint():
 		power = 0.0
-		const REQUIRED_ACTIONS := ["move_left", "move_right", "move_up", "move_down"]
-		const ERROR_STUB := "The action %s is missing from the Input Map. For the thrusters to work, you need to have these actions defined in the Input Map: %s. See the Output bottom panel for more information."
-		const MESSAGE := """[color=orange]Error: The action %s is missing from the Input Map. For the thrusters to work, you need to have these actions defined in the Input Map: %s.[/color]
+		#const REQUIRED_ACTIONS := ["move_left", "move_right", "move_up", "move_down"]
+		#const ERROR_STUB := "The action %s is missing from the Input Map. For the thrusters to work, you need to have these actions defined in the Input Map: %s. See the Output bottom panel for more information."
+		#const MESSAGE := """[color=orange]Error: The action %s is missing from the Input Map. For the thrusters to work, you need to have these actions defined in the Input Map: %s.[/color]
 
-If you named your input actions differently, the practices and the thrusters won't work. You can change the action names in Project -> Project Settings... -> Input Map.
+#If you named your input actions differently, the practices and the thrusters won't work. You can change the action names in Project -> Project Settings... -> Input Map.
 
-If you don't want to change the action names, you will need to change the action names in this script and in all interactive practices to match the ones you defined in the Input Map. We only recommend doing this if you're already experienced in programming."""
-		for action in REQUIRED_ACTIONS:
-			if not InputMap.has_action(action):
-				print_rich(MESSAGE % [action, ", ".join(REQUIRED_ACTIONS)])
-			assert(InputMap.has_action(action), ERROR_STUB % [action, ", ".join(REQUIRED_ACTIONS)])
+#If you don't want to change the action names, you will need to change the action names in this script and in all interactive practices to match the ones you defined in the Input Map. We only recommend doing this if you're already experienced in programming."""
+		#for action in REQUIRED_ACTIONS:
+		#	if not InputMap.has_action(action):
+		#		print_rich(MESSAGE % [action, ", ".join(REQUIRED_ACTIONS)])
+		#	assert(InputMap.has_action(action), ERROR_STUB % [action, ", ".join(REQUIRED_ACTIONS)])
 
 
 func _process(delta: float) -> void:
@@ -74,9 +76,10 @@ func _process(delta: float) -> void:
 		# The function Input.get_vector() calculates a _normalized_ vector from the input actions we pass to it.
 		# It's a shorter way to do the same thing we did in the lessons with Input.get_axis() and direction.normalized().
 		# It's a convenient shortcut for some top-down and 3D games, though you can use Input.get_axis() in more cases.
-		var direction := Input.get_vector("move_left", "move_right", "move_up", "move_down")
+		#var direction := Input.get_vector("move_left", "move_right", "move_up", "move_down")
 		# We use the lerp() function to smoothly change the thruster's power.
-		if direction.length() > 0.0:
+		#if direction.length() > 0.0:
+		if thruster_on:
 			power = lerp(power, 1.0, 10.0 * delta)
 		else:
 			power = max(0.0, power - 2.0 * delta)

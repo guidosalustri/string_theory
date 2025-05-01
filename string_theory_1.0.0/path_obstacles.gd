@@ -13,6 +13,7 @@ func _ready() -> void:
 	asteroid_trail.light_collision_on(false)
 	asteroid.light_on(false)
 
+
 func _process(delta: float) -> void:
 	if way_back:
 		path_follow_2d.progress_ratio -=move_speed*delta

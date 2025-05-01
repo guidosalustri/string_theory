@@ -1,0 +1,334 @@
+[gd_scene load_steps=31 format=3 uid="uid://cmjnhob2nku00"]
+
+[ext_resource type="Script" uid="uid://b1wf0gdhf0vhd" path="res://lvls/lvl.gd" id="1_3ke8e"]
+[ext_resource type="PackedScene" uid="uid://dqjnkl56rsiki" path="res://objects/comp/exit_area.tscn" id="2_qyifl"]
+[ext_resource type="Script" uid="uid://p8y27lj8qm0w" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="3_5docc"]
+[ext_resource type="PackedScene" uid="uid://bxfevggvxo634" path="res://assets/background/space_background.tscn" id="4_lk4ue"]
+[ext_resource type="PackedScene" uid="uid://em4qfalchhhd" path="res://objects/ship.tscn" id="5_41od1"]
+[ext_resource type="PackedScene" uid="uid://ul1ys48qmbs4" path="res://objects/star.tscn" id="6_5d04d"]
+[ext_resource type="PackedScene" uid="uid://b1xjjudghnfhm" path="res://objects/obstacles/black_hole.tscn" id="7_madvs"]
+[ext_resource type="PackedScene" uid="uid://bttykdc0l1xxq" path="res://objects/comp/spinner_obstacles.tscn" id="8_e08rd"]
+[ext_resource type="PackedScene" uid="uid://bcslqepvdrl6n" path="res://objects/obstacles/asteroid.tscn" id="9_xyo4e"]
+[ext_resource type="PackedScene" uid="uid://d4du8b30u7feq" path="res://path_obstacles.tscn" id="10_e08rd"]
+[ext_resource type="Script" uid="uid://7sappikp3ig7" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="10_ts6vt"]
+[ext_resource type="Script" uid="uid://k2kyeodww6ki" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="11_4qelu"]
+[ext_resource type="FontFile" uid="uid://clffif4u7fy61" path="res://ui/Stacked pixel.ttf" id="12_eftkg"]
+[ext_resource type="Shader" uid="uid://dnbinwyvgk7bb" path="res://ui/blur_for_ui.gdshader" id="13_n1hcf"]
+[ext_resource type="PackedScene" uid="uid://bc8nepke0pagf" path="res://ui/hud/hud.tscn" id="14_7dctm"]
+[ext_resource type="PackedScene" uid="uid://ciegbyfrx5lf3" path="res://ui/pause_menu/pause_screen.tscn" id="15_5u412"]
+[ext_resource type="AudioStream" uid="uid://bupnj85mfcp5w" path="res://assets/into-the-night-uk-drill-music-20928.mp3" id="16_gukvx"]
+[ext_resource type="PackedScene" uid="uid://cw37amsu34rrt" path="res://objects/comp/cut_line.tscn" id="17_dg07h"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_x6pi8"]
+light_mode = 1
+
+[sub_resource type="Animation" id="Animation_iwntf"]
+length = 0.001
+
+[sub_resource type="Animation" id="Animation_8de3h"]
+resource_name = "blink"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:default_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.266667, 0.466667, 0.666667, 1.2, 1.4, 1.6, 2.06667, 2.26667, 2.46667, 3.2, 4.13333, 4.93333, 5.63333, 6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(0.302, 0.651, 3, 1), Color(3, 0.128, 0.302, 1), Color(1, 1, 1, 1), Color(3, 0.128, 0.302, 1), Color(3, 0.128, 0.302, 1), Color(1, 1, 1, 1), Color(3, 0.128, 0.302, 1), Color(3, 0.128, 0.302, 1), Color(1, 1, 1, 1), Color(3, 0.128, 0.302, 1), Color(3, 0.128, 0.302, 1), Color(0.302, 0.651, 3, 1), Color(0.302, 0.651, 3, 1), Color(1, 1, 1, 1), Color(3, 0.128, 0.302, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4m2av"]
+_data = {
+&"RESET": SubResource("Animation_iwntf"),
+&"blink": SubResource("Animation_8de3h")
+}
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_mua08"]
+light_mode = 1
+
+[sub_resource type="Curve2D" id="Curve2D_xyo4e"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 828, 738, 0, 0, 0, 0, -658, -1354)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_e08rd"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 779, 945, 0, 0, 0, 0, -348, -1238)
+}
+point_count = 2
+
+[sub_resource type="Resource" id="Resource_bmus8"]
+script = ExtResource("11_4qelu")
+duration = 1.0
+transition = 0
+ease = 2
+
+[sub_resource type="Resource" id="Resource_vjox8"]
+script = ExtResource("11_4qelu")
+duration = 1.0
+transition = 0
+ease = 2
+
+[sub_resource type="Resource" id="Resource_xiu23"]
+script = ExtResource("11_4qelu")
+duration = 1.0
+transition = 0
+ease = 2
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tf4i8"]
+shader = ExtResource("13_n1hcf")
+shader_parameter/blur_amount = 0.0
+shader_parameter/tint = Color(0.622155, 0.145824, 0.885064, 1)
+shader_parameter/tint_amount = 0.0
+shader_parameter/saturation = 1.0
+
+[sub_resource type="Environment" id="Environment_l8yql"]
+background_mode = 3
+glow_enabled = true
+glow_blend_mode = 4
+
+[node name="lvl2" type="Node2D" node_paths=PackedStringArray("stars_trail")]
+script = ExtResource("1_3ke8e")
+stars_trail = [NodePath("Constellation/Star"), NodePath("Constellation/Star2"), NodePath("Constellation/Star3"), NodePath("Constellation/Star4"), NodePath("Constellation/Star5"), NodePath("Constellation/Star4"), NodePath("Constellation/Star3"), NodePath("Constellation/Star6"), NodePath("Constellation/Star7"), NodePath("Constellation/Star6"), NodePath("Constellation/Star8"), NodePath("Constellation/Star9"), NodePath("Constellation/Star10"), NodePath("Constellation/Star9"), NodePath("Constellation/Star8"), NodePath("Constellation/Star"), NodePath("Constellation/Star11"), NodePath("Constellation/Star12")]
+
+[node name="CanvasModulate2" type="CanvasModulate" parent="."]
+color = Color(0.0235294, 0.0196078, 0.0196078, 1)
+
+[node name="ExitArea" parent="." instance=ExtResource("2_qyifl")]
+position = Vector2(2368, 256)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(672, 256)
+process_callback = 0
+position_smoothing_speed = 2.0
+
+[node name="PhantomCameraHost" type="Node" parent="Camera2D"]
+script = ExtResource("3_5docc")
+
+[node name="SpaceBackground" parent="." instance=ExtResource("4_lk4ue")]
+
+[node name="CanvasModulate" type="CanvasModulate" parent="SpaceBackground"]
+light_mask = 5
+color = Color(0.0666667, 0.0627451, 0.0666667, 1)
+
+[node name="LinkLineShip" type="Line2D" parent="."]
+modulate = Color(1.5, 1.5, 1.5, 1)
+z_index = 3
+material = SubResource("CanvasItemMaterial_x6pi8")
+points = PackedVector2Array(0, 0, 0, 0)
+width = 6.0
+default_color = Color(0.302, 0.651, 3, 1)
+texture_mode = 2
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+sharp_limit = 8.0
+antialiased = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="LinkLineShip"]
+libraries = {
+&"": SubResource("AnimationLibrary_4m2av")
+}
+
+[node name="LinkLineStars" type="Line2D" parent="."]
+modulate = Color(1.5, 1.5, 1.5, 1)
+z_index = 3
+material = SubResource("CanvasItemMaterial_mua08")
+width = 6.0
+default_color = Color(0.302, 0.651, 3, 1)
+texture_mode = 2
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+sharp_limit = 8.0
+antialiased = true
+
+[node name="Ship" parent="." instance=ExtResource("5_41od1")]
+position = Vector2(320, 0)
+
+[node name="Constellation" type="Node2D" parent="."]
+
+[node name="Star" parent="Constellation" instance=ExtResource("6_5d04d")]
+position = Vector2(1024, 512)
+black_hole_on_star = true
+
+[node name="blackHole3" parent="Constellation/Star" instance=ExtResource("7_madvs")]
+position = Vector2(-128, 384)
+
+[node name="Star2" parent="Constellation" instance=ExtResource("6_5d04d")]
+position = Vector2(704, 960)
+
+[node name="blackHole" parent="Constellation/Star2" instance=ExtResource("7_madvs")]
+position = Vector2(-407, -19)
+
+[node name="blackHole2" parent="Constellation/Star2" instance=ExtResource("7_madvs")]
+position = Vector2(-847, 188)
+
+[node name="Star3" parent="Constellation" instance=ExtResource("6_5d04d")]
+position = Vector2(-384, 1408)
+
+[node name="blackHole" parent="Constellation/Star3" instance=ExtResource("7_madvs")]
+position = Vector2(708, -71)
+
+[node name="SpinnerObstacles" parent="Constellation/Star3" node_paths=PackedStringArray("obstacles") instance=ExtResource("8_e08rd")]
+obstacles = [NodePath("Asteroid")]
+radius = 280.0
+rotation_speed = 4.3
+
+[node name="Asteroid" parent="Constellation/Star3/SpinnerObstacles" instance=ExtResource("9_xyo4e")]
+
+[node name="Star4" parent="Constellation" instance=ExtResource("6_5d04d")]
+position = Vector2(-896, 1344)
+black_hole_on_star = true
+
+[node name="Star5" parent="Constellation" instance=ExtResource("6_5d04d")]
+position = Vector2(-1216, 1664)
+
+[node name="SpinnerObstacles" parent="Constellation/Star5" node_paths=PackedStringArray("obstacles") instance=ExtResource("8_e08rd")]
+obstacles = [NodePath("Asteroid"), NodePath("Asteroid2")]
+anticlockwise = true
+rotation_speed = 3.0
+
+[node name="Asteroid" parent="Constellation/Star5/SpinnerObstacles" instance=ExtResource("9_xyo4e")]
+
+[node name="Asteroid2" parent="Constellation/Star5/SpinnerObstacles" instance=ExtResource("9_xyo4e")]
+
+[node name="Star6" parent="Constellation" instance=ExtResource("6_5d04d")]
+position = Vector2(64, 1984)
+
+[node name="SpinnerObstacles" parent="Constellation/Star6" node_paths=PackedStringArray("obstacles") instance=ExtResource("8_e08rd")]
+obstacles = [NodePath("Asteroid")]
+radius = 350.0
+anticlockwise = true
+rotation_speed = 3.3
+
+[node name="Asteroid" parent="Constellation/Star6/SpinnerObstacles" instance=ExtResource("9_xyo4e")]
+
+[node name="SpinnerObstacles2" parent="Constellation/Star6" node_paths=PackedStringArray("obstacles") instance=ExtResource("8_e08rd")]
+position = Vector2(957, -179)
+obstacles = [NodePath("blackHole"), NodePath("blackHole2"), NodePath("blackHole3")]
+radius = 400.0
+anticlockwise = true
+rotation_speed = 2.6
+
+[node name="blackHole" parent="Constellation/Star6/SpinnerObstacles2" instance=ExtResource("7_madvs")]
+
+[node name="blackHole2" parent="Constellation/Star6/SpinnerObstacles2" instance=ExtResource("7_madvs")]
+
+[node name="blackHole3" parent="Constellation/Star6/SpinnerObstacles2" instance=ExtResource("7_madvs")]
+
+[node name="Star7" parent="Constellation" instance=ExtResource("6_5d04d")]
+position = Vector2(-64, 2368)
+
+[node name="Star8" parent="Constellation" instance=ExtResource("6_5d04d")]
+position = Vector2(1408, 1088)
+
+[node name="PathAteroid" parent="Constellation/Star8" instance=ExtResource("10_e08rd")]
+curve = SubResource("Curve2D_xyo4e")
+move_speed = 0.7
+
+[node name="Star9" parent="Constellation" instance=ExtResource("6_5d04d")]
+position = Vector2(1856, 896)
+
+[node name="PathAteroid" parent="Constellation/Star9" instance=ExtResource("10_e08rd")]
+position = Vector2(10, -25)
+curve = SubResource("Curve2D_e08rd")
+move_speed = 0.5
+
+[node name="Star10" parent="Constellation" instance=ExtResource("6_5d04d")]
+position = Vector2(2368, 768)
+
+[node name="SpinnerObstacles" parent="Constellation/Star10" node_paths=PackedStringArray("obstacles") instance=ExtResource("8_e08rd")]
+obstacles = [NodePath("Asteroid")]
+anticlockwise = true
+
+[node name="Asteroid" parent="Constellation/Star10/SpinnerObstacles" instance=ExtResource("9_xyo4e")]
+
+[node name="Star11" parent="Constellation" instance=ExtResource("6_5d04d")]
+position = Vector2(1600, 384)
+
+[node name="Star12" parent="Constellation" instance=ExtResource("6_5d04d")]
+position = Vector2(2112, 256)
+black_hole_on_star = true
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[node name="PhantomCamera2D" type="Node2D" parent="." node_paths=PackedStringArray("follow_targets")]
+position = Vector2(672, 256)
+script = ExtResource("10_ts6vt")
+follow_mode = 3
+follow_targets = [NodePath("../Ship"), NodePath("../Constellation/Star")]
+tween_resource = SubResource("Resource_bmus8")
+draw_limits = true
+
+[node name="PhantomCameraStars" type="Node2D" parent="."]
+position = Vector2(739.5, 266.5)
+script = ExtResource("10_ts6vt")
+follow_mode = 3
+tween_resource = SubResource("Resource_vjox8")
+draw_limits = true
+
+[node name="PhantomCamera2D2" type="Node2D" parent="."]
+script = ExtResource("10_ts6vt")
+follow_mode = 3
+zoom = Vector2(0.4, 0.4)
+tween_resource = SubResource("Resource_xiu23")
+draw_limits = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer"]
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 108.0
+offset_bottom = 288.0
+grow_horizontal = 2
+theme_override_colors/default_color = Color(1, 0.835294, 0, 1)
+theme_override_fonts/normal_font = ExtResource("12_eftkg")
+theme_override_font_sizes/normal_font_size = 120
+bbcode_enabled = true
+text = "[center]Virgo[/center]"
+visible_characters = 0
+visible_ratio = 0.0
+
+[node name="Blur" type="ColorRect" parent="CanvasLayer"]
+material = SubResource("ShaderMaterial_tf4i8")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HUD" parent="CanvasLayer" instance=ExtResource("14_7dctm")]
+
+[node name="CanvasLayer2" type="CanvasLayer" parent="."]
+
+[node name="PauseScreen" parent="CanvasLayer2" instance=ExtResource("15_5u412")]
+visible = false
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("16_gukvx")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_l8yql")
+
+[node name="CutLine" parent="." instance=ExtResource("17_dg07h")]
+default_color = Color(3, 0.128, 0.302, 1)

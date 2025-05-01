@@ -1,15 +1,16 @@
-[gd_scene load_steps=17 format=3 uid="uid://cw0bs8bnlg3nh"]
+[gd_scene load_steps=18 format=3 uid="uid://cw0bs8bnlg3nh"]
 
 [ext_resource type="Script" uid="uid://cy77idmdspf8g" path="res://objects/game_manager.gd" id="1_nqyrl"]
-[ext_resource type="PackedScene" uid="uid://vug55rsbi18p" path="res://tests/taurus_test.tscn" id="2_e1qwd"]
-[ext_resource type="PackedScene" uid="uid://ybilhl70y2hu" path="res://tests/aries_test.tscn" id="2_nao5d"]
-[ext_resource type="PackedScene" uid="uid://cfj8vdecqtgfo" path="res://tests/gemini_test.tscn" id="3_wiopj"]
-[ext_resource type="PackedScene" uid="uid://78rgimw7bk8x" path="res://tests/cancer_test.tscn" id="4_5rlpe"]
+[ext_resource type="PackedScene" uid="uid://cuo3fcj5c0c2k" path="res://lvls/ggc/aries_ggc.tscn" id="2_vj1s5"]
+[ext_resource type="PackedScene" uid="uid://l0fp1xd1fln2" path="res://lvls/ggc/taurus_ggc.tscn" id="3_1cxh4"]
 [ext_resource type="PackedScene" uid="uid://dd8x5lnqej66y" path="res://cutscene/cut_scene.tscn" id="4_6jd32"]
-[ext_resource type="PackedScene" uid="uid://7j43w78imcf1" path="res://tests/leo_test.tscn" id="5_b2rxa"]
-[ext_resource type="PackedScene" uid="uid://cbyrh237sq7ul" path="res://tests/virgo_test.tscn" id="6_ko4pw"]
+[ext_resource type="PackedScene" uid="uid://dirkbwo0byvxb" path="res://lvls/ggc/gemini_ggc.tscn" id="4_d7cs7"]
+[ext_resource type="PackedScene" uid="uid://b216pc63otaig" path="res://lvls/ggc/cancer_ggc.tscn" id="5_3x3tq"]
+[ext_resource type="PackedScene" uid="uid://dm67f48dr2gck" path="res://lvls/ggc/leo_ggc.tscn" id="6_mrj4c"]
 [ext_resource type="PackedScene" uid="uid://cgt0lqimggmo2" path="res://cutscene/final_scene.tscn" id="7_0f68c"]
+[ext_resource type="PackedScene" uid="uid://cmjnhob2nku00" path="res://lvls/ggc/virgo_ggc.tscn" id="7_2ds3v"]
 [ext_resource type="PackedScene" uid="uid://p60tmr6ajcyy" path="res://ui/main_menu/main_menu.tscn" id="8_dccl0"]
+[ext_resource type="PackedScene" uid="uid://bdbg82ntkxync" path="res://lvls/ggc/libra_ggc.tscn" id="8_edjqr"]
 [ext_resource type="PackedScene" uid="uid://b1b1qf5v7fp86" path="res://objects/data_collection/data_collection.tscn" id="11_14pkw"]
 [ext_resource type="AudioStream" uid="uid://be34m3h7oixhl" path="res://assets/audio/in-game-end.ogg" id="12_6yqrg"]
 [ext_resource type="AudioStream" uid="uid://c10l7ptmt85mx" path="res://assets/audio/in-game-loop.ogg" id="12_atkno"]
@@ -19,7 +20,7 @@
 
 [node name="Node" type="Node"]
 script = ExtResource("1_nqyrl")
-lvls = Array[PackedScene]([ExtResource("2_nao5d"), ExtResource("2_e1qwd"), ExtResource("3_wiopj"), ExtResource("4_5rlpe"), ExtResource("5_b2rxa"), ExtResource("6_ko4pw")])
+lvls = Array[PackedScene]([ExtResource("2_vj1s5"), ExtResource("3_1cxh4"), ExtResource("4_d7cs7"), ExtResource("5_3x3tq"), ExtResource("6_mrj4c"), ExtResource("7_2ds3v"), ExtResource("8_edjqr")])
 cutscene = ExtResource("4_6jd32")
 final_scene = ExtResource("7_0f68c")
 main_menu = ExtResource("8_dccl0")

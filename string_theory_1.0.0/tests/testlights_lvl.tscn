@@ -58,6 +58,13 @@ _data = {
 }
 point_count = 2
 
+[sub_resource type="Curve2D" id="Curve2D_mhruf"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 1191, 6, 0, 0, 0, 0, 425, 473)
+}
+point_count = 2
+
 [sub_resource type="Resource" id="Resource_bmus8"]
 script = ExtResource("11_8d1jh")
 duration = 1.0
@@ -87,13 +94,6 @@ shader_parameter/saturation = 1.0
 background_mode = 3
 glow_enabled = true
 glow_blend_mode = 4
-
-[sub_resource type="Curve2D" id="Curve2D_mhruf"]
-resource_local_to_scene = true
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, 1191, 6, 0, 0, 0, 0, 425, 473)
-}
-point_count = 2
 
 [node name="lvl2" type="Node2D" node_paths=PackedStringArray("stars_trail")]
 script = ExtResource("1_o8ccb")
@@ -186,6 +186,10 @@ position = Vector2(1536, -128)
 
 [node name="PivotAsteroid" parent="Constellation/Star3" instance=ExtResource("7_uowiu")]
 
+[node name="Path2D2" parent="Constellation/Star3" instance=ExtResource("19_0nacd")]
+position = Vector2(-1536, 128)
+curve = SubResource("Curve2D_mhruf")
+
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.5
 one_shot = true
@@ -262,6 +266,3 @@ environment = SubResource("Environment_7pdbn")
 default_color = Color(3, 0.128, 0.302, 1)
 
 [node name="ReStartLvlComp" parent="." instance=ExtResource("19_sfwx2")]
-
-[node name="Path2D2" parent="." instance=ExtResource("19_0nacd")]
-curve = SubResource("Curve2D_mhruf")

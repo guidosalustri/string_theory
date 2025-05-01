@@ -80,7 +80,7 @@ func _process(delta: float) -> void:
 		# We use the lerp() function to smoothly change the thruster's power.
 		#var direction
 		#if direction > 0.0:
-		#	power = lerp(power, 1.0, 10.0 * delta)
+		power = lerp(power, 1.0, 10.0 * delta)
 		#else:
 		#	power = max(0.0, power - 2.0 * delta)
 

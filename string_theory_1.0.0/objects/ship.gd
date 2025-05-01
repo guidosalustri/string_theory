@@ -16,7 +16,11 @@ class_name Ship extends Area2D
 @export var max_fuel:= 5.0
 @export var fuel_fill_rate := 2.0
 @export var fuel_burn_rate := 1.0
-var fuel := max_fuel / 2.0
+@export var fuel := 2.5
+
+func set_fuel(new_fuel: float) -> void:
+	fuel = new_fuel
+
 var fuel_left := max_fuel / 2.0
 var fuel_right := max_fuel / 2.0
 
@@ -35,14 +39,14 @@ var has_fuel_right: bool:
 var target_star : Node2D
 
 enum States {
-	ENTER_LVL,
+	#ENTER_LVL,
 	FLY,
 	ORBIT,
 	EXIT_LVL,
 	DRAGGED
 }
 
-var current_state: States = States.ENTER_LVL:
+var current_state: States = States.FLY:
 	set = set_current_state
 
 func set_current_state(new_state: States) -> void:
@@ -92,22 +96,22 @@ func _process(delta: float) -> void:
 		target = ray_cast_2d.get_collider() #last_star:
 
 	match current_state:
-		States.ENTER_LVL:
-			if timer.time_left > 0:
-				speed += 1.0  * acceleration * delta
-				speed = clamp(speed, 0.0, max_speed)
-				var vel := (Vector2.RIGHT * speed).rotated(rotation)
-				translate(vel * delta)
-				main_thruster.power = 1.0
-			else:
-				if flag:
-					set_current_state(States.ORBIT)
-				elif black_hole:
-					set_current_state(States.DRAGGED)
-
-				else:
-					set_current_state(States.FLY)
-					set_has_energy(true)
+		#States.ENTER_LVL:
+		#	if timer.time_left > 0:
+		#		speed += 1.0  * acceleration * delta
+		#		speed = clamp(speed, 0.0, max_speed)
+		#		var vel := (Vector2.RIGHT * speed).rotated(rotation)
+		#		translate(vel * delta)
+		#		#main_thruster.power = 1.0
+		#	else:
+		#		if flag:
+		#			set_current_state(States.ORBIT)
+		#		elif black_hole:
+		#			set_current_state(States.DRAGGED)
+#
+		#		else:
+		#			set_current_state(States.FLY)
+		#			set_has_energy(true)
 
 		States.FLY:
 			side_thruster_left.emit = true
@@ -136,8 +140,11 @@ func _process(delta: float) -> void:
 		States.EXIT_LVL:
 			target_offset+= Vector2(50,0)
 			_follow(delta, target.global_position + target_offset)
-			main_thruster.power = 1.0
-
+			#main_thruster.power = 1.0
+	if current_state != States.ORBIT and  current_state != States.DRAGGED and has_energy:
+		main_thruster.thruster_on = true
+	else:
+		main_thruster.thruster_on = false
 	if speed<=0:
 		if (not has_energy or lvls_with_not_foward) and not dying:
 			dying = true
@@ -167,8 +174,10 @@ func _physics_process(delta: float) -> void:
 # steering 
 func _move(delta: float, right: bool, left: bool, forward: bool) -> void:
 
-	speed += (1.0 if Input.is_action_pressed("move_up") and \
-	forward and has_energy else -1.0) * acceleration * delta
+	#speed += (1.0 if Input.is_action_pressed("move_up") and \
+	#forward and has_energy else -1.0) * acceleration * delta
+	speed += (1.0 if forward and has_energy \
+	else -1.0) * acceleration * delta
 	speed = clamp(speed, 0.0, max_speed)
 	
 	var direction := Input.get_vector("move_left", "move_right", "move_up", "move_down")
