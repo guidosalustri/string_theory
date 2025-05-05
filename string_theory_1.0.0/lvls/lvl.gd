@@ -39,6 +39,7 @@ var lenght_link_line_ship := 0.0
 #var width_curve : Curve = null
 var thickness := 1.0
 var flag_cutline := true
+var dash_count := 0
 
 func _ready() -> void:
 	hud.player = ship
@@ -47,7 +48,9 @@ func _ready() -> void:
 		ship.set_has_energy(false)
 	)
 	hud.overcharged.connect(_overcharged_ship)
-	
+	if not ship.lvl_with_dash:
+		hud.hide_dash_ui()
+	ship.dash.connect(_on_dash_done)
 	get_tree().paused = false
 	_blur.material.set_shader_parameter("blur_amount", 0.0)
 	_blur.material.set_shader_parameter("tint_amount", 0.0)
@@ -79,6 +82,7 @@ func _ready() -> void:
 				ship.get_node("PointLight2D").hide()
 				timer.start()
 				hud.overcharged.disconnect(_overcharged_ship)
+				hud.stop_watch()
 				if canvas_layer_3:
 					for child in canvas_layer_3.get_children():
 						var tween_tutorial := create_tween()
@@ -120,7 +124,6 @@ func _process(_delta: float) -> void:
 		link_line_ship.points[1] = ship.global_position
 		
 		#lenght_link_line_ship = link_line_ship.points[0].distance_to(link_line_ship.points[1])
-
 	adjust_ship_light()
 	
 	#if lenght_link_line_ship > max_string_lenght and flag_cutline:
@@ -231,6 +234,8 @@ func adjust_ship_light()-> void:
 				animation_player.stop()
 
 func cut_line_link(was_black_hole: bool) -> void:
+	hud.set_process(false)
+	hud.stopwatch.set_process(false)
 	if animation_player.is_playing():
 		animation_player.stop()
 	link_line_ship.hide()
@@ -241,3 +246,9 @@ func cut_line_link(was_black_hole: bool) -> void:
 	else:
 		cut_line.create_line(link_line_ship.points[1],link_line_ship.points[0])
 	ship.cut_link.disconnect(cut_line_link)
+
+func _on_dash_done() -> void:
+	hud.do_dash_ui()
+	if dash_count >= 1:
+		ship.can_dash = false
+	dash_count+=1

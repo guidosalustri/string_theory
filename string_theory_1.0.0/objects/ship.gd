@@ -3,11 +3,14 @@ class_name Ship extends Area2D
 @onready var side_thruster_left: Sprite2D = $Sprite2D/SideThrusterLeft
 @onready var side_thruster_right: Sprite2D = $Sprite2D/SideThrusterRight
 @onready var main_thruster: Line2D = $Sprite2D/MainThruster
+@onready var sprite_2d: Sprite2D = $Sprite2D
 
 @onready var ray_cast_2d: RayCast2D = $RayCast2D
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var timer: Timer = $Timer
 @onready var point_light_2d: PointLight2D = $PointLight2D
+@onready var dash_timer: Timer = $DashTimer
+@onready var dash_gpu_particles: GPUParticles2D = $Sprite2D/GPUParticles2D
 
 @export var max_speed := 700.0
 @export var acceleration := 250.0
@@ -28,6 +31,7 @@ var fuel_right := max_fuel / 2.0
 @export var turn_left := true
 @export var move_forward := true
 @export var invert_controls := false
+@export var lvl_with_dash := false
 
 var has_fuel: bool:
 	get: return fuel > 0
@@ -69,8 +73,12 @@ func set_has_energy(energy_update: bool) -> void:
 
 signal star_entered(star: Star)
 signal cut_link(was_black_hole: bool)
+signal dash
 
 var speed := 450.0
+var dashing := false
+var can_dash := false
+
 # to check if the ship is on a star and in process should spin
 var flag := false
 # pos1 is the center of the circule where the ship spins
@@ -87,7 +95,9 @@ var dying := false
 
 func _ready() -> void:
 	area_entered.connect(_on_area_entered)
+	dash_timer.timeout.connect(_on_dash_timer_timeout)
 	max_speed_hud = int(max_speed)
+	can_dash = lvl_with_dash
 
 func _process(delta: float) -> void:
 	# which movement the ship should have
@@ -188,8 +198,12 @@ func _move(delta: float, right: bool, left: bool, forward: bool) -> void:
 	if invert_controls:
 		direction.x *= -1
 	var turn_speed_dt : float = sign(direction.x) * turn_speed * delta
+	
+	if dashing:
+		speed = 2800.0
+	else: 
+		rotate(turn_speed_dt)
 
-	rotate(turn_speed_dt)
 
 	if sign(turn_speed_dt) == 1:
 		side_thruster_right.power = 0
@@ -237,7 +251,20 @@ func _follow(delta: float, pos: Vector2) -> void:
 # key to fly to next star
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("spin"):
-		flag= false
+		if current_state == States.ORBIT:
+			flag= false
+		if current_state == States.FLY and not dashing and lvl_with_dash:
+			if can_dash and has_energy:
+				dash.emit()
+				dashing = true
+				set_collision_mask_value(3,false)
+				set_collision_mask_value(4,false)
+				dash_timer.start()
+				dash_gpu_particles.process_material.angle_min = -rotation_degrees
+				dash_gpu_particles.process_material.angle_max = -rotation_degrees
+				dash_gpu_particles.emitting=true
+			else:
+				dash.emit()
 
 # ship landed on a star area
 func _on_area_entered(area: Area2D)->void:
@@ -246,9 +273,12 @@ func _on_area_entered(area: Area2D)->void:
 			var star : Star = area as Star
 			match star.current_state:
 				star.States.STAR:
-					star_entered.emit(star)
-					flag=true
-					pos1 = area.global_position
+					if dashing:
+						explode()
+					else:
+						star_entered.emit(star)
+						flag=true
+						pos1 = area.global_position
 				star.States.BLACK_HOLE:
 					black_hole = area
 					if speed < 500:
@@ -294,3 +324,10 @@ func dim_light_on(turn_light_on: bool) -> void:
 		#cut_link.emit(false)
 		#set_process(false)
 		#animation_player.play("die")
+
+func _on_dash_timer_timeout() -> void:
+	dashing = false
+	set_collision_mask_value(3,true)
+	set_collision_mask_value(4,true)
+	dash_gpu_particles.emitting=false
+	

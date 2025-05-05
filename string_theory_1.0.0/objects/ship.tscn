@@ -1,10 +1,27 @@
-[gd_scene load_steps=16 format=3 uid="uid://em4qfalchhhd"]
+[gd_scene load_steps=20 format=3 uid="uid://em4qfalchhhd"]
 
 [ext_resource type="Texture2D" uid="uid://bniyrxn3r2v8h" path="res://assets/ship.png" id="1_130qv"]
 [ext_resource type="Script" uid="uid://de6wuudcwljov" path="res://objects/ship.gd" id="1_u1532"]
 [ext_resource type="PackedScene" uid="uid://2rsowtwrtfr2" path="res://assets/ship/main_thruster/main_thruster.tscn" id="4_2cjet"]
+[ext_resource type="Texture2D" uid="uid://dvkwtmjgeutc7" path="res://ui/hud/ship_ui_bottom.png" id="5_3y4e3"]
 [ext_resource type="PackedScene" uid="uid://bvtilym2q6v6b" path="res://assets/ship/side_thruster/side_thruster.tscn" id="5_8ryym"]
 [ext_resource type="Texture2D" uid="uid://d158xruba2vkk" path="res://assets/explosion_alt.png" id="5_wjuxj"]
+
+[sub_resource type="Gradient" id="Gradient_qovgx"]
+colors = PackedColorArray(1, 1, 1, 0.35, 15.469, 8.839, 38.121, 0.1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_3y4e3"]
+gradient = SubResource("Gradient_qovgx")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_qovgx"]
+particle_flag_rotate_y = true
+particle_flag_disable_z = true
+angle_min = 1.07288e-05
+angle_max = 1.07288e-05
+gravity = Vector3(0, 0, 0)
+scale_min = 0.9
+scale_max = 0.9
+color_ramp = SubResource("GradientTexture1D_3y4e3")
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_45hjj"]
 radius = 33.3766
@@ -238,6 +255,16 @@ emit = false
 position = Vector2(-38, 0)
 points = PackedVector2Array(0, 0, 33.3333, 0, 66.6667, 0)
 
+[node name="GPUParticles2D" type="GPUParticles2D" parent="Sprite2D"]
+z_index = -1
+emitting = false
+amount = 9
+texture = ExtResource("5_3y4e3")
+lifetime = 0.9
+preprocess = 2.0
+speed_scale = 7.0
+process_material = SubResource("ParticleProcessMaterial_qovgx")
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_45hjj")
 
@@ -274,3 +301,7 @@ range_layer_min = -2
 range_item_cull_mask = 7
 texture = SubResource("GradientTexture2D_7fiap")
 texture_scale = 19.0
+
+[node name="DashTimer" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true

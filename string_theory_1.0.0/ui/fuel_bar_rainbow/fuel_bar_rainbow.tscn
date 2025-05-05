@@ -223,6 +223,7 @@ libraries = {
 }
 
 [node name="Label" type="Label" parent="."]
+visible = false
 layout_mode = 0
 offset_left = 174.994
 offset_top = -38.9958

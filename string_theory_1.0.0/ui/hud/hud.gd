@@ -4,6 +4,9 @@ extends Control
 @onready var stars_progress: StarsProgress = $StarsProgress
 @onready var fuel_bar_rainbow: FuelBarRainbow = $FuelBarRainbow
 @onready var speedometer_rainbow: SpeedometerRainbow = $SpeedometerRainbow
+@onready var stopwatch: Stopwatch = $Stopwatch
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var dash_ui: Control = $DashUI
 
 
 signal overcharged
@@ -28,7 +31,8 @@ func _on_star_entered_star_ui() -> void:
 
 func _ready() -> void:
 	timer_overcharged.timeout.connect(_on_timer_overcharged_timeout)
-
+	animation_player.play("stopwatch_grow")
+	
 func _process(_delta: float) -> void:
 	if player.fuel <= 0:
 		no_energy.emit()
@@ -56,3 +60,13 @@ func _on_timer_overcharged_timeout() -> void:
 	fuel_bar_rainbow.animation_player.stop()
 	overcharged.emit()
 	set_process(false)
+
+func stop_watch() -> void:
+	animation_player.stop()
+	stopwatch.set_process(false)
+
+func do_dash_ui()-> void:
+	dash_ui.dash_used()
+
+func hide_dash_ui() -> void:
+	dash_ui.hide()
