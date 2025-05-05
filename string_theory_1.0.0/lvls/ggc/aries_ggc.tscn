@@ -87,9 +87,10 @@ background_mode = 3
 glow_enabled = true
 glow_blend_mode = 4
 
-[node name="lvl" type="Node2D" node_paths=PackedStringArray("canvas_layer_3")]
+[node name="lvl" type="Node2D" node_paths=PackedStringArray("canvas_layer_3", "stars_trail")]
 script = ExtResource("1_fatbn")
 canvas_layer_3 = NodePath("CanvasLayer3")
+stars_trail = [NodePath("Constellation/Star"), NodePath("Constellation/Star2"), NodePath("Constellation/Star3"), NodePath("Constellation/Star4")]
 
 [node name="CanvasModulate2" type="CanvasModulate" parent="."]
 color = Color(0.0218252, 0.0212845, 0.0214185, 1)

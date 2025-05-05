@@ -254,7 +254,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		if current_state == States.ORBIT:
 			flag= false
 		if current_state == States.FLY and not dashing and lvl_with_dash:
-			if can_dash and has_energy:
+			if can_dash:# and has_energy:
 				dash.emit()
 				dashing = true
 				set_collision_mask_value(3,false)
@@ -273,12 +273,12 @@ func _on_area_entered(area: Area2D)->void:
 			var star : Star = area as Star
 			match star.current_state:
 				star.States.STAR:
-					if dashing:
-						explode()
-					else:
-						star_entered.emit(star)
-						flag=true
-						pos1 = area.global_position
+					#if dashing:
+						#explode()
+					#else:
+					star_entered.emit(star)
+					flag=true
+					pos1 = area.global_position
 				star.States.BLACK_HOLE:
 					black_hole = area
 					if speed < 500:
@@ -326,8 +326,7 @@ func dim_light_on(turn_light_on: bool) -> void:
 		#animation_player.play("die")
 
 func _on_dash_timer_timeout() -> void:
-	dashing = false
 	set_collision_mask_value(3,true)
 	set_collision_mask_value(4,true)
 	dash_gpu_particles.emitting=false
-	
+	dashing = false
