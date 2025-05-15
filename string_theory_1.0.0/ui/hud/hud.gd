@@ -8,6 +8,7 @@ extends Control
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var dash_ui: Control = $DashUI
 @onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
+@onready var stopwatch_util: StopwatchUtil = $Stopwatch/StopwatchUtil
 
 
 signal overcharged
@@ -84,3 +85,6 @@ func auido_pitch_overcharged() -> void:
 	var tween:  Tween = create_tween()
 	tween.set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
 	tween.tween_property(audio_stream_player, "pitch_scale",2,2.5)
+
+func time_lvl() -> float:
+	return stopwatch_util.time()

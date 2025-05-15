@@ -18,6 +18,7 @@ var data_collection_impl := preload("res://objects/data_collection/data_collecti
 var lvl := 0
 
 var deaths_counts := 0
+var time_score := 0.0
 #var martin_on_ship := false
 #var lvl_has_pickups := false
 

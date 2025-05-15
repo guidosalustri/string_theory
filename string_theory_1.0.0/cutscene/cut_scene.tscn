@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://dd8x5lnqej66y"]
+[gd_scene load_steps=24 format=3 uid="uid://dd8x5lnqej66y"]
 
 [ext_resource type="Script" uid="uid://biwgltcckdpau" path="res://cutscene/cut_scene.gd" id="1_j06uc"]
 [ext_resource type="Shader" uid="uid://dodbo1f6pi8st" path="res://cutscene/blur.gdshader" id="2_2e1hg"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://byhx0m56pbo6g" path="res://assets/pear_36_fire_gradient.tres" id="7_xnycu"]
 [ext_resource type="Texture2D" uid="uid://f60df1b3rfjk" path="res://assets/puff.svg" id="8_vccei"]
 [ext_resource type="PackedScene" uid="uid://cqhxlf7w4dm1y" path="res://ui/dialogue/dialogue_cutscene.tscn" id="9_06lu3"]
+[ext_resource type="Theme" uid="uid://dp1nmwxx5vbr5" path="res://ui/ui_samples_theme.tres" id="10_2xs5u"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_najsa"]
 shader = ExtResource("2_2e1hg")
@@ -256,6 +257,23 @@ autoplay = "RESET"
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Dialogue_cutscene" parent="CanvasLayer" instance=ExtResource("9_06lu3")]
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -154.0
+offset_top = 54.0
+offset_right = 163.0
+offset_bottom = 164.0
+grow_horizontal = 2
+theme = ExtResource("10_2xs5u")
+theme_override_colors/font_color = Color(1, 0.835294, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 72
+text = "00:00.00"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 2.6

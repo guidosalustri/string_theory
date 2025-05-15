@@ -37,6 +37,7 @@ func create_line(v1: Vector2,v2: Vector2) -> void:
 	line_created = true
 	points = curve.get_baked_points()
 	collision_gpu_particles_2d.position = points[0]
+	await get_tree().create_timer(0.02).timeout
 	collision_gpu_particles_2d.emitting = true
 
 static func generate_random_vector(maximum_length: float) -> Vector2:

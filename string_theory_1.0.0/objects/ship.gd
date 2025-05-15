@@ -145,7 +145,7 @@ func _process(delta: float) -> void:
 			_spin_around(delta, pos1)
 			set_has_energy(true)
 			if target :
-				cut_link.emit(false)
+				#cut_link.emit(false)
 				set_current_state(States.EXIT_LVL)
 			elif black_hole:
 				set_current_state(States.DRAGGED)

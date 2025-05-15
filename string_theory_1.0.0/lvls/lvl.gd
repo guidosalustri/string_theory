@@ -83,6 +83,7 @@ func _ready() -> void:
 				timer.start()
 				hud.overcharged.disconnect(_overcharged_ship)
 				hud.stop_watch()
+				GameManager.time_score += hud.time_lvl()
 				if canvas_layer_3:
 					for child in canvas_layer_3.get_children():
 						var tween_tutorial := create_tween()
@@ -129,6 +130,8 @@ func _process(_delta: float) -> void:
 	#if lenght_link_line_ship > max_string_lenght and flag_cutline:
 	#	flag_cutline = false
 	#	cut_line_link()
+	if ship.target:
+		link_line_ship.hide()
 
 func _on_star_changed(star: Star)-> void:
 	if star != stars_trail[index]:
@@ -236,6 +239,7 @@ func adjust_ship_light()-> void:
 			if animation_player.is_playing():
 				animation_player.stop()
 
+# tengo que hacer q no corra esta func si el lvl se gana.
 func cut_line_link(was_black_hole: bool) -> void:
 	hud.set_process(false)
 	hud.stopwatch.set_process(false)
@@ -252,6 +256,7 @@ func cut_line_link(was_black_hole: bool) -> void:
 		cut_line.create_line(link_line_ship.points[1],link_line_ship.points[0])
 	if ship.cut_link.is_connected(cut_line_link):
 		ship.cut_link.disconnect(cut_line_link)
+	GameManager.time_score += hud.time_lvl()
 
 func _on_dash_done() -> void:
 	hud.do_dash_ui()

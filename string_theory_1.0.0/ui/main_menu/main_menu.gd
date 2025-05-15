@@ -12,7 +12,7 @@ func _ready() -> void:
 	credits_page.credits_over.connect(_on_credits_over)
 
 	GameManager.lvl = 0
-	
+	GameManager.time_score = 0.0
 	GameManager.play_in_menu_and_end_music()
 
 func _on_options_clicked() -> void:

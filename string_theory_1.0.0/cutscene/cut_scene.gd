@@ -6,6 +6,7 @@ extends Node
 @onready var gpu_particles_2d: GPUParticles2D = $Sprite2D/GPUParticles2D
 @onready var dialogue_cutscene: Control = $CanvasLayer/Dialogue_cutscene
 @onready var timer: Timer = $Timer
+@onready var label: Label = $CanvasLayer/Label
 
 
 
@@ -15,7 +16,7 @@ func _ready() -> void:
 	)
 	if dialogue_cutscene.visible:
 		timer.timeout.connect(_on_timer_timeout)
-
+	score()
 
 func _on_animation_player_animation_finished(_anim_name: StringName) -> void:
 	if _anim_name == "set_the_ship":
@@ -34,3 +35,11 @@ func _on_animation_player_animation_finished(_anim_name: StringName) -> void:
 
 func _on_timer_timeout() -> void:
 	camera_2d.set_process(false)
+
+func score() -> void:
+	var value : float = GameManager.time_score
+	var mins := int(value / 60.0)
+	var seconds :=  int( value - mins * 60 )
+	var ms := int (( value * 1000.0 - mins * 60 * 1000 - seconds * 1000 ) / 10)
+	#text = str( mins ) + ":" + str( seconds ) + "." + str (ms)
+	label.text = "%02d:%02d:%002d"%[mins, seconds, (ms%100)]
