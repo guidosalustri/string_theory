@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://em4qfalchhhd"]
+[gd_scene load_steps=21 format=3 uid="uid://em4qfalchhhd"]
 
 [ext_resource type="Texture2D" uid="uid://bniyrxn3r2v8h" path="res://assets/ship.png" id="1_130qv"]
 [ext_resource type="Script" uid="uid://de6wuudcwljov" path="res://objects/ship.gd" id="1_u1532"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://dvkwtmjgeutc7" path="res://ui/hud/ship_ui_bottom.png" id="5_3y4e3"]
 [ext_resource type="PackedScene" uid="uid://bvtilym2q6v6b" path="res://assets/ship/side_thruster/side_thruster.tscn" id="5_8ryym"]
 [ext_resource type="Texture2D" uid="uid://d158xruba2vkk" path="res://assets/explosion_alt.png" id="5_wjuxj"]
+[ext_resource type="AudioStream" uid="uid://bpxj37msvt2yg" path="res://assets/audio/ship_sfx/explosion_crunch_000.ogg" id="7_vm408"]
 
 [sub_resource type="Gradient" id="Gradient_qovgx"]
 colors = PackedColorArray(1, 1, 1, 0.35, 15.469, 8.839, 38.121, 0.1)
@@ -305,3 +306,10 @@ texture_scale = 19.0
 [node name="DashTimer" type="Timer" parent="."]
 wait_time = 0.1
 one_shot = true
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_vm408")
+volume_db = -2.0
+pitch_scale = 1.2
+attenuation = 1.93188
+bus = &"SFX_ship"

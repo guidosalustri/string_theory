@@ -213,7 +213,10 @@ func dim_out_obstacles() -> void:
 	for star in constellation.get_children():
 		for child in star.get_children():
 			if child.is_in_group("obstacles") or child.is_in_group("spinner_bh"):
-				child.hide()
+				if child.is_in_group("trail_asteroid"):
+					child.deactivate()
+				else:
+					child.hide()
 
 func _overcharged_ship() -> void:
 	GameManager.data_collection.log_player_death(DataCollection.player_death_cause.OVERCHARGE)
@@ -236,6 +239,8 @@ func adjust_ship_light()-> void:
 func cut_line_link(was_black_hole: bool) -> void:
 	hud.set_process(false)
 	hud.stopwatch.set_process(false)
+	hud.can_do_dash = false
+	ship.can_dash = false
 	if animation_player.is_playing():
 		animation_player.stop()
 	link_line_ship.hide()
@@ -245,7 +250,8 @@ func cut_line_link(was_black_hole: bool) -> void:
 			cut_line.create_line(link_line_ship.points[0],link_line_ship.points[1])
 	else:
 		cut_line.create_line(link_line_ship.points[1],link_line_ship.points[0])
-	ship.cut_link.disconnect(cut_line_link)
+	if ship.cut_link.is_connected(cut_line_link):
+		ship.cut_link.disconnect(cut_line_link)
 
 func _on_dash_done() -> void:
 	hud.do_dash_ui()

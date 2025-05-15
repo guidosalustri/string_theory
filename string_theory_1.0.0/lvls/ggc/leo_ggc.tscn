@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://dm67f48dr2gck"]
+[gd_scene load_steps=28 format=3 uid="uid://dm67f48dr2gck"]
 
 [ext_resource type="Script" uid="uid://b1wf0gdhf0vhd" path="res://lvls/lvl.gd" id="1_2ftmo"]
 [ext_resource type="PackedScene" uid="uid://dqjnkl56rsiki" path="res://objects/comp/exit_area.tscn" id="2_alery"]
@@ -9,7 +9,6 @@
 [ext_resource type="PackedScene" uid="uid://bttykdc0l1xxq" path="res://objects/comp/spinner_obstacles.tscn" id="8_g6gur"]
 [ext_resource type="PackedScene" uid="uid://b1xjjudghnfhm" path="res://objects/obstacles/black_hole.tscn" id="8_vkouc"]
 [ext_resource type="PackedScene" uid="uid://bcslqepvdrl6n" path="res://objects/obstacles/asteroid.tscn" id="9_ochhm"]
-[ext_resource type="PackedScene" uid="uid://b17g87m8xlou6" path="res://objects/obstacles/planet.tscn" id="10_ty0u4"]
 [ext_resource type="Script" uid="uid://7sappikp3ig7" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="10_ux50f"]
 [ext_resource type="Script" uid="uid://k2kyeodww6ki" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="11_dpqdh"]
 [ext_resource type="FontFile" uid="uid://clffif4u7fy61" path="res://ui/Stacked pixel.ttf" id="12_cqged"]
@@ -138,6 +137,7 @@ antialiased = true
 
 [node name="Ship" parent="." instance=ExtResource("5_lo62i")]
 position = Vector2(539, 359)
+lvl_with_dash = true
 
 [node name="Constellation" type="Node2D" parent="."]
 
@@ -201,8 +201,8 @@ rotation_speed = 3.6
 
 [node name="Asteroid" parent="Constellation/Star6/SpinnerObstacles" instance=ExtResource("9_ochhm")]
 
-[node name="Planet" parent="Constellation/Star6" instance=ExtResource("10_ty0u4")]
-position = Vector2(339, -431)
+[node name="blackHole" parent="Constellation/Star6" instance=ExtResource("8_vkouc")]
+position = Vector2(335, -434)
 
 [node name="SpinnerObstacles2" parent="Constellation/Star6" node_paths=PackedStringArray("obstacles") instance=ExtResource("8_g6gur")]
 position = Vector2(335, -434)

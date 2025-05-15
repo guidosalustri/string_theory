@@ -115,3 +115,8 @@ func _update_drawing():
 func light_collision_on(on:bool) ->void:
 	area_2d.monitorable=on
 	point_light_2d.enabled = on
+
+func light_off() -> void:
+	var tween:  Tween = create_tween()
+	tween.set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
+	tween.tween_property(point_light_2d, "texture_scale",0.0,0.2)

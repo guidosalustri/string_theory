@@ -3,7 +3,6 @@ extends Path2D
 @export var move_speed := 0.2
 @onready var path_follow_2d: PathFollow2D = $PathFollow2D
 @onready var asteroid: Area2D = $PathFollow2D/Asteroid
-@onready var trail_asteroid: GPUParticles2D = $PathFollow2D/Asteroid/TrailAsteroid
 @onready var asteroid_trail: Line2D = $PathFollow2D/Asteroid/AsteroidTrail
 
 var way_back := false
@@ -42,3 +41,11 @@ func activate(_time_to_activate: float) -> void:
 	asteroid_trail.light_collision_on(true)
 	await asteroid.animation_player.animation_finished
 	asteroid.animation_player.play("spin")
+
+
+func deactivate() -> void:
+	asteroid.light_off()
+	asteroid_trail.light_off()
+	var tween:  Tween = create_tween()
+	tween.set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
+	tween.tween_property(self, "modulate:a",0.0,0.6)

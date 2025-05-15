@@ -11,6 +11,10 @@ class_name Ship extends Area2D
 @onready var point_light_2d: PointLight2D = $PointLight2D
 @onready var dash_timer: Timer = $DashTimer
 @onready var dash_gpu_particles: GPUParticles2D = $Sprite2D/GPUParticles2D
+@onready var audio_stream_player_2d: AudioStreamPlayer2D = $AudioStreamPlayer2D
+
+#const THRUSTER_FIRE_002 = preload("res://assets/audio/ship_sfx/thruster_fire_002.ogg")
+#const SPACE_ENGINE_003 = preload("res://assets/audio/ship_sfx/space_engine_003.ogg")
 
 @export var max_speed := 700.0
 @export var acceleration := 250.0
@@ -55,6 +59,8 @@ var current_state: States = States.FLY:
 
 func set_current_state(new_state: States) -> void:
 	if current_state == States.FLY and new_state == States.ORBIT:
+		#audio_stream_player_2d.stream =SPACE_ENGINE_003
+		#audio_stream_player_2d.play()
 		GameManager.data_collection.log_attach_detach_to_star( DataCollection.ship_action.ATTACH, fuel / max_fuel )
 	elif current_state == States.ORBIT and new_state == States.FLY:
 		var v0 := Vector2( cos(rotation), sin(rotation) )
@@ -307,6 +313,7 @@ func explode() -> void:
 	set_deferred("monitoring", true)
 	set_deferred("monitorable", true)
 	cut_link.emit(false)
+	audio_stream_player_2d.play()
 
 func dim_light_on(turn_light_on: bool) -> void:
 	#this should be carfully balance

@@ -147,7 +147,6 @@ antialiased = true
 [node name="Ship" parent="." instance=ExtResource("5_tlx3w")]
 position = Vector2(256, 512)
 fuel = 1.5
-lvl_with_dash = true
 
 [node name="Constellation" type="Node2D" parent="."]
 

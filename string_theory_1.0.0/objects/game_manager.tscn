@@ -30,22 +30,27 @@ main_menu = ExtResource("8_dccl0")
 [node name="InGameMusicBegin" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("12_yptnw")
 volume_db = -40.0
+bus = &"Music"
 
 [node name="InGameMusicLoop" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("12_atkno")
 volume_db = -40.0
+bus = &"Music"
 parameters/looping = true
 
 [node name="InGameMusicEnd" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("12_6yqrg")
 volume_db = -40.0
+bus = &"Music"
 
 [node name="MenuAndEndingMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("13_6yqrg")
 volume_db = -40.0
+bus = &"Music"
 parameters/looping = true
 
 [node name="DialogueMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("13_sss03")
 volume_db = -40.0
+bus = &"Music"
 parameters/looping = true

@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bc8nepke0pagf"]
+[gd_scene load_steps=13 format=3 uid="uid://bc8nepke0pagf"]
 
 [ext_resource type="Script" uid="uid://g7r1u16gu44c" path="res://ui/hud/hud.gd" id="1_22hk0"]
 [ext_resource type="Theme" uid="uid://dp1nmwxx5vbr5" path="res://ui/ui_samples_theme.tres" id="3_o2lis"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://k4yd0h3jh1qu" path="res://ui/stopwatch/stopwatch.gd" id="6_coa2k"]
 [ext_resource type="PackedScene" uid="uid://dpn6duokfpeii" path="res://ui/fuel_bar_rainbow/fuel_bar_rainbow.tscn" id="6_qevbr"]
 [ext_resource type="PackedScene" uid="uid://bwdvn8yhiwxr3" path="res://ui/hud/dash_ui.tscn" id="8_gfles"]
+[ext_resource type="AudioStream" uid="uid://b5aso3xdm5ip5" path="res://assets/audio/ship_sfx/space_engine_003.ogg" id="9_aixkq"]
 
 [sub_resource type="Animation" id="Animation_gfles"]
 length = 0.001
@@ -118,3 +119,9 @@ offset_top = 120.0
 offset_right = 611.0
 offset_bottom = 251.0
 scale = Vector2(0.35, 0.35)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_aixkq")
+volume_db = -4.0
+pitch_scale = 0.8
+bus = &"SFX"

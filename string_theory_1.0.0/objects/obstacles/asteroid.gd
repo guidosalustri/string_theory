@@ -15,3 +15,10 @@ func activate(_time_to_activate: float) -> void:
 
 func light_on(on) -> void:
 	point_light_2d.enabled=on
+
+func light_off() -> void:
+	var tween:  Tween = create_tween()
+	tween.set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
+	tween.tween_property(point_light_2d, "texture_scale",0.0,0.5)
+	#point_light_2d.hide()
+	
