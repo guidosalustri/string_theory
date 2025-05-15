@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://cik5mn1dffihp"]
+[gd_scene load_steps=30 format=3 uid="uid://cik5mn1dffihp"]
 
 [ext_resource type="Script" uid="uid://b1wf0gdhf0vhd" path="res://lvls/lvl.gd" id="1_6i6ho"]
 [ext_resource type="PackedScene" uid="uid://dqjnkl56rsiki" path="res://objects/comp/exit_area.tscn" id="3_1734e"]
@@ -7,9 +7,11 @@
 [ext_resource type="PackedScene" uid="uid://em4qfalchhhd" path="res://objects/ship.tscn" id="6_g1aki"]
 [ext_resource type="PackedScene" uid="uid://ul1ys48qmbs4" path="res://objects/star.tscn" id="7_q2smv"]
 [ext_resource type="PackedScene" uid="uid://b1xjjudghnfhm" path="res://objects/obstacles/black_hole.tscn" id="7_xyjwv"]
-[ext_resource type="PackedScene" uid="uid://bp4febdu6vh5y" path="res://objects/obstacles/asteroid.tscn" id="8_7jynd"]
+[ext_resource type="PackedScene" uid="uid://bp4febdu6vh5y" path="res://objects/obstacles/pivot_asteroid.tscn" id="8_7jynd"]
 [ext_resource type="Script" uid="uid://7sappikp3ig7" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="9_jj4hs"]
+[ext_resource type="PackedScene" uid="uid://bttykdc0l1xxq" path="res://objects/comp/spinner_obstacles.tscn" id="9_pk5m3"]
 [ext_resource type="PackedScene" uid="uid://dqrl1w65sj140" path="res://objects/comp/spinner_black_hole.tscn" id="9_smjpq"]
+[ext_resource type="PackedScene" uid="uid://bcslqepvdrl6n" path="res://objects/obstacles/asteroid.tscn" id="10_jdub5"]
 [ext_resource type="Script" uid="uid://k2kyeodww6ki" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="10_kdfw5"]
 [ext_resource type="FontFile" uid="uid://clffif4u7fy61" path="res://ui/Stacked pixel.ttf" id="11_6uym4"]
 [ext_resource type="PackedScene" uid="uid://bc8nepke0pagf" path="res://ui/hud/hud.tscn" id="11_rcpat"]
@@ -90,8 +92,8 @@ color = Color(0.0218252, 0.0212845, 0.0214185, 1)
 position = Vector2(2368, 256)
 
 [node name="Camera2D" type="Camera2D" parent="."]
-physics_interpolation_mode = 2
 position = Vector2(672, 256)
+process_callback = 0
 position_smoothing_speed = 2.0
 
 [node name="PhantomCameraHost" type="Node" parent="Camera2D"]
@@ -119,7 +121,7 @@ antialiased = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="LinkLineShip"]
 libraries = {
-"": SubResource("AnimationLibrary_4m2av")
+&"": SubResource("AnimationLibrary_4m2av")
 }
 
 [node name="LinkLineStars" type="Line2D" parent="."]
@@ -151,20 +153,23 @@ position = Vector2(-128, 384)
 position = Vector2(704, 960)
 
 [node name="blackHole" parent="Constellation/Star2" instance=ExtResource("7_xyjwv")]
-position = Vector2(-384, 0)
+position = Vector2(-407, -27)
 
 [node name="blackHole2" parent="Constellation/Star2" instance=ExtResource("7_xyjwv")]
-position = Vector2(-832, 192)
+position = Vector2(-802, 238)
 
 [node name="Star3" parent="Constellation" instance=ExtResource("7_q2smv")]
 position = Vector2(-384, 1408)
 
-[node name="PivotAsteroid" parent="Constellation/Star3" instance=ExtResource("8_7jynd")]
-rotation_speed = 4.3
-asteroid_position = Vector2(280, 0)
-
 [node name="blackHole" parent="Constellation/Star3" instance=ExtResource("7_xyjwv")]
-position = Vector2(640, -128)
+position = Vector2(864, -18)
+
+[node name="SpinnerObstacles" parent="Constellation/Star3" node_paths=PackedStringArray("obstacles") instance=ExtResource("9_pk5m3")]
+obstacles = [NodePath("Asteroid")]
+radius = 280.0
+rotation_speed = 4.3
+
+[node name="Asteroid" parent="Constellation/Star3/SpinnerObstacles" instance=ExtResource("10_jdub5")]
 
 [node name="Star4" parent="Constellation" instance=ExtResource("7_q2smv")]
 position = Vector2(-896, 1344)
@@ -173,17 +178,14 @@ black_hole_on_star = true
 [node name="Star5" parent="Constellation" instance=ExtResource("7_q2smv")]
 position = Vector2(-1216, 1664)
 
-[node name="PivotAsteroid" parent="Constellation/Star5" instance=ExtResource("8_7jynd")]
-asteroid_position = Vector2(250, 0)
+[node name="SpinnerObstacles" parent="Constellation/Star5" node_paths=PackedStringArray("obstacles") instance=ExtResource("9_pk5m3")]
+obstacles = [NodePath("Asteroid")]
 anticlockwise = true
+
+[node name="Asteroid" parent="Constellation/Star5/SpinnerObstacles" instance=ExtResource("10_jdub5")]
 
 [node name="Star6" parent="Constellation" instance=ExtResource("7_q2smv")]
 position = Vector2(64, 1984)
-
-[node name="PivotAsteroid" parent="Constellation/Star6" instance=ExtResource("8_7jynd")]
-rotation_speed = 3.3
-asteroid_position = Vector2(350, 0)
-anticlockwise = true
 
 [node name="SpinnerBlackHole" parent="Constellation/Star6" node_paths=PackedStringArray("blackhole1", "blackhole2") instance=ExtResource("9_smjpq")]
 position = Vector2(832, -256)
@@ -197,13 +199,16 @@ rotation_speed = 2.9
 
 [node name="blackHole2" parent="Constellation/Star6/SpinnerBlackHole" instance=ExtResource("7_xyjwv")]
 
+[node name="SpinnerObstacles" parent="Constellation/Star6" node_paths=PackedStringArray("obstacles") instance=ExtResource("9_pk5m3")]
+obstacles = [NodePath("Asteroid")]
+radius = 350.0
+anticlockwise = true
+rotation_speed = 3.3
+
+[node name="Asteroid" parent="Constellation/Star6/SpinnerObstacles" instance=ExtResource("10_jdub5")]
+
 [node name="Star7" parent="Constellation" instance=ExtResource("7_q2smv")]
 position = Vector2(-64, 2368)
-
-[node name="PivotAsteroid2" parent="Constellation/Star7" instance=ExtResource("8_7jynd")]
-position = Vector2(128, -384)
-rotation_speed = 3.6
-asteroid_position = Vector2(610, 0)
 
 [node name="Star8" parent="Constellation" instance=ExtResource("7_q2smv")]
 position = Vector2(1408, 1088)
@@ -236,6 +241,7 @@ position = Vector2(1600, 384)
 
 [node name="Star12" parent="Constellation" instance=ExtResource("7_q2smv")]
 position = Vector2(2112, 256)
+black_hole_on_star = true
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.5

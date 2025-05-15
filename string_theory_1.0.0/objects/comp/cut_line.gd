@@ -19,7 +19,8 @@ func _physics_process(_delta: float) -> void:
 		if target:
 			add_point(target.global_position)
 		if points.size() == 1:
-			queue_free()
+			hide()
+			#queue_free()
 
 func create_line(v1: Vector2,v2: Vector2) -> void:
 	var dir := v1.direction_to(v2)

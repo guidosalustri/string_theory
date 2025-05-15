@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://bp4febdu6vh5y"]
+
+[ext_resource type="Script" uid="uid://daf6ax7bn5mjc" path="res://objects/obstacles/pivot_asteroid.gd" id="1_7nu4h"]
+[ext_resource type="PackedScene" uid="uid://bcslqepvdrl6n" path="res://objects/obstacles/asteroid.tscn" id="2_7nu4h"]
+
+[node name="PivotAsteroid" type="Node2D" groups=["obstacles"]]
+script = ExtResource("1_7nu4h")
+
+[node name="Asteroid" parent="." instance=ExtResource("2_7nu4h")]
+position = Vector2(300, 0)

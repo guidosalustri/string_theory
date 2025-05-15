@@ -39,6 +39,7 @@ var lenght_link_line_ship := 0.0
 #var width_curve : Curve = null
 var thickness := 1.0
 var flag_cutline := true
+var dash_count := 0
 
 func _ready() -> void:
 	hud.player = ship
@@ -47,7 +48,9 @@ func _ready() -> void:
 		ship.set_has_energy(false)
 	)
 	hud.overcharged.connect(_overcharged_ship)
-	
+	if not ship.lvl_with_dash:
+		hud.hide_dash_ui()
+	ship.dash.connect(_on_dash_done)
 	get_tree().paused = false
 	_blur.material.set_shader_parameter("blur_amount", 0.0)
 	_blur.material.set_shader_parameter("tint_amount", 0.0)
@@ -79,6 +82,7 @@ func _ready() -> void:
 				ship.get_node("PointLight2D").hide()
 				timer.start()
 				hud.overcharged.disconnect(_overcharged_ship)
+				hud.stop_watch()
 				if canvas_layer_3:
 					for child in canvas_layer_3.get_children():
 						var tween_tutorial := create_tween()
@@ -120,7 +124,6 @@ func _process(_delta: float) -> void:
 		link_line_ship.points[1] = ship.global_position
 		
 		#lenght_link_line_ship = link_line_ship.points[0].distance_to(link_line_ship.points[1])
-
 	adjust_ship_light()
 	
 	#if lenght_link_line_ship > max_string_lenght and flag_cutline:
@@ -164,7 +167,7 @@ func _on_star_changed(star: Star)-> void:
 	if particles_vector != new_vector:
 		var particle_link = particles_scene.instantiate()
 		link_line_stars.add_child(particle_link)
-		particle_link.emitting = true
+		particle_link.emitting = false
 		particle_link.position = ((new_vector - particles_vector)*0.5) + particles_vector
 		particle_link.rotation = get_angle_to(new_vector - particles_vector)
 		particle_link.light_pos(particle_link.position)
@@ -176,6 +179,8 @@ func _on_star_changed(star: Star)-> void:
 		# we set the emitting box to the line size
 		particle_link.process_material.emission_box_extents.x = (new_vector - particles_vector).length() * 0.5
 		particle_link.light_lenght((new_vector - particles_vector).length())
+		await get_tree().create_timer(0.05).timeout
+		particle_link.emitting = true
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("spin"):
@@ -208,7 +213,10 @@ func dim_out_obstacles() -> void:
 	for star in constellation.get_children():
 		for child in star.get_children():
 			if child.is_in_group("obstacles") or child.is_in_group("spinner_bh"):
-				child.hide()
+				if child.is_in_group("trail_asteroid"):
+					child.deactivate()
+				else:
+					child.hide()
 
 func _overcharged_ship() -> void:
 	GameManager.data_collection.log_player_death(DataCollection.player_death_cause.OVERCHARGE)
@@ -229,6 +237,10 @@ func adjust_ship_light()-> void:
 				animation_player.stop()
 
 func cut_line_link(was_black_hole: bool) -> void:
+	hud.set_process(false)
+	hud.stopwatch.set_process(false)
+	hud.can_do_dash = false
+	ship.can_dash = false
 	if animation_player.is_playing():
 		animation_player.stop()
 	link_line_ship.hide()
@@ -238,4 +250,11 @@ func cut_line_link(was_black_hole: bool) -> void:
 			cut_line.create_line(link_line_ship.points[0],link_line_ship.points[1])
 	else:
 		cut_line.create_line(link_line_ship.points[1],link_line_ship.points[0])
-	ship.cut_link.disconnect(cut_line_link)
+	if ship.cut_link.is_connected(cut_line_link):
+		ship.cut_link.disconnect(cut_line_link)
+
+func _on_dash_done() -> void:
+	hud.do_dash_ui()
+	if dash_count >= 1:
+		ship.can_dash = false
+	dash_count+=1

@@ -1,7 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://bp4febdu6vh5y"]
+[gd_scene load_steps=10 format=3 uid="uid://bcslqepvdrl6n"]
 
+[ext_resource type="Script" uid="uid://527livpy3bi2" path="res://objects/obstacles/asteroid.gd" id="1_5bhxj"]
 [ext_resource type="Texture2D" uid="uid://0gw4o20b3fa0" path="res://cutscene/asteroid.svg" id="1_28jsf"]
-[ext_resource type="Script" uid="uid://daf6ax7bn5mjc" path="res://objects/obstacles/asteroid.gd" id="1_510w3"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_1vf22"]
 radius = 60.0083
@@ -55,7 +55,7 @@ tracks/1/path = NodePath(".:monitorable")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.433333),
+"times": PackedFloat32Array(0, 0.3),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [false, true]
@@ -85,40 +85,37 @@ _data = {
 &"spin": SubResource("Animation_583tx")
 }
 
-[sub_resource type="Gradient" id="Gradient_tfi8l"]
+[sub_resource type="Gradient" id="Gradient_5bhxj"]
 colors = PackedColorArray(1.8, 1, 1, 1, 0, 0, 0, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_bvlca"]
-gradient = SubResource("Gradient_tfi8l")
+gradient = SubResource("Gradient_5bhxj")
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(0.91453, 0.24359)
 
-[node name="PivotAsteroid" type="Node2D" groups=["obstacles"]]
-script = ExtResource("1_510w3")
-
-[node name="Asteroid" type="Area2D" parent="." groups=["asteroid"]]
+[node name="Asteroid" type="Area2D" groups=["asteroid", "obstacles"]]
 z_index = 1
-position = Vector2(300, 0)
 scale = Vector2(0.6, 0.6)
 collision_layer = 4
+script = ExtResource("1_5bhxj")
 
-[node name="Sprite2D" type="Sprite2D" parent="Asteroid"]
+[node name="Sprite2D" type="Sprite2D" parent="."]
 modulate = Color(1.5, 0.079, 0.252, 1)
 light_mask = 4
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("1_28jsf")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Asteroid"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
 shape = SubResource("CircleShape2D_1vf22")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Asteroid"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 &"": SubResource("AnimationLibrary_abysj")
 }
 
-[node name="PointLight2D" type="PointLight2D" parent="Asteroid"]
+[node name="PointLight2D" type="PointLight2D" parent="."]
 position = Vector2(-2, 2)
 scale = Vector2(2, 2)
 color = Color(1.6, 0.079, 0.252, 1)

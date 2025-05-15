@@ -4,11 +4,16 @@ extends Control
 @onready var stars_progress: StarsProgress = $StarsProgress
 @onready var fuel_bar_rainbow: FuelBarRainbow = $FuelBarRainbow
 @onready var speedometer_rainbow: SpeedometerRainbow = $SpeedometerRainbow
+@onready var stopwatch: Stopwatch = $Stopwatch
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var dash_ui: Control = $DashUI
+@onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
 
 
 signal overcharged
 signal no_energy
 
+var can_do_dash := true
 var player: Ship
 
 var stars_trail: Array[Star]:
@@ -28,7 +33,8 @@ func _on_star_entered_star_ui() -> void:
 
 func _ready() -> void:
 	timer_overcharged.timeout.connect(_on_timer_overcharged_timeout)
-
+	animation_player.play("stopwatch_grow")
+	
 func _process(_delta: float) -> void:
 	if player.fuel <= 0:
 		no_energy.emit()
@@ -36,11 +42,14 @@ func _process(_delta: float) -> void:
 	if player.fuel >= player.max_fuel and timer_overcharged.is_stopped():
 		timer_overcharged.start()
 		fuel_bar_rainbow.animation_player.play("full_energy")
+		audio_stream_player.play()
+		auido_pitch_overcharged()
 #
 	if 0 < player.fuel and player.fuel < player.max_fuel:
 		if not timer_overcharged.is_stopped():
 			timer_overcharged.stop()
 			fuel_bar_rainbow.animation_player.stop()
+			audio_stream_player.stop()
 	
 	speedometer_rainbow.max_speed = player.max_speed_hud
 	speedometer_rainbow.speed = player.speed
@@ -54,5 +63,24 @@ func texture_rect_tween(tex_rect: TextureRect) -> void:
 
 func _on_timer_overcharged_timeout() -> void:
 	fuel_bar_rainbow.animation_player.stop()
+	audio_stream_player.stop()
 	overcharged.emit()
 	set_process(false)
+
+func stop_watch() -> void:
+	animation_player.stop()
+	stopwatch.set_process(false)
+
+func do_dash_ui()-> void:
+	if can_do_dash:
+		dash_ui.dash_used()
+
+func hide_dash_ui() -> void:
+	dash_ui.hide()
+
+
+func auido_pitch_overcharged() -> void:
+	audio_stream_player.pitch_scale=0.8
+	var tween:  Tween = create_tween()
+	tween.set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
+	tween.tween_property(audio_stream_player, "pitch_scale",2,2.5)
