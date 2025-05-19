@@ -1,5 +1,8 @@
 extends Area2D
 
+
+@export var lvl_restart: int = GameManager.lvl
+
 signal black_hole_entered
 
 var is_in_spinner := false
@@ -33,4 +36,5 @@ func blackhole_off() -> void:
 	set_deferred("monitorable", false)
 
 func _on_area_entered(_area: Area2D) -> void:
+	GameManager.lvl = lvl_restart
 	black_hole_entered.emit()

@@ -35,7 +35,8 @@ color_ramp = SubResource("GradientTexture1D_x2cqk")
 
 [node name="Sparks" type="GPUParticles2D"]
 modulate = Color(0.572549, 0.572549, 0, 0.894118)
+emitting = false
 amount = 4
-process_material = SubResource("ParticleProcessMaterial_3h3m4")
 texture = ExtResource("1_na8mb")
 randomness = 0.5
+process_material = SubResource("ParticleProcessMaterial_3h3m4")

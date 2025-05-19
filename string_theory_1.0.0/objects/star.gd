@@ -49,6 +49,7 @@ func _ready() -> void:
 	timer.wait_time = time_between_star_blackhole
 
 func spawn():
+	sparks.emitting = false
 	show()
 	set_process(true)
 	set_deferred("monitoring", true)
@@ -86,6 +87,7 @@ func _on_area_entered(_area: Area2D) -> void:
 		await animation_player.animation_finished
 	animation_player_2.stop()
 	timer.stop()
+	sparks.emitting = true
 
 
 func _on_timer_timeout() -> void:

@@ -164,7 +164,7 @@ black_hole_on_star = true
 position = Vector2(-1115, 147)
 obstacles = [NodePath("blackHole"), NodePath("blackHole2")]
 radius = 680.0
-rotation_speed = 2.8
+rotation_speed = 2.5
 
 [node name="blackHole" parent="Constellation/Star3/SpinnerObstacles2" instance=ExtResource("8_vkouc")]
 

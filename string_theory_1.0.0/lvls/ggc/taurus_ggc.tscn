@@ -210,6 +210,7 @@ position = Vector2(659, -207)
 
 [node name="blackHole2" parent="Constellation/Star6" instance=ExtResource("7_qbigv")]
 position = Vector2(368, 377)
+lvl_restart = 6
 
 [node name="blackHole3" parent="Constellation/Star6" instance=ExtResource("7_qbigv")]
 position = Vector2(1067, 113)
