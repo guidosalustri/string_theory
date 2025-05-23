@@ -1,18 +1,17 @@
 extends Node2D
 
-@onready var smoke: GPUParticles2D = $Path2D/PathFollow2D/Sprite2D/Smoke
-@onready var path_follow_2d: PathFollow2D = $Path2D/PathFollow2D
+
 @onready var confettis: Node2D = $Confettis
 @onready var _rich_text_label: RichTextLabel = $Control/Label
 @onready var timer: Timer = $Timer
 @onready var node_2d: Node2D = $Control2/Border/Frame/Node2D
 @onready var node_2d2: Node2D = $Control3/Border/Frame/Node2D
+@onready var leader_board: VBoxContainer = $LeaderBoard
 
 @export var main_menu: PackedScene
 
 func _ready() -> void:
 	GameManager.play_in_menu_and_end_music()
-	smoke.emitting = true
 	for confetti in confettis.get_children():
 		confetti.pop_confettis()
 		confetti.finished.connect( func() -> void:
@@ -27,8 +26,10 @@ func _ready() -> void:
 	timer.timeout.connect(func() -> void:
 		get_tree().change_scene_to_packed(main_menu)
 	)
+	leader_board.score_entered.connect(func() -> void:
+		timer.start()
+	)
 
 func _process(delta: float) -> void:
-	path_follow_2d.progress += 900 * delta
 	node_2d.rotation -= PI * delta
 	node_2d2.rotation -= PI * delta

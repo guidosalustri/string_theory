@@ -1,74 +1,23 @@
-[gd_scene load_steps=19 format=3 uid="uid://cgt0lqimggmo2"]
+[gd_scene load_steps=10 format=3 uid="uid://cgt0lqimggmo2"]
 
 [ext_resource type="Script" uid="uid://bkwn5u1h7ccpx" path="res://cutscene/final_scene.gd" id="1_ed78j"]
 [ext_resource type="PackedScene" uid="uid://bxfevggvxo634" path="res://assets/background/space_background.tscn" id="1_px7yw"]
 [ext_resource type="PackedScene" uid="uid://p60tmr6ajcyy" path="res://ui/main_menu/main_menu.tscn" id="2_fkf2h"]
-[ext_resource type="Texture2D" uid="uid://bniyrxn3r2v8h" path="res://assets/ship.png" id="5_gv2u6"]
-[ext_resource type="PackedScene" uid="uid://b1xjjudghnfhm" path="res://objects/obstacles/black_hole.tscn" id="5_q4so5"]
-[ext_resource type="Texture2D" uid="uid://byhx0m56pbo6g" path="res://assets/pear_36_fire_gradient.tres" id="7_7bvca"]
 [ext_resource type="Script" uid="uid://0u5s3bo2p8ny" path="res://assets/confettis/confettis_area.gd" id="7_botj0"]
 [ext_resource type="FontFile" uid="uid://clffif4u7fy61" path="res://ui/Stacked pixel.ttf" id="8_76oqx"]
-[ext_resource type="Texture2D" uid="uid://f60df1b3rfjk" path="res://assets/puff.svg" id="8_tp6ko"]
+[ext_resource type="PackedScene" uid="uid://p2lqkia0elow" path="res://ui/leaderboard/leaderboard.tscn" id="9_ptikk"]
 [ext_resource type="Texture2D" uid="uid://tsf63gb1jnta" path="res://assets/circle_mask.png" id="10_1b11i"]
 [ext_resource type="Texture2D" uid="uid://cqg0c3dogxjc8" path="res://assets/martin_martian.png" id="11_6j1ny"]
 [ext_resource type="Texture2D" uid="uid://yjjrd3e6s26w" path="res://assets/crew.png" id="12_6j1ny"]
-
-[sub_resource type="Curve2D" id="Curve2D_0pcab"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, 436, 369, -69.8957, -1.30359, 69.8957, 1.30359, 1081, 165, -1.5874, -114.293, 1.5874, 114.293, 1245, 350, 80.4267, -1.6765, -80.4267, 1.6765, 1084, 538, 70.1911, -1.58741, -70.1911, 1.58741, -339, 163, -4.7622, -133.342, 4.7622, 133.342, -503, 358, -75.4872, -3.36236, 75.4872, 3.36236, -342, 538, 0, 0, 0, 0, 434, 369)
-}
-point_count = 8
-
-[sub_resource type="Curve" id="Curve_ukiwf"]
-_limits = [0.0, 200.0, 0.0, 1.0]
-_data = [Vector2(0, 200), 0.0, -759.091, 0, 1, Vector2(0.263473, 0), -759.091, 0.0, 1, 0]
-point_count = 2
-
-[sub_resource type="CurveTexture" id="2"]
-curve = SubResource("Curve_ukiwf")
-
-[sub_resource type="Curve" id="Curve_1qwp1"]
-_data = [Vector2(0, 0.272727), 0.0, 1.4, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
-point_count = 2
-
-[sub_resource type="CurveTexture" id="4"]
-curve = SubResource("Curve_1qwp1")
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_2dj3a"]
-particle_flag_disable_z = true
-angle_min = -180.0
-angle_max = 180.0
-direction = Vector3(0, 1, 0)
-spread = 15.0
-initial_velocity_min = 1.0
-initial_velocity_max = 1.0
-angular_velocity_min = 30.0
-angular_velocity_max = 50.0
-gravity = Vector3(0, 0, 0)
-linear_accel_min = 4.0
-linear_accel_max = 10.0
-linear_accel_curve = SubResource("2")
-scale_min = 0.5
-scale_max = 2.0
-scale_curve = SubResource("4")
-color_ramp = ExtResource("7_7bvca")
 
 [node name="FinalScene" type="Node2D"]
 script = ExtResource("1_ed78j")
 main_menu = ExtResource("2_fkf2h")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(394, 360)
+position = Vector2(390, 360)
 
 [node name="SpaceBackground" parent="." instance=ExtResource("1_px7yw")]
-
-[node name="blackHole2" parent="." instance=ExtResource("5_q4so5")]
-visible = false
-position = Vector2(1080, 347)
-
-[node name="blackHole" parent="." instance=ExtResource("5_q4so5")]
-visible = false
-position = Vector2(-329, 370)
 
 [node name="Confettis" type="Node2D" parent="."]
 
@@ -119,31 +68,15 @@ script = ExtResource("7_botj0")
 confettis_radius = 10.0
 confettis_pop_time_delay = 1.0
 
-[node name="Path2D" type="Path2D" parent="."]
-curve = SubResource("Curve2D_0pcab")
-
-[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
-position = Vector2(436, 369)
-rotation = -0.306324
-
-[node name="Sprite2D" type="Sprite2D" parent="Path2D/PathFollow2D"]
-texture = ExtResource("5_gv2u6")
-
-[node name="Smoke" type="GPUParticles2D" parent="Path2D/PathFollow2D/Sprite2D"]
-modulate = Color(1.2, 1.2, 1.2, 1)
-show_behind_parent = true
-position = Vector2(-25.9615, 0.00150633)
-rotation = 1.78717
-emitting = false
-amount = 64
-texture = ExtResource("8_tp6ko")
-process_material = SubResource("ParticleProcessMaterial_2dj3a")
-
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 110.0
+offset_top = -138.0
+offset_right = 110.0
+offset_bottom = -138.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 0
@@ -152,20 +85,19 @@ size_flags_horizontal = 0
 modulate = Color(0.937255, 0.992157, 0.372549, 1)
 custom_minimum_size = Vector2(450, 0)
 layout_mode = 0
-offset_left = -381.0
-offset_top = 57.0
-offset_right = 1254.0
-offset_bottom = 158.0
+offset_left = -79.0
+offset_top = 31.0
+offset_right = 1556.0
+offset_bottom = 132.0
 size_flags_horizontal = 0
 theme_override_fonts/normal_font = ExtResource("8_76oqx")
 theme_override_font_sizes/normal_font_size = 65
 bbcode_enabled = true
-text = "Congrats, All Constellations  Were Linked Up !!!"
+text = "Employees of the Month"
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 8.0
+wait_time = 3.0
 one_shot = true
-autostart = true
 
 [node name="Control2" type="Control" parent="."]
 layout_mode = 3
@@ -210,9 +142,9 @@ texture = ExtResource("12_6j1ny")
 [node name="Control3" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
-offset_left = 1062.0
+offset_left = 1105.0
 offset_top = 360.0
-offset_right = 1102.0
+offset_right = 1145.0
 offset_bottom = 400.0
 
 [node name="Shadow" type="Sprite2D" parent="Control3"]
@@ -246,3 +178,7 @@ texture = ExtResource("12_6j1ny")
 position = Vector2(-1.90735e-05, 113.656)
 scale = Vector2(0.9, 0.9)
 texture = ExtResource("11_6j1ny")
+
+[node name="LeaderBoard" parent="." instance=ExtResource("9_ptikk")]
+offset_left = -45.0
+offset_right = 811.0
