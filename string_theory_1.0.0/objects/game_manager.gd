@@ -15,7 +15,7 @@ extends Node
 
 var data_collection_impl := preload("res://objects/data_collection/data_collection_impl.gd")
 
-var lvl: int = 6
+var lvl: int = 0
 
 var deaths_counts := 0
 var time_score := 0.0
@@ -128,3 +128,15 @@ func _stop(audio: AudioStreamPlayer, time: float = 3.0) -> void:
 	var tween := get_tree().create_tween()
 	tween.tween_property(audio, "volume_db", -40.0, time)
 	tween.finished.connect( func() -> void: audio.stop() )
+
+func load_leaderbaord() -> Array:
+	var leaderboard : SavedLeaderboard = load("user://saved_leaderboard.tres") as SavedLeaderboard
+	if leaderboard==null:
+		leaderboard = SavedLeaderboard.new()
+	return leaderboard.list_players
+
+func save_leaderbaord(ls:Array) -> void:
+	var leaderboard : SavedLeaderboard = SavedLeaderboard.new()
+	leaderboard.list_players=ls
+	ResourceSaver.save(leaderboard, "user://saved_leaderboard.tres")
+	

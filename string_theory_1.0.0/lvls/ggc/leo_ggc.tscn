@@ -203,6 +203,7 @@ rotation_speed = 3.6
 
 [node name="blackHole" parent="Constellation/Star6" instance=ExtResource("8_vkouc")]
 position = Vector2(335, -434)
+lvl_restart = 6
 
 [node name="SpinnerObstacles2" parent="Constellation/Star6" node_paths=PackedStringArray("obstacles") instance=ExtResource("8_g6gur")]
 position = Vector2(335, -434)

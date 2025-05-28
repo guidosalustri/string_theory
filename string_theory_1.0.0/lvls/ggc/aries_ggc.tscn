@@ -161,6 +161,10 @@ position = Vector2(960, -128)
 curve = SubResource("Curve2D_7vqtn")
 move_speed = 0.6
 
+[node name="blackHole" parent="Constellation/Star2" instance=ExtResource("7_kqya4")]
+position = Vector2(694, 978)
+lvl_restart = 5
+
 [node name="Star3" parent="Constellation" instance=ExtResource("6_lwf7t")]
 position = Vector2(2816, 192)
 

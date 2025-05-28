@@ -1,8 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://p2lqkia0elow"]
+[gd_scene load_steps=3 format=3 uid="uid://p2lqkia0elow"]
 
 [ext_resource type="Theme" uid="uid://dp1nmwxx5vbr5" path="res://ui/ui_samples_theme.tres" id="1_kageg"]
 [ext_resource type="Script" uid="uid://6yxxug7fdiov" path="res://ui/leaderboard/leaderboard.gd" id="2_rbe8t"]
-[ext_resource type="PackedScene" uid="uid://s8e44rm12wms" path="res://ui/leaderboard/player_score.tscn" id="3_etus6"]
 
 [node name="LeaderBoard" type="VBoxContainer"]
 offset_right = 856.0
@@ -29,26 +28,6 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_type_variation = &"VBoxSecondary"
 theme_override_constants/separation = 23
-
-[node name="PlayerScore" parent="ScrollContainer/VBoxContainer" instance=ExtResource("3_etus6")]
-layout_mode = 2
-
-[node name="HBoxContainer5" type="HBoxContainer" parent="ScrollContainer/VBoxContainer"]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer/HBoxContainer5"]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_type_variation = &"OptionLabel"
-theme_override_colors/font_color = Color(1, 0.835294, 0, 1)
-text = "1. indra webbing"
-
-[node name="LanguageOptionButton" type="Label" parent="ScrollContainer/VBoxContainer/HBoxContainer5"]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_colors/font_color = Color(0.231373, 0.635294, 0.976471, 1)
-text = "10.10"
-horizontal_alignment = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 2

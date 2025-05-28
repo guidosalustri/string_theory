@@ -171,6 +171,7 @@ position = Vector2(-407, -19)
 
 [node name="blackHole2" parent="Constellation/Star2" instance=ExtResource("7_madvs")]
 position = Vector2(-847, 188)
+lvl_restart = 4
 
 [node name="Star3" parent="Constellation" instance=ExtResource("6_5d04d")]
 position = Vector2(-384, 1408)

@@ -197,6 +197,7 @@ position = Vector2(1024, 1984)
 
 [node name="blackHole" parent="Constellation/Star4" instance=ExtResource("7_0swlw")]
 position = Vector2(320, -448)
+lvl_restart = 4
 
 [node name="SpinnerObstacles" parent="Constellation/Star4" node_paths=PackedStringArray("obstacles") instance=ExtResource("9_rs2c8")]
 obstacles = [NodePath("Asteroid")]

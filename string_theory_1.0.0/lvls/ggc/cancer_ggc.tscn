@@ -209,9 +209,11 @@ position = Vector2(3072, -512)
 
 [node name="blackHole" parent="Constellation/Star5" instance=ExtResource("7_rugot")]
 position = Vector2(-437, -216)
+lvl_restart = 1
 
 [node name="blackHole2" parent="Constellation/Star5" instance=ExtResource("7_rugot")]
 position = Vector2(5, 685)
+lvl_restart = 1
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.5
