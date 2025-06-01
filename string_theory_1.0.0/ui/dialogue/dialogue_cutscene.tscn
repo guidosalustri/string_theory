@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://cqhxlf7w4dm1y"]
+[gd_scene load_steps=37 format=3 uid="uid://cqhxlf7w4dm1y"]
 
 [ext_resource type="Script" uid="uid://cx6jxtxcogcxr" path="res://ui/dialogue/dialogue_cutscene.gd" id="1_wklqp"]
 [ext_resource type="Script" uid="uid://cai31goet64bm" path="res://ui/dialogue/dialogue_entry.gd" id="2_8wc3g"]
@@ -11,37 +11,66 @@
 
 [sub_resource type="Resource" id="Resource_ot6hf"]
 script = ExtResource("2_8wc3g")
-text = "Hi capitan, my name is [color=3ba2f9]Martin D'Martian[/color]. I am head of the [color=3ba2f9]mechanical 
-team[/color] in this spaceship. I am looking forward to working together."
+text = "Congratz, Applicant. I am [color=3ba2f9]Martin[/color], Head of the [color=3ba2f9]Human Resource[/color]
+Department here at [color=3ba2f9]String Theory[/color] Corp."
+
+[sub_resource type="Resource" id="Resource_lasuh"]
+script = ExtResource("2_8wc3g")
+text = "You made it to the [color=3ba2f9]technical interview[/color]. statistically, you should be
+very [color=3ba2f9]proud[/color], you are in the [color=3ba2f9]top 1%[/color] of applicants."
+metadata/_custom_type_script = "uid://cai31goet64bm"
 
 [sub_resource type="Resource" id="Resource_knag6"]
 script = ExtResource("2_8wc3g")
-text = "You seem like an [color=3ba2f9]experienced[/color] captain. Nevertheless I need to go 
-through some [color=3ba2f9]technicalities[/color] with you... 
-You know, [color=3ba2f9]protocol[/color]..."
+text = "From your [color=3ba2f9]C.V.[/color] it seems you have enough [color=3ba2f9]experience[/color] being a pilot. Nevertheless I still need to go through some [color=3ba2f9]technicalities[/color]  about how the [color=3ba2f9]spaceship[/color] works. You know, [color=3ba2f9]protocol[/color]...
+"
 
 [sub_resource type="Resource" id="Resource_eqqfy"]
 script = ExtResource("2_8wc3g")
-text = "Ohh, that was [color=3ba2f9]smooth[/color] as a [color=3ba2f9]smoothie[/color]!!! 
-As you may know, the ship is [color=3ba2f9]powered[/color] by a gravitational engine. So 
-[color=3ba2f9]orbiting[/color] stars will [color=3ba2f9]charge[/color] it."
+text = "Oh, that was not too bad. Green [color=3ba2f9]energy[/color] is a top priority for us. We are
+not just a [color=3ba2f9]company[/color], we are a disruptive emerging [color=3ba2f9]ecosystem[/color].
+Do you feel ecosystemic already?"
 
 [sub_resource type="Resource" id="Resource_fh5xq"]
 script = ExtResource("2_8wc3g")
-text = "But the engine could also be [color=3ba2f9]overcharged[/color], leading to an [color=3ba2f9]explosion[/color]. On 
-contrast, running out of energy means [color=3ba2f9]losing[/color] the [color=3ba2f9]thrusters[/color] to 
-accelerate."
+text = "This particular [color=3ba2f9]engine[/color] is carbon-neutral, it works on [color=3ba2f9]gravitational[/color]
+energy. Try to be gentle with it, they can be pricey and [color=3ba2f9]fragile[/color], so
+we expect all pilots to handle them with care."
 
 [sub_resource type="Resource" id="Resource_ko3bd"]
 script = ExtResource("2_8wc3g")
-text = "Being [color=3ba2f9]stranded[/color] in outer space is [color=3ba2f9]scary[/color], please try to avoid it.  Also, 
-the [color=3ba2f9]illumination system[/color] quickly [color=3ba2f9]diminishes[/color] if we drift far away 
-from stars."
+text = "Okay now, time to [color=3ba2f9]pull[/color] those strings."
 
-[sub_resource type="Resource" id="Resource_f2hoh"]
+[sub_resource type="Resource" id="Resource_eqsya"]
 script = ExtResource("2_8wc3g")
-text = "Now yes! everything is [color=3ba2f9]set[/color] and ready. Let's [color=3ba2f9]pull[/color] these [color=3ba2f9]strings[/color] 
-together!!"
+text = "As you may notice this is a [color=3ba2f9]high-impact[/color] role. [color=3ba2f9]Entropy[/color] is the true
+villain here, many are counting on us. Can you work [color=3ba2f9]independently[/color]
+while [color=3ba2f9]chaining[/color] stars across the universe at a [color=3ba2f9]fast-pace[/color]?"
+metadata/_custom_type_script = "uid://cai31goet64bm"
+
+[sub_resource type="Resource" id="Resource_fl681"]
+script = ExtResource("2_8wc3g")
+text = "I will introduce a [color=3ba2f9]new system[/color] now, we call it [color=3ba2f9]space leap[/color]. It is not
+integrated in our ships yet but we want to make sure that new
+pilots are [color=3ba2f9]capable[/color] of handling it."
+metadata/_custom_type_script = "uid://cai31goet64bm"
+
+[sub_resource type="Resource" id="Resource_s27wl"]
+script = ExtResource("2_8wc3g")
+text = "As they say [color=3ba2f9]innovation[/color] breeds [color=3ba2f9]immersion[/color]. Show us how it is done."
+metadata/_custom_type_script = "uid://cai31goet64bm"
+
+[sub_resource type="Resource" id="Resource_txfsu"]
+script = ExtResource("2_8wc3g")
+text = "Yes, we are [color=3ba2f9]aware[/color] the interview is [color=3ba2f9]running[/color] longer than [color=3ba2f9]expected[/color].
+[color=3ba2f9]Strange[/color], really, these activities were [color=3ba2f9]designed[/color] to be pretty
+[color=3ba2f9]straightforward[/color]."
+metadata/_custom_type_script = "uid://cai31goet64bm"
+
+[sub_resource type="Resource" id="Resource_c2v5y"]
+script = ExtResource("2_8wc3g")
+text = "Shall we? the [color=3ba2f9]clock[/color] is still [color=3ba2f9]ticking[/color]…"
+metadata/_custom_type_script = "uid://cai31goet64bm"
 
 [sub_resource type="Resource" id="Resource_5nnx8"]
 script = ExtResource("2_8wc3g")
@@ -166,13 +195,13 @@ grow_vertical = 2
 size_flags_vertical = 8
 script = ExtResource("1_wklqp")
 dialogue_per_scene_dic = {
-0: [SubResource("Resource_ot6hf"), SubResource("Resource_knag6")],
-1: [SubResource("Resource_eqqfy"), SubResource("Resource_fh5xq"), SubResource("Resource_ko3bd"), SubResource("Resource_f2hoh")],
+0: [SubResource("Resource_ot6hf"), SubResource("Resource_lasuh"), SubResource("Resource_knag6")],
+1: [SubResource("Resource_eqqfy"), SubResource("Resource_fh5xq"), SubResource("Resource_ko3bd")],
 2: [],
 3: [],
-4: [],
+4: [SubResource("Resource_eqsya"), SubResource("Resource_fl681"), SubResource("Resource_s27wl")],
 5: [],
-6: [],
+6: [SubResource("Resource_txfsu"), SubResource("Resource_c2v5y")],
 7: [SubResource("Resource_5nnx8"), SubResource("Resource_uaf6j"), SubResource("Resource_kyk81")],
 8: [SubResource("Resource_nl5s7"), SubResource("Resource_kjcbh"), SubResource("Resource_q4nhy")],
 9: [SubResource("Resource_qfk18"), SubResource("Resource_p1bjy"), SubResource("Resource_jh1j5")],
