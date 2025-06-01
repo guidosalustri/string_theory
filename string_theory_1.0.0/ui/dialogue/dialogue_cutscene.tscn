@@ -22,7 +22,9 @@ metadata/_custom_type_script = "uid://cai31goet64bm"
 
 [sub_resource type="Resource" id="Resource_knag6"]
 script = ExtResource("2_8wc3g")
-text = "From your [color=3ba2f9]C.V.[/color] it seems you have enough [color=3ba2f9]experience[/color] being a pilot. Nevertheless I still need to go through some [color=3ba2f9]technicalities[/color]  about how the [color=3ba2f9]spaceship[/color] works. You know, [color=3ba2f9]protocol[/color]...
+text = "From your [color=3ba2f9]C.V.[/color] it seems you have enough [color=3ba2f9]experience[/color] being a pilot.
+Nevertheless I still need to go through some [color=3ba2f9]technicalities[/color]  about
+how the [color=3ba2f9]spaceship[/color] works. You know, [color=3ba2f9]protocol[/color]...
 "
 
 [sub_resource type="Resource" id="Resource_eqqfy"]
