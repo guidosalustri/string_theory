@@ -8,7 +8,7 @@ extends Node2D
 
 func _ready() -> void:
 	if obstacles.size() == 0:
-		set_process(false)
+		set_physics_process(false)
 		return
 	var fraction := 2*PI/obstacles.size()
 	var vector_obstacle_pos := Vector2(radius,0.0)
@@ -20,7 +20,7 @@ func _ready() -> void:
 		if obstacles[i].is_in_group("asteroid"):
 			obstacles[i].animation_player.play("spin")
 
-func _process(delta):
+func _physics_process(delta: float) -> void:
 	if anticlockwise:
 		rotation -= rotation_speed * delta
 	else:
