@@ -5,7 +5,7 @@ extends Node2D
 @onready var link_line_ship: Line2D = $LinkLineShip
 @onready var link_line_stars: Line2D = $LinkLineStars
 
-@onready var ship: Area2D = $Ship
+@onready var ship: Ship = $Ship
 # the camera swaps from ship to star to ship to next star (each star frame the camera in that star and the next one)
 # maybe it will be better for each entity to has its own camera
 @onready var camera_2d: Camera2D = $Camera2D
@@ -122,7 +122,7 @@ func _ready() -> void:
 
 func _process(_delta: float) -> void:
 	if link_line_ship.points[0] != Vector2(0.0,0.0):
-		link_line_ship.points[1] = ship.global_position
+		link_line_ship.points[1] = ship.get_smooth_transform().get_origin()
 		
 		#lenght_link_line_ship = link_line_ship.points[0].distance_to(link_line_ship.points[1])
 	adjust_ship_light()

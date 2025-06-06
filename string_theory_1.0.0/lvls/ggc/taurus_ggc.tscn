@@ -120,7 +120,6 @@ position = Vector2(4864, 576)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(867, 349)
-process_callback = 0
 position_smoothing_speed = 2.0
 
 [node name="PhantomCameraHost" type="Node" parent="Camera2D"]

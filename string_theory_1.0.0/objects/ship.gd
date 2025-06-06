@@ -3,7 +3,10 @@ class_name Ship extends Area2D
 @onready var side_thruster_left: Sprite2D = $Sprite2D/SideThrusterLeft
 @onready var side_thruster_right: Sprite2D = $Sprite2D/SideThrusterRight
 @onready var main_thruster: Line2D = $Sprite2D/MainThruster
+
 @onready var sprite_2d: Sprite2D = $Sprite2D
+var _physics_body_trans_last: Transform2D
+var _physics_body_trans_current: Transform2D
 
 @onready var ray_cast_2d: RayCast2D = $RayCast2D
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
@@ -105,30 +108,29 @@ func _ready() -> void:
 	max_speed_hud = int(max_speed)
 	can_dash = lvl_with_dash
 
-func _process(delta: float) -> void:
+func _physics_process(delta: float) -> void:
+	# Decrease energy level
+	if current_state == Ship.States.FLY:
+		fuel = max ( fuel -  fuel_burn_rate * delta, 0 )
+		if Input.is_action_pressed("move_left"):
+			fuel_left = max ( fuel_left -  fuel_burn_rate * delta, 0 )
+		if Input.is_action_pressed("move_right"):
+			fuel_right = max ( fuel_right -  fuel_burn_rate * delta, 0 )
+
+	# Increase energy level
+	if current_state == States.ORBIT:
+		fuel = min(fuel + fuel_fill_rate * delta, max_fuel)
+		fuel_left = min(fuel_left + fuel_fill_rate / 2.0 * delta, max_fuel)
+		fuel_right = min(fuel_right + fuel_fill_rate / 2.0 * delta, max_fuel)
+	
+	GameManager.data_collection.log_player_pos(position, rotation)
+	
 	# which movement the ship should have
 	if ray_cast_2d.is_colliding():
 
 		target = ray_cast_2d.get_collider() #last_star:
 
 	match current_state:
-		#States.ENTER_LVL:
-		#	if timer.time_left > 0:
-		#		speed += 1.0  * acceleration * delta
-		#		speed = clamp(speed, 0.0, max_speed)
-		#		var vel := (Vector2.RIGHT * speed).rotated(rotation)
-		#		translate(vel * delta)
-		#		#main_thruster.power = 1.0
-		#	else:
-		#		if flag:
-		#			set_current_state(States.ORBIT)
-		#		elif black_hole:
-		#			set_current_state(States.DRAGGED)
-#
-		#		else:
-		#			set_current_state(States.FLY)
-		#			set_has_energy(true)
-
 		States.FLY:
 			side_thruster_left.emit = true
 			side_thruster_right.emit = true
@@ -170,22 +172,11 @@ func _process(delta: float) -> void:
 	else:
 		dying = false
 
-func _physics_process(delta: float) -> void:
-	# Decrease energy level
-	if current_state == Ship.States.FLY:
-		fuel = max ( fuel -  fuel_burn_rate * delta, 0 )
-		if Input.is_action_pressed("move_left"):
-			fuel_left = max ( fuel_left -  fuel_burn_rate * delta, 0 )
-		if Input.is_action_pressed("move_right"):
-			fuel_right = max ( fuel_right -  fuel_burn_rate * delta, 0 )
+	_physics_body_trans_last = _physics_body_trans_current
+	_physics_body_trans_current = global_transform
 
-	# Increase energy level
-	if current_state == States.ORBIT:
-		fuel = min(fuel + fuel_fill_rate * delta, max_fuel)
-		fuel_left = min(fuel_left + fuel_fill_rate / 2.0 * delta, max_fuel)
-		fuel_right = min(fuel_right + fuel_fill_rate / 2.0 * delta, max_fuel)
-	
-	GameManager.data_collection.log_player_pos(position, rotation)
+func _process(delta: float) -> void:
+	sprite_2d.global_transform = get_smooth_transform()
 
 # steering 
 func _move(delta: float, right: bool, left: bool, forward: bool) -> void:
@@ -222,6 +213,8 @@ func _move(delta: float, right: bool, left: bool, forward: bool) -> void:
 	var velocity := (Vector2.RIGHT * speed).rotated(rotation)
 	translate(velocity * delta)
 
+const ship_orbiting_factor = PI/2 - PI/64
+
 # circular movment
 func _spin_around(delta: float, pos: Vector2) -> void:
 	speed += 1.0 * acceleration * delta
@@ -231,13 +224,13 @@ func _spin_around(delta: float, pos: Vector2) -> void:
 	var dir := (pos - position).normalized()
 	var velocity := dir * speed
 	# v is a vector that tell us where the ship is looking at (when it enters the star area)
-	var v := Vector2(1,0).rotated(rotation)
+	var v := Vector2(1, 0).rotated(rotation)
 	# depending on the angle between v and dir the ship should spin in one or
 	# other direction
-	if dir.angle_to(v) >= 0: 
-		velocity= velocity.rotated(PI/2)
+	if dir.angle_to(v) >= 0:
+		velocity = velocity.rotated( ship_orbiting_factor )
 	else:
-		velocity= velocity.rotated(-PI/2)
+		velocity = velocity.rotated( -ship_orbiting_factor )
 	# corrects a bit the angle
 	rotate(v.angle_to(velocity))
 	translate(velocity * delta)
@@ -279,9 +272,6 @@ func _on_area_entered(area: Area2D)->void:
 			var star : Star = area as Star
 			match star.current_state:
 				star.States.STAR:
-					#if dashing:
-						#explode()
-					#else:
 					star_entered.emit(star)
 					flag=true
 					pos1 = area.global_position
@@ -318,7 +308,7 @@ func explode() -> void:
 func dim_light_on(turn_light_on: bool) -> void:
 	#this should be carfully balance
 	if turn_light_on:
-		point_light_2d.texture_scale += 0.015
+		point_light_2d.texture_scale += 0.015	
 		point_light_2d.energy += 0.0008
 	else:
 		point_light_2d.texture_scale -= 0.015
@@ -337,3 +327,10 @@ func _on_dash_timer_timeout() -> void:
 	set_collision_mask_value(4,true)
 	dash_gpu_particles.emitting=false
 	dashing = false
+
+func get_smooth_transform() -> Transform2D:
+	return \
+		_physics_body_trans_last.interpolate_with(
+			_physics_body_trans_current,
+			Engine.get_physics_interpolation_fraction()
+		)
