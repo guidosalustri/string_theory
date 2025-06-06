@@ -30,6 +30,15 @@ var volume_bus_music := 0
 # death and restart don't count
 var _lvl_fresh_start := false
 
+func _ready() -> void:
+	SilentWolf.configure({
+		"api_key": "cVljDHfU4eKVN34bHdnXkSjuIKAQQqa3h92iTc90",
+		"game_id": "string_theory",
+		"log_level": 1,
+	})
+
+	#SilentWolf.Scores.wipe_leaderboard("main")
+
 func call_cutscene() -> void:
 	_lvl_fresh_start = true
 	if lvl == lvls.size():# - 1:# tendria que ser una flag corre la ultima cutscene y dsp entra a la final
@@ -130,13 +139,13 @@ func _stop(audio: AudioStreamPlayer, time: float = 3.0) -> void:
 	tween.finished.connect( func() -> void: audio.stop() )
 
 func load_leaderbaord() -> Array:
-	var leaderboard : SavedLeaderboard = load("user://saved_leaderboard.tres") as SavedLeaderboard
-	if leaderboard==null:
-		leaderboard = SavedLeaderboard.new()
-	return leaderboard.list_players
+	var sw_result: Dictionary = await SilentWolf.Scores.get_scores().sw_get_scores_complete
+	print(sw_result)
+	var leaderboard = []
 
-func save_leaderbaord(ls:Array) -> void:
-	var leaderboard : SavedLeaderboard = SavedLeaderboard.new()
-	leaderboard.list_players=ls
-	ResourceSaver.save(leaderboard, "user://saved_leaderboard.tres")
+	for record in sw_result.scores:
+		var record_row = [record["player_name"], record["score"]]
+		leaderboard.append(record_row)
+
+	return leaderboard
 	

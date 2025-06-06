@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://b1wf0gdhf0vhd" path="res://lvls/lvl.gd" id="1_3ke8e"]
 [ext_resource type="PackedScene" uid="uid://dqjnkl56rsiki" path="res://objects/comp/exit_area.tscn" id="2_qyifl"]
-[ext_resource type="Script" uid="uid://p8y27lj8qm0w" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="3_5docc"]
+[ext_resource type="Script" uid="uid://bd046eokvcnu2" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="3_5docc"]
 [ext_resource type="PackedScene" uid="uid://bxfevggvxo634" path="res://assets/background/space_background.tscn" id="4_lk4ue"]
 [ext_resource type="PackedScene" uid="uid://em4qfalchhhd" path="res://objects/ship.tscn" id="5_41od1"]
 [ext_resource type="PackedScene" uid="uid://ul1ys48qmbs4" path="res://objects/star.tscn" id="6_5d04d"]
@@ -10,8 +10,8 @@
 [ext_resource type="PackedScene" uid="uid://bttykdc0l1xxq" path="res://objects/comp/spinner_obstacles.tscn" id="8_e08rd"]
 [ext_resource type="PackedScene" uid="uid://bcslqepvdrl6n" path="res://objects/obstacles/asteroid.tscn" id="9_xyo4e"]
 [ext_resource type="PackedScene" uid="uid://d4du8b30u7feq" path="res://path_obstacles.tscn" id="10_e08rd"]
-[ext_resource type="Script" uid="uid://7sappikp3ig7" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="10_ts6vt"]
-[ext_resource type="Script" uid="uid://k2kyeodww6ki" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="11_4qelu"]
+[ext_resource type="Script" uid="uid://bhexx6mj1xv3q" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="10_ts6vt"]
+[ext_resource type="Script" uid="uid://8umksf8e80fw" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="11_4qelu"]
 [ext_resource type="FontFile" uid="uid://clffif4u7fy61" path="res://ui/Stacked pixel.ttf" id="12_eftkg"]
 [ext_resource type="Shader" uid="uid://dnbinwyvgk7bb" path="res://ui/blur_for_ui.gdshader" id="13_n1hcf"]
 [ext_resource type="PackedScene" uid="uid://bc8nepke0pagf" path="res://ui/hud/hud.tscn" id="14_7dctm"]
@@ -106,10 +106,12 @@ position = Vector2(2368, 256)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(672, 256)
-process_callback = 0
 position_smoothing_speed = 2.0
+editor_draw_limits = true
 
 [node name="PhantomCameraHost" type="Node" parent="Camera2D"]
+process_priority = 300
+process_physics_priority = 300
 script = ExtResource("3_5docc")
 
 [node name="SpaceBackground" parent="." instance=ExtResource("4_lk4ue")]
@@ -265,6 +267,7 @@ wait_time = 0.5
 one_shot = true
 
 [node name="PhantomCamera2D" type="Node2D" parent="." node_paths=PackedStringArray("follow_targets")]
+top_level = true
 position = Vector2(672, 256)
 script = ExtResource("10_ts6vt")
 follow_mode = 3
@@ -273,6 +276,7 @@ tween_resource = SubResource("Resource_bmus8")
 draw_limits = true
 
 [node name="PhantomCameraStars" type="Node2D" parent="."]
+top_level = true
 position = Vector2(739.5, 266.5)
 script = ExtResource("10_ts6vt")
 follow_mode = 3
@@ -280,6 +284,7 @@ tween_resource = SubResource("Resource_vjox8")
 draw_limits = true
 
 [node name="PhantomCamera2D2" type="Node2D" parent="."]
+top_level = true
 script = ExtResource("10_ts6vt")
 follow_mode = 3
 zoom = Vector2(0.4, 0.4)

@@ -5,20 +5,23 @@ extends VBoxContainer
 @onready var line_edit: LineEdit = $HBoxContainer/LineEdit
 @onready var button_ok: Button = $HBoxContainer/ButtonOk
 @onready var v_box_container: VBoxContainer = $ScrollContainer/VBoxContainer
+@onready var animation_player: AnimationPlayer = $HBoxContainer/AnimationPlayer
 
 
 @onready var score := time_score_to_string(GameManager.time_score)
 
-#var ls := [["pepe", 300.0],["pepe2", 1500.0],["zarlanga", 7500.0]]
-var ls :Array= GameManager.load_leaderbaord()
+var ls:Array
 var pos_new_score := 0
 var blue : Color =  Color(0.231,0.635,0.976,1)
 var yellow : Color = Color(1,0.835,0,1)
+var player_name
 
 signal score_entered
 
 func _ready() -> void:
-
+	button_ok.disabled = true
+	ls = await GameManager.load_leaderbaord()
+	button_ok.disabled = false
 	label.text = score
 	button_ok.pressed.connect(_on_button_pressed)
 	for i in range(ls.size()):
@@ -26,8 +29,19 @@ func _ready() -> void:
 			pos_new_score+=1
 		item_in_leaderboard(ls[i],i)
 
-
 func _add_line_score() -> void:
+	var has_user: bool = ls.any( func (row: Array) -> bool:
+			return row[0].to_lower() == line_edit.text
+	)
+
+	if has_user:
+		animation_player.play("name_taken")
+		await animation_player.animation_finished
+		line_edit.text = ""
+		return
+	
+	player_name = line_edit.text
+	player_name = player_name.to_lower()
 	var element_ls :Array= [line_edit.text,GameManager.time_score]
 	ls.insert(pos_new_score,element_ls)
 	for i in range(ls.size()):
@@ -35,17 +49,17 @@ func _add_line_score() -> void:
 			v_box_container.get_child(i).queue_free()
 		item_in_leaderboard_reload(ls[i],i)
 	line_edit.text = ""
-
+	line_edit.hide()
 
 func _on_button_pressed() -> void:
 	if line_edit.visible == false:
 		hide()
-		GameManager.save_leaderbaord(ls)
+		SilentWolf.Scores.save_score(player_name, GameManager.time_score)
 		score_entered.emit()
+	
 	if line_edit.text.length() == 0:
 		return
 	_add_line_score()
-	line_edit.hide()
 
 func time_score_to_string(time:float) -> String:
 	var mins := int(time / 60.0)
