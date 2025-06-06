@@ -11,8 +11,8 @@
 
 [sub_resource type="Resource" id="Resource_ot6hf"]
 script = ExtResource("2_8wc3g")
-text = "Congratz, Applicant. I am [color=3ba2f9]Martin[/color], Head of the [color=3ba2f9]Human Resource[/color]
-Department here at [color=3ba2f9]String Theory[/color] Corp."
+text = "Congratz, Applicant. I am [color=3ba2f9]Martin[/color], Head of [color=3ba2f9]Human Resources[/color] here at
+[color=3ba2f9]String Theory[/color] LTD."
 
 [sub_resource type="Resource" id="Resource_lasuh"]
 script = ExtResource("2_8wc3g")
@@ -29,15 +29,15 @@ how the [color=3ba2f9]spaceship[/color] works. You know, [color=3ba2f9]protocol[
 
 [sub_resource type="Resource" id="Resource_eqqfy"]
 script = ExtResource("2_8wc3g")
-text = "Oh, that was not too bad. Green [color=3ba2f9]energy[/color] is a top priority for us. We are
-not just a [color=3ba2f9]company[/color], we are a disruptive emerging [color=3ba2f9]ecosystem[/color].
-Do you feel ecosystemic already?"
+text = "That was not too bad!! The [color=3ba2f9]engine[/color] of your ship is [color=3ba2f9]carbon-neutral[/color], it
+works on [color=3ba2f9]gravitational energy[/color]. Try to be [color=3ba2f9]gentle[/color], they can be pricey
+and fragile, so we [color=3ba2f9]expect[/color] all pilots to handle them with [color=3ba2f9]care[/color]."
 
 [sub_resource type="Resource" id="Resource_fh5xq"]
 script = ExtResource("2_8wc3g")
-text = "This particular [color=3ba2f9]engine[/color] is carbon-neutral, it works on [color=3ba2f9]gravitational[/color]
-energy. Try to be gentle with it, they can be pricey and [color=3ba2f9]fragile[/color], so
-we expect all pilots to handle them with care."
+text = "[color=3ba2f9]Green[/color] energy is a top [color=3ba2f9]priority[/color] for us. We are not just a [color=3ba2f9]company[/color], we
+are a disruptive emerging [color=3ba2f9]ecosystem[/color]. Do you [color=3ba2f9]feel[/color] ecosystemic
+already?"
 
 [sub_resource type="Resource" id="Resource_ko3bd"]
 script = ExtResource("2_8wc3g")
@@ -59,7 +59,7 @@ metadata/_custom_type_script = "uid://cai31goet64bm"
 
 [sub_resource type="Resource" id="Resource_s27wl"]
 script = ExtResource("2_8wc3g")
-text = "As they say [color=3ba2f9]innovation[/color] breeds [color=3ba2f9]immersion[/color]. Show us how it is done."
+text = "As they say [color=3ba2f9]innovation[/color] breeds [color=3ba2f9]immersion[/color]. Show us how it is done!!"
 metadata/_custom_type_script = "uid://cai31goet64bm"
 
 [sub_resource type="Resource" id="Resource_txfsu"]
@@ -71,7 +71,7 @@ metadata/_custom_type_script = "uid://cai31goet64bm"
 
 [sub_resource type="Resource" id="Resource_c2v5y"]
 script = ExtResource("2_8wc3g")
-text = "Shall we? the [color=3ba2f9]clock[/color] is still [color=3ba2f9]ticking[/color]…"
+text = "Shall we keep going? I do not want to [color=3ba2f9]miss[/color] the lunch."
 metadata/_custom_type_script = "uid://cai31goet64bm"
 
 [sub_resource type="Resource" id="Resource_5nnx8"]

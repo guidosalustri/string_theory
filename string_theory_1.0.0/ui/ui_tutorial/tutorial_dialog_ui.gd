@@ -33,7 +33,7 @@ var labels :=[]
 
 
 func _ready() -> void:
-	labels = [rich_text_label, rich_text_label_2]
+	labels = get_children()#[rich_text_label, rich_text_label_2]
 	rich_text_label.visible_ratio = 0.0
 	rich_text_label_2.visible_ratio = 0.0
 
