@@ -299,9 +299,9 @@ func restart_lvl() -> void:
 
 func explode() -> void:
 	animation_player.play("asteroid_die")
-	set_process(false)
-	set_deferred("monitoring", true)
-	set_deferred("monitorable", true)
+	set_physics_process(false)
+	set_deferred("monitoring", false)
+	set_deferred("monitorable", false)
 	cut_link.emit(false)
 	audio_stream_player_2d.play()
 
@@ -317,10 +317,6 @@ func dim_light_on(turn_light_on: bool) -> void:
 	var value := clampf(point_light_2d.texture_scale,3,19)
 	point_light_2d.texture_scale = value
 	point_light_2d.energy = energy
-	#if value <= 2:
-		#cut_link.emit(false)
-		#set_process(false)
-		#animation_player.play("die")
 
 func _on_dash_timer_timeout() -> void:
 	set_collision_mask_value(3,true)
