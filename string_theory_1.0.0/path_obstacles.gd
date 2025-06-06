@@ -8,16 +8,15 @@ extends Path2D
 var way_back := false
 
 func _ready() -> void:
-	set_process(false)
+	set_physics_process(false)
 	asteroid_trail.light_collision_on(false)
 	asteroid.light_on(false)
 
-
-func _process(delta: float) -> void:
+func _physics_process(delta: float) -> void:
 	if way_back:
-		path_follow_2d.progress_ratio -=move_speed*delta
+		path_follow_2d.progress_ratio -= move_speed*delta
 	else:
-		path_follow_2d.progress_ratio +=move_speed*delta
+		path_follow_2d.progress_ratio += move_speed*delta
 	
 	if path_follow_2d.progress_ratio == 1:
 		way_back=true
@@ -34,7 +33,7 @@ func _process(delta: float) -> void:
 
 func activate(_time_to_activate: float) -> void:
 	await get_tree().create_timer(0.1).timeout
-	set_process(true)
+	set_physics_process(true)
 	asteroid.light_on(true)
 	asteroid.activate(_time_to_activate)
 	asteroid_trail.power = 1
