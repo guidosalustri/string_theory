@@ -96,8 +96,8 @@ position = Vector2(2368, 64)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(781.5, 435.5)
-process_callback = 0
 position_smoothing_speed = 2.0
+editor_draw_limits = true
 
 [node name="PhantomCameraHost" type="Node" parent="Camera2D"]
 process_priority = 300
@@ -171,7 +171,7 @@ black_hole_on_star = true
 position = Vector2(-1115, 147)
 obstacles = [NodePath("blackHole"), NodePath("blackHole2")]
 radius = 680.0
-rotation_speed = 2.5
+rotation_speed = 1.5
 
 [node name="blackHole" parent="Constellation/Star3/SpinnerObstacles2" instance=ExtResource("8_vkouc")]
 
@@ -210,7 +210,6 @@ rotation_speed = 3.6
 
 [node name="blackHole" parent="Constellation/Star6" instance=ExtResource("8_vkouc")]
 position = Vector2(335, -434)
-lvl_restart = 6
 
 [node name="SpinnerObstacles2" parent="Constellation/Star6" node_paths=PackedStringArray("obstacles") instance=ExtResource("8_g6gur")]
 position = Vector2(335, -434)

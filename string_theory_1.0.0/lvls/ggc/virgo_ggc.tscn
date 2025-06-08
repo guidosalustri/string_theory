@@ -173,13 +173,12 @@ position = Vector2(-407, -19)
 
 [node name="blackHole2" parent="Constellation/Star2" instance=ExtResource("7_madvs")]
 position = Vector2(-847, 188)
-lvl_restart = 4
 
 [node name="Star3" parent="Constellation" instance=ExtResource("6_5d04d")]
 position = Vector2(-384, 1408)
 
 [node name="blackHole" parent="Constellation/Star3" instance=ExtResource("7_madvs")]
-position = Vector2(708, -71)
+position = Vector2(647, -136)
 
 [node name="SpinnerObstacles" parent="Constellation/Star3" node_paths=PackedStringArray("obstacles") instance=ExtResource("8_e08rd")]
 obstacles = [NodePath("Asteroid")]
@@ -220,7 +219,7 @@ position = Vector2(957, -179)
 obstacles = [NodePath("blackHole"), NodePath("blackHole2"), NodePath("blackHole3")]
 radius = 400.0
 anticlockwise = true
-rotation_speed = 2.6
+rotation_speed = 2.2
 
 [node name="blackHole" parent="Constellation/Star6/SpinnerObstacles2" instance=ExtResource("7_madvs")]
 

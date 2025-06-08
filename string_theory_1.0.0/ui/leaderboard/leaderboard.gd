@@ -22,6 +22,9 @@ func _ready() -> void:
 	button_ok.disabled = true
 	ls = await GameManager.load_leaderbaord()
 	button_ok.disabled = false
+	
+	ls.sort_custom(func(a, b): return a[1] < b[1])
+	
 	label.text = score
 	button_ok.pressed.connect(_on_button_pressed)
 	for i in range(ls.size()):
@@ -44,6 +47,7 @@ func _add_line_score() -> void:
 	player_name = player_name.to_lower()
 	var element_ls :Array= [line_edit.text,GameManager.time_score]
 	ls.insert(pos_new_score,element_ls)
+	ls.sort_custom(func(a, b): return a[1] < b[1])
 	for i in range(ls.size()):
 		if i<ls.size()-1:
 			v_box_container.get_child(i).queue_free()
@@ -85,9 +89,9 @@ func item_in_leaderboard_reload(player:Array, pos: int) -> void:
 	var player_pos_name := str(pos)+". "+str(player[0])
 	player_score.player_name.text = player_pos_name
 	player_score.score.text = time_score_to_string(player[1])
-	if pos ==pos_new_score:
+	if player[0] == player_name:
 		player_score.player_name.add_theme_color_override("font_color", Color.WHITE)
 		player_score.score.add_theme_color_override("font_color", Color.WHITE)
-	if pos%2 ==1:
+	elif pos%2 ==1:
 		player_score.player_name.add_theme_color_override("font_color", yellow)
 		player_score.score.add_theme_color_override("font_color", blue)

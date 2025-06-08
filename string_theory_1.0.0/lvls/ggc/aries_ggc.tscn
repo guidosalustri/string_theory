@@ -100,8 +100,8 @@ position = Vector2(3968, 320)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(576, 544)
-process_callback = 0
 position_smoothing_speed = 2.0
+editor_draw_limits = true
 
 [node name="PhantomCameraHost" type="Node" parent="Camera2D"]
 process_priority = 300
@@ -165,7 +165,7 @@ move_speed = 0.6
 
 [node name="blackHole" parent="Constellation/Star2" instance=ExtResource("7_kqya4")]
 position = Vector2(694, 978)
-lvl_restart = 5
+lvl_restart = 6
 
 [node name="Star3" parent="Constellation" instance=ExtResource("6_lwf7t")]
 position = Vector2(2816, 192)

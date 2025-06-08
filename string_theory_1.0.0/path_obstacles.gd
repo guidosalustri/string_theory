@@ -43,7 +43,8 @@ func activate(_time_to_activate: float) -> void:
 
 
 func deactivate() -> void:
-	asteroid.light_off()
+	#asteroid.light_off()
+	asteroid.light_on(false)
 	asteroid_trail.light_off()
 	var tween:  Tween = create_tween()
 	tween.set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)

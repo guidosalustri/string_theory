@@ -23,12 +23,12 @@ scale_min = 0.3
 scale_max = 0.3
 scale_curve = SubResource("CurveTexture_q8l6t")
 
-[sub_resource type="Gradient" id="Gradient_vp8o5"]
+[sub_resource type="Gradient" id="Gradient_nm6jw"]
 offsets = PackedFloat32Array(0, 0.450658, 0.990132)
 colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 1)
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_wtrsa"]
-gradient = SubResource("Gradient_vp8o5")
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_nm6jw"]
+gradient = SubResource("Gradient_nm6jw")
 fill_from = Vector2(0.2, 0)
 fill_to = Vector2(0.8, 0)
 
@@ -49,4 +49,4 @@ light_mask = 4
 color = Color(0.302, 0.651, 2, 1)
 range_layer_min = -2
 range_item_cull_mask = 4
-texture = SubResource("GradientTexture2D_wtrsa")
+texture = SubResource("GradientTexture2D_nm6jw")

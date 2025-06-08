@@ -10,12 +10,13 @@ extends Control
 @onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
 @onready var stopwatch_util: StopwatchUtil = $Stopwatch/StopwatchUtil
 
-
+var tween_audio:  Tween = null
 signal overcharged
 signal no_energy
 
 var can_do_dash := true
 var player: Ship
+var audio_overcharge_on := true
 
 var stars_trail: Array[Star]:
 	set = set_stars_trail
@@ -43,8 +44,9 @@ func _process(_delta: float) -> void:
 	if player.fuel >= player.max_fuel and timer_overcharged.is_stopped():
 		timer_overcharged.start()
 		fuel_bar_rainbow.animation_player.play("full_energy")
-		audio_stream_player.play()
-		auido_pitch_overcharged()
+		if audio_overcharge_on :
+			audio_stream_player.play()
+			auido_pitch_overcharged()
 #
 	if 0 < player.fuel and player.fuel < player.max_fuel:
 		if not timer_overcharged.is_stopped():
@@ -82,9 +84,11 @@ func hide_dash_ui() -> void:
 
 func auido_pitch_overcharged() -> void:
 	audio_stream_player.pitch_scale=0.8
-	var tween:  Tween = create_tween()
-	tween.set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
-	tween.tween_property(audio_stream_player, "pitch_scale",2,2.5)
+	if tween_audio != null:
+		tween_audio.kill()
+	tween_audio = create_tween()
+	tween_audio.set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
+	tween_audio.tween_property(audio_stream_player, "pitch_scale",2,2.5)
 
 func time_lvl() -> float:
 	return stopwatch_util.time()

@@ -82,6 +82,7 @@ func _ready() -> void:
 				ship.get_node("PointLight2D").hide()
 				timer.start()
 				hud.overcharged.disconnect(_overcharged_ship)
+				hud.audio_overcharge_on = false
 				hud.stop_watch()
 				GameManager.time_score += hud.time_lvl()
 				if canvas_layer_3:

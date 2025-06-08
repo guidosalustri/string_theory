@@ -10,4 +10,5 @@ func light_rotation(rot: float) -> void:
 	point_light_2d.global_rotation = rot
 
 func light_lenght(distance: float) -> void:
+	#point_light_2d.texture.duplicate()
 	point_light_2d.texture.height = distance
