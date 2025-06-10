@@ -15,7 +15,7 @@ extends Node
 
 var data_collection_impl := preload("res://objects/data_collection/data_collection_impl.gd")
 
-var lvl: int = 6
+var lvl: int = 0
 
 var deaths_counts := 0
 var time_score := 0.0
