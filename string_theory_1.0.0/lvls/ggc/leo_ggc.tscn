@@ -343,11 +343,6 @@ grow_vertical = 2
 
 [node name="HUD" parent="CanvasLayer" instance=ExtResource("14_kk1im")]
 
-[node name="CanvasLayer2" type="CanvasLayer" parent="."]
-
-[node name="PauseScreen" parent="CanvasLayer2" instance=ExtResource("15_5foh4")]
-visible = false
-
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("16_sxy4x")
 
@@ -378,5 +373,10 @@ canvas_layer = NodePath("../CanvasLayer3")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AreaDeletTutorial"]
 position = Vector2(1919, 1470)
 shape = SubResource("CircleShape2D_ochhm")
+
+[node name="CanvasLayer2" type="CanvasLayer" parent="."]
+
+[node name="PauseScreen" parent="CanvasLayer2" instance=ExtResource("15_5foh4")]
+visible = false
 
 [editable path="CanvasLayer3/DetectorForDialog"]

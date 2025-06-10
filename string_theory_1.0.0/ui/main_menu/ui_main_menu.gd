@@ -93,7 +93,7 @@ func _move_cursor(at: Vector2) -> void:
 func _on_action_texture_button_pressed( button_name: String) -> void:
 	match button_name:
 		"play":
-			GameManager.enable_data_collection()
+			#GameManager.enable_data_collection()
 			_set_buttons_disabled(true)
 			var disable_tween := create_tween()
 			disable_tween.tween_property(_buttons_v_box_container,"modulate:a", 0.0, 1.0)\
