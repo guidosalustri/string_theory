@@ -79,43 +79,11 @@ theme_override_constants/h_separation = 80
 theme_override_constants/v_separation = 20
 columns = 2
 
-[node name="ActionAccelerate" type="Label" parent="UIPanelContainer/Controls/VBoxContainer/MarginContainer2/ControlsTable"]
-layout_mode = 2
-theme_override_colors/font_color = Color(0.937255, 0.992157, 0.372549, 1)
-theme_override_font_sizes/font_size = 60
-text = "Accelerate"
-vertical_alignment = 1
-
-[node name="HBoxContainer" type="HBoxContainer" parent="UIPanelContainer/Controls/VBoxContainer/MarginContainer2/ControlsTable"]
-layout_mode = 2
-
-[node name="W" type="Button" parent="UIPanelContainer/Controls/VBoxContainer/MarginContainer2/ControlsTable/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 4
-theme_override_colors/font_disabled_color = Color(0.937255, 0.992157, 0.372549, 1)
-theme_override_colors/font_color = Color(0.937255, 0.992157, 0.372549, 1)
-theme_override_font_sizes/font_size = 48
-disabled = true
-text = "w"
-
-[node name="UP" type="Button" parent="UIPanelContainer/Controls/VBoxContainer/MarginContainer2/ControlsTable/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 4
-theme_override_colors/font_disabled_color = Color(0.937255, 0.992157, 0.372549, 1)
-theme_override_colors/font_color = Color(0.937255, 0.992157, 0.372549, 1)
-theme_override_font_sizes/font_size = 48
-disabled = true
-text = "UP"
-
 [node name="TurnLeft" type="Label" parent="UIPanelContainer/Controls/VBoxContainer/MarginContainer2/ControlsTable"]
-custom_minimum_size = Vector2(2.08165e-12, 0)
 layout_mode = 2
 theme_override_colors/font_color = Color(0.937255, 0.992157, 0.372549, 1)
 theme_override_font_sizes/font_size = 60
-text = "Turn Left
-"
+text = "Turn Left"
 vertical_alignment = 1
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="UIPanelContainer/Controls/VBoxContainer/MarginContainer2/ControlsTable"]
@@ -178,7 +146,7 @@ custom_minimum_size = Vector2(2.08165e-12, 0)
 layout_mode = 2
 theme_override_colors/font_color = Color(0.937255, 0.992157, 0.372549, 1)
 theme_override_font_sizes/font_size = 60
-text = "Detach from star"
+text = "Detach/Dash"
 vertical_alignment = 1
 
 [node name="HBoxContainer4" type="HBoxContainer" parent="UIPanelContainer/Controls/VBoxContainer/MarginContainer2/ControlsTable"]
