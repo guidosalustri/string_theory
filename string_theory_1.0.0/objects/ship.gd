@@ -236,16 +236,20 @@ func _spin_around(delta: float, pos: Vector2) -> void:
 	translate(velocity * delta)
 
 func _follow(delta: float, pos: Vector2) -> void:
-	if dashing:
-		speed = 700
-		dashing = false
+	#if dashing:
+	speed = 700
+	if black_hole.is_in_group("blackhole") and black_hole.is_in_spinner:
+		max_speed = black_hole.linear_speed_aprox
+		speed = black_hole.linear_speed_aprox
+	#	dashing = false
 	if position.distance_to(pos) > 10:
 		var direction := global_position.direction_to(pos)
 		var velocity := direction * speed
 		translate(velocity * delta)
 		if not black_hole:
 			rotation = velocity.angle()
-
+		elif black_hole.is_in_group("blackhole") and black_hole.is_in_spinner and position.distance_to(pos) < 20:
+			animation_player.play("die")
 	elif black_hole:
 		animation_player.play("die")
 
@@ -279,18 +283,18 @@ func _on_area_entered(area: Area2D)->void:
 					pos1 = area.global_position
 				star.States.BLACK_HOLE:
 					black_hole = area
-					#if speed > 700:
-					#	speed = 700
-					#	dashing = false
+					if speed > 700:
+						speed = 500
+						dashing = false
 					if speed < 500:
 						speed = 500
 					cut_link.emit(true)
 					GameManager.data_collection.log_player_death(DataCollection.player_death_cause.BLACK_HOLE)
 		if area.is_in_group("blackhole"):
 			black_hole = area
-			#if speed > 700:
-			#	speed = 700
-			#	dashing = false
+			if speed > 700:
+				speed = 500
+				dashing = false
 			if speed < 500:
 				speed = 500
 			if black_hole.is_in_spinner:
