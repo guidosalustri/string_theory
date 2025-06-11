@@ -238,7 +238,7 @@ func _spin_around(delta: float, pos: Vector2) -> void:
 func _follow(delta: float, pos: Vector2) -> void:
 	#if dashing:
 	speed = 700
-	if black_hole.is_in_group("blackhole") and black_hole.is_in_spinner:
+	if black_hole and black_hole.is_in_group("blackhole") and black_hole.is_in_spinner:
 		max_speed = black_hole.linear_speed_aprox
 		speed = black_hole.linear_speed_aprox
 	#	dashing = false
