@@ -5,7 +5,7 @@
 [ext_resource type="Script" uid="uid://btevi1uqbys7t" path="res://assets/background/space_background.gd" id="3_wqx65"]
 [ext_resource type="PackedScene" uid="uid://cgdat18qea2f5" path="res://ui/options/options.tscn" id="4_wwnm0"]
 [ext_resource type="Texture2D" uid="uid://enhad8bfjtmm" path="res://cutscene/asteroid.png" id="5_ar6ui"]
-[ext_resource type="Texture2D" uid="uid://b4atip1kb2j28" path="res://assets/planet_large.png" id="6_eibt2"]
+[ext_resource type="Texture2D" uid="uid://b4atip1kb2j28" path="res://assets/art/planet_large.png" id="6_eibt2"]
 [ext_resource type="Texture2D" uid="uid://dhib4dlrcw7k8" path="res://cutscene/planet_orange.png" id="7_i3qf4"]
 [ext_resource type="PackedScene" uid="uid://c5mhd08u6r1kd" path="res://ui/main_menu/ui_main_menu.tscn" id="7_uv4c6"]
 [ext_resource type="Texture2D" uid="uid://cwwgbu82bxbho" path="res://cutscene/planet_purple.png" id="8_471ar"]

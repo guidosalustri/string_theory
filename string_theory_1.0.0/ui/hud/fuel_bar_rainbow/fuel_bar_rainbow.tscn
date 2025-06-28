@@ -1,0 +1,235 @@
+[gd_scene load_steps=23 format=3 uid="uid://dpn6duokfpeii"]
+
+[ext_resource type="Script" uid="uid://b0yypoeqkeqey" path="res://ui/hud/fuel_bar_rainbow/fuel_bar_rainbow.gd" id="1_0kqxd"]
+[ext_resource type="Shader" uid="uid://ddussvfpy5c8h" path="res://ui/hud/fuelprogressbar.gdshader" id="1_5eukr"]
+[ext_resource type="Theme" uid="uid://dp1nmwxx5vbr5" path="res://ui/ui_samples_theme.tres" id="3_4qk8w"]
+
+[sub_resource type="Gradient" id="Gradient_nmsie"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0.211765, 0.266667, 0.352941, 0.537255)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_ns2v1"]
+gradient = SubResource("Gradient_nmsie")
+
+[sub_resource type="Gradient" id="Gradient_wxnr8"]
+offsets = PackedFloat32Array(1)
+colors = PackedColorArray(1, 1, 1, 0.0235294)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_a6ufr"]
+gradient = SubResource("Gradient_wxnr8")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lh0rc"]
+shader = ExtResource("1_5eukr")
+shader_parameter/stepify = true
+shader_parameter/value = 1.0
+shader_parameter/count = 1
+shader_parameter/margin = Vector2(0, 0.255)
+shader_parameter/shear_angle = -0.1
+shader_parameter/gradient_x = SubResource("GradientTexture1D_ns2v1")
+shader_parameter/gradient_y = SubResource("GradientTexture1D_a6ufr")
+shader_parameter/use_value_gradient = false
+shader_parameter/invert = false
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_u5qbt"]
+shader = ExtResource("1_5eukr")
+shader_parameter/stepify = true
+shader_parameter/value = 1.0
+shader_parameter/count = 15
+shader_parameter/margin = Vector2(0.15, 0.45)
+shader_parameter/shear_angle = -0.1
+shader_parameter/use_value_gradient = true
+shader_parameter/invert = false
+
+[sub_resource type="Gradient" id="Gradient_binqk"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0.223529, 0.235294, 0.219608, 0.380392)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_wl65m"]
+gradient = SubResource("Gradient_binqk")
+
+[sub_resource type="Gradient" id="Gradient_mlyko"]
+offsets = PackedFloat32Array(0.145882, 0.244706, 0.748235)
+colors = PackedColorArray(0.105882, 0.105882, 0.105882, 0.815686, 0.596078, 0.588235, 0.513726, 0.960784, 0.105882, 0.105882, 0.105882, 0.815686)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_366ti"]
+gradient = SubResource("Gradient_mlyko")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dmiq3"]
+shader = ExtResource("1_5eukr")
+shader_parameter/stepify = true
+shader_parameter/value = 1.0
+shader_parameter/count = 15
+shader_parameter/margin = Vector2(0.1, 0.45)
+shader_parameter/shear_angle = -0.1
+shader_parameter/gradient_x = SubResource("GradientTexture1D_wl65m")
+shader_parameter/gradient_y = SubResource("GradientTexture1D_366ti")
+shader_parameter/use_value_gradient = true
+shader_parameter/invert = false
+
+[sub_resource type="Gradient" id="Gradient_xv4ga"]
+offsets = PackedFloat32Array(0.0352941, 0.115294, 0.242353, 0.36, 0.632941, 0.764706, 0.847059, 1)
+colors = PackedColorArray(0.4, 0, 1, 1, 0, 0.301961, 1, 1, 0.0823529, 0.568627, 1, 1, 0.00784314, 0.886275, 0.262745, 1, 0, 0.921569, 0.156863, 1, 0.843137, 1, 0, 1, 0.92549, 0.67451, 0.0431373, 1, 1, 0.0862745, 0.113725, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_ebsho"]
+gradient = SubResource("Gradient_xv4ga")
+
+[sub_resource type="Gradient" id="Gradient_8myeb"]
+offsets = PackedFloat32Array(0, 0.164706, 0.407059, 0.896471)
+colors = PackedColorArray(0, 0, 0, 0.0156863, 1, 1, 1, 1, 0.858824, 0.858824, 0.858824, 0.643137, 0, 0, 0, 0.0156863)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_dvt7b"]
+gradient = SubResource("Gradient_8myeb")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vfjat"]
+shader = ExtResource("1_5eukr")
+shader_parameter/stepify = true
+shader_parameter/value = 0.8186
+shader_parameter/count = 15
+shader_parameter/margin = Vector2(0.1, 0.45)
+shader_parameter/shear_angle = -0.1
+shader_parameter/gradient_x = SubResource("GradientTexture1D_ebsho")
+shader_parameter/gradient_y = SubResource("GradientTexture1D_dvt7b")
+shader_parameter/use_value_gradient = true
+shader_parameter/invert = false
+
+[sub_resource type="Animation" id="Animation_wm234"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PanelFront:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PanelMiddle:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_t7mxl"]
+resource_name = "full_energy"
+length = 0.3
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.05, 1.05), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PanelFront:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.133333, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PanelMiddle:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.0333333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_fkiof"]
+_data = {
+&"RESET": SubResource("Animation_wm234"),
+&"full_energy": SubResource("Animation_t7mxl")
+}
+
+[node name="FuelBarRainbow" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 435.0
+offset_bottom = 40.0
+rotation = 0.000100682
+pivot_offset = Vector2(217, 20)
+script = ExtResource("1_0kqxd")
+fuel = 4.093
+
+[node name="PanelBack" type="Panel" parent="."]
+material = SubResource("ShaderMaterial_lh0rc")
+layout_mode = 0
+offset_right = 446.0
+offset_bottom = 40.0
+
+[node name="PanelMiddleWhite" type="Panel" parent="."]
+material = SubResource("ShaderMaterial_u5qbt")
+layout_mode = 0
+offset_left = 2.58
+offset_right = 442.58
+offset_bottom = 40.0
+
+[node name="PanelMiddle" type="Panel" parent="."]
+material = SubResource("ShaderMaterial_dmiq3")
+layout_mode = 0
+offset_left = 3.00202
+offset_top = 0.0215464
+offset_right = 443.002
+offset_bottom = 40.0215
+
+[node name="PanelFront" type="Panel" parent="."]
+material = SubResource("ShaderMaterial_vfjat")
+layout_mode = 0
+offset_left = 3.00202
+offset_top = 0.0215464
+offset_right = 443.002
+offset_bottom = 40.0215
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_fkiof")
+}
+
+[node name="Label" type="Label" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 174.994
+offset_top = -38.9958
+offset_right = 600.994
+offset_bottom = 10.0042
+theme = ExtResource("3_4qk8w")
+theme_override_colors/font_color = Color(0.937255, 0.992157, 0.372549, 1)
+theme_override_font_sizes/font_size = 48
+text = "Giga E-volts"

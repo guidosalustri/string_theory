@@ -1,11 +1,11 @@
 [gd_scene load_steps=21 format=3 uid="uid://em4qfalchhhd"]
 
-[ext_resource type="Texture2D" uid="uid://bniyrxn3r2v8h" path="res://assets/ship.png" id="1_130qv"]
+[ext_resource type="Texture2D" uid="uid://bniyrxn3r2v8h" path="res://assets/art/ship.png" id="1_130qv"]
 [ext_resource type="Script" uid="uid://de6wuudcwljov" path="res://objects/ship.gd" id="1_u1532"]
 [ext_resource type="PackedScene" uid="uid://2rsowtwrtfr2" path="res://assets/ship/main_thruster/main_thruster.tscn" id="4_2cjet"]
 [ext_resource type="Texture2D" uid="uid://dvkwtmjgeutc7" path="res://ui/hud/ship_ui_bottom.png" id="5_3y4e3"]
 [ext_resource type="PackedScene" uid="uid://bvtilym2q6v6b" path="res://assets/ship/side_thruster/side_thruster.tscn" id="5_8ryym"]
-[ext_resource type="Texture2D" uid="uid://d158xruba2vkk" path="res://assets/explosion_alt.png" id="5_wjuxj"]
+[ext_resource type="Texture2D" uid="uid://d158xruba2vkk" path="res://assets/art/explosion_alt.png" id="5_wjuxj"]
 [ext_resource type="AudioStream" uid="uid://bpxj37msvt2yg" path="res://assets/audio/ship_sfx/explosion_crunch_000.ogg" id="7_vm408"]
 
 [sub_resource type="Gradient" id="Gradient_qovgx"]

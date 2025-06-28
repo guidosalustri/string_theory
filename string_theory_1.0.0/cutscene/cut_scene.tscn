@@ -4,10 +4,10 @@
 [ext_resource type="Shader" uid="uid://dodbo1f6pi8st" path="res://cutscene/blur.gdshader" id="2_2e1hg"]
 [ext_resource type="Script" uid="uid://cfre2exo4ean0" path="res://cutscene/camera_cut_scene.gd" id="2_op7gm"]
 [ext_resource type="PackedScene" uid="uid://gu842no2aiky" path="res://cutscene/background_asteroids.tscn" id="3_ckfui"]
-[ext_resource type="Texture2D" uid="uid://bniyrxn3r2v8h" path="res://assets/ship.png" id="3_mwyjp"]
+[ext_resource type="Texture2D" uid="uid://bniyrxn3r2v8h" path="res://assets/art/ship.png" id="3_mwyjp"]
 [ext_resource type="PackedScene" uid="uid://cs72uiiumr18y" path="res://cutscene/particles_ship_dash.tscn" id="5_r316d"]
 [ext_resource type="Texture2D" uid="uid://byhx0m56pbo6g" path="res://assets/pear_36_fire_gradient.tres" id="7_xnycu"]
-[ext_resource type="Texture2D" uid="uid://f60df1b3rfjk" path="res://assets/puff.svg" id="8_vccei"]
+[ext_resource type="Texture2D" uid="uid://f60df1b3rfjk" path="res://assets/art/puff.svg" id="8_vccei"]
 [ext_resource type="PackedScene" uid="uid://cqhxlf7w4dm1y" path="res://ui/dialogue/dialogue_cutscene.tscn" id="9_06lu3"]
 [ext_resource type="Theme" uid="uid://dp1nmwxx5vbr5" path="res://ui/ui_samples_theme.tres" id="10_2xs5u"]
 

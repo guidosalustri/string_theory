@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://b1xjjudghnfhm" path="res://objects/obstacles/black_hole.tscn" id="7_kqya4"]
 [ext_resource type="Script" uid="uid://bhexx6mj1xv3q" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="8_0sxm7"]
 [ext_resource type="Script" uid="uid://8umksf8e80fw" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="9_03pxn"]
-[ext_resource type="PackedScene" uid="uid://d4du8b30u7feq" path="res://path_obstacles.tscn" id="9_ao71f"]
+[ext_resource type="PackedScene" uid="uid://d4du8b30u7feq" path="res://objects/obstacles/path_obstacles.tscn" id="9_ao71f"]
 [ext_resource type="FontFile" uid="uid://clffif4u7fy61" path="res://ui/Stacked pixel.ttf" id="10_o2vid"]
 [ext_resource type="Shader" uid="uid://dnbinwyvgk7bb" path="res://ui/blur_for_ui.gdshader" id="11_ghtmd"]
 [ext_resource type="PackedScene" uid="uid://bc8nepke0pagf" path="res://ui/hud/hud.tscn" id="12_wyq87"]

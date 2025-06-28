@@ -4,10 +4,10 @@ extends Control
 @onready var martian_name: Label = $NinePatchRect/Name
 
 var character := false
-var maverick_texture : Texture2D = preload("res://assets/martin_martian.png")
-var martin_texture : Texture2D = preload("res://assets/crew.png")
-var karen_texture : Texture2D = preload("res://assets/sophia.png")
-var roberto_texture : Texture2D = preload("res://assets/roberto.png")
+var maverick_texture : Texture2D = preload("res://assets/art/martin_martian.png")
+var martin_texture : Texture2D = preload("res://assets/art/crew.png")
+var karen_texture : Texture2D = preload("res://assets/art/sophia.png")
+var roberto_texture : Texture2D = preload("res://assets/art/roberto.png")
 
 var martin :={
 	"name" : "Martin",

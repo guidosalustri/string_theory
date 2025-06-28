@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://bttykdc0l1xxq"]
-
-[ext_resource type="Script" uid="uid://bwvtpd5ie5fis" path="res://objects/comp/spinner_obstacles.gd" id="1_7y6e4"]
-
-[node name="SpinnerObstacles" type="Node2D" groups=["spinner_bh"]]
-script = ExtResource("1_7y6e4")

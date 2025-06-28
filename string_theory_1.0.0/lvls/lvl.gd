@@ -16,7 +16,7 @@ extends Node2D
 
 
 @onready var timer: Timer = $Timer
-@onready var particles_scene : PackedScene = preload("res://assets/link_gpu_particles_2d.tscn")
+@onready var particles_scene : PackedScene = preload("res://assets/scenes/link_gpu_particles_2d.tscn")
 @onready var color_rect: ColorRect = $CanvasLayer/ColorRect
 @onready var _label: RichTextLabel = $CanvasLayer/RichTextLabel
 @onready var canvas_layer: CanvasLayer = $CanvasLayer
