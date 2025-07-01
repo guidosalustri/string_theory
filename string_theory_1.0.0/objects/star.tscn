@@ -1,12 +1,12 @@
 [gd_scene load_steps=23 format=3 uid="uid://ul1ys48qmbs4"]
 
 [ext_resource type="Script" uid="uid://7bh26uyqr2xg" path="res://objects/star.gd" id="1_lhkgp"]
-[ext_resource type="Texture2D" uid="uid://baux8wnujuj2l" path="res://assets/spark.png" id="2_06rb5"]
-[ext_resource type="PackedScene" uid="uid://b646dec74n3dy" path="res://assets/halo_circle.tscn" id="3_tnftf"]
-[ext_resource type="Shader" uid="uid://ciwrrow4nqaaf" path="res://assets/halo_circle.gdshader" id="4_72cat"]
+[ext_resource type="Texture2D" uid="uid://baux8wnujuj2l" path="res://assets/art/spark.png" id="2_06rb5"]
+[ext_resource type="PackedScene" uid="uid://b646dec74n3dy" path="res://assets/scenes/halo_circle.tscn" id="3_tnftf"]
+[ext_resource type="Shader" uid="uid://ciwrrow4nqaaf" path="res://assets/scenes/halo_circle.gdshader" id="4_72cat"]
 [ext_resource type="Shader" uid="uid://7xet2lboo2oi" path="res://assets/group_outline.gdshader" id="5_6fouf"]
-[ext_resource type="PackedScene" uid="uid://bdooawbxdlh2s" path="res://assets/sparks_particles.tscn" id="6_gh7l6"]
-[ext_resource type="PackedScene" uid="uid://bo2nk72scwry6" path="res://objects/obstacles/particles_black_hole_2d.tscn" id="7_rfbuw"]
+[ext_resource type="PackedScene" uid="uid://bdooawbxdlh2s" path="res://assets/scenes/sparks_particles.tscn" id="6_gh7l6"]
+[ext_resource type="PackedScene" uid="uid://bo2nk72scwry6" path="res://assets/scenes/particles_black_hole_2d.tscn" id="7_rfbuw"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ii3ul"]
 resource_local_to_scene = true

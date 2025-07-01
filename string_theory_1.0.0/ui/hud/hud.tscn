@@ -3,10 +3,10 @@
 [ext_resource type="Script" uid="uid://g7r1u16gu44c" path="res://ui/hud/hud.gd" id="1_22hk0"]
 [ext_resource type="Theme" uid="uid://dp1nmwxx5vbr5" path="res://ui/ui_samples_theme.tres" id="3_o2lis"]
 [ext_resource type="PackedScene" uid="uid://cixa6p85qfex8" path="res://objects/stopwatch_util/stopwatch_util.tscn" id="4_rt7cw"]
-[ext_resource type="PackedScene" uid="uid://cge6vkntaqmpp" path="res://ui/speedometer_rainbow/speedometer_rainbow.tscn" id="5_0ul4y"]
-[ext_resource type="PackedScene" uid="uid://0qamkncpbo8o" path="res://ui/starts/stars_progress.tscn" id="5_woo44"]
+[ext_resource type="PackedScene" uid="uid://cge6vkntaqmpp" path="res://ui/hud/speedometer_rainbow/speedometer_rainbow.tscn" id="5_0ul4y"]
+[ext_resource type="PackedScene" uid="uid://0qamkncpbo8o" path="res://ui/hud/starts/stars_progress.tscn" id="5_woo44"]
 [ext_resource type="Script" uid="uid://k4yd0h3jh1qu" path="res://ui/stopwatch/stopwatch.gd" id="6_coa2k"]
-[ext_resource type="PackedScene" uid="uid://dpn6duokfpeii" path="res://ui/fuel_bar_rainbow/fuel_bar_rainbow.tscn" id="6_qevbr"]
+[ext_resource type="PackedScene" uid="uid://dpn6duokfpeii" path="res://ui/hud/fuel_bar_rainbow/fuel_bar_rainbow.tscn" id="6_qevbr"]
 [ext_resource type="PackedScene" uid="uid://bwdvn8yhiwxr3" path="res://ui/hud/dash_ui.tscn" id="8_gfles"]
 [ext_resource type="AudioStream" uid="uid://b5aso3xdm5ip5" path="res://assets/audio/ship_sfx/space_engine_003.ogg" id="9_aixkq"]
 

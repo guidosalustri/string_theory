@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://em4qfalchhhd" path="res://objects/ship.tscn" id="5_62x26"]
 [ext_resource type="PackedScene" uid="uid://ul1ys48qmbs4" path="res://objects/star.tscn" id="6_gc55c"]
 [ext_resource type="PackedScene" uid="uid://b1xjjudghnfhm" path="res://objects/obstacles/black_hole.tscn" id="7_l24to"]
-[ext_resource type="PackedScene" uid="uid://bttykdc0l1xxq" path="res://objects/comp/spinner_obstacles.tscn" id="8_icris"]
+[ext_resource type="PackedScene" uid="uid://bttykdc0l1xxq" path="res://objects/obstacles/spinner_obstacles.tscn" id="8_icris"]
 [ext_resource type="PackedScene" uid="uid://bcslqepvdrl6n" path="res://objects/obstacles/asteroid.tscn" id="9_0t3h6"]
 [ext_resource type="Script" uid="uid://bhexx6mj1xv3q" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="9_hqifb"]
 [ext_resource type="Script" uid="uid://8umksf8e80fw" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="10_52s5q"]

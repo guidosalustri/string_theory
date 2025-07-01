@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bxfevggvxo634" path="res://assets/background/space_background.tscn" id="4_8nu86"]
 [ext_resource type="PackedScene" uid="uid://em4qfalchhhd" path="res://objects/ship.tscn" id="5_lo62i"]
 [ext_resource type="PackedScene" uid="uid://ul1ys48qmbs4" path="res://objects/star.tscn" id="6_0a5dn"]
-[ext_resource type="PackedScene" uid="uid://bttykdc0l1xxq" path="res://objects/comp/spinner_obstacles.tscn" id="8_g6gur"]
+[ext_resource type="PackedScene" uid="uid://bttykdc0l1xxq" path="res://objects/obstacles/spinner_obstacles.tscn" id="8_g6gur"]
 [ext_resource type="PackedScene" uid="uid://b1xjjudghnfhm" path="res://objects/obstacles/black_hole.tscn" id="8_vkouc"]
 [ext_resource type="PackedScene" uid="uid://bcslqepvdrl6n" path="res://objects/obstacles/asteroid.tscn" id="9_ochhm"]
 [ext_resource type="Script" uid="uid://bhexx6mj1xv3q" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="10_ux50f"]

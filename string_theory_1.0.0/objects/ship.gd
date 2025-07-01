@@ -96,8 +96,8 @@ var target_offset := Vector2(50,0)
 var target : Area2D
 var black_hole : Area2D
 var max_speed_hud := 700
-var lvls_with_not_foward : bool= (GameManager.lvl == 7 or \
-	GameManager.lvl == 8 or GameManager.lvl == 9 or GameManager.lvl == 11) 
+#var lvls_with_not_foward : bool= (GameManager.lvl == 7 or \
+#	GameManager.lvl == 8 or GameManager.lvl == 9 or GameManager.lvl == 11) 
 var is_last_star := false
 
 var dying := false
@@ -164,7 +164,7 @@ func _physics_process(delta: float) -> void:
 	else:
 		main_thruster.thruster_on = false
 	if speed<=0:
-		if (not has_energy or lvls_with_not_foward) and not dying:
+		if not has_energy and not dying:
 			dying = true
 			GameManager.data_collection.log_player_death(DataCollection.player_death_cause.OUT_OF_FUEL)
 			cut_link.emit(false)
@@ -188,9 +188,9 @@ func _move(delta: float, right: bool, left: bool, forward: bool) -> void:
 	speed = clamp(speed, 0.0, max_speed)
 	
 	var direction := Input.get_vector("move_left", "move_right", "move_up", "move_down")
-	if not left or not has_fuel_left:
+	if not left or speed<=0:#not has_fuel_left:
 		direction.x = maxf(0.0, direction.x)
-	if not right or not has_fuel_right:
+	if not right or speed<=0:#not has_fuel_right:
 		direction.x = minf(0.0, direction.x)
 	if invert_controls:
 		direction.x *= -1
