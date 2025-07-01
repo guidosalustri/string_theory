@@ -32,6 +32,12 @@ extends Node2D
 @export var stars_trail: Array[Star]
 #@export var with_pickups := false
 #@export var max_string_lenght := 900
+@export_group("camera margins stars")
+@export var left := 90
+@export var top := 90
+@export var right := 90
+@export var down := 90
+
 
 var index := 0
 #options to cut the link
@@ -105,6 +111,7 @@ func _ready() -> void:
 	phantom_camera_ship.set_auto_zoom(true)
 	phantom_camera_ship.set_auto_zoom_min(0.4)
 	phantom_camera_ship.set_auto_zoom_max(1)
+	# set_auto_zoom_margin(left, top, right, down)
 	phantom_camera_ship.set_auto_zoom_margin(Vector4(90, 90, 90, 90))
 	phantom_camera_ship.set_priority(2)
 	
@@ -112,7 +119,8 @@ func _ready() -> void:
 	phantom_camera_star.set_auto_zoom(true)
 	phantom_camera_star.set_auto_zoom_min(0.4)
 	phantom_camera_star.set_auto_zoom_max(1)
-	phantom_camera_star.set_auto_zoom_margin(Vector4(90, 90, 90, 90))
+	# set_auto_zoom_margin(left, top, right, down)
+	phantom_camera_star.set_auto_zoom_margin(Vector4(left, top, right, down))
 	phantom_camera_star.set_priority(1)
 
 	for star in constellation.get_children():
