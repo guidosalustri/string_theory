@@ -1,9 +1,12 @@
+@tool
 extends Area2D
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var point_light_2d: PointLight2D = $PointLight2D
 
 func _ready() -> void:
+	if Engine.is_editor_hint():
+		return
 	modulate.a = 0
 	monitorable=false
 	animation_player.play("spin")

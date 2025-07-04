@@ -164,11 +164,13 @@ position = Vector2(3584, 2048)
 position = Vector2(-320, 320)
 
 [node name="SpinnerObstacles" parent="Constellation/Star" node_paths=PackedStringArray("obstacles") instance=ExtResource("8_mio34")]
+rotation = 0.22
 obstacles = [NodePath("Asteroid")]
 radius = 260.0
 rotation_speed = 3.3
 
 [node name="Asteroid" parent="Constellation/Star/SpinnerObstacles" instance=ExtResource("9_orlba")]
+position = Vector2(260, 0)
 
 [node name="Star2" parent="Constellation" instance=ExtResource("6_dbjj2")]
 position = Vector2(4160, 2624)
@@ -201,11 +203,13 @@ position = Vector2(1024, 1984)
 position = Vector2(320, -448)
 
 [node name="SpinnerObstacles" parent="Constellation/Star4" node_paths=PackedStringArray("obstacles") instance=ExtResource("8_mio34")]
+rotation = -0.20944
 obstacles = [NodePath("Asteroid")]
 radius = 300.0
 anticlockwise = true
 
 [node name="Asteroid" parent="Constellation/Star4/SpinnerObstacles" instance=ExtResource("9_orlba")]
+position = Vector2(300, 0)
 
 [node name="Star5" parent="Constellation" instance=ExtResource("6_dbjj2")]
 position = Vector2(1216, 1152)
@@ -230,11 +234,13 @@ position = Vector2(2816, 1280)
 position = Vector2(3584, 1344)
 
 [node name="SpinnerObstacles" parent="Constellation/Star8" node_paths=PackedStringArray("obstacles") instance=ExtResource("8_mio34")]
+rotation = -0.193333
 obstacles = [NodePath("Asteroid"), NodePath("Asteroid2")]
 anticlockwise = true
 rotation_speed = 2.9
 
 [node name="Asteroid" parent="Constellation/Star8/SpinnerObstacles" instance=ExtResource("9_orlba")]
+position = Vector2(250, 0)
 
 [node name="Asteroid2" parent="Constellation/Star8/SpinnerObstacles" instance=ExtResource("9_orlba")]
 

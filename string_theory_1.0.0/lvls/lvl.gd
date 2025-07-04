@@ -38,6 +38,9 @@ extends Node2D
 @export var right := 90
 @export var down := 90
 
+@export_group("camera constellation zoom")
+@export var constellation_zoomx :float= 0.4
+@export var constellation_zoomy :float= 0.4
 
 var index := 0
 #options to cut the link
@@ -125,7 +128,8 @@ func _ready() -> void:
 
 	for star in constellation.get_children():
 		phantom_camera_constellation.append_follow_targets(star)
-
+	
+	phantom_camera_constellation.zoom = Vector2(constellation_zoomx,constellation_zoomy)
 	phantom_camera_constellation.set_priority(0)
 
 

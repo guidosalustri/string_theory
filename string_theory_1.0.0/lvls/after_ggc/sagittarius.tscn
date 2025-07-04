@@ -80,6 +80,8 @@ glow_blend_mode = 4
 [node name="lvl" type="Node2D" node_paths=PackedStringArray("stars_trail")]
 script = ExtResource("1_sf6l8")
 stars_trail = [NodePath("Constellation/Star"), NodePath("Constellation/Star2"), NodePath("Constellation/Star3"), NodePath("Constellation/Star2"), NodePath("Constellation/Star4"), NodePath("Constellation/Star5"), NodePath("Constellation/Star6"), NodePath("Constellation/Star7"), NodePath("Constellation/Star8"), NodePath("Constellation/Star9"), NodePath("Constellation/Star8"), NodePath("Constellation/Star7"), NodePath("Constellation/Star10"), NodePath("Constellation/Star11"), NodePath("Constellation/Star12"), NodePath("Constellation/Star7"), NodePath("Constellation/Star10"), NodePath("Constellation/Star11"), NodePath("Constellation/Star13"), NodePath("Constellation/Star14"), NodePath("Constellation/Star13"), NodePath("Constellation/Star15"), NodePath("Constellation/Star16"), NodePath("Constellation/Star15"), NodePath("Constellation/Star17"), NodePath("Constellation/Star18")]
+constellation_zoomx = 0.2
+constellation_zoomy = 0.2
 
 [node name="CanvasModulate2" type="CanvasModulate" parent="."]
 color = Color(0.0218252, 0.0212845, 0.0214185, 1)
