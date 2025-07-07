@@ -222,7 +222,7 @@ func _on_timer_timeout() -> void:
 	await tween.finished
 
 	GameManager.lvl += 1
-	GameManager.call_cutscene()
+	GameManager.call_lvl_selection()
 
 
 func dim_out_obstacles() -> void:
