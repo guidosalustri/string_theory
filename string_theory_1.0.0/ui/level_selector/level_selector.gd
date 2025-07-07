@@ -24,13 +24,10 @@ var mouse_pos := Vector2.ZERO
 var selected_item : Node2D = null
 
 func _ready() -> void:
-	selected_item = _find_closest_item()
-	selected_item.focus()
-	lvl_btn.set_level_name( selected_item.name )
-
 	lvl_btn.connect("pressed", func() -> void:
-		GameManager.lvl = selected_item.level_idx
-		GameManager.call_cutscene()
+		if selected_item:
+			GameManager.lvl = selected_item.level_idx
+			GameManager.call_cutscene()
 	)
 
 func _input(event: InputEvent) -> void:
@@ -40,12 +37,19 @@ func _input(event: InputEvent) -> void:
 		if 100 < mouse_dist_to_wheel_center and mouse_dist_to_wheel_center < 360:
 			set_process(true)
 		else:
+			if mouse_dist_to_wheel_center > 300:
+				if selected_item:
+					selected_item.unfocus()
+					selected_item = null
+
+				lvl_btn.level_name.text = "CHOOSE A LEVEL"
 			set_process(false)
 
 func _process(_delta: float) -> void:
 	var closest_item := _find_closest_item()
 	if closest_item != selected_item:
-		selected_item.unfocus()
+		if selected_item:
+			selected_item.unfocus()
 		selected_item = closest_item
 
 		selected_item.focus()
