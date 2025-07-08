@@ -20,8 +20,11 @@ extends Node2D
 
 @onready var select_animation: Tween
 
+
 var mouse_pos := Vector2.ZERO
 var selected_item : Node2D = null
+var unlocked_lvls := [0,2,4,6]
+
 
 func _ready() -> void:
 	lvl_btn.connect("pressed", func() -> void:
@@ -29,6 +32,9 @@ func _ready() -> void:
 			GameManager.lvl = selected_item.level_idx
 			GameManager.call_cutscene()
 	)
+	for item in wheel_items:
+		if not item.level_idx in unlocked_lvls:
+			item.hide()
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
@@ -60,10 +66,11 @@ func _find_closest_item() -> Node2D:
 	var item := wheel_items[0]
 	var dist_squared : float = item.global_position.distance_squared_to(mouse_pos)
 	for item_idx in range( 1, wheel_items.size() ):
-		var curr_item := wheel_items[ item_idx ]
-		var item_mouse_dist_squared = curr_item.global_position.distance_squared_to(mouse_pos)
-		if item_mouse_dist_squared < dist_squared:
-			item = curr_item
-			dist_squared = item_mouse_dist_squared
+		if wheel_items[ item_idx ].visible:
+			var curr_item := wheel_items[ item_idx ]
+			var item_mouse_dist_squared = curr_item.global_position.distance_squared_to(mouse_pos)
+			if item_mouse_dist_squared < dist_squared:
+				item = curr_item
+				dist_squared = item_mouse_dist_squared
 
 	return item
