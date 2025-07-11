@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://ul1ys48qmbs4"]
+[gd_scene load_steps=29 format=3 uid="uid://ul1ys48qmbs4"]
 
 [ext_resource type="Script" uid="uid://7bh26uyqr2xg" path="res://objects/star.gd" id="1_lhkgp"]
 [ext_resource type="Texture2D" uid="uid://baux8wnujuj2l" path="res://assets/art/spark.png" id="2_06rb5"]
@@ -7,6 +7,8 @@
 [ext_resource type="Shader" uid="uid://7xet2lboo2oi" path="res://assets/group_outline.gdshader" id="5_6fouf"]
 [ext_resource type="PackedScene" uid="uid://bdooawbxdlh2s" path="res://assets/scenes/sparks_particles.tscn" id="6_gh7l6"]
 [ext_resource type="PackedScene" uid="uid://bo2nk72scwry6" path="res://assets/scenes/particles_black_hole_2d.tscn" id="7_rfbuw"]
+[ext_resource type="Script" uid="uid://cinxb20ta11fg" path="res://objects/arrow.gd" id="8_0147o"]
+[ext_resource type="Texture2D" uid="uid://b54h841c8wrcq" path="res://assets/art/arrow.svg" id="8_uegae"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ii3ul"]
 resource_local_to_scene = true
@@ -462,6 +464,48 @@ fill = 1
 fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(0.730769, 0.123932)
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_uegae"]
+radius = 19.0
+height = 52.0
+
+[sub_resource type="Animation" id="Animation_0147o"]
+resource_name = "idel"
+length = 0.25
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0.6, 0.6), Vector2(1.2, 1.2)]
+}
+
+[sub_resource type="Animation" id="Animation_stdt6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_umfb3"]
+_data = {
+&"RESET": SubResource("Animation_stdt6"),
+&"idel": SubResource("Animation_0147o")
+}
+
 [node name="Star" type="Area2D"]
 z_index = 4
 collision_layer = 2
@@ -521,3 +565,29 @@ energy = 0.6
 range_layer_min = -2
 texture = SubResource("GradientTexture2D_fbl85")
 texture_scale = 10.0
+
+[node name="ArrowPivot" type="Node2D" parent="."]
+
+[node name="Marker2D" type="Marker2D" parent="ArrowPivot"]
+position = Vector2(200, 0)
+
+[node name="Arrow" type="Area2D" parent="ArrowPivot/Marker2D"]
+collision_layer = 32
+script = ExtResource("8_0147o")
+
+[node name="Sprite2D" type="Sprite2D" parent="ArrowPivot/Marker2D/Arrow"]
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("8_uegae")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ArrowPivot/Marker2D/Arrow"]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_uegae")
+
+[node name="Timer" type="Timer" parent="ArrowPivot/Marker2D/Arrow"]
+wait_time = 0.5
+one_shot = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ArrowPivot/Marker2D/Arrow"]
+libraries = {
+&"": SubResource("AnimationLibrary_umfb3")
+}

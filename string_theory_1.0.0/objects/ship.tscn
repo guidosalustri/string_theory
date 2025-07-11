@@ -232,7 +232,7 @@ fill_to = Vector2(0.773504, 0.0940171)
 
 [node name="Ship" type="Area2D"]
 z_index = 5
-collision_mask = 31
+collision_mask = 63
 script = ExtResource("1_u1532")
 fuel_fill_rate = 1.0
 fuel_burn_rate = 1.5

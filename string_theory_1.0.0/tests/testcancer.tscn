@@ -154,12 +154,14 @@ position = Vector2(576, 384)
 
 [node name="Star" parent="Constellation" instance=ExtResource("6_cpsyf")]
 position = Vector2(1152, 384)
+arrow_life_time = 1.5
 
 [node name="blackHole" parent="Constellation/Star" instance=ExtResource("7_kxrid")]
 position = Vector2(448, -192)
 
 [node name="Star2" parent="Constellation" instance=ExtResource("6_cpsyf")]
 position = Vector2(2048, 512)
+arrow_life_time = 1.3
 
 [node name="SpinnerObstacles" parent="Constellation/Star2" node_paths=PackedStringArray("obstacles") instance=ExtResource("11_vpu8t")]
 obstacles = [NodePath("Asteroid")]
@@ -171,9 +173,11 @@ position = Vector2(2.62347e-06, -220)
 
 [node name="Star3" parent="Constellation" instance=ExtResource("6_cpsyf")]
 position = Vector2(2176, 1408)
+arrow_life_time = 2.0
 
 [node name="Star4" parent="Constellation" instance=ExtResource("6_cpsyf")]
 position = Vector2(2432, 128)
+arrow_life_time = 1.5
 
 [node name="blackHole" parent="Constellation/Star4" instance=ExtResource("7_kxrid")]
 position = Vector2(409, -120)

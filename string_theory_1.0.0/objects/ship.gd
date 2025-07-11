@@ -83,6 +83,7 @@ func set_has_energy(energy_update: bool) -> void:
 signal star_entered(star: Star)
 signal cut_link(was_black_hole: bool)
 signal dash
+signal detached
 
 var speed := 450.0
 var dashing := false
@@ -96,6 +97,7 @@ var target_offset := Vector2(50,0)
 var target : Area2D
 var black_hole : Area2D
 var max_speed_hud := 700
+
 #var lvls_with_not_foward : bool= (GameManager.lvl == 7 or \
 #	GameManager.lvl == 8 or GameManager.lvl == 9 or GameManager.lvl == 11) 
 var is_last_star := false
@@ -258,6 +260,7 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("spin"):
 		if current_state == States.ORBIT:
 			flag= false
+			detached.emit()
 		if current_state == States.FLY and not dashing and lvl_with_dash:
 			if can_dash:# and has_energy:
 				dash.emit()
@@ -281,6 +284,9 @@ func _on_area_entered(area: Area2D)->void:
 					star_entered.emit(star)
 					flag=true
 					pos1 = area.global_position
+					max_speed_hud = 700
+					max_speed = 700
+					speed = 700
 				star.States.BLACK_HOLE:
 					black_hole = area
 					if speed > 700:

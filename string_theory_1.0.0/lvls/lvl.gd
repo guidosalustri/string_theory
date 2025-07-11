@@ -67,6 +67,9 @@ func _ready() -> void:
 	
 	ship.star_entered.connect(_on_star_changed)
 	ship.cut_link.connect(cut_line_link)
+	ship.detached.connect(func() -> void:
+		stars_trail[index-1].arrow.arrow_lifetime_on_detach()
+		)
 	animation_player.animation_finished.connect(func(_anim_name: StringName) -> void:
 		GameManager.data_collection.log_player_death(DataCollection.player_death_cause.STRAY)
 		cut_line_link(false)
@@ -158,6 +161,8 @@ func _on_star_changed(star: Star)-> void:
 
 	#else:
 		index +=1
+		stars_trail[index-1].needs_arrow = true
+		stars_trail[index-1].arrow_point_to=stars_trail[index].position
 		stars_trail[index].spawn()
 		phantom_camera_ship.set_follow_targets([ship, stars_trail[index]])
 
