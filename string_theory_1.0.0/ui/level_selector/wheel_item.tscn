@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cm6l0ugym46w1"]
+
+[ext_resource type="Script" uid="uid://b6mil8lpncxcq" path="res://ui/level_selector/wheel_item.gd" id="1_tpu68"]
+
+[node name="WheeItem" type="Node2D"]
+script = ExtResource("1_tpu68")

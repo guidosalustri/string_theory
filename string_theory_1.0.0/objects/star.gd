@@ -8,13 +8,18 @@ class_name Star extends Area2D
 @onready var particles_black_hole_2d: Sprite2D = $ParticlesBlackHole2D
 @onready var timer: Timer = $Timer
 @onready var animation_player_2: AnimationPlayer = $AnimationPlayer2
+@onready var arrow_pivot: Node2D = $ArrowPivot
+@onready var arrow: Area2D = $ArrowPivot/Marker2D/Arrow
 
 var has_spawn_already := false
 signal star_entered
 signal has_spawn
 @export var black_hole_on_star := false
 @export var time_between_star_blackhole : int = 1
+@export var arrow_life_time : float = 1
+var needs_arrow := false
 
+var arrow_point_to := Vector2(0,0)
 
 enum States {
 	STAR,
@@ -47,6 +52,9 @@ func _ready() -> void:
 	particles_black_hole_2d.show()
 	particles_black_hole_2d.modulate.a = 0
 	timer.wait_time = time_between_star_blackhole
+	
+	arrow.life_time = arrow_life_time
+
 
 func spawn():
 	sparks.emitting = false
@@ -77,6 +85,9 @@ func spawn():
 
 func _on_area_entered(_area: Area2D) -> void:
 	star_entered.emit()
+	if current_state == States.STAR and needs_arrow:
+		spawn_arrow()
+		needs_arrow = false
 	if animation_player.is_playing():
 		if animation_player.get_current_animation() == "black_hole_transition" \
 		and current_state == States.STAR :
@@ -122,3 +133,9 @@ func play_floating_animation() -> void:
 
 func is_state_star() -> bool:
 	return current_state == States.STAR
+
+func spawn_arrow() -> void:
+	arrow_pivot.look_at(arrow_point_to)
+	arrow.spawn()
+	
+	

@@ -154,6 +154,7 @@ fuel = 1.5
 
 [node name="Star" parent="Constellation" instance=ExtResource("6_3w4gm")]
 position = Vector2(896, 576)
+arrow_life_time = 3.0
 
 [node name="Star2" parent="Constellation" instance=ExtResource("6_3w4gm")]
 position = Vector2(1856, 320)

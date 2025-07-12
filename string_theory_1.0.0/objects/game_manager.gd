@@ -15,6 +15,8 @@ extends Node
 
 var data_collection_impl := preload("res://objects/data_collection/data_collection_impl.gd")
 
+var level_selection_scene := preload("res://ui/level_selector/level_selector.tscn")
+
 var lvl: int = 0
 
 var deaths_counts := 0
@@ -48,6 +50,9 @@ func call_cutscene() -> void:
 		get_tree().change_scene_to_packed(final_scene)
 	else:
 		get_tree().change_scene_to_packed(cutscene)
+
+func call_lvl_selection() -> void:
+	get_tree().change_scene_to_packed( level_selection_scene )
 
 func start_lvl(index : int) -> void:
 	if _lvl_fresh_start:

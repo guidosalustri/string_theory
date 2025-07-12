@@ -1,0 +1,222 @@
+[gd_scene load_steps=27 format=3 uid="uid://cfo1b2xxdfk1j"]
+
+[ext_resource type="Material" uid="uid://cgvnmpq6vnska" path="res://assets/background/space_material.tres" id="1_hgx3n"]
+[ext_resource type="Script" uid="uid://ciwlx1esj3pqm" path="res://ui/level_selector/level_selector.gd" id="1_hwuf8"]
+[ext_resource type="Script" uid="uid://btevi1uqbys7t" path="res://assets/background/space_background.gd" id="2_nsevs"]
+[ext_resource type="Texture2D" uid="uid://bpgxb8a6ebx4j" path="res://assets/constelations/aquarius.png" id="4_b3d4c"]
+[ext_resource type="Texture2D" uid="uid://cau3obwh302u" path="res://cutscene/planet_blue.png" id="4_pr7ym"]
+[ext_resource type="Texture2D" uid="uid://dhib4dlrcw7k8" path="res://cutscene/planet_orange.png" id="5_8haw0"]
+[ext_resource type="Texture2D" uid="uid://co102fa38lwjx" path="res://assets/constelations/aries.png" id="5_d5u05"]
+[ext_resource type="Texture2D" uid="uid://ogt6dxydjjfb" path="res://assets/constelations/cancer.png" id="6_lxvy7"]
+[ext_resource type="Texture2D" uid="uid://cwwgbu82bxbho" path="res://cutscene/planet_purple.png" id="6_m40ja"]
+[ext_resource type="PackedScene" uid="uid://cm6l0ugym46w1" path="res://ui/level_selector/wheel_item.tscn" id="7_8haw0"]
+[ext_resource type="Texture2D" uid="uid://b816oxt70oted" path="res://assets/constelations/capricorn.png" id="7_pr7ym"]
+[ext_resource type="Texture2D" uid="uid://bxs41i71yg31v" path="res://assets/constelations/gemini.png" id="8_8haw0"]
+[ext_resource type="Texture2D" uid="uid://cmrtf3s2ugfyt" path="res://assets/constelations/leo.png" id="9_m40ja"]
+[ext_resource type="Texture2D" uid="uid://7q2smb8aqdbh" path="res://assets/constelations/libra.png" id="10_k1uo1"]
+[ext_resource type="Texture2D" uid="uid://w1xow6rmvqvo" path="res://assets/constelations/pisces.png" id="11_bahlu"]
+[ext_resource type="Texture2D" uid="uid://0wl8cat72llk" path="res://assets/constelations/sagittarius.png" id="12_hw8rq"]
+[ext_resource type="Texture2D" uid="uid://cliuycrhmihph" path="res://assets/constelations/scorpio.png" id="13_qh4kq"]
+[ext_resource type="Texture2D" uid="uid://bm43bngamnmon" path="res://assets/constelations/taurus.png" id="14_d81nj"]
+[ext_resource type="Texture2D" uid="uid://bkk6ggsfihvrm" path="res://assets/constelations/virgo.png" id="15_6vrd7"]
+[ext_resource type="Script" uid="uid://bq0k3db7qcqhq" path="res://ui/level_selector/lvl_button.gd" id="20_k1uo1"]
+[ext_resource type="Theme" uid="uid://dvowqtgyecjg1" path="res://ui/options_theme.tres" id="20_m40ja"]
+
+[sub_resource type="Gradient" id="Gradient_m40ja"]
+offsets = PackedFloat32Array(0.263158, 0.267313, 0.281163, 0.290859, 0.307479, 0.315789, 0.32964, 0.339335, 0.354571, 0.360111, 0.376731, 0.383657, 0.872576, 0.880886, 0.894737, 0.905817, 0.919668, 0.929363, 0.947368, 0.954294, 0.970914, 0.976454, 0.993421, 0.99736)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_8ildp"]
+gradient = SubResource("Gradient_m40ja")
+width = 512
+height = 512
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 0.5)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_k1uo1"]
+radius = 111.0
+
+[sub_resource type="Gradient" id="Gradient_k1uo1"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_bahlu"]
+gradient = SubResource("Gradient_k1uo1")
+width = 128
+height = 128
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.5, 1)
+
+[node name="LevelSelector" type="Node2D"]
+script = ExtResource("1_hwuf8")
+metadata/_edit_vertical_guides_ = [979.0]
+metadata/_edit_horizontal_guides_ = [533.0]
+
+[node name="Background" type="ColorRect" parent="."]
+material = ExtResource("1_hgx3n")
+offset_right = 1919.0
+offset_bottom = 1078.0
+mouse_filter = 1
+script = ExtResource("2_nsevs")
+
+[node name="PlanetBlue" type="Sprite2D" parent="."]
+position = Vector2(238, 227)
+texture = ExtResource("4_pr7ym")
+
+[node name="PlanetOrange" type="Sprite2D" parent="."]
+position = Vector2(187, 903)
+rotation = 0.790628
+texture = ExtResource("5_8haw0")
+
+[node name="PlanetPurple" type="Sprite2D" parent="."]
+position = Vector2(1713, 598)
+texture = ExtResource("6_m40ja")
+
+[node name="Wheel" type="Node2D" parent="."]
+position = Vector2(979, 534)
+
+[node name="Capricorn" parent="Wheel" instance=ExtResource("7_8haw0")]
+position = Vector2(3.99988, -271)
+
+[node name="Sign" type="Sprite2D" parent="Wheel/Capricorn"]
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("7_pr7ym")
+
+[node name="Aquarius" parent="Wheel" instance=ExtResource("7_8haw0")]
+position = Vector2(137, -226)
+rotation = 0.523599
+
+[node name="Sign" type="Sprite2D" parent="Wheel/Aquarius"]
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("4_b3d4c")
+
+[node name="Pisces" parent="Wheel" instance=ExtResource("7_8haw0")]
+position = Vector2(254, -111)
+rotation = 1.0472
+
+[node name="Sign" type="Sprite2D" parent="Wheel/Pisces"]
+position = Vector2(-8.19615, 2.19617)
+texture = ExtResource("11_bahlu")
+
+[node name="Aries" parent="Wheel" instance=ExtResource("7_8haw0")]
+position = Vector2(262, 22)
+rotation = 1.5708
+
+[node name="Sign" type="Sprite2D" parent="Wheel/Aries"]
+position = Vector2(-11, -0.99996)
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("5_d5u05")
+
+[node name="Cancer" parent="Wheel" instance=ExtResource("7_8haw0")]
+position = Vector2(-0.00012207, 261)
+rotation = -3.14159
+level_idx = 3
+
+[node name="Sign" type="Sprite2D" parent="Wheel/Cancer"]
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("6_lxvy7")
+
+[node name="Gemini" parent="Wheel" instance=ExtResource("7_8haw0")]
+position = Vector2(129, 233)
+rotation = 2.61799
+level_idx = 2
+
+[node name="Sign" type="Sprite2D" parent="Wheel/Gemini"]
+scale = Vector2(1.1, 1.1)
+texture = ExtResource("8_8haw0")
+
+[node name="Leo" parent="Wheel" instance=ExtResource("7_8haw0")]
+position = Vector2(-134, 241)
+rotation = -2.61799
+level_idx = 4
+
+[node name="Sign" type="Sprite2D" parent="Wheel/Leo"]
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("9_m40ja")
+
+[node name="Libra" parent="Wheel" instance=ExtResource("7_8haw0")]
+position = Vector2(-275, -5)
+rotation = -1.5708
+level_idx = 6
+
+[node name="Sign" type="Sprite2D" parent="Wheel/Libra"]
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("10_k1uo1")
+
+[node name="Sagittarius" parent="Wheel" instance=ExtResource("7_8haw0")]
+position = Vector2(-122, -240)
+rotation = -0.523599
+
+[node name="Sign" type="Sprite2D" parent="Wheel/Sagittarius"]
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("12_hw8rq")
+
+[node name="Scorpio" parent="Wheel" instance=ExtResource("7_8haw0")]
+position = Vector2(-228, -154)
+rotation = -1.0472
+
+[node name="Sign" type="Sprite2D" parent="Wheel/Scorpio"]
+position = Vector2(-10.3923, 5.99998)
+texture = ExtResource("13_qh4kq")
+
+[node name="Taurus" parent="Wheel" instance=ExtResource("7_8haw0")]
+position = Vector2(233, 138)
+rotation = 2.0944
+level_idx = 1
+
+[node name="Sign" type="Sprite2D" parent="Wheel/Taurus"]
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("14_d81nj")
+
+[node name="Virgo" parent="Wheel" instance=ExtResource("7_8haw0")]
+position = Vector2(-243, 116)
+rotation = -2.09439
+level_idx = 5
+
+[node name="Sign" type="Sprite2D" parent="Wheel/Virgo"]
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("15_6vrd7")
+
+[node name="Circles" type="Sprite2D" parent="Wheel"]
+self_modulate = Color(1, 0.835294, 0, 1)
+position = Vector2(-1, 1)
+scale = Vector2(1.62109, 1.62109)
+texture = SubResource("GradientTexture2D_8ildp")
+metadata/_edit_lock_ = true
+
+[node name="LevelButton" type="Area2D" parent="Wheel"]
+position = Vector2(0, -1.00006)
+script = ExtResource("20_k1uo1")
+
+[node name="ButtonBounds" type="CollisionShape2D" parent="Wheel/LevelButton"]
+shape = SubResource("CircleShape2D_k1uo1")
+debug_color = Color(0.79, 0.958, 1, 0)
+
+[node name="ButtonGlow" type="Sprite2D" parent="Wheel/LevelButton"]
+modulate = Color(0.996078, 0.862745, 0.858824, 1)
+scale = Vector2(1.54, 1.54)
+texture = SubResource("GradientTexture2D_bahlu")
+
+[node name="LevelName" type="Label" parent="Wheel/LevelButton"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -85.0
+offset_top = -31.5
+offset_right = 85.0
+offset_bottom = 31.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("20_m40ja")
+theme_type_variation = &"GraphFrameTitleLabel"
+theme_override_font_sizes/font_size = 36
+text = "CHOOSE A LEVEL"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(960, 540)
