@@ -17,7 +17,7 @@ signal has_spawn
 @export var black_hole_on_star := false
 @export var time_between_star_blackhole : int = 1
 @export var arrow_life_time : float = 1
-@export var needs_arrow := false
+var needs_arrow := false
 
 var arrow_point_to := Vector2(0,0)
 

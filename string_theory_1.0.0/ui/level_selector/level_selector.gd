@@ -23,7 +23,7 @@ extends Node2D
 
 var mouse_pos := Vector2.ZERO
 var selected_item : Node2D = null
-var unlocked_lvls := [0,2,4,6]
+var unlocked_lvls := [0,2,6]
 
 
 func _ready() -> void:
