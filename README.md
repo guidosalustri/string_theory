@@ -4,10 +4,6 @@
 > **[Download the Windows build](https://drive.google.com/drive/folders/1YpS6nY7ej0Vf_0qD2wnZ66WQ_0eMDCPw)**
 > · [Publication (DiVA)](https://uu.diva-portal.org/smash/record.jsf?pid=diva2%3A1965699)
 
-## Built with
-
-`Godot 4` `GDScript` · two-person team
-
 An action-puzzle top-down 2D space game built in Godot 4. Each level is one of the
 twelve zodiac constellations, and the goal is to draw it by connecting its stars.
 
@@ -58,6 +54,10 @@ The resulting logs were analysed into per-level behavioural heatmaps:
 
 This fed a publication examining how in-game behaviour varies with players'
 self-reported intrinsic motivations and challenge-type preferences.
+
+## Built with
+
+`Godot 4` `GDScript` · two-person team
 
 ## Status
 
