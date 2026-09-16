@@ -2,12 +2,21 @@
 
 > [!TIP]
 > **[Download the Windows build](https://drive.google.com/drive/folders/1YpS6nY7ej0Vf_0qD2wnZ66WQ_0eMDCPw)**
+> · [Watch gameplay](https://drive.google.com/file/d/1Ei_piX66B7IYlXH_iWGcYHz8CxF6X3gB/view)
 > · [Publication (DiVA)](https://uu.diva-portal.org/smash/record.jsf?pid=diva2%3A1965699)
 
 An action-puzzle top-down 2D space game built in Godot 4. Each level is one of the
 twelve zodiac constellations, and the goal is to draw it by connecting its stars.
 
 ![String Theory](https://guidosalustri.github.io/assets/images/st_game.png)
+
+<!-- VIDEO: on github.com, edit this file and drag the .mp4 onto the line below.
+     GitHub uploads it and leaves a user-attachments URL that renders as a player.
+     Delete this comment once it's in. -->
+
+
+https://github.com/user-attachments/assets/fa643469-3738-4f9f-aebe-26ca01d2a3a2
+
 
 Shown at the **Gotland Game Conference**, where it ran on the seven levels under
 `lvls/ggc/`; the remaining constellations in `lvls/after_ggc/` were built afterwards.
@@ -63,4 +72,7 @@ self-reported intrinsic motivations and challenge-type preferences.
 
 Currently being reworked. The focus is game flow — pacing matters disproportionately in
 a game built around frustration — alongside a full visual redo.
+
+https://github.com/user-attachments/assets/ee9253e8-bd84-44e4-b6c3-1d2b70f2da63
+
 
